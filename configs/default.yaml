@@ -1,0 +1,163 @@
+project:
+  seed: 42
+  output_dir: outputs
+
+model_registry:
+  best_dir: outputs/models/best
+  classic_best_name: classic_multimodal_best.joblib
+  neural_best_name: neural_multimodal_best.pt
+  metric: macro_f1
+  update_best_only_for_full_runs: true
+
+paths:
+  hdf5: dataset/data/multimodal_imdb.hdf5
+  metadata: dataset/data/metadata.npy
+  article_pdf: dataset/Article about dataset and how was it used.pdf
+
+splits:
+  train_size: 0.70
+  val_size: 0.15
+  test_size: 0.15
+  random_state: 42
+  output_dir: outputs/splits
+
+training:
+  output_dir: outputs/model_selection
+  metric: macro_f1
+  n_folds: 3
+  combine_train_val_for_cv: true
+  classic:
+    enabled: true
+    candidates:
+      - name: classic_chain_bigram_c1
+        params:
+          classifier: classifier_chain
+          text_max_features: 30000
+          text_ngram_min: 1
+          text_ngram_max: 2
+          logistic_c: 1.0
+          logistic_penalty: l2
+      - name: classic_ovr_bigram_c1
+        params:
+          classifier: ovr
+          text_max_features: 30000
+          text_ngram_min: 1
+          text_ngram_max: 2
+          logistic_c: 1.0
+          logistic_penalty: l2
+      - name: classic_chain_unigram_c05
+        params:
+          classifier: classifier_chain
+          text_max_features: 20000
+          text_ngram_min: 1
+          text_ngram_max: 1
+          logistic_c: 0.5
+          logistic_penalty: l2
+  neural:
+    enabled: true
+    candidates:
+      - name: neural_gmu_resnet18_h256
+        params:
+          fusion: gmu
+          image_encoder: resnet18
+          hidden_dim: 256
+          text_cnn_channels: 128
+          learning_rate: 0.0001
+          weight_decay: 0.01
+      - name: neural_concat_resnet18_h256
+        params:
+          fusion: concat
+          image_encoder: resnet18
+          hidden_dim: 256
+          text_cnn_channels: 128
+          learning_rate: 0.0001
+          weight_decay: 0.01
+      - name: neural_gmu_resnet18_h128
+        params:
+          fusion: gmu
+          image_encoder: resnet18
+          hidden_dim: 128
+          text_cnn_channels: 96
+          learning_rate: 0.0002
+          weight_decay: 0.01
+
+text:
+  max_length: 512
+  embedding_dim: 300
+  freeze_embeddings: false
+
+image:
+  input_size: 224
+  caffe_bgr_mean: [103.939, 116.779, 123.68]
+
+classic:
+  model_name: classic_multimodal_logreg
+  text_max_features: 30000
+  text_ngram_min: 1
+  text_ngram_max: 2
+  text_min_df: 2
+  image_hist_bins: 16
+  image_thumbnail_size: [32, 20]
+  logistic_max_iter: 1000
+  logistic_c: 1.0
+  logistic_penalty: l2
+  logistic_solver: saga
+  logistic_l1_ratio: null
+  logistic_class_weight: balanced
+  threshold_metric: macro_f1
+  threshold_strategy: per_label
+  classifier: classifier_chain
+  chain_order: null
+  random_state: 42
+
+neural:
+  model_name: multimodal_textcnn_resnet18_gmu
+  text_encoder: textcnn
+  image_encoder: resnet18
+  fusion: gmu
+  hidden_dim: 256
+  text_cnn_channels: 128
+  text_cnn_kernels: [3, 4, 5]
+  pretrained_image: true
+  freeze_image_backbone: true
+  batch_size: 16
+  epochs: 10
+  learning_rate: 0.0001
+  weight_decay: 0.01
+  num_workers: 0
+  patience: 3
+  threshold_metric: macro_f1
+  threshold_strategy: per_label
+  enable_label_correlation: true
+
+xai:
+  output_dir: outputs/xai
+  split: test
+  limit: 10
+  target_genre: null
+  target_genres: []
+  target_policy: predicted
+  target_top_k: 3
+  max_targets_per_sample: 3
+  ensure_at_least_one_target: true
+  enable_experimental_set_explanation: true
+  top_k: 12
+  n_steps: 8
+  measure_performance: true
+  performance_sample_interval_seconds: 0.02
+  classic:
+    enabled: true
+    model_path: outputs/models/best/classic_multimodal_best.joblib
+    enable_modality_shapley: true
+  neural:
+    enabled: true
+    checkpoint_path: outputs/models/best/neural_multimodal_best.pt
+    enable_layer_integrated_gradients_text: true
+    enable_integrated_gradients_image: true
+    enable_gradcam: true
+    enable_modality_ablation: true
+    enable_modality_shapley: true
+    enable_token_occlusion: true
+    enable_image_occlusion: true
+    image_occlusion_grid: 4
+    occlusion_batch_size: 32

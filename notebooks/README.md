@@ -1,0 +1,42 @@
+# Notebook Notes
+
+The project is implemented as Python modules and scripts so notebooks can stay thin.
+
+Recommended workflow:
+
+1. Activate the environment: `conda activate mmimdb-xai`
+2. Start Jupyter from the project root: `jupyter notebook`
+3. Import from `mmimdb` directly.
+
+Minimal notebook cell:
+
+```python
+from mmimdb.data import DatasetPaths, load_labels
+from mmimdb.utils import load_config
+
+config = load_config("configs/default.yaml")
+paths = DatasetPaths.from_config(config)
+y = load_labels(paths.hdf5)
+y.shape
+```
+
+For training from a notebook, prefer calling the script functions rather than duplicating logic:
+
+```python
+import numpy as np
+from mmimdb.models.classic import ClassicConfig, train_classic_multimodal
+from mmimdb.splits import load_split_indices
+
+train_idx, val_idx, test_idx = load_split_indices("outputs/splits")
+result = train_classic_multimodal(
+    paths.hdf5,
+    paths.metadata,
+    train_idx,
+    val_idx,
+    test_idx,
+    output_dir="outputs/models",
+    cfg=ClassicConfig.from_config(config),
+    limit=100,
+)
+result["validation"]["macro_f1"]
+```
