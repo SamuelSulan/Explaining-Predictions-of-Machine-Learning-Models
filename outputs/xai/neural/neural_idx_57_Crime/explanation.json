@@ -1,0 +1,232 @@
+{
+  "index": 57,
+  "target_genre": "Crime",
+  "true_genres": [
+    "Romance",
+    "Horror",
+    "Mystery",
+    "Fantasy",
+    "Film-Noir"
+  ],
+  "probability": 0.49002909660339355,
+  "top_probabilities": {
+    "Film-Noir": 0.5082502365112305,
+    "Thriller": 0.5048558712005615,
+    "Music": 0.4995947778224945,
+    "Horror": 0.49613845348358154,
+    "Mystery": 0.49506130814552307
+  },
+  "threshold": 0.05,
+  "methods": [
+    "LayerIntegratedGradients_text_embedding",
+    "IntegratedGradients_image_pixels",
+    "GradCAM_image_branch",
+    "modality_ablation",
+    "GMU_gate_summary"
+  ],
+  "top_tokens": [
+    {
+      "position": 272,
+      "token": "named",
+      "attribution": 0.0015260728541761637
+    },
+    {
+      "position": 172,
+      "token": "sale",
+      "attribution": 0.001448759576305747
+    },
+    {
+      "position": 84,
+      "token": "continually",
+      "attribution": -0.001335099688731134
+    },
+    {
+      "position": 45,
+      "token": "residence",
+      "attribution": -0.0012431908398866653
+    },
+    {
+      "position": 109,
+      "token": "meredith",
+      "attribution": -0.0011138427071273327
+    },
+    {
+      "position": 151,
+      "token": "emotional",
+      "attribution": -0.0011093737557530403
+    },
+    {
+      "position": 360,
+      "token": "holloway",
+      "attribution": 0.0010711754439398646
+    },
+    {
+      "position": 274,
+      "token": "(",
+      "attribution": 0.0010279015405103564
+    },
+    {
+      "position": 177,
+      "token": "less",
+      "attribution": 0.0010250919731333852
+    },
+    {
+      "position": 12,
+      "token": "cliff",
+      "attribution": 0.0009831027127802372
+    },
+    {
+      "position": 150,
+      "token": "strong",
+      "attribution": -0.0009376528905704618
+    },
+    {
+      "position": 91,
+      "token": "sale",
+      "attribution": 0.0009207932162098587
+    }
+  ],
+  "modality_ablation": {
+    "both": 0.49002909660339355,
+    "no_text": 0.4890526831150055,
+    "no_image": 0.4940737187862396,
+    "blank": 0.49126699566841125,
+    "text_delta": 0.0009764134883880615,
+    "image_delta": -0.004044622182846069
+  },
+  "gate_mean": 0.5024296641349792,
+  "gate_std": 0.05258999019861221,
+  "config": {
+    "model_name": "multimodal_textcnn_resnet18_gmu",
+    "text_encoder": "textcnn",
+    "image_encoder": "resnet18",
+    "fusion": "gmu",
+    "hidden_dim": 256,
+    "text_cnn_channels": 128,
+    "text_cnn_kernels": [
+      3,
+      4,
+      5
+    ],
+    "pretrained_image": false,
+    "freeze_image_backbone": true,
+    "batch_size": 2,
+    "epochs": 1,
+    "learning_rate": 0.0001,
+    "weight_decay": 0.01,
+    "num_workers": 0,
+    "patience": 3,
+    "threshold_metric": "macro_f1",
+    "max_length": 512,
+    "input_size": 224,
+    "freeze_embeddings": false
+  },
+  "performance": {
+    "measurements": [
+      {
+        "name": "neural_text_layer_integrated_gradients_idx_57",
+        "wall_time_s": 0.15189189976081252,
+        "process_cpu_time_s": 0.9375,
+        "process_cpu_util_percent": 617.2152705156112,
+        "rss_start_mb": 1161.8125,
+        "rss_end_mb": 1161.453125,
+        "rss_delta_mb": -0.359375,
+        "rss_peak_mb": 1161.84375,
+        "cuda_start": {
+          "cuda_available": false
+        },
+        "cuda_end": {
+          "cuda_available": false
+        }
+      },
+      {
+        "name": "neural_text_visualization_idx_57",
+        "wall_time_s": 0.20263040019199252,
+        "process_cpu_time_s": 1.21875,
+        "process_cpu_util_percent": 601.4645378211922,
+        "rss_start_mb": 1161.4375,
+        "rss_end_mb": 1165.2890625,
+        "rss_delta_mb": 3.8515625,
+        "rss_peak_mb": 1168.5703125,
+        "cuda_start": {
+          "cuda_available": false
+        },
+        "cuda_end": {
+          "cuda_available": false
+        }
+      },
+      {
+        "name": "neural_image_integrated_gradients_idx_57",
+        "wall_time_s": 0.11913680005818605,
+        "process_cpu_time_s": 0.703125,
+        "process_cpu_util_percent": 590.1828819110433,
+        "rss_start_mb": 1165.2890625,
+        "rss_end_mb": 1165.3671875,
+        "rss_delta_mb": 0.078125,
+        "rss_peak_mb": 1165.296875,
+        "cuda_start": {
+          "cuda_available": false
+        },
+        "cuda_end": {
+          "cuda_available": false
+        }
+      },
+      {
+        "name": "neural_image_gradcam_idx_57",
+        "wall_time_s": 0.10286939982324839,
+        "process_cpu_time_s": 0.65625,
+        "process_cpu_util_percent": 637.9448126727459,
+        "rss_start_mb": 1165.3515625,
+        "rss_end_mb": 1165.68359375,
+        "rss_delta_mb": 0.33203125,
+        "rss_peak_mb": 1166.74609375,
+        "cuda_start": {
+          "cuda_available": false
+        },
+        "cuda_end": {
+          "cuda_available": false
+        }
+      },
+      {
+        "name": "neural_image_visualization_idx_57",
+        "wall_time_s": 0.05477209994569421,
+        "process_cpu_time_s": 0.21875,
+        "process_cpu_util_percent": 399.38216759424535,
+        "rss_start_mb": 1165.68359375,
+        "rss_end_mb": 1165.703125,
+        "rss_delta_mb": 0.01953125,
+        "rss_peak_mb": 1165.70703125,
+        "cuda_start": {
+          "cuda_available": false
+        },
+        "cuda_end": {
+          "cuda_available": false
+        }
+      },
+      {
+        "name": "neural_modality_ablation_idx_57",
+        "wall_time_s": 0.14418110018596053,
+        "process_cpu_time_s": 0.84375,
+        "process_cpu_util_percent": 585.2015270460248,
+        "rss_start_mb": 1165.703125,
+        "rss_end_mb": 1165.6953125,
+        "rss_delta_mb": -0.0078125,
+        "rss_peak_mb": 1165.70703125,
+        "cuda_start": {
+          "cuda_available": false
+        },
+        "cuda_end": {
+          "cuda_available": false
+        }
+      }
+    ],
+    "summary": {
+      "count": 6,
+      "total_wall_time_s": 0.7754816999658942,
+      "mean_wall_time_s": 0.1292469499943157,
+      "total_process_cpu_time_s": 4.578125,
+      "mean_process_cpu_util_percent": 571.8985329268105,
+      "max_rss_peak_mb": 1168.5703125
+    }
+  }
+}

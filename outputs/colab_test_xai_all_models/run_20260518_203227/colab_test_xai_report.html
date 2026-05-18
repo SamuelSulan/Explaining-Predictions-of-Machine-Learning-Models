@@ -1,0 +1,140 @@
+
+<!doctype html>
+<html><head><meta charset='utf-8'><title>Colab Test XAI Report</title>
+<style>
+body { font-family: Arial, sans-serif; margin: 24px; color: #18212b; }
+table { border-collapse: collapse; width: 100%; font-size: 13px; }
+th, td { border: 1px solid #ddd; padding: 6px; text-align: left; }
+figure { border: 1px solid #ddd; padding: 8px; margin: 12px 0; }
+img { max-width: 100%; }
+code { background: #f4f4f4; padding: 2px 4px; }
+</style></head><body>
+<h1>Colab Test-Set Evaluation And XAI Report</h1>
+<p>Output root: <code>/content/drive/MyDrive/Explaining-Predictions-of-Machine-Learning-Models/outputs/colab_test_xai_all_models/run_20260518_203227</code></p>
+<h2>Selection Summary</h2>
+<pre>{
+  "selection_metric": "macro_f1",
+  "best_overall": {
+    "key": "best_neural",
+    "model_type": "neural",
+    "score": 0.46799524392225356,
+    "path": "outputs/models/best/neural_multimodal_best.pt"
+  },
+  "best_classic": {
+    "key": "best_classic",
+    "score": 0.4382439827837317,
+    "path": "outputs/models/best/classic_multimodal_best.joblib"
+  },
+  "ablations": [
+    {
+      "key": "ablation_neural_transformer_text_only_h256_lr2e4",
+      "score": 0.4219240030876083,
+      "path": "/content/drive/MyDrive/Explaining-Predictions-of-Machine-Learning-Models/outputs/model_selection/neural/neural_transformer_text_only_h256_lr2e4/fold_01/neural_transformer_text_only_h256_lr2e4.pt",
+      "notes": "Candidate neural_transformer_text_only_h256_lr2e4; modality=text_only; best fold=1 validation score=0.433631525921757"
+    },
+    {
+      "key": "ablation_neural_efficientnet_b0_image_only_unfrozen_lr1e4",
+      "score": 0.3479346901190493,
+      "path": "/content/drive/MyDrive/Explaining-Predictions-of-Machine-Learning-Models/outputs/model_selection/neural/neural_efficientnet_b0_image_only_unfrozen_lr1e4/fold_03/neural_efficientnet_b0_image_only_unfrozen_lr1e4.pt",
+      "notes": "Candidate neural_efficientnet_b0_image_only_unfrozen_lr1e4; modality=image_only; best fold=3 validation score=0.3590650683925569"
+    }
+  ]
+}</pre>
+<h2>Metric Ranking</h2>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>key</th>
+      <th>model_type</th>
+      <th>role</th>
+      <th>path</th>
+      <th>sample_f1</th>
+      <th>micro_f1</th>
+      <th>macro_f1</th>
+      <th>weighted_f1</th>
+      <th>micro_precision</th>
+      <th>micro_recall</th>
+      <th>hamming_loss</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>best_neural</td>
+      <td>neural</td>
+      <td>best_neural</td>
+      <td>outputs/models/best/neural_multimodal_best.pt</td>
+      <td>0.5572</td>
+      <td>0.5630</td>
+      <td>0.4680</td>
+      <td>0.5644</td>
+      <td>0.4880</td>
+      <td>0.6652</td>
+      <td>0.1120</td>
+    </tr>
+    <tr>
+      <td>training_summary_overall_best</td>
+      <td>neural</td>
+      <td>training_summary_overall_best</td>
+      <td>/content/drive/MyDrive/Explaining-Predictions-of-Machine-Learning-Models/outputs/model_selection/neural/neural_transformer_gmu_resnet18_h256_lr2e4_focal/final/neural_transformer_gmu_resnet18_h256_lr2e4_focal.pt</td>
+      <td>0.5519</td>
+      <td>0.5593</td>
+      <td>0.4561</td>
+      <td>0.5660</td>
+      <td>0.4922</td>
+      <td>0.6474</td>
+      <td>0.1107</td>
+    </tr>
+    <tr>
+      <td>best_classic</td>
+      <td>classic</td>
+      <td>best_classic</td>
+      <td>outputs/models/best/classic_multimodal_best.joblib</td>
+      <td>0.5552</td>
+      <td>0.5607</td>
+      <td>0.4382</td>
+      <td>0.5627</td>
+      <td>0.4891</td>
+      <td>0.6568</td>
+      <td>0.1117</td>
+    </tr>
+    <tr>
+      <td>ablation_neural_transformer_text_only_h256_lr2e4</td>
+      <td>neural</td>
+      <td>ablation</td>
+      <td>/content/drive/MyDrive/Explaining-Predictions-of-Machine-Learning-Models/outputs/model_selection/neural/neural_transformer_text_only_h256_lr2e4/fold_01/neural_transformer_text_only_h256_lr2e4.pt</td>
+      <td>0.5229</td>
+      <td>0.5311</td>
+      <td>0.4219</td>
+      <td>0.5328</td>
+      <td>0.4442</td>
+      <td>0.6603</td>
+      <td>0.1265</td>
+    </tr>
+    <tr>
+      <td>ablation_neural_efficientnet_b0_image_only_unfrozen_lr1e4</td>
+      <td>neural</td>
+      <td>ablation</td>
+      <td>/content/drive/MyDrive/Explaining-Predictions-of-Machine-Learning-Models/outputs/model_selection/neural/neural_efficientnet_b0_image_only_unfrozen_lr1e4/fold_03/neural_efficientnet_b0_image_only_unfrozen_lr1e4.pt</td>
+      <td>0.4431</td>
+      <td>0.4558</td>
+      <td>0.3479</td>
+      <td>0.4788</td>
+      <td>0.3670</td>
+      <td>0.6011</td>
+      <td>0.1557</td>
+    </tr>
+  </tbody>
+</table>
+<h2>Figures</h2>
+<figure><img src='figures/per_label_f1_comparison.png'><figcaption>per_label_f1_comparison.png</figcaption></figure><figure><img src='figures/test_metric_comparison.png'><figcaption>test_metric_comparison.png</figcaption></figure>
+<h2>Saved Files</h2>
+<ul>
+<li>Model manifest: <code>/content/drive/MyDrive/Explaining-Predictions-of-Machine-Learning-Models/outputs/colab_test_xai_all_models/run_20260518_203227/model_manifest.json</code></li>
+<li>Combined metrics: <code>/content/drive/MyDrive/Explaining-Predictions-of-Machine-Learning-Models/outputs/colab_test_xai_all_models/run_20260518_203227/all_model_test_metrics.json</code></li>
+<li>Ranking CSV: <code>/content/drive/MyDrive/Explaining-Predictions-of-Machine-Learning-Models/outputs/colab_test_xai_all_models/run_20260518_203227/test_metric_ranking.csv</code></li>
+<li>Per-label CSV: <code>/content/drive/MyDrive/Explaining-Predictions-of-Machine-Learning-Models/outputs/colab_test_xai_all_models/run_20260518_203227/per_label_metrics.csv</code></li>
+<li>Predictions folder: <code>/content/drive/MyDrive/Explaining-Predictions-of-Machine-Learning-Models/outputs/colab_test_xai_all_models/run_20260518_203227/predictions</code></li>
+<li>XAI folder: <code>/content/drive/MyDrive/Explaining-Predictions-of-Machine-Learning-Models/outputs/colab_test_xai_all_models/run_20260518_203227/xai</code></li>
+<li>Global XAI folder: <code>/content/drive/MyDrive/Explaining-Predictions-of-Machine-Learning-Models/outputs/colab_test_xai_all_models/run_20260518_203227/xai_global</code></li>
+</ul>
+</body></html>

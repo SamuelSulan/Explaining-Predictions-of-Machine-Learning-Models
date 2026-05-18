@@ -81,21 +81,29 @@ def existing_report_roots() -> list[dict]:
         ROOT / "outputs" / "xai_smoke_conda",
         ROOT / "outputs" / "final_xai_analysis" / "xai",
     ]
+    colab_runs = ROOT / "outputs" / "colab_test_xai_all_models"
+    if colab_runs.exists():
+        candidates.extend(sorted(colab_runs.glob("*/xai/*")))
+
     seen = set()
     roots = []
     for candidate in candidates + sorted((ROOT / "outputs").glob("xai*")):
         if candidate in seen or not candidate.exists():
             continue
         seen.add(candidate)
-        classic = candidate / "classic" / "classic_xai_summary.json"
-        neural = candidate / "neural" / "neural_xai_summary.json"
-        if classic.exists() or neural.exists():
+        classic = (candidate / "classic" / "classic_xai_summary.json").exists() or (
+            candidate / "classic_xai_summary.json"
+        ).exists()
+        neural = (candidate / "neural" / "neural_xai_summary.json").exists() or (
+            candidate / "neural_xai_summary.json"
+        ).exists()
+        if classic or neural:
             roots.append(
                 {
                     "label": candidate.relative_to(ROOT).as_posix(),
                     "path": candidate.relative_to(ROOT).as_posix(),
-                    "classic": classic.exists(),
-                    "neural": neural.exists(),
+                    "classic": classic,
+                    "neural": neural,
                 }
             )
     return roots
@@ -103,7 +111,11 @@ def existing_report_roots() -> list[dict]:
 
 def summary_path(root: str, model_type: str) -> Path:
     name = "classic_xai_summary.json" if model_type == "classic" else "neural_xai_summary.json"
-    return safe_path(root) / model_type / name
+    root_path = safe_path(root)
+    direct_path = root_path / name
+    if direct_path.exists():
+        return direct_path
+    return root_path / model_type / name
 
 
 def list_samples(root: str, model_type: str) -> list[dict]:
@@ -673,6 +685,13 @@ HTML = r"""<!doctype html>
 
     async function loadSamples() {
       const root = $("rootSelect").value;
+      const rootInfo = state.roots.find(item => item.path === root);
+      if (rootInfo && $("modelType").value === "classic" && !rootInfo.classic && rootInfo.neural) {
+        $("modelType").value = "neural";
+      }
+      if (rootInfo && $("modelType").value === "neural" && !rootInfo.neural && rootInfo.classic) {
+        $("modelType").value = "classic";
+      }
       const modelType = $("modelType").value;
       const samples = await getJson(`/api/samples?root=${encodeURIComponent(root)}&model_type=${modelType}`);
       state.samples = samples;

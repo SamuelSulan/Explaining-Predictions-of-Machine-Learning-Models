@@ -1,0 +1,455 @@
+{
+  "checkpoint_path": "C:\\Users\\samue\\Documents\\diplomka\\outputs\\model_selection\\neural\\neural_transformer_gmu_resnet18_h256\\final\\neural_transformer_gmu_resnet18_h256_limit4.pt",
+  "target_policy": "top_k",
+  "target_top_k": 1,
+  "max_targets_per_sample": 3,
+  "threshold": [
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5
+  ],
+  "samples": [
+    {
+      "index": 17,
+      "target_genre": "Drama",
+      "target_genres": [
+        "Drama"
+      ],
+      "true_genres": [
+        "Drama",
+        "Thriller",
+        "Crime",
+        "Film-Noir"
+      ],
+      "predicted_genres": [
+        "Drama",
+        "Film-Noir",
+        "Sport",
+        "Sci-Fi",
+        "Comedy",
+        "Music"
+      ],
+      "probability": 0.5140773057937622,
+      "top_probabilities": {
+        "Drama": 0.5140773057937622,
+        "Film-Noir": 0.5099543929100037,
+        "Sport": 0.5055654048919678,
+        "Sci-Fi": 0.5041778683662415,
+        "Comedy": 0.5018978118896484
+      },
+      "threshold": [
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5
+      ],
+      "target_selection": {
+        "policy": "top_k",
+        "target_indices": [
+          0
+        ],
+        "target_genres": [
+          "Drama"
+        ],
+        "all_selected_indices": [
+          0
+        ],
+        "all_selected_genres": [
+          "Drama"
+        ],
+        "predicted_indices": [
+          0,
+          22,
+          20,
+          10,
+          1,
+          16
+        ],
+        "predicted_genres": [
+          "Drama",
+          "Film-Noir",
+          "Sport",
+          "Sci-Fi",
+          "Comedy",
+          "Music"
+        ],
+        "threshold": [
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5
+        ],
+        "max_targets_per_sample": 3
+      },
+      "methods": [
+        "LayerIntegratedGradients_text_embedding",
+        "IntegratedGradients_image_pixels",
+        "GradCAM_image_branch",
+        "modality_shapley",
+        "modality_ablation",
+        "GMU_gate_summary",
+        "experimental_label_correlation_head"
+      ],
+      "top_tokens": [
+        {
+          "position": 68,
+          "token": "citizen",
+          "attribution": 0.0001791427785065025
+        },
+        {
+          "position": 50,
+          "token": "latino",
+          "attribution": 0.00016437956946901977
+        },
+        {
+          "position": 72,
+          "token": "willing",
+          "attribution": 0.0001561512763146311
+        },
+        {
+          "position": 31,
+          "token": "thinks",
+          "attribution": -0.0001237214746652171
+        },
+        {
+          "position": 4,
+          "token": "larry",
+          "attribution": -0.00012227988918311894
+        },
+        {
+          "position": 11,
+          "token": "powers",
+          "attribution": 0.00010919132910203189
+        },
+        {
+          "position": 47,
+          "token": "when",
+          "attribution": -0.00010461326746735722
+        },
+        {
+          "position": 108,
+          "token": "possibly",
+          "attribution": -0.00010401743202237412
+        },
+        {
+          "position": 49,
+          "token": "young",
+          "attribution": -9.052343375515193e-05
+        },
+        {
+          "position": 9,
+          "token": "fighting",
+          "attribution": -8.82503591128625e-05
+        },
+        {
+          "position": 57,
+          "token": "by",
+          "attribution": -8.502398122800514e-05
+        },
+        {
+          "position": 14,
+          "token": "and",
+          "attribution": -8.339674968738109e-05
+        }
+      ],
+      "gate_mean": 0.5027458071708679,
+      "gate_std": 0.03260006755590439,
+      "config": {
+        "model_name": "neural_transformer_gmu_resnet18_h256",
+        "text_encoder": "transformer",
+        "image_encoder": "resnet18",
+        "fusion": "gmu",
+        "hidden_dim": 256,
+        "text_cnn_channels": 128,
+        "text_cnn_kernels": [
+          3,
+          4,
+          5
+        ],
+        "text_rnn_hidden_dim": 128,
+        "text_rnn_layers": 1,
+        "text_rnn_dropout": 0.2,
+        "text_attention_dim": 128,
+        "text_transformer_layers": 2,
+        "text_transformer_heads": 6,
+        "text_transformer_ff_dim": 512,
+        "text_transformer_dropout": 0.1,
+        "pretrained_image": false,
+        "freeze_image_backbone": true,
+        "batch_size": 2,
+        "epochs": 1,
+        "learning_rate": 0.0001,
+        "weight_decay": 0.01,
+        "num_workers": 0,
+        "patience": 3,
+        "threshold_metric": "macro_f1",
+        "threshold_strategy": "per_label",
+        "enable_label_correlation": true,
+        "max_length": 512,
+        "input_size": 224,
+        "freeze_embeddings": false
+      },
+      "performance": {
+        "measurements": [
+          {
+            "name": "neural_text_layer_integrated_gradients_idx_17_Drama",
+            "wall_time_s": 0.22190249999403022,
+            "process_cpu_time_s": 1.375,
+            "process_cpu_util_percent": 619.6415092380623
+          },
+          {
+            "name": "neural_text_visualization_idx_17_Drama",
+            "wall_time_s": 0.41211639999528416,
+            "process_cpu_time_s": 1.28125,
+            "process_cpu_util_percent": 310.8951742795631
+          },
+          {
+            "name": "neural_image_integrated_gradients_idx_17_Drama",
+            "wall_time_s": 0.13895429999683984,
+            "process_cpu_time_s": 0.84375,
+            "process_cpu_util_percent": 607.2140264958975
+          },
+          {
+            "name": "neural_image_ig_visualization_idx_17_Drama",
+            "wall_time_s": 0.023242199997184798,
+            "process_cpu_time_s": 0.09375,
+            "process_cpu_util_percent": 403.36112765295644
+          },
+          {
+            "name": "neural_image_gradcam_idx_17_Drama",
+            "wall_time_s": 0.11516950000077486,
+            "process_cpu_time_s": 0.734375,
+            "process_cpu_util_percent": 637.6471201099763
+          },
+          {
+            "name": "neural_image_gradcam_visualization_idx_17_Drama",
+            "wall_time_s": 0.023844500014092773,
+            "process_cpu_time_s": 0.09375,
+            "process_cpu_util_percent": 393.17242946839355
+          },
+          {
+            "name": "neural_modality_shapley_idx_17_Drama",
+            "wall_time_s": 0.18671149999136105,
+            "process_cpu_time_s": 1.125,
+            "process_cpu_util_percent": 602.5338557357488
+          },
+          {
+            "name": "neural_modality_shapley_visualization_idx_17_Drama",
+            "wall_time_s": 0.11471439999877475,
+            "process_cpu_time_s": 0.65625,
+            "process_cpu_util_percent": 572.0729045411991
+          },
+          {
+            "name": "neural_modality_ablation_idx_17_Drama",
+            "wall_time_s": 0.18141950000426732,
+            "process_cpu_time_s": 1.109375,
+            "process_cpu_util_percent": 611.4971102742018
+          }
+        ],
+        "summary": {
+          "count": 9,
+          "total_wall_time_s": 1.4180747999926098,
+          "mean_wall_time_s": 0.15756386666584554,
+          "total_process_cpu_time_s": 7.3125,
+          "mean_process_cpu_util_percent": 528.6705841995555,
+          "max_rss_peak_mb": null
+        }
+      },
+      "modality_shapley": {
+        "method": "two_modality_shapley",
+        "probability": {
+          "values": {
+            "blank": 0.5135203003883362,
+            "text_only": 0.5130267143249512,
+            "image_only": 0.514423668384552,
+            "both": 0.5140773057937622
+          },
+          "shapley": {
+            "text": -0.00041997432708740234,
+            "image": 0.0009769797325134277,
+            "interaction": 0.00014722347259521484,
+            "blank_to_both_delta": 0.0005570054054260254,
+            "abs_total": 0.00139695405960083,
+            "text_utilization": 0.30063574689593375,
+            "image_utilization": 0.6993642531040662
+          }
+        },
+        "logit": {
+          "values": {
+            "blank": 0.054094523191452026,
+            "text_only": 0.05211880803108215,
+            "image_only": 0.05771070346236229,
+            "both": 0.0563240647315979
+          },
+          "shapley": {
+            "text": -0.001681176945567131,
+            "image": 0.003910718485713005,
+            "interaction": 0.000589076429605484,
+            "blank_to_both_delta": 0.002229541540145874,
+            "abs_total": 0.005591895431280136,
+            "text_utilization": 0.3006452760477075,
+            "image_utilization": 0.6993547239522925
+          }
+        }
+      },
+      "modality_ablation": {
+        "both": 0.5140773057937622,
+        "no_text": 0.514423668384552,
+        "no_image": 0.5130267143249512,
+        "blank": 0.5135203003883362,
+        "text_delta": -0.0003463625907897949,
+        "image_delta": 0.0010505914688110352,
+        "both_logit": 0.0563240647315979,
+        "no_text_logit": 0.05771070346236229,
+        "no_image_logit": 0.05211880803108215,
+        "blank_logit": 0.054094523191452026
+      }
+    }
+  ],
+  "modality_shapley_summary": {
+    "count": 1,
+    "mean_logit_text": -0.001681176945567131,
+    "mean_logit_image": 0.003910718485713005,
+    "mean_logit_interaction": 0.000589076429605484,
+    "mean_logit_text_utilization": 0.3006452760477075,
+    "mean_logit_image_utilization": 0.6993547239522925,
+    "mean_probability_text": -0.00041997432708740234,
+    "mean_probability_image": 0.0009769797325134277,
+    "mean_probability_interaction": 0.00014722347259521484,
+    "mean_probability_text_utilization": 0.30063574689593375,
+    "mean_probability_image_utilization": 0.6993642531040662
+  },
+  "performance": {
+    "measurements": [
+      {
+        "name": "neural_text_layer_integrated_gradients_idx_17_Drama",
+        "wall_time_s": 0.22190249999403022,
+        "process_cpu_time_s": 1.375,
+        "process_cpu_util_percent": 619.6415092380623
+      },
+      {
+        "name": "neural_text_visualization_idx_17_Drama",
+        "wall_time_s": 0.41211639999528416,
+        "process_cpu_time_s": 1.28125,
+        "process_cpu_util_percent": 310.8951742795631
+      },
+      {
+        "name": "neural_image_integrated_gradients_idx_17_Drama",
+        "wall_time_s": 0.13895429999683984,
+        "process_cpu_time_s": 0.84375,
+        "process_cpu_util_percent": 607.2140264958975
+      },
+      {
+        "name": "neural_image_ig_visualization_idx_17_Drama",
+        "wall_time_s": 0.023242199997184798,
+        "process_cpu_time_s": 0.09375,
+        "process_cpu_util_percent": 403.36112765295644
+      },
+      {
+        "name": "neural_image_gradcam_idx_17_Drama",
+        "wall_time_s": 0.11516950000077486,
+        "process_cpu_time_s": 0.734375,
+        "process_cpu_util_percent": 637.6471201099763
+      },
+      {
+        "name": "neural_image_gradcam_visualization_idx_17_Drama",
+        "wall_time_s": 0.023844500014092773,
+        "process_cpu_time_s": 0.09375,
+        "process_cpu_util_percent": 393.17242946839355
+      },
+      {
+        "name": "neural_modality_shapley_idx_17_Drama",
+        "wall_time_s": 0.18671149999136105,
+        "process_cpu_time_s": 1.125,
+        "process_cpu_util_percent": 602.5338557357488
+      },
+      {
+        "name": "neural_modality_shapley_visualization_idx_17_Drama",
+        "wall_time_s": 0.11471439999877475,
+        "process_cpu_time_s": 0.65625,
+        "process_cpu_util_percent": 572.0729045411991
+      },
+      {
+        "name": "neural_modality_ablation_idx_17_Drama",
+        "wall_time_s": 0.18141950000426732,
+        "process_cpu_time_s": 1.109375,
+        "process_cpu_util_percent": 611.4971102742018
+      }
+    ],
+    "summary": {
+      "count": 9,
+      "total_wall_time_s": 1.4180747999926098,
+      "mean_wall_time_s": 0.15756386666584554,
+      "total_process_cpu_time_s": 7.3125,
+      "mean_process_cpu_util_percent": 528.6705841995555,
+      "max_rss_peak_mb": null
+    }
+  },
+  "output_stats": {
+    "file_count": 81,
+    "total_bytes": 4578396,
+    "total_mb": 4.366298675537109,
+    "file_count_by_suffix": {
+      ".json": 16,
+      ".png": 65
+    }
+  }
+}

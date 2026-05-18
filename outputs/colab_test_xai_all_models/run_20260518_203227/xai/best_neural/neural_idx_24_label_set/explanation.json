@@ -1,0 +1,427 @@
+{
+  "index": 24,
+  "target_genre": "label_set",
+  "target_genres": [
+    "War",
+    "Drama"
+  ],
+  "true_genres": [
+    "Drama",
+    "Film-Noir"
+  ],
+  "predicted_genres": [
+    "War",
+    "Drama"
+  ],
+  "probability": 0.6304431557655334,
+  "set_logit": 1.1407727003097534,
+  "top_probabilities": {
+    "War": 0.7489487528800964,
+    "Adventure": 0.6149436235427856,
+    "Action": 0.614719569683075,
+    "Drama": 0.5119375586509705,
+    "History": 0.3089487850666046
+  },
+  "threshold": [
+    0.30000001192092896,
+    0.5,
+    0.44999998807907104,
+    0.44999998807907104,
+    0.550000011920929,
+    0.6499999761581421,
+    0.800000011920929,
+    0.6499999761581421,
+    0.800000011920929,
+    0.6000000238418579,
+    0.800000011920929,
+    0.6000000238418579,
+    0.699999988079071,
+    0.699999988079071,
+    0.6499999761581421,
+    0.75,
+    0.8999999761581421,
+    0.699999988079071,
+    0.800000011920929,
+    0.8500000238418579,
+    0.800000011920929,
+    0.550000011920929,
+    0.699999988079071
+  ],
+  "target_selection": {
+    "policy": "predicted",
+    "target_indices": [
+      14,
+      0
+    ],
+    "target_genres": [
+      "War",
+      "Drama"
+    ],
+    "all_selected_indices": [
+      14,
+      0
+    ],
+    "all_selected_genres": [
+      "War",
+      "Drama"
+    ],
+    "predicted_indices": [
+      14,
+      0
+    ],
+    "predicted_genres": [
+      "War",
+      "Drama"
+    ],
+    "threshold": [
+      0.30000001192092896,
+      0.5,
+      0.44999998807907104,
+      0.44999998807907104,
+      0.550000011920929,
+      0.6499999761581421,
+      0.800000011920929,
+      0.6499999761581421,
+      0.800000011920929,
+      0.6000000238418579,
+      0.800000011920929,
+      0.6000000238418579,
+      0.699999988079071,
+      0.699999988079071,
+      0.6499999761581421,
+      0.75,
+      0.8999999761581421,
+      0.699999988079071,
+      0.800000011920929,
+      0.8500000238418579,
+      0.800000011920929,
+      0.550000011920929,
+      0.699999988079071
+    ],
+    "max_targets_per_sample": 3
+  },
+  "methods": [
+    "experimental_set_level_attribution",
+    "LayerIntegratedGradients_text_embedding",
+    "IntegratedGradients_image_pixels",
+    "GradCAM_image_branch",
+    "modality_shapley",
+    "modality_ablation",
+    "experimental_label_correlation_head"
+  ],
+  "top_tokens": [
+    {
+      "position": 55,
+      "token": "war",
+      "attribution": 7.1253437995910645
+    },
+    {
+      "position": 12,
+      "token": "thriller",
+      "attribution": -1.7876006364822388
+    },
+    {
+      "position": 73,
+      "token": "leader",
+      "attribution": 1.1848092079162598
+    },
+    {
+      "position": 58,
+      "token": "suddenly",
+      "attribution": -1.085143804550171
+    },
+    {
+      "position": 47,
+      "token": "handguns",
+      "attribution": 0.9869176149368286
+    },
+    {
+      "position": 126,
+      "token": "testimony",
+      "attribution": 0.9063184261322021
+    },
+    {
+      "position": 110,
+      "token": "find",
+      "attribution": -0.8910337090492249
+    },
+    {
+      "position": 78,
+      "token": "loading",
+      "attribution": 0.7843319773674011
+    },
+    {
+      "position": 113,
+      "token": "solve",
+      "attribution": -0.7469544410705566
+    },
+    {
+      "position": 59,
+      "token": "someone",
+      "attribution": -0.7370978593826294
+    },
+    {
+      "position": 125,
+      "token": "a",
+      "attribution": -0.7269534468650818
+    },
+    {
+      "position": 46,
+      "token": "loading",
+      "attribution": 0.7218105792999268
+    }
+  ],
+  "gate_mean": null,
+  "gate_std": null,
+  "config": {
+    "model_name": "neural_concat_resnet18_h256",
+    "modality": "multimodal",
+    "text_encoder": "textcnn",
+    "image_encoder": "resnet18",
+    "fusion": "concat",
+    "hidden_dim": 256,
+    "text_cnn_channels": 128,
+    "text_cnn_kernels": [
+      3,
+      4,
+      5
+    ],
+    "text_rnn_hidden_dim": 128,
+    "text_rnn_layers": 1,
+    "text_rnn_dropout": 0.2,
+    "text_attention_dim": 128,
+    "text_transformer_layers": 2,
+    "text_transformer_heads": 6,
+    "text_transformer_ff_dim": 512,
+    "text_transformer_dropout": 0.1,
+    "pretrained_image": false,
+    "freeze_image_backbone": true,
+    "batch_size": 16,
+    "epochs": 10,
+    "learning_rate": 0.0001,
+    "weight_decay": 0.01,
+    "num_workers": 0,
+    "patience": 3,
+    "threshold_metric": "macro_f1",
+    "threshold_strategy": "per_label",
+    "threshold_min": 0.01,
+    "threshold_max": 0.99,
+    "threshold_steps": 99,
+    "loss": "bce",
+    "focal_gamma": 2.0,
+    "pos_weight_clip": null,
+    "scheduler": "none",
+    "scheduler_factor": 0.5,
+    "scheduler_patience": 1,
+    "min_learning_rate": 1e-06,
+    "enable_label_correlation": true,
+    "max_length": 512,
+    "input_size": 224,
+    "freeze_embeddings": false
+  },
+  "performance": {
+    "measurements": [
+      {
+        "name": "neural_set_text_layer_integrated_gradients_idx_24",
+        "wall_time_s": 0.7209194689994547,
+        "process_cpu_time_s": 0.7285593020001215,
+        "process_cpu_util_percent": 101.05973459300105,
+        "rss_start_mb": 2328.46875,
+        "rss_end_mb": 2328.46875,
+        "rss_delta_mb": 0.0,
+        "rss_peak_mb": 2328.47265625,
+        "cuda_start": {
+          "cuda_available": false
+        },
+        "cuda_end": {
+          "cuda_available": false
+        }
+      },
+      {
+        "name": "neural_set_text_visualization_idx_24",
+        "wall_time_s": 0.17670275700038474,
+        "process_cpu_time_s": 0.16570889300010094,
+        "process_cpu_util_percent": 93.77832910651198,
+        "rss_start_mb": 2328.46875,
+        "rss_end_mb": 2328.46875,
+        "rss_delta_mb": 0.0,
+        "rss_peak_mb": 2328.47265625,
+        "cuda_start": {
+          "cuda_available": false
+        },
+        "cuda_end": {
+          "cuda_available": false
+        }
+      },
+      {
+        "name": "neural_set_image_integrated_gradients_idx_24",
+        "wall_time_s": 0.9960378549994857,
+        "process_cpu_time_s": 1.0061904350000077,
+        "process_cpu_util_percent": 101.01929660098384,
+        "rss_start_mb": 2328.46875,
+        "rss_end_mb": 2328.46875,
+        "rss_delta_mb": 0.0,
+        "rss_peak_mb": 2328.47265625,
+        "cuda_start": {
+          "cuda_available": false
+        },
+        "cuda_end": {
+          "cuda_available": false
+        }
+      },
+      {
+        "name": "neural_set_image_ig_visualization_idx_24",
+        "wall_time_s": 0.024870719999853463,
+        "process_cpu_time_s": 0.01713515500023277,
+        "process_cpu_util_percent": 68.8968996487988,
+        "rss_start_mb": 2328.46875,
+        "rss_end_mb": 2328.46875,
+        "rss_delta_mb": 0.0,
+        "rss_peak_mb": 2328.47265625,
+        "cuda_start": {
+          "cuda_available": false
+        },
+        "cuda_end": {
+          "cuda_available": false
+        }
+      },
+      {
+        "name": "neural_set_image_gradcam_idx_24",
+        "wall_time_s": 0.2028676270001597,
+        "process_cpu_time_s": 0.2043165099998987,
+        "process_cpu_util_percent": 100.71420118683494,
+        "rss_start_mb": 2328.46875,
+        "rss_end_mb": 2328.46875,
+        "rss_delta_mb": 0.0,
+        "rss_peak_mb": 2328.47265625,
+        "cuda_start": {
+          "cuda_available": false
+        },
+        "cuda_end": {
+          "cuda_available": false
+        }
+      },
+      {
+        "name": "neural_set_image_gradcam_visualization_idx_24",
+        "wall_time_s": 0.027707698999620334,
+        "process_cpu_time_s": 0.020461337999677198,
+        "process_cpu_util_percent": 73.84712097513969,
+        "rss_start_mb": 2328.46875,
+        "rss_end_mb": 2328.46875,
+        "rss_delta_mb": 0.0,
+        "rss_peak_mb": 2328.47265625,
+        "cuda_start": {
+          "cuda_available": false
+        },
+        "cuda_end": {
+          "cuda_available": false
+        }
+      },
+      {
+        "name": "neural_set_modality_shapley_idx_24",
+        "wall_time_s": 0.31989030400018237,
+        "process_cpu_time_s": 0.3219152019996727,
+        "process_cpu_util_percent": 100.63299761642328,
+        "rss_start_mb": 2328.46875,
+        "rss_end_mb": 2328.46875,
+        "rss_delta_mb": 0.0,
+        "rss_peak_mb": 2328.47265625,
+        "cuda_start": {
+          "cuda_available": false
+        },
+        "cuda_end": {
+          "cuda_available": false
+        }
+      },
+      {
+        "name": "neural_set_modality_shapley_visualization_idx_24",
+        "wall_time_s": 0.12496179899972049,
+        "process_cpu_time_s": 0.1186147569997047,
+        "process_cpu_util_percent": 94.92081416014987,
+        "rss_start_mb": 2328.46875,
+        "rss_end_mb": 2328.46875,
+        "rss_delta_mb": 0.0,
+        "rss_peak_mb": 2328.47265625,
+        "cuda_start": {
+          "cuda_available": false
+        },
+        "cuda_end": {
+          "cuda_available": false
+        }
+      },
+      {
+        "name": "neural_set_modality_ablation_idx_24",
+        "wall_time_s": 0.2967642359999445,
+        "process_cpu_time_s": 0.29979865299992525,
+        "process_cpu_util_percent": 101.02250090539255,
+        "rss_start_mb": 2328.46875,
+        "rss_end_mb": 2328.46875,
+        "rss_delta_mb": 0.0,
+        "rss_peak_mb": 2328.47265625,
+        "cuda_start": {
+          "cuda_available": false
+        },
+        "cuda_end": {
+          "cuda_available": false
+        }
+      }
+    ],
+    "summary": {
+      "count": 9,
+      "total_wall_time_s": 2.890722465998806,
+      "mean_wall_time_s": 0.32119138511097844,
+      "total_process_cpu_time_s": 2.8827002449993415,
+      "mean_process_cpu_util_percent": 92.87687719924844,
+      "max_rss_peak_mb": 2328.47265625
+    }
+  },
+  "modality_shapley": {
+    "method": "two_modality_shapley",
+    "probability": {
+      "values": {
+        "blank": 0.289797842502594,
+        "text_only": 0.7529036998748779,
+        "image_only": 0.20373360812664032,
+        "both": 0.6304431557655334
+      },
+      "shapley": {
+        "text": 0.44490770250558853,
+        "image": -0.10426238924264908,
+        "interaction": -0.03639630973339081,
+        "blank_to_both_delta": 0.34064531326293945,
+        "abs_total": 0.5491700917482376,
+        "text_utilization": 0.8101455435951758,
+        "image_utilization": 0.18985445640482418
+      }
+    },
+    "logit": {
+      "values": {
+        "blank": -2.218142032623291,
+        "text_only": 2.3054404258728027,
+        "image_only": -3.207615375518799,
+        "both": 1.1407727003097534
+      },
+      "shapley": {
+        "text": 4.435985267162323,
+        "image": -1.0770705342292786,
+        "interaction": -0.1751943826675415,
+        "blank_to_both_delta": 3.3589147329330444,
+        "abs_total": 5.513055801391602,
+        "text_utilization": 0.8046327530446172,
+        "image_utilization": 0.19536724695538274
+      }
+    }
+  },
+  "modality_ablation": {
+    "both": 0.6304431557655334,
+    "no_text": 0.20373360812664032,
+    "no_image": 0.7529036998748779,
+    "blank": 0.289797842502594,
+    "text_delta": 0.4267095476388931,
+    "image_delta": -0.12246054410934448,
+    "both_logit": 1.1407727003097534,
+    "no_text_logit": -3.207615375518799,
+    "no_image_logit": 2.3054404258728027,
+    "blank_logit": -2.218142032623291
+  }
+}

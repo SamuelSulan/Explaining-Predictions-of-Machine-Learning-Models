@@ -1,0 +1,352 @@
+{
+  "index": 17,
+  "target_genre": "Music",
+  "target_genres": [
+    "Music"
+  ],
+  "true_genres": [
+    "Drama",
+    "Thriller",
+    "Crime",
+    "Film-Noir"
+  ],
+  "predicted_genres": [
+    "Music",
+    "Crime",
+    "History",
+    "Action",
+    "Sci-Fi",
+    "Adventure",
+    "Romance",
+    "War",
+    "Fantasy",
+    "Mystery",
+    "Thriller",
+    "Film-Noir"
+  ],
+  "probability": 0.5162047147750854,
+  "top_probabilities": {
+    "Music": 0.5162047147750854,
+    "Crime": 0.5155966281890869,
+    "History": 0.5154697895050049,
+    "Action": 0.5137688517570496,
+    "Sci-Fi": 0.512477457523346
+  },
+  "threshold": [
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.05000000074505806
+  ],
+  "target_selection": {
+    "policy": "top_k",
+    "target_indices": [
+      16
+    ],
+    "target_genres": [
+      "Music"
+    ],
+    "all_selected_indices": [
+      16
+    ],
+    "all_selected_genres": [
+      "Music"
+    ],
+    "predicted_indices": [
+      16,
+      4,
+      15,
+      5,
+      10,
+      6,
+      2,
+      14,
+      11,
+      9,
+      3,
+      22
+    ],
+    "predicted_genres": [
+      "Music",
+      "Crime",
+      "History",
+      "Action",
+      "Sci-Fi",
+      "Adventure",
+      "Romance",
+      "War",
+      "Fantasy",
+      "Mystery",
+      "Thriller",
+      "Film-Noir"
+    ],
+    "threshold": [
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.05000000074505806
+    ],
+    "max_targets_per_sample": 3
+  },
+  "methods": [
+    "LayerIntegratedGradients_text_embedding",
+    "IntegratedGradients_image_pixels",
+    "GradCAM_image_branch",
+    "modality_shapley",
+    "modality_ablation",
+    "GMU_gate_summary",
+    "experimental_label_correlation_head"
+  ],
+  "top_tokens": [
+    {
+      "position": 59,
+      "token": "rich",
+      "attribution": -0.00014246944920159876
+    },
+    {
+      "position": 95,
+      "token": "newspaper",
+      "attribution": 0.0001376601867377758
+    },
+    {
+      "position": 94,
+      "token": "weekly",
+      "attribution": -0.00013683090219274163
+    },
+    {
+      "position": 27,
+      "token": "newspaper",
+      "attribution": 0.00013581771054305136
+    },
+    {
+      "position": 50,
+      "token": "latino",
+      "attribution": 0.00010676158854039386
+    },
+    {
+      "position": 58,
+      "token": "racist",
+      "attribution": 0.0001024538796627894
+    },
+    {
+      "position": 8,
+      "token": "of",
+      "attribution": -8.586674812249839e-05
+    },
+    {
+      "position": 69,
+      "token": "of",
+      "attribution": -8.455495844827965e-05
+    },
+    {
+      "position": 106,
+      "token": "done",
+      "attribution": -7.302840822376311e-05
+    },
+    {
+      "position": 110,
+      "token": "save",
+      "attribution": 6.779107206966728e-05
+    },
+    {
+      "position": 33,
+      "token": "bucolic",
+      "attribution": 6.55196636216715e-05
+    },
+    {
+      "position": 53,
+      "token": "goaded",
+      "attribution": 6.335913349175826e-05
+    }
+  ],
+  "gate_mean": 0.4971577525138855,
+  "gate_std": 0.045688092708587646,
+  "config": {
+    "model_name": "neural_bigru_attention_gmu_resnet18_h256",
+    "text_encoder": "bigru_attention",
+    "image_encoder": "resnet18",
+    "fusion": "gmu",
+    "hidden_dim": 256,
+    "text_cnn_channels": 128,
+    "text_cnn_kernels": [
+      3,
+      4,
+      5
+    ],
+    "text_rnn_hidden_dim": 128,
+    "text_rnn_layers": 1,
+    "text_rnn_dropout": 0.2,
+    "text_attention_dim": 128,
+    "text_transformer_layers": 2,
+    "text_transformer_heads": 6,
+    "text_transformer_ff_dim": 512,
+    "text_transformer_dropout": 0.1,
+    "pretrained_image": false,
+    "freeze_image_backbone": true,
+    "batch_size": 2,
+    "epochs": 1,
+    "learning_rate": 0.0001,
+    "weight_decay": 0.01,
+    "num_workers": 0,
+    "patience": 3,
+    "threshold_metric": "macro_f1",
+    "threshold_strategy": "per_label",
+    "enable_label_correlation": true,
+    "max_length": 512,
+    "input_size": 224,
+    "freeze_embeddings": false
+  },
+  "performance": {
+    "measurements": [
+      {
+        "name": "neural_text_layer_integrated_gradients_idx_17_Music",
+        "wall_time_s": 0.22541159999673255,
+        "process_cpu_time_s": 1.40625,
+        "process_cpu_util_percent": 623.8587543943543
+      },
+      {
+        "name": "neural_text_visualization_idx_17_Music",
+        "wall_time_s": 0.7033089000033215,
+        "process_cpu_time_s": 1.546875,
+        "process_cpu_util_percent": 219.94247477782446
+      },
+      {
+        "name": "neural_image_integrated_gradients_idx_17_Music",
+        "wall_time_s": 0.16800470001180656,
+        "process_cpu_time_s": 1.03125,
+        "process_cpu_util_percent": 613.8221132667888
+      },
+      {
+        "name": "neural_image_ig_visualization_idx_17_Music",
+        "wall_time_s": 0.020852499990724027,
+        "process_cpu_time_s": 0.09375,
+        "process_cpu_util_percent": 449.58638072990533
+      },
+      {
+        "name": "neural_image_gradcam_idx_17_Music",
+        "wall_time_s": 0.17152549998718314,
+        "process_cpu_time_s": 1.015625,
+        "process_cpu_util_percent": 592.1131260808978
+      },
+      {
+        "name": "neural_image_gradcam_visualization_idx_17_Music",
+        "wall_time_s": 0.02370279998285696,
+        "process_cpu_time_s": 0.1875,
+        "process_cpu_util_percent": 791.0457841926241
+      },
+      {
+        "name": "neural_modality_shapley_idx_17_Music",
+        "wall_time_s": 0.15687599999364465,
+        "process_cpu_time_s": 0.9375,
+        "process_cpu_util_percent": 597.6057523381396
+      },
+      {
+        "name": "neural_modality_shapley_visualization_idx_17_Music",
+        "wall_time_s": 0.24139770001056604,
+        "process_cpu_time_s": 1.25,
+        "process_cpu_util_percent": 517.8176925237013
+      },
+      {
+        "name": "neural_modality_ablation_idx_17_Music",
+        "wall_time_s": 0.1603408000082709,
+        "process_cpu_time_s": 0.9375,
+        "process_cpu_util_percent": 584.6921057844546
+      }
+    ],
+    "summary": {
+      "count": 9,
+      "total_wall_time_s": 1.8714204999851063,
+      "mean_wall_time_s": 0.20793561110945624,
+      "total_process_cpu_time_s": 8.40625,
+      "mean_process_cpu_util_percent": 554.4982426765212,
+      "max_rss_peak_mb": null
+    }
+  },
+  "modality_shapley": {
+    "method": "two_modality_shapley",
+    "probability": {
+      "values": {
+        "blank": 0.5138646364212036,
+        "text_only": 0.5136072039604187,
+        "image_only": 0.5160559415817261,
+        "both": 0.5162047147750854
+      },
+      "shapley": {
+        "text": -5.4329633712768555e-05,
+        "image": 0.0023944079875946045,
+        "interaction": 0.0004062056541442871,
+        "blank_to_both_delta": 0.002340078353881836,
+        "abs_total": 0.002448737621307373,
+        "text_utilization": 0.022186792590609253,
+        "image_utilization": 0.9778132074093907
+      }
+    },
+    "logit": {
+      "values": {
+        "blank": 0.05547278746962547,
+        "text_only": 0.054442185908555984,
+        "image_only": 0.06424591690301895,
+        "both": 0.06484155356884003
+      },
+      "shapley": {
+        "text": -0.00021748244762420654,
+        "image": 0.00958624854683876,
+        "interaction": 0.001626238226890564,
+        "blank_to_both_delta": 0.009368766099214554,
+        "abs_total": 0.009803730994462967,
+        "text_utilization": 0.022183640875809228,
+        "image_utilization": 0.9778163591241907
+      }
+    }
+  },
+  "modality_ablation": {
+    "both": 0.5162047147750854,
+    "no_text": 0.5160559415817261,
+    "no_image": 0.5136072039604187,
+    "blank": 0.5138646364212036,
+    "text_delta": 0.000148773193359375,
+    "image_delta": 0.002597510814666748,
+    "both_logit": 0.06484155356884003,
+    "no_text_logit": 0.06424591690301895,
+    "no_image_logit": 0.054442185908555984,
+    "blank_logit": 0.05547278746962547
+  }
+}

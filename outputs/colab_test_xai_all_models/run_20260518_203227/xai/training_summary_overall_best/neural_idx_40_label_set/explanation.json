@@ -1,0 +1,438 @@
+{
+  "index": 40,
+  "target_genre": "label_set",
+  "target_genres": [
+    "Crime",
+    "Thriller",
+    "Drama"
+  ],
+  "true_genres": [
+    "Drama",
+    "Thriller",
+    "Crime",
+    "Film-Noir"
+  ],
+  "predicted_genres": [
+    "Crime",
+    "Thriller",
+    "Drama"
+  ],
+  "probability": 0.5503690242767334,
+  "set_logit": 0.6077286005020142,
+  "top_probabilities": {
+    "Crime": 0.5769312381744385,
+    "Thriller": 0.5526458024978638,
+    "Action": 0.5523194074630737,
+    "Drama": 0.521530032157898,
+    "Western": 0.5130918622016907
+  },
+  "threshold": [
+    0.46000000834465027,
+    0.49000000953674316,
+    0.5199999809265137,
+    0.5099999904632568,
+    0.5299999713897705,
+    0.5799999833106995,
+    0.5699999928474426,
+    0.5799999833106995,
+    0.7300000190734863,
+    0.5799999833106995,
+    0.5600000023841858,
+    0.5299999713897705,
+    0.5899999737739563,
+    0.5400000214576721,
+    0.5899999737739563,
+    0.5699999928474426,
+    0.550000011920929,
+    0.6100000143051147,
+    0.46000000834465027,
+    0.6700000166893005,
+    0.5400000214576721,
+    0.5799999833106995,
+    0.5600000023841858
+  ],
+  "target_selection": {
+    "policy": "predicted",
+    "target_indices": [
+      4,
+      3,
+      0
+    ],
+    "target_genres": [
+      "Crime",
+      "Thriller",
+      "Drama"
+    ],
+    "all_selected_indices": [
+      4,
+      3,
+      0
+    ],
+    "all_selected_genres": [
+      "Crime",
+      "Thriller",
+      "Drama"
+    ],
+    "predicted_indices": [
+      4,
+      3,
+      0
+    ],
+    "predicted_genres": [
+      "Crime",
+      "Thriller",
+      "Drama"
+    ],
+    "threshold": [
+      0.46000000834465027,
+      0.49000000953674316,
+      0.5199999809265137,
+      0.5099999904632568,
+      0.5299999713897705,
+      0.5799999833106995,
+      0.5699999928474426,
+      0.5799999833106995,
+      0.7300000190734863,
+      0.5799999833106995,
+      0.5600000023841858,
+      0.5299999713897705,
+      0.5899999737739563,
+      0.5400000214576721,
+      0.5899999737739563,
+      0.5699999928474426,
+      0.550000011920929,
+      0.6100000143051147,
+      0.46000000834465027,
+      0.6700000166893005,
+      0.5400000214576721,
+      0.5799999833106995,
+      0.5600000023841858
+    ],
+    "max_targets_per_sample": 3
+  },
+  "methods": [
+    "experimental_set_level_attribution",
+    "LayerIntegratedGradients_text_embedding",
+    "IntegratedGradients_image_pixels",
+    "GradCAM_image_branch",
+    "modality_shapley",
+    "modality_ablation",
+    "GMU_gate_summary",
+    "experimental_label_correlation_head"
+  ],
+  "top_tokens": [
+    {
+      "position": 76,
+      "token": "police",
+      "attribution": 0.14116963744163513
+    },
+    {
+      "position": 83,
+      "token": "information",
+      "attribution": 0.10024786740541458
+    },
+    {
+      "position": 41,
+      "token": "peninsula",
+      "attribution": -0.08517523109912872
+    },
+    {
+      "position": 40,
+      "token": "baja",
+      "attribution": 0.07716073095798492
+    },
+    {
+      "position": 176,
+      "token": "help",
+      "attribution": 0.06083279103040695
+    },
+    {
+      "position": 57,
+      "token": "army",
+      "attribution": -0.06062546744942665
+    },
+    {
+      "position": 108,
+      "token": "trapped",
+      "attribution": 0.05972323939204216
+    },
+    {
+      "position": 86,
+      "token": "soon",
+      "attribution": 0.05508933961391449
+    },
+    {
+      "position": 2,
+      "token": "doug",
+      "attribution": -0.05201171338558197
+    },
+    {
+      "position": 4,
+      "token": "go",
+      "attribution": 0.050776608288288116
+    },
+    {
+      "position": 100,
+      "token": "strange",
+      "attribution": 0.04981350153684616
+    },
+    {
+      "position": 14,
+      "token": "bobby",
+      "attribution": 0.04910586401820183
+    }
+  ],
+  "gate_mean": 0.4202132225036621,
+  "gate_std": 0.14887754619121552,
+  "config": {
+    "model_name": "neural_transformer_gmu_resnet18_h256_lr2e4_focal",
+    "modality": "multimodal",
+    "text_encoder": "transformer",
+    "image_encoder": "resnet18",
+    "fusion": "gmu",
+    "hidden_dim": 256,
+    "text_cnn_channels": 128,
+    "text_cnn_kernels": [
+      3,
+      4,
+      5
+    ],
+    "text_rnn_hidden_dim": 128,
+    "text_rnn_layers": 1,
+    "text_rnn_dropout": 0.2,
+    "text_attention_dim": 128,
+    "text_transformer_layers": 2,
+    "text_transformer_heads": 6,
+    "text_transformer_ff_dim": 512,
+    "text_transformer_dropout": 0.1,
+    "pretrained_image": false,
+    "freeze_image_backbone": true,
+    "batch_size": 16,
+    "epochs": 10,
+    "learning_rate": 0.0002,
+    "weight_decay": 0.01,
+    "num_workers": 0,
+    "patience": 3,
+    "threshold_metric": "macro_f1",
+    "threshold_strategy": "per_label",
+    "threshold_min": 0.01,
+    "threshold_max": 0.99,
+    "threshold_steps": 99,
+    "loss": "focal",
+    "focal_gamma": 2.0,
+    "pos_weight_clip": 10.0,
+    "scheduler": "none",
+    "scheduler_factor": 0.5,
+    "scheduler_patience": 1,
+    "min_learning_rate": 1e-06,
+    "enable_label_correlation": true,
+    "max_length": 512,
+    "input_size": 224,
+    "freeze_embeddings": false
+  },
+  "performance": {
+    "measurements": [
+      {
+        "name": "neural_set_text_layer_integrated_gradients_idx_40",
+        "wall_time_s": 1.92241370299962,
+        "process_cpu_time_s": 1.8648001299998214,
+        "process_cpu_util_percent": 97.00306063622509,
+        "rss_start_mb": 2287.96484375,
+        "rss_end_mb": 2315.71484375,
+        "rss_delta_mb": 27.75,
+        "rss_peak_mb": 2358.59375,
+        "cuda_start": {
+          "cuda_available": false
+        },
+        "cuda_end": {
+          "cuda_available": false
+        }
+      },
+      {
+        "name": "neural_set_text_visualization_idx_40",
+        "wall_time_s": 0.1899459169999318,
+        "process_cpu_time_s": 0.1829800069999692,
+        "process_cpu_util_percent": 96.332687688167,
+        "rss_start_mb": 2315.71484375,
+        "rss_end_mb": 2315.71484375,
+        "rss_delta_mb": 0.0,
+        "rss_peak_mb": 2315.71875,
+        "cuda_start": {
+          "cuda_available": false
+        },
+        "cuda_end": {
+          "cuda_available": false
+        }
+      },
+      {
+        "name": "neural_set_image_integrated_gradients_idx_40",
+        "wall_time_s": 1.3355335810001634,
+        "process_cpu_time_s": 1.3496565579998787,
+        "process_cpu_util_percent": 101.05747823945683,
+        "rss_start_mb": 2315.71484375,
+        "rss_end_mb": 2280.52734375,
+        "rss_delta_mb": -35.1875,
+        "rss_peak_mb": 2482.54296875,
+        "cuda_start": {
+          "cuda_available": false
+        },
+        "cuda_end": {
+          "cuda_available": false
+        }
+      },
+      {
+        "name": "neural_set_image_ig_visualization_idx_40",
+        "wall_time_s": 0.04234255900064454,
+        "process_cpu_time_s": 0.019620841999767435,
+        "process_cpu_util_percent": 46.33834719216844,
+        "rss_start_mb": 2280.52734375,
+        "rss_end_mb": 2280.52734375,
+        "rss_delta_mb": 0.0,
+        "rss_peak_mb": 2280.53125,
+        "cuda_start": {
+          "cuda_available": false
+        },
+        "cuda_end": {
+          "cuda_available": false
+        }
+      },
+      {
+        "name": "neural_set_image_gradcam_idx_40",
+        "wall_time_s": 0.28571071499936807,
+        "process_cpu_time_s": 0.28873870600000373,
+        "process_cpu_util_percent": 101.05981009520148,
+        "rss_start_mb": 2280.52734375,
+        "rss_end_mb": 2280.52734375,
+        "rss_delta_mb": 0.0,
+        "rss_peak_mb": 2280.53125,
+        "cuda_start": {
+          "cuda_available": false
+        },
+        "cuda_end": {
+          "cuda_available": false
+        }
+      },
+      {
+        "name": "neural_set_image_gradcam_visualization_idx_40",
+        "wall_time_s": 0.031156838000242715,
+        "process_cpu_time_s": 0.02181174799989094,
+        "process_cpu_util_percent": 70.00629524639511,
+        "rss_start_mb": 2280.52734375,
+        "rss_end_mb": 2280.52734375,
+        "rss_delta_mb": 0.0,
+        "rss_peak_mb": 2280.53125,
+        "cuda_start": {
+          "cuda_available": false
+        },
+        "cuda_end": {
+          "cuda_available": false
+        }
+      },
+      {
+        "name": "neural_set_modality_shapley_idx_40",
+        "wall_time_s": 0.45666506399993523,
+        "process_cpu_time_s": 0.45976886399967043,
+        "process_cpu_util_percent": 100.6796666188013,
+        "rss_start_mb": 2280.52734375,
+        "rss_end_mb": 2280.52734375,
+        "rss_delta_mb": 0.0,
+        "rss_peak_mb": 2280.53125,
+        "cuda_start": {
+          "cuda_available": false
+        },
+        "cuda_end": {
+          "cuda_available": false
+        }
+      },
+      {
+        "name": "neural_set_modality_shapley_visualization_idx_40",
+        "wall_time_s": 0.1301338469993425,
+        "process_cpu_time_s": 0.12197855000022173,
+        "process_cpu_util_percent": 93.73314691975412,
+        "rss_start_mb": 2280.52734375,
+        "rss_end_mb": 2280.52734375,
+        "rss_delta_mb": 0.0,
+        "rss_peak_mb": 2280.53125,
+        "cuda_start": {
+          "cuda_available": false
+        },
+        "cuda_end": {
+          "cuda_available": false
+        }
+      },
+      {
+        "name": "neural_set_modality_ablation_idx_40",
+        "wall_time_s": 0.44677972399949795,
+        "process_cpu_time_s": 0.45125311299989335,
+        "process_cpu_util_percent": 101.00125156986766,
+        "rss_start_mb": 2280.52734375,
+        "rss_end_mb": 2280.52734375,
+        "rss_delta_mb": 0.0,
+        "rss_peak_mb": 2280.53125,
+        "cuda_start": {
+          "cuda_available": false
+        },
+        "cuda_end": {
+          "cuda_available": false
+        }
+      }
+    ],
+    "summary": {
+      "count": 9,
+      "total_wall_time_s": 4.840681947998746,
+      "mean_wall_time_s": 0.5378535497776384,
+      "total_process_cpu_time_s": 4.760608517999117,
+      "mean_process_cpu_util_percent": 89.69019380067078,
+      "max_rss_peak_mb": 2482.54296875
+    }
+  },
+  "modality_shapley": {
+    "method": "two_modality_shapley",
+    "probability": {
+      "values": {
+        "blank": 0.3524668514728546,
+        "text_only": 0.5361618399620056,
+        "image_only": 0.4359950125217438,
+        "both": 0.5503690242767334
+      },
+      "shapley": {
+        "text": 0.1490345001220703,
+        "image": 0.04886767268180847,
+        "interaction": -0.06932097673416138,
+        "blank_to_both_delta": 0.19790217280387878,
+        "abs_total": 0.19790217280387878,
+        "text_utilization": 0.7530715707187491,
+        "image_utilization": 0.24692842928125086
+      }
+    },
+    "logit": {
+      "values": {
+        "blank": -1.8580478429794312,
+        "text_only": 0.4357028603553772,
+        "image_only": -0.7883681058883667,
+        "both": 0.6077286005020142
+      },
+      "shapley": {
+        "text": 1.8449237048625946,
+        "image": 0.6208527386188507,
+        "interaction": -0.8976539969444275,
+        "blank_to_both_delta": 2.4657764434814453,
+        "abs_total": 2.4657764434814453,
+        "text_utilization": 0.7482120732152567,
+        "image_utilization": 0.2517879267847432
+      }
+    }
+  },
+  "modality_ablation": {
+    "both": 0.5503690242767334,
+    "no_text": 0.4359950125217438,
+    "no_image": 0.5361618399620056,
+    "blank": 0.3524668514728546,
+    "text_delta": 0.11437401175498962,
+    "image_delta": 0.014207184314727783,
+    "both_logit": 0.6077286005020142,
+    "no_text_logit": -0.7883681058883667,
+    "no_image_logit": 0.4357028603553772,
+    "blank_logit": -1.8580478429794312
+  }
+}

@@ -1,0 +1,437 @@
+{
+  "index": 1,
+  "target_genre": "label_set",
+  "target_genres": [
+    "Comedy",
+    "Romance",
+    "Drama"
+  ],
+  "true_genres": [
+    "Drama",
+    "Crime",
+    "Adventure",
+    "Film-Noir"
+  ],
+  "predicted_genres": [
+    "Comedy",
+    "Romance",
+    "Drama"
+  ],
+  "probability": 0.7747431397438049,
+  "set_logit": 4.990409851074219,
+  "top_probabilities": {
+    "Comedy": 0.9568172097206116,
+    "Romance": 0.8703360557556152,
+    "Drama": 0.4970763623714447,
+    "Crime": 0.3326107859611511,
+    "Musical": 0.28576669096946716
+  },
+  "threshold": [
+    0.30000001192092896,
+    0.5,
+    0.44999998807907104,
+    0.44999998807907104,
+    0.550000011920929,
+    0.6499999761581421,
+    0.800000011920929,
+    0.6499999761581421,
+    0.800000011920929,
+    0.6000000238418579,
+    0.800000011920929,
+    0.6000000238418579,
+    0.699999988079071,
+    0.699999988079071,
+    0.6499999761581421,
+    0.75,
+    0.8999999761581421,
+    0.699999988079071,
+    0.800000011920929,
+    0.8500000238418579,
+    0.800000011920929,
+    0.550000011920929,
+    0.699999988079071
+  ],
+  "target_selection": {
+    "policy": "predicted",
+    "target_indices": [
+      1,
+      2,
+      0
+    ],
+    "target_genres": [
+      "Comedy",
+      "Romance",
+      "Drama"
+    ],
+    "all_selected_indices": [
+      1,
+      2,
+      0
+    ],
+    "all_selected_genres": [
+      "Comedy",
+      "Romance",
+      "Drama"
+    ],
+    "predicted_indices": [
+      1,
+      2,
+      0
+    ],
+    "predicted_genres": [
+      "Comedy",
+      "Romance",
+      "Drama"
+    ],
+    "threshold": [
+      0.30000001192092896,
+      0.5,
+      0.44999998807907104,
+      0.44999998807907104,
+      0.550000011920929,
+      0.6499999761581421,
+      0.800000011920929,
+      0.6499999761581421,
+      0.800000011920929,
+      0.6000000238418579,
+      0.800000011920929,
+      0.6000000238418579,
+      0.699999988079071,
+      0.699999988079071,
+      0.6499999761581421,
+      0.75,
+      0.8999999761581421,
+      0.699999988079071,
+      0.800000011920929,
+      0.8500000238418579,
+      0.800000011920929,
+      0.550000011920929,
+      0.699999988079071
+    ],
+    "max_targets_per_sample": 3
+  },
+  "methods": [
+    "experimental_set_level_attribution",
+    "LayerIntegratedGradients_text_embedding",
+    "IntegratedGradients_image_pixels",
+    "GradCAM_image_branch",
+    "modality_shapley",
+    "modality_ablation",
+    "experimental_label_correlation_head"
+  ],
+  "top_tokens": [
+    {
+      "position": 35,
+      "token": "singer",
+      "attribution": 1.1447755098342896
+    },
+    {
+      "position": 4,
+      "token": "singer",
+      "attribution": 0.9400871992111206
+    },
+    {
+      "position": 54,
+      "token": "business",
+      "attribution": 0.9247158169746399
+    },
+    {
+      "position": 3,
+      "token": "club",
+      "attribution": 0.8794658780097961
+    },
+    {
+      "position": 62,
+      "token": "her",
+      "attribution": 0.5311685800552368
+    },
+    {
+      "position": 2,
+      "token": "night",
+      "attribution": 0.46616652607917786
+    },
+    {
+      "position": 68,
+      "token": "her",
+      "attribution": 0.4576396346092224
+    },
+    {
+      "position": 32,
+      "token": "macao",
+      "attribution": 0.43293774127960205
+    },
+    {
+      "position": 47,
+      "token": "casino",
+      "attribution": -0.3720463812351227
+    },
+    {
+      "position": 21,
+      "token": "ship",
+      "attribution": -0.3687828779220581
+    },
+    {
+      "position": 43,
+      "token": "who",
+      "attribution": 0.3288534879684448
+    },
+    {
+      "position": 41,
+      "token": "american",
+      "attribution": -0.3136049807071686
+    }
+  ],
+  "gate_mean": null,
+  "gate_std": null,
+  "config": {
+    "model_name": "neural_concat_resnet18_h256",
+    "modality": "multimodal",
+    "text_encoder": "textcnn",
+    "image_encoder": "resnet18",
+    "fusion": "concat",
+    "hidden_dim": 256,
+    "text_cnn_channels": 128,
+    "text_cnn_kernels": [
+      3,
+      4,
+      5
+    ],
+    "text_rnn_hidden_dim": 128,
+    "text_rnn_layers": 1,
+    "text_rnn_dropout": 0.2,
+    "text_attention_dim": 128,
+    "text_transformer_layers": 2,
+    "text_transformer_heads": 6,
+    "text_transformer_ff_dim": 512,
+    "text_transformer_dropout": 0.1,
+    "pretrained_image": false,
+    "freeze_image_backbone": true,
+    "batch_size": 16,
+    "epochs": 10,
+    "learning_rate": 0.0001,
+    "weight_decay": 0.01,
+    "num_workers": 0,
+    "patience": 3,
+    "threshold_metric": "macro_f1",
+    "threshold_strategy": "per_label",
+    "threshold_min": 0.01,
+    "threshold_max": 0.99,
+    "threshold_steps": 99,
+    "loss": "bce",
+    "focal_gamma": 2.0,
+    "pos_weight_clip": null,
+    "scheduler": "none",
+    "scheduler_factor": 0.5,
+    "scheduler_patience": 1,
+    "min_learning_rate": 1e-06,
+    "enable_label_correlation": true,
+    "max_length": 512,
+    "input_size": 224,
+    "freeze_embeddings": false
+  },
+  "performance": {
+    "measurements": [
+      {
+        "name": "neural_set_text_layer_integrated_gradients_idx_1",
+        "wall_time_s": 0.7225934739999502,
+        "process_cpu_time_s": 0.7307453109999642,
+        "process_cpu_util_percent": 101.12813598424701,
+        "rss_start_mb": 2408.015625,
+        "rss_end_mb": 2408.015625,
+        "rss_delta_mb": 0.0,
+        "rss_peak_mb": 2408.01953125,
+        "cuda_start": {
+          "cuda_available": false
+        },
+        "cuda_end": {
+          "cuda_available": false
+        }
+      },
+      {
+        "name": "neural_set_text_visualization_idx_1",
+        "wall_time_s": 0.179674351000358,
+        "process_cpu_time_s": 0.17258108999999422,
+        "process_cpu_util_percent": 96.05215716051222,
+        "rss_start_mb": 2408.015625,
+        "rss_end_mb": 2408.015625,
+        "rss_delta_mb": 0.0,
+        "rss_peak_mb": 2408.01953125,
+        "cuda_start": {
+          "cuda_available": false
+        },
+        "cuda_end": {
+          "cuda_available": false
+        }
+      },
+      {
+        "name": "neural_set_image_integrated_gradients_idx_1",
+        "wall_time_s": 1.2247645480001665,
+        "process_cpu_time_s": 1.2042762140001741,
+        "process_cpu_util_percent": 98.32716140964021,
+        "rss_start_mb": 2408.015625,
+        "rss_end_mb": 2408.015625,
+        "rss_delta_mb": 0.0,
+        "rss_peak_mb": 2408.01953125,
+        "cuda_start": {
+          "cuda_available": false
+        },
+        "cuda_end": {
+          "cuda_available": false
+        }
+      },
+      {
+        "name": "neural_set_image_ig_visualization_idx_1",
+        "wall_time_s": 0.03368049900018377,
+        "process_cpu_time_s": 0.022278280999898925,
+        "process_cpu_util_percent": 66.14593506995655,
+        "rss_start_mb": 2408.015625,
+        "rss_end_mb": 2408.015625,
+        "rss_delta_mb": 0.0,
+        "rss_peak_mb": 2408.01953125,
+        "cuda_start": {
+          "cuda_available": false
+        },
+        "cuda_end": {
+          "cuda_available": false
+        }
+      },
+      {
+        "name": "neural_set_image_gradcam_idx_1",
+        "wall_time_s": 0.2674192270005733,
+        "process_cpu_time_s": 0.26401805999989847,
+        "process_cpu_util_percent": 98.7281516595411,
+        "rss_start_mb": 2408.015625,
+        "rss_end_mb": 2408.015625,
+        "rss_delta_mb": 0.0,
+        "rss_peak_mb": 2408.01953125,
+        "cuda_start": {
+          "cuda_available": false
+        },
+        "cuda_end": {
+          "cuda_available": false
+        }
+      },
+      {
+        "name": "neural_set_image_gradcam_visualization_idx_1",
+        "wall_time_s": 0.0389992180007539,
+        "process_cpu_time_s": 0.024954829999842332,
+        "process_cpu_util_percent": 63.988026630072234,
+        "rss_start_mb": 2408.015625,
+        "rss_end_mb": 2408.015625,
+        "rss_delta_mb": 0.0,
+        "rss_peak_mb": 2408.01953125,
+        "cuda_start": {
+          "cuda_available": false
+        },
+        "cuda_end": {
+          "cuda_available": false
+        }
+      },
+      {
+        "name": "neural_set_modality_shapley_idx_1",
+        "wall_time_s": 0.3895185599994875,
+        "process_cpu_time_s": 0.376142118999951,
+        "process_cpu_util_percent": 96.56590407410776,
+        "rss_start_mb": 2408.015625,
+        "rss_end_mb": 2408.015625,
+        "rss_delta_mb": 0.0,
+        "rss_peak_mb": 2408.01953125,
+        "cuda_start": {
+          "cuda_available": false
+        },
+        "cuda_end": {
+          "cuda_available": false
+        }
+      },
+      {
+        "name": "neural_set_modality_shapley_visualization_idx_1",
+        "wall_time_s": 0.1443827829998554,
+        "process_cpu_time_s": 0.13751109899999392,
+        "process_cpu_util_percent": 95.2406486029097,
+        "rss_start_mb": 2408.015625,
+        "rss_end_mb": 2408.015625,
+        "rss_delta_mb": 0.0,
+        "rss_peak_mb": 2408.01953125,
+        "cuda_start": {
+          "cuda_available": false
+        },
+        "cuda_end": {
+          "cuda_available": false
+        }
+      },
+      {
+        "name": "neural_set_modality_ablation_idx_1",
+        "wall_time_s": 0.403938090000338,
+        "process_cpu_time_s": 0.3893716879999829,
+        "process_cpu_util_percent": 96.39390234272214,
+        "rss_start_mb": 2408.015625,
+        "rss_end_mb": 2408.015625,
+        "rss_delta_mb": 0.0,
+        "rss_peak_mb": 2408.01953125,
+        "cuda_start": {
+          "cuda_available": false
+        },
+        "cuda_end": {
+          "cuda_available": false
+        }
+      }
+    ],
+    "summary": {
+      "count": 9,
+      "total_wall_time_s": 3.4049707500016666,
+      "mean_wall_time_s": 0.37833008333351853,
+      "total_process_cpu_time_s": 3.3218786919997,
+      "mean_process_cpu_util_percent": 90.28555810374544,
+      "max_rss_peak_mb": 2408.01953125
+    }
+  },
+  "modality_shapley": {
+    "method": "two_modality_shapley",
+    "probability": {
+      "values": {
+        "blank": 0.3259136378765106,
+        "text_only": 0.7177085876464844,
+        "image_only": 0.4867948293685913,
+        "both": 0.7747431397438049
+      },
+      "shapley": {
+        "text": 0.3398716300725937,
+        "image": 0.10895787179470062,
+        "interaction": -0.10384663939476013,
+        "blank_to_both_delta": 0.4488295018672943,
+        "abs_total": 0.4488295018672943,
+        "text_utilization": 0.7572399511587448,
+        "image_utilization": 0.24276004884125524
+      }
+    },
+    "logit": {
+      "values": {
+        "blank": -2.3271291255950928,
+        "text_only": 2.813309907913208,
+        "image_only": -0.031691014766693115,
+        "both": 4.990409851074219
+      },
+      "shapley": {
+        "text": 5.081269949674606,
+        "image": 2.236269026994705,
+        "interaction": -0.11833816766738892,
+        "blank_to_both_delta": 7.3175389766693115,
+        "abs_total": 7.3175389766693115,
+        "text_utilization": 0.6943960211042733,
+        "image_utilization": 0.3056039788957266
+      }
+    }
+  },
+  "modality_ablation": {
+    "both": 0.7747431397438049,
+    "no_text": 0.4867948293685913,
+    "no_image": 0.7177085876464844,
+    "blank": 0.3259136378765106,
+    "text_delta": 0.2879483103752136,
+    "image_delta": 0.05703455209732056,
+    "both_logit": 4.990409851074219,
+    "no_text_logit": -0.031691014766693115,
+    "no_image_logit": 2.813309907913208,
+    "blank_logit": -2.3271291255950928
+  }
+}

@@ -1,0 +1,230 @@
+{
+  "index": 52,
+  "target_genre": "Crime",
+  "true_genres": [
+    "Drama",
+    "Crime",
+    "Film-Noir"
+  ],
+  "probability": 0.4928393065929413,
+  "top_probabilities": {
+    "Film-Noir": 0.5157693028450012,
+    "Mystery": 0.5046497583389282,
+    "Adventure": 0.5038336515426636,
+    "Music": 0.5028733015060425,
+    "Fantasy": 0.500669002532959
+  },
+  "threshold": 0.05,
+  "methods": [
+    "LayerIntegratedGradients_text_embedding",
+    "IntegratedGradients_image_pixels",
+    "GradCAM_image_branch",
+    "modality_ablation",
+    "GMU_gate_summary"
+  ],
+  "top_tokens": [
+    {
+      "position": 137,
+      "token": "worship",
+      "attribution": -0.002958324272185564
+    },
+    {
+      "position": 72,
+      "token": "solution",
+      "attribution": 0.0019088095286861062
+    },
+    {
+      "position": 36,
+      "token": "paths",
+      "attribution": 0.0013239553663879633
+    },
+    {
+      "position": 39,
+      "token": "martin",
+      "attribution": 0.0012860681163147092
+    },
+    {
+      "position": 7,
+      "token": "bred",
+      "attribution": -0.001117286505177617
+    },
+    {
+      "position": 11,
+      "token": "american",
+      "attribution": -0.0010025796946138144
+    },
+    {
+      "position": 135,
+      "token": "or",
+      "attribution": -0.0009538206504657865
+    },
+    {
+      "position": 38,
+      "token": "gangster",
+      "attribution": 0.000894434517249465
+    },
+    {
+      "position": 83,
+      "token": "been",
+      "attribution": -0.0008939903927966952
+    },
+    {
+      "position": 42,
+      "token": "seriously",
+      "attribution": 0.0008639208390377462
+    },
+    {
+      "position": 0,
+      "token": "basically",
+      "attribution": 0.0007784193730913103
+    },
+    {
+      "position": 9,
+      "token": "italian",
+      "attribution": -0.0007719729328528047
+    }
+  ],
+  "modality_ablation": {
+    "both": 0.4928393065929413,
+    "no_text": 0.4916643500328064,
+    "no_image": 0.49418216943740845,
+    "blank": 0.49126699566841125,
+    "text_delta": 0.0011749565601348877,
+    "image_delta": -0.001342862844467163
+  },
+  "gate_mean": 0.5026666522026062,
+  "gate_std": 0.05157441273331642,
+  "config": {
+    "model_name": "multimodal_textcnn_resnet18_gmu",
+    "text_encoder": "textcnn",
+    "image_encoder": "resnet18",
+    "fusion": "gmu",
+    "hidden_dim": 256,
+    "text_cnn_channels": 128,
+    "text_cnn_kernels": [
+      3,
+      4,
+      5
+    ],
+    "pretrained_image": false,
+    "freeze_image_backbone": true,
+    "batch_size": 2,
+    "epochs": 1,
+    "learning_rate": 0.0001,
+    "weight_decay": 0.01,
+    "num_workers": 0,
+    "patience": 3,
+    "threshold_metric": "macro_f1",
+    "max_length": 512,
+    "input_size": 224,
+    "freeze_embeddings": false
+  },
+  "performance": {
+    "measurements": [
+      {
+        "name": "neural_text_layer_integrated_gradients_idx_52",
+        "wall_time_s": 0.14596829982474446,
+        "process_cpu_time_s": 0.796875,
+        "process_cpu_util_percent": 545.9233278436213,
+        "rss_start_mb": 1153.046875,
+        "rss_end_mb": 1152.6875,
+        "rss_delta_mb": -0.359375,
+        "rss_peak_mb": 1153.08203125,
+        "cuda_start": {
+          "cuda_available": false
+        },
+        "cuda_end": {
+          "cuda_available": false
+        }
+      },
+      {
+        "name": "neural_text_visualization_idx_52",
+        "wall_time_s": 0.2023322000168264,
+        "process_cpu_time_s": 1.125,
+        "process_cpu_util_percent": 556.0162939494763,
+        "rss_start_mb": 1152.671875,
+        "rss_end_mb": 1156.55859375,
+        "rss_delta_mb": 3.88671875,
+        "rss_peak_mb": 1159.83984375,
+        "cuda_start": {
+          "cuda_available": false
+        },
+        "cuda_end": {
+          "cuda_available": false
+        }
+      },
+      {
+        "name": "neural_image_integrated_gradients_idx_52",
+        "wall_time_s": 0.11951150000095367,
+        "process_cpu_time_s": 0.734375,
+        "process_cpu_util_percent": 614.4806148313257,
+        "rss_start_mb": 1156.55859375,
+        "rss_end_mb": 1156.6328125,
+        "rss_delta_mb": 0.07421875,
+        "rss_peak_mb": 1156.5625,
+        "cuda_start": {
+          "cuda_available": false
+        },
+        "cuda_end": {
+          "cuda_available": false
+        }
+      },
+      {
+        "name": "neural_image_gradcam_idx_52",
+        "wall_time_s": 0.0921803000383079,
+        "process_cpu_time_s": 0.46875,
+        "process_cpu_util_percent": 508.5142918879618,
+        "rss_start_mb": 1156.6328125,
+        "rss_end_mb": 1156.9453125,
+        "rss_delta_mb": 0.3125,
+        "rss_peak_mb": 1157.90234375,
+        "cuda_start": {
+          "cuda_available": false
+        },
+        "cuda_end": {
+          "cuda_available": false
+        }
+      },
+      {
+        "name": "neural_image_visualization_idx_52",
+        "wall_time_s": 0.052219399716705084,
+        "process_cpu_time_s": 0.375,
+        "process_cpu_util_percent": 718.1239195287739,
+        "rss_start_mb": 1156.9296875,
+        "rss_end_mb": 1157.0,
+        "rss_delta_mb": 0.0703125,
+        "rss_peak_mb": 1157.00390625,
+        "cuda_start": {
+          "cuda_available": false
+        },
+        "cuda_end": {
+          "cuda_available": false
+        }
+      },
+      {
+        "name": "neural_modality_ablation_idx_52",
+        "wall_time_s": 0.15884520020335913,
+        "process_cpu_time_s": 0.890625,
+        "process_cpu_util_percent": 560.687385492159,
+        "rss_start_mb": 1157.0,
+        "rss_end_mb": 1156.9921875,
+        "rss_delta_mb": -0.0078125,
+        "rss_peak_mb": 1157.00390625,
+        "cuda_start": {
+          "cuda_available": false
+        },
+        "cuda_end": {
+          "cuda_available": false
+        }
+      }
+    ],
+    "summary": {
+      "count": 6,
+      "total_wall_time_s": 0.7710568998008966,
+      "mean_wall_time_s": 0.12850948330014944,
+      "total_process_cpu_time_s": 4.390625,
+      "mean_process_cpu_util_percent": 583.9576389222196,
+      "max_rss_peak_mb": 1159.83984375
+    }
+  }
+}

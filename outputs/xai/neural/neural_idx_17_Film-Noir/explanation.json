@@ -1,0 +1,332 @@
+{
+  "index": 17,
+  "target_genre": "Film-Noir",
+  "target_genres": [
+    "Film-Noir"
+  ],
+  "true_genres": [
+    "Drama",
+    "Thriller",
+    "Crime",
+    "Film-Noir"
+  ],
+  "predicted_genres": [
+    "Film-Noir",
+    "Thriller",
+    "Adventure",
+    "Fantasy",
+    "Romance",
+    "Mystery",
+    "Crime",
+    "Music",
+    "Documentary",
+    "Action",
+    "Sport",
+    "War",
+    "Musical",
+    "Comedy",
+    "Horror",
+    "History",
+    "Animation",
+    "Western",
+    "Biography",
+    "Drama",
+    "Short",
+    "Sci-Fi",
+    "Family"
+  ],
+  "probability": 0.510527491569519,
+  "top_probabilities": {
+    "Film-Noir": 0.510527491569519,
+    "Thriller": 0.5023218393325806,
+    "Adventure": 0.5004505515098572,
+    "Fantasy": 0.4990033805370331,
+    "Romance": 0.4976528584957123
+  },
+  "threshold": 0.05000000074505806,
+  "target_selection": {
+    "policy": "top_k",
+    "target_indices": [
+      22,
+      3
+    ],
+    "target_genres": [
+      "Film-Noir",
+      "Thriller"
+    ],
+    "all_selected_indices": [
+      22,
+      3
+    ],
+    "all_selected_genres": [
+      "Film-Noir",
+      "Thriller"
+    ],
+    "predicted_indices": [
+      22,
+      3,
+      6,
+      11,
+      2,
+      9,
+      4,
+      16,
+      8,
+      5,
+      20,
+      14,
+      18,
+      1,
+      7,
+      15,
+      17,
+      19,
+      13,
+      0,
+      21,
+      10,
+      12
+    ],
+    "predicted_genres": [
+      "Film-Noir",
+      "Thriller",
+      "Adventure",
+      "Fantasy",
+      "Romance",
+      "Mystery",
+      "Crime",
+      "Music",
+      "Documentary",
+      "Action",
+      "Sport",
+      "War",
+      "Musical",
+      "Comedy",
+      "Horror",
+      "History",
+      "Animation",
+      "Western",
+      "Biography",
+      "Drama",
+      "Short",
+      "Sci-Fi",
+      "Family"
+    ],
+    "threshold": 0.05000000074505806,
+    "max_targets_per_sample": 2
+  },
+  "methods": [
+    "LayerIntegratedGradients_text_embedding",
+    "IntegratedGradients_image_pixels",
+    "GradCAM_image_branch",
+    "modality_shapley",
+    "modality_ablation",
+    "GMU_gate_summary"
+  ],
+  "top_tokens": [
+    {
+      "position": 31,
+      "token": "thinks",
+      "attribution": 0.0021918173879384995
+    },
+    {
+      "position": 59,
+      "token": "rich",
+      "attribution": 0.0021329091396182775
+    },
+    {
+      "position": 33,
+      "token": "bucolic",
+      "attribution": 0.002131200162693858
+    },
+    {
+      "position": 108,
+      "token": "possibly",
+      "attribution": -0.0020098292734473944
+    },
+    {
+      "position": 93,
+      "token": "small",
+      "attribution": -0.00147472252137959
+    },
+    {
+      "position": 57,
+      "token": "by",
+      "attribution": 0.0009865106549113989
+    },
+    {
+      "position": 16,
+      "token": "wants",
+      "attribution": -0.00096303247846663
+    },
+    {
+      "position": 0,
+      "token": "former",
+      "attribution": 0.0008792538428679109
+    },
+    {
+      "position": 18,
+      "token": "enjoy",
+      "attribution": -0.0008681746548973024
+    },
+    {
+      "position": 104,
+      "token": "see",
+      "attribution": -0.0007457604515366256
+    },
+    {
+      "position": 106,
+      "token": "done",
+      "attribution": -0.0007140989764593542
+    },
+    {
+      "position": 71,
+      "token": "town",
+      "attribution": 0.0006995347212068737
+    }
+  ],
+  "gate_mean": 0.5021063089370728,
+  "gate_std": 0.04172781854867935,
+  "config": {
+    "model_name": "multimodal_textcnn_resnet18_gmu",
+    "text_encoder": "textcnn",
+    "image_encoder": "resnet18",
+    "fusion": "gmu",
+    "hidden_dim": 256,
+    "text_cnn_channels": 128,
+    "text_cnn_kernels": [
+      3,
+      4,
+      5
+    ],
+    "pretrained_image": false,
+    "freeze_image_backbone": true,
+    "batch_size": 2,
+    "epochs": 1,
+    "learning_rate": 0.0001,
+    "weight_decay": 0.01,
+    "num_workers": 0,
+    "patience": 3,
+    "threshold_metric": "macro_f1",
+    "threshold_strategy": "per_label",
+    "enable_label_correlation": false,
+    "max_length": 512,
+    "input_size": 224,
+    "freeze_embeddings": false
+  },
+  "performance": {
+    "measurements": [
+      {
+        "name": "neural_text_layer_integrated_gradients_idx_17_Film-Noir",
+        "wall_time_s": 0.1819797996431589,
+        "process_cpu_time_s": 1.046875,
+        "process_cpu_util_percent": 575.2698937205115
+      },
+      {
+        "name": "neural_text_visualization_idx_17_Film-Noir",
+        "wall_time_s": 0.8416043999604881,
+        "process_cpu_time_s": 1.484375,
+        "process_cpu_util_percent": 176.37443436247352
+      },
+      {
+        "name": "neural_image_integrated_gradients_idx_17_Film-Noir",
+        "wall_time_s": 0.12783179990947247,
+        "process_cpu_time_s": 0.671875,
+        "process_cpu_util_percent": 525.593006181409
+      },
+      {
+        "name": "neural_image_ig_visualization_idx_17_Film-Noir",
+        "wall_time_s": 0.030809700023382902,
+        "process_cpu_time_s": 0.1875,
+        "process_cpu_util_percent": 608.5745718319153
+      },
+      {
+        "name": "neural_image_gradcam_idx_17_Film-Noir",
+        "wall_time_s": 0.12294409982860088,
+        "process_cpu_time_s": 0.71875,
+        "process_cpu_util_percent": 584.6152853223745
+      },
+      {
+        "name": "neural_image_gradcam_visualization_idx_17_Film-Noir",
+        "wall_time_s": 0.02964789979159832,
+        "process_cpu_time_s": 0.1875,
+        "process_cpu_util_percent": 632.422536901363
+      },
+      {
+        "name": "neural_modality_shapley_idx_17_Film-Noir",
+        "wall_time_s": 0.18280750000849366,
+        "process_cpu_time_s": 0.96875,
+        "process_cpu_util_percent": 529.9290236751718
+      },
+      {
+        "name": "neural_modality_shapley_visualization_idx_17_Film-Noir",
+        "wall_time_s": 0.34906759997829795,
+        "process_cpu_time_s": 1.171875,
+        "process_cpu_util_percent": 335.71577541795835
+      },
+      {
+        "name": "neural_modality_ablation_idx_17_Film-Noir",
+        "wall_time_s": 0.17881579976528883,
+        "process_cpu_time_s": 0.921875,
+        "process_cpu_util_percent": 515.544488356197
+      }
+    ],
+    "summary": {
+      "count": 9,
+      "total_wall_time_s": 2.045508598908782,
+      "mean_wall_time_s": 0.2272787332120869,
+      "total_process_cpu_time_s": 7.359375,
+      "mean_process_cpu_util_percent": 498.22655730770816,
+      "max_rss_peak_mb": null
+    }
+  },
+  "modality_shapley": {
+    "method": "two_modality_shapley",
+    "probability": {
+      "values": {
+        "blank": 0.5098447799682617,
+        "text_only": 0.5072191953659058,
+        "image_only": 0.5112943649291992,
+        "both": 0.510527491569519
+      },
+      "shapley": {
+        "text": -0.0016962289810180664,
+        "image": 0.0023789405822753906,
+        "interaction": 0.0018587112426757812,
+        "blank_to_both_delta": 0.0006827116012573242,
+        "abs_total": 0.004075169563293457,
+        "text_utilization": 0.41623519087319,
+        "image_utilization": 0.5837648091268101
+      }
+    },
+    "logit": {
+      "values": {
+        "blank": 0.03938431665301323,
+        "text_only": 0.02887873910367489,
+        "image_only": 0.04518510773777962,
+        "both": 0.04211624339222908
+      },
+      "shapley": {
+        "text": -0.006787220947444439,
+        "image": 0.00951914768666029,
+        "interaction": 0.007436713203787804,
+        "blank_to_both_delta": 0.002731926739215851,
+        "abs_total": 0.01630636863410473,
+        "text_utilization": 0.416231295866143,
+        "image_utilization": 0.5837687041338571
+      }
+    }
+  },
+  "modality_ablation": {
+    "both": 0.510527491569519,
+    "no_text": 0.5112943649291992,
+    "no_image": 0.5072191953659058,
+    "blank": 0.5098447799682617,
+    "text_delta": -0.0007668733596801758,
+    "image_delta": 0.0033082962036132812,
+    "both_logit": 0.04211624339222908,
+    "no_text_logit": 0.04518510773777962,
+    "no_image_logit": 0.02887873910367489,
+    "blank_logit": 0.03938431665301323
+  }
+}

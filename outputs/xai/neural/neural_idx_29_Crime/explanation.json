@@ -1,0 +1,230 @@
+{
+  "index": 29,
+  "target_genre": "Crime",
+  "true_genres": [
+    "Thriller",
+    "Crime",
+    "Film-Noir"
+  ],
+  "probability": 0.49253374338150024,
+  "top_probabilities": {
+    "Film-Noir": 0.5123498439788818,
+    "Thriller": 0.5065141320228577,
+    "Music": 0.49746811389923096,
+    "Horror": 0.4965939521789551,
+    "Adventure": 0.49618637561798096
+  },
+  "threshold": 0.05,
+  "methods": [
+    "LayerIntegratedGradients_text_embedding",
+    "IntegratedGradients_image_pixels",
+    "GradCAM_image_branch",
+    "modality_ablation",
+    "GMU_gate_summary"
+  ],
+  "top_tokens": [
+    {
+      "position": 13,
+      "token": "corruption",
+      "attribution": -0.004936610348522663
+    },
+    {
+      "position": 81,
+      "token": "senses",
+      "attribution": -0.002078672870993614
+    },
+    {
+      "position": 62,
+      "token": "six",
+      "attribution": 0.0017760375048965216
+    },
+    {
+      "position": 51,
+      "token": "thinks",
+      "attribution": 0.001543043297715485
+    },
+    {
+      "position": 12,
+      "token": "judicial",
+      "attribution": -0.0013049417175352573
+    },
+    {
+      "position": 66,
+      "token": "trumped",
+      "attribution": 0.0011612848611548543
+    },
+    {
+      "position": 24,
+      "token": "poor",
+      "attribution": 0.0009357727249152958
+    },
+    {
+      "position": 64,
+      "token": "on",
+      "attribution": 0.0008211282547563314
+    },
+    {
+      "position": 10,
+      "token": "board",
+      "attribution": -0.0007863029604777694
+    },
+    {
+      "position": 111,
+      "token": "ship",
+      "attribution": -0.0007671025232411921
+    },
+    {
+      "position": 84,
+      "token": "talks",
+      "attribution": 0.0007661385461688042
+    },
+    {
+      "position": 105,
+      "token": "south",
+      "attribution": -0.0007570403977297246
+    }
+  ],
+  "modality_ablation": {
+    "both": 0.49253374338150024,
+    "no_text": 0.49128207564353943,
+    "no_image": 0.49318620562553406,
+    "blank": 0.49126699566841125,
+    "text_delta": 0.0012516677379608154,
+    "image_delta": -0.0006524622440338135
+  },
+  "gate_mean": 0.5041368007659912,
+  "gate_std": 0.05391396954655647,
+  "config": {
+    "model_name": "multimodal_textcnn_resnet18_gmu",
+    "text_encoder": "textcnn",
+    "image_encoder": "resnet18",
+    "fusion": "gmu",
+    "hidden_dim": 256,
+    "text_cnn_channels": 128,
+    "text_cnn_kernels": [
+      3,
+      4,
+      5
+    ],
+    "pretrained_image": false,
+    "freeze_image_backbone": true,
+    "batch_size": 2,
+    "epochs": 1,
+    "learning_rate": 0.0001,
+    "weight_decay": 0.01,
+    "num_workers": 0,
+    "patience": 3,
+    "threshold_metric": "macro_f1",
+    "max_length": 512,
+    "input_size": 224,
+    "freeze_embeddings": false
+  },
+  "performance": {
+    "measurements": [
+      {
+        "name": "neural_text_layer_integrated_gradients_idx_29",
+        "wall_time_s": 0.14312350004911423,
+        "process_cpu_time_s": 0.84375,
+        "process_cpu_util_percent": 589.5258288893571,
+        "rss_start_mb": 1090.13671875,
+        "rss_end_mb": 1090.5078125,
+        "rss_delta_mb": 0.37109375,
+        "rss_peak_mb": 1090.5078125,
+        "cuda_start": {
+          "cuda_available": false
+        },
+        "cuda_end": {
+          "cuda_available": false
+        }
+      },
+      {
+        "name": "neural_text_visualization_idx_29",
+        "wall_time_s": 0.20601660013198853,
+        "process_cpu_time_s": 1.0625,
+        "process_cpu_util_percent": 515.7351394592905,
+        "rss_start_mb": 1090.4921875,
+        "rss_end_mb": 1094.4140625,
+        "rss_delta_mb": 3.921875,
+        "rss_peak_mb": 1097.6953125,
+        "cuda_start": {
+          "cuda_available": false
+        },
+        "cuda_end": {
+          "cuda_available": false
+        }
+      },
+      {
+        "name": "neural_image_integrated_gradients_idx_29",
+        "wall_time_s": 0.12351040029898286,
+        "process_cpu_time_s": 0.671875,
+        "process_cpu_util_percent": 543.9825297089034,
+        "rss_start_mb": 1094.3984375,
+        "rss_end_mb": 1128.640625,
+        "rss_delta_mb": 34.2421875,
+        "rss_peak_mb": 1127.41015625,
+        "cuda_start": {
+          "cuda_available": false
+        },
+        "cuda_end": {
+          "cuda_available": false
+        }
+      },
+      {
+        "name": "neural_image_gradcam_idx_29",
+        "wall_time_s": 0.09253429993987083,
+        "process_cpu_time_s": 0.46875,
+        "process_cpu_util_percent": 506.5689158556294,
+        "rss_start_mb": 1128.640625,
+        "rss_end_mb": 1128.96875,
+        "rss_delta_mb": 0.328125,
+        "rss_peak_mb": 1129.73828125,
+        "cuda_start": {
+          "cuda_available": false
+        },
+        "cuda_end": {
+          "cuda_available": false
+        }
+      },
+      {
+        "name": "neural_image_visualization_idx_29",
+        "wall_time_s": 0.06764789996668696,
+        "process_cpu_time_s": 0.46875,
+        "process_cpu_util_percent": 692.9261665636845,
+        "rss_start_mb": 1128.96875,
+        "rss_end_mb": 1129.48828125,
+        "rss_delta_mb": 0.51953125,
+        "rss_peak_mb": 1131.24609375,
+        "cuda_start": {
+          "cuda_available": false
+        },
+        "cuda_end": {
+          "cuda_available": false
+        }
+      },
+      {
+        "name": "neural_modality_ablation_idx_29",
+        "wall_time_s": 0.1409494001418352,
+        "process_cpu_time_s": 0.84375,
+        "process_cpu_util_percent": 598.6190783011119,
+        "rss_start_mb": 1129.48828125,
+        "rss_end_mb": 1129.48046875,
+        "rss_delta_mb": -0.0078125,
+        "rss_peak_mb": 1129.4921875,
+        "cuda_start": {
+          "cuda_available": false
+        },
+        "cuda_end": {
+          "cuda_available": false
+        }
+      }
+    ],
+    "summary": {
+      "count": 6,
+      "total_wall_time_s": 0.7737821005284786,
+      "mean_wall_time_s": 0.1289636834214131,
+      "total_process_cpu_time_s": 4.359375,
+      "mean_process_cpu_util_percent": 574.5596097963295,
+      "max_rss_peak_mb": 1131.24609375
+    }
+  }
+}

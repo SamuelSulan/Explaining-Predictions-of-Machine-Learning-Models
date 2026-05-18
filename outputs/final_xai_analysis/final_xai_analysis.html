@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Final MM-IMDb XAI Analysis</title>
+  <style>
+    body { margin: 0; font-family: Segoe UI, system-ui, sans-serif; background: #f7f8fa; color: #18212b; }
+    header { background: #18242e; color: white; padding: 22px 28px; }
+    main { max-width: 1180px; margin: 0 auto; padding: 22px; }
+    section { margin: 18px 0 28px; }
+    table { width: 100%; border-collapse: collapse; background: white; border: 1px solid #d9e0e7; }
+    th, td { padding: 10px; border-bottom: 1px solid #d9e0e7; text-align: left; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(420px, 1fr)); gap: 16px; }
+    figure { margin: 0; background: white; border: 1px solid #d9e0e7; border-radius: 8px; overflow: hidden; }
+    img { display: block; width: 100%; }
+    figcaption { padding: 9px 12px; color: #627180; border-top: 1px solid #d9e0e7; }
+    .pill { display: inline-block; padding: 4px 9px; border-radius: 999px; background: #e8f3f5; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Final MM-IMDb XAI Analysis</h1>
+    <div>Global and local analysis on saved trained models using the held-out test split.</div>
+  </header>
+  <main>
+    <section>
+      <h2>Best Model</h2>
+      <p><span class="pill">classic</span>
+      selected by macro_f1 = 0.7184.</p>
+      <table><thead><tr><th>Model</th><th>Macro F1</th><th>Micro F1</th><th>Sample F1</th></tr></thead><tbody><tr><td>classic</td><td>0.7184</td><td>0.7425</td><td>0.7364</td></tr><tr><td>neural</td><td>0.4680</td><td>0.5630</td><td>0.5572</td></tr></tbody></table>
+    </section>
+    <section>
+      <h2>Visual Analysis</h2>
+      <div class="grid"><figure><img src='figures/final_test_metric_comparison.png' alt='final_test_metric_comparison'><figcaption>final test metric comparison</figcaption></figure>
+<figure><img src='figures/per_label_f1_comparison.png' alt='per_label_f1_comparison'><figcaption>per label f1 comparison</figcaption></figure>
+<figure><img src='figures/classic_predicted_vs_true_frequency.png' alt='classic_predicted_vs_true_frequency'><figcaption>classic predicted vs true frequency</figcaption></figure>
+<figure><img src='figures/classic_confidence_distribution.png' alt='classic_confidence_distribution'><figcaption>classic confidence distribution</figcaption></figure>
+<figure><img src='figures/xai_modality_utilization.png' alt='xai_modality_utilization'><figcaption>xai modality utilization</figcaption></figure></div>
+    </section>
+    <section>
+      <h2>Artifacts</h2>
+      <p>Machine-readable metrics and summaries are saved next to this report. Local qualitative explanations are under <code>xai/classic</code> and <code>xai/neural</code>.</p>
+    </section>
+  </main>
+</body>
+</html>
