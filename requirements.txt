@@ -1,28 +1,30 @@
-# Pip-compatible mirror of the project-level packages in the local
-# Anaconda/conda environment `mmimdb-xai`.
+# Pip-compatible project dependencies.
 #
 # For the exact conda solve, prefer:
 #   conda env create -f environment.yml
 #   conda activate mmimdb-xai
 #   python -m pip install -e .
+#
+# NumPy is capped below 2.1 because some Colab binary wheels still import
+# symbols removed in newer NumPy releases.
 
 captum==0.9.0
-h5py==3.16.0
-ipykernel==7.2.0
+h5py>=3.11,<4
+ipykernel>=6.29,<8
 iterative-stratification==0.1.9
-joblib==1.5.3
-matplotlib==3.10.9
-numpy==2.4.4
-pandas==3.0.3
+joblib>=1.4,<2
+matplotlib>=3.8,<3.11
+numpy>=1.26,<2.1
+pandas>=2.2,<3
 Pillow==10.4.0
-psutil==7.2.2
-pypdf==6.11.0
-PyYAML==6.0.3
+psutil>=6,<8
+pypdf>=5,<7
+PyYAML>=6,<7
 # Provides TF-IDF, OneVsRestClassifier, LogisticRegression, and the fast
 # classic SGDClassifier(loss="log_loss") baseline.
-scikit-learn==1.8.0
-scipy==1.17.1
+scikit-learn>=1.5,<1.8
+scipy>=1.13,<1.16
 seaborn==0.13.2
-torch==2.5.1
-torchvision==0.20.1
-tqdm==4.67.3
+torch>=2.5,<2.8
+torchvision>=0.20,<0.23
+tqdm>=4.66,<5
