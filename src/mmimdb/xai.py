@@ -1062,7 +1062,11 @@ def explain_neural_samples(
             image = image.expand(batch_size, -1, -1, -1)
         return model(tokens, mask, image)
 
-    lig = LayerIntegratedGradients(forward_for_text, model.text_encoder.embedding)
+    lig = None
+    if enable_layer_integrated_gradients_text and getattr(model, "text_encoder", None) is not None:
+        lig = LayerIntegratedGradients(forward_for_text, model.text_encoder.embedding)
+    else:
+        enable_layer_integrated_gradients_text = False
     explanations = []
     y = None
     with h5py.File(resolve_path(hdf5_path), "r") as f:
