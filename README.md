@@ -6,6 +6,12 @@ This project builds an XAI-ready multimodal genre classification pipeline for:
 - `dataset/data/metadata.npy`
 - `dataset/Article about dataset and how was it used.pdf`
 
+For a complete fresh-clone setup guide, including environment installation,
+dataset download and placement, model training, Colab/GPU notebook training,
+and single-instance XAI analysis, see:
+
+- [HOW_TO_RUN.md](HOW_TO_RUN.md)
+
 The dataset, trained model checkpoints, and generated reports/figures are intentionally not tracked in Git. Place the MM-IMDb files in the paths above before running the pipeline; scripts will recreate `outputs/` locally.
 
 Final comparison models are multimodal. Single-modality models are allowed only as baselines or ablations.

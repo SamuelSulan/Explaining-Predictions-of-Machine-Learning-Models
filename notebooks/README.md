@@ -7,6 +7,10 @@ Colab-ready training notebooks:
 - `notebooks/training_pipeline_neural_colab.ipynb`
 - `notebooks/training_pipeline_classic_ml_colab.ipynb`
 
+Colab-ready final evaluation/XAI notebook:
+
+- `notebooks/final_test_xai_all_models_colab.ipynb`
+
 Recommended workflow:
 
 1. Activate the environment: `conda activate mmimdb-xai`

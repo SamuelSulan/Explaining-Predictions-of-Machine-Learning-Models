@@ -79,6 +79,7 @@ def existing_report_roots() -> list[dict]:
     candidates = [
         ROOT / "outputs" / "xai",
         ROOT / "outputs" / "xai_smoke_conda",
+        ROOT / "outputs" / "final_xai_analysis" / "xai",
     ]
     seen = set()
     roots = []
