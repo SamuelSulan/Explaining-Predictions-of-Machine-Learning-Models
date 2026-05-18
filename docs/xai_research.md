@@ -7,7 +7,7 @@ The project needs explanations for final multimodal models trained on plot token
 ## Model Families In This Project
 
 - Classic multimodal model: TF-IDF text features plus reversible poster descriptors, trained with a linear classifier. The fast default is One-vs-Rest `SGDClassifier(loss="log_loss")`; Logistic Regression and ClassifierChain remain available as config options.
-- Neural multimodal model: token embedding/TextCNN branch plus pretrained ResNet image branch, fused with GMU-style gated fusion.
+- Neural multimodal model: token embedding text branch, pretrained ResNet image branch, and GMU-style gated fusion. The default text branch is BiGRU with attention; TextCNN and a lightweight Transformer encoder are retained as ablations.
 
 ## Recommended Methods
 

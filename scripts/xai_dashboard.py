@@ -264,7 +264,9 @@ def default_model_paths() -> dict:
     classic_default = resolve_path(XAI_CFG.get("classic", {}).get("model_path", "outputs/models/best/classic_multimodal_best.joblib"))
     neural_default = resolve_path(XAI_CFG.get("neural", {}).get("checkpoint_path", "outputs/models/best/neural_multimodal_best.pt"))
     fallback_classic = ROOT / "outputs" / "models" / "classic_multimodal_limit10.joblib"
-    fallback_neural = ROOT / "outputs" / "models" / "multimodal_textcnn_resnet18_gmu_limit10.pt"
+    fallback_neural = ROOT / "outputs" / "models" / "multimodal_bigru_attention_resnet18_gmu_limit10.pt"
+    if not fallback_neural.exists():
+        fallback_neural = ROOT / "outputs" / "models" / "multimodal_textcnn_resnet18_gmu_limit10.pt"
     return {
         "classic": relative_path(classic_default if classic_default.exists() else fallback_classic),
         "neural": relative_path(neural_default if neural_default.exists() else fallback_neural),

@@ -278,9 +278,60 @@ def _run_kind_selection(
     limit: int | None,
 ) -> dict[str, Any]:
     training_cfg = config.get("training", {})
+    kind_cfg = training_cfg.get(kind, {})
     candidates = configured_candidates(training_cfg, kind)
     kind_out = ensure_dir(output_dir / kind)
     candidate_summaries: list[dict[str, Any]] = []
+
+    if bool(kind_cfg.get("final_only", False)):
+        candidate = candidates[0]
+        print(f"[{kind}] final-only candidate: {candidate.name}")
+        final_out = kind_out / candidate.name / "final"
+        final_result = _train_final(
+            kind,
+            config,
+            candidate,
+            paths,
+            train_idx,
+            val_idx,
+            test_idx,
+            final_out,
+            seed,
+            limit,
+        )
+        final_result["selection"] = {
+            "metric": metric,
+            "candidate": candidate.name,
+            "candidate_params": candidate.params,
+            "cv_mean_score": None,
+            "cv_std_score": None,
+            "cv_folds": 0,
+            "final_training_policy": (
+                "final_only=true; selected the first configured candidate and trained with the original "
+                "train/validation split for threshold tuning"
+            ),
+        }
+        final_result["best_registry"] = update_best_model(
+            final_result["model_path"],
+            final_result,
+            config.get("model_registry", {}),
+            model_kind=kind,
+            is_full_run=limit is None,
+        )
+        save_json(_json_safe(final_result), final_out / "final_result.json")
+        return {
+            "status": "completed",
+            "metric": metric,
+            "selection_mode": "final_only",
+            "candidates": [
+                {
+                    "name": candidate.name,
+                    "params": candidate.params,
+                    "status": "selected_without_cv",
+                }
+            ],
+            "final": final_result,
+        }
 
     for candidate_no, candidate in enumerate(candidates, start=1):
         print(f"[{kind}] candidate {candidate_no}/{len(candidates)}: {candidate.name}")
@@ -452,6 +503,15 @@ def run_training_process(
         if result.get("status") == "completed" and "final" in result
     }
     if completed_finals:
+        summary["best_by_kind"] = {
+            kind: {
+                "model_path": final["model_path"],
+                "score": _metric_score(final, metric),
+                "metric": metric,
+                "registry": final.get("best_registry", {}),
+            }
+            for kind, final in completed_finals.items()
+        }
         ranked = sorted(
             completed_finals.items(),
             key=lambda item: _metric_score(item[1], metric),

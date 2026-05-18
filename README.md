@@ -96,7 +96,8 @@ python scripts\train_models.py
 This command keeps training separate from XAI:
 
 - combines the existing train and validation indices for cross-fold model selection,
-- tries the classic and neural candidate models listed under `training` in `configs/default.yaml`,
+- tries the neural candidate models listed under `training` in `configs/default.yaml`,
+- trains the default classic model once by default because `training.classic.final_only: true` avoids repeated slow CPU-bound classic CV,
 - ranks candidates by the configured metric, currently `macro_f1`,
 - trains final selected classic/neural models using the original train/validation split for threshold tuning and neural early stopping,
 - evaluates the final selected models on the test split,
@@ -138,15 +139,17 @@ Output:
 
 ## Classic Multimodal Model
 
-The one-command model-selection workflow above is preferred for final training. This script remains useful for a single classic baseline run.
+The one-command workflow trains the classic model in final-only mode by default, which is the fastest Colab path. The standalone script remains useful for a single classic baseline run.
 
 Model:
 
 - text: reconstructed plot TF-IDF
-- image: reversible poster color/thumbnail descriptors
+- image: reversible poster color/thumbnail descriptors, reduced by default for faster CPU training
 - fusion: concatenated features
 - classifier: One-vs-Rest `SGDClassifier(loss="log_loss")` by default for faster CPU training, with Logistic Regression and ClassifierChain still available by config
 - thresholds: per-label validation-tuned thresholds by default
+
+Classic scikit-learn training does not use the Colab GPU. For speed, use the default SGD setup and avoid classic CV unless you explicitly need a classical hyperparameter comparison.
 
 Smoke test:
 
@@ -158,6 +161,12 @@ Full run:
 
 ```powershell
 python scripts\train_classic.py
+```
+
+Full run through the combined pipeline:
+
+```powershell
+python scripts\train_models.py --model-type classic
 ```
 
 Full runs update the best-model registry when their configured validation metric improves:
@@ -173,7 +182,7 @@ The one-command model-selection workflow above is preferred for final training. 
 
 Model:
 
-- text branch: Word2Vec-initialized TextCNN
+- text branch: Word2Vec-initialized BiGRU with attention by default, with TextCNN and a lightweight Transformer encoder still available by config
 - image branch: pretrained `torchvision` ResNet18
 - fusion: GMU-style gated fusion
 - classifier: 23 sigmoid multilabel outputs
@@ -213,6 +222,7 @@ python scripts\run_xai.py --model-type both --limit 10
 Research summary:
 
 - `docs/xai_research.md`
+- `docs/neural_text_encoder_research.md`
 
 Implemented explanation methods:
 
@@ -223,7 +233,7 @@ Implemented explanation methods:
   - text-vs-image logit contribution totals
   - two-modality Shapley utilization for text/image reliance
 - Neural multimodal model:
-  - Layer Integrated Gradients for plot tokens
+  - Layer Integrated Gradients for plot tokens through the active embedding-based text encoder
   - token occlusion for plot tokens
   - Integrated Gradients for image pixels
   - Grad-CAM for the ResNet image branch
@@ -236,7 +246,7 @@ Implemented explanation methods:
 Smoke test with saved limited models:
 
 ```powershell
-python scripts\run_xai.py --model-type both --limit 10 --classic-model outputs\models\classic_multimodal_limit10.joblib --neural-checkpoint outputs\models\multimodal_textcnn_resnet18_gmu_limit10.pt --target-genre Crime --n-steps 2
+python scripts\run_xai.py --model-type both --limit 10 --classic-model outputs\models\classic_multimodal_limit10.joblib --neural-checkpoint outputs\models\multimodal_bigru_attention_resnet18_gmu_limit10.pt --target-genre Crime --n-steps 2
 ```
 
 Multi-target examples:

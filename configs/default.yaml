@@ -28,57 +28,90 @@ training:
   combine_train_val_for_cv: true
   classic:
     enabled: true
+    final_only: true
     candidates:
-      - name: classic_ovr_sgd_unigram_10k
+      - name: classic_ovr_sgd_fast_multimodal
         params:
           estimator: sgd
           classifier: ovr
-          text_max_features: 10000
+          text_max_features: 8000
           text_ngram_min: 1
           text_ngram_max: 1
           text_min_df: 3
+          image_hist_bins: 8
+          image_thumbnail_size: [24, 16]
           sgd_loss: log_loss
           sgd_penalty: l2
           sgd_alpha: 0.00001
           sgd_max_iter: 1000
           sgd_tol: 0.001
-      - name: classic_ovr_logreg_unigram_10k
-        params:
-          estimator: logistic
-          classifier: ovr
-          text_max_features: 10000
-          text_ngram_min: 1
-          text_ngram_max: 1
-          text_min_df: 3
-          logistic_solver: liblinear
-          logistic_max_iter: 2000
-          logistic_c: 1.0
-          logistic_penalty: l2
   neural:
     enabled: true
     candidates:
-      - name: neural_gmu_resnet18_h256
+      - name: neural_bigru_attention_gmu_resnet18_h256
         params:
+          text_encoder: bigru_attention
           fusion: gmu
           image_encoder: resnet18
           hidden_dim: 256
-          text_cnn_channels: 128
+          text_rnn_hidden_dim: 128
+          text_attention_dim: 128
           learning_rate: 0.0001
           weight_decay: 0.01
-      - name: neural_concat_resnet18_h256
+      - name: neural_bigru_attention_gmu_resnet18_h256_lr2e4_drop03
         params:
+          text_encoder: bigru_attention
+          fusion: gmu
+          image_encoder: resnet18
+          hidden_dim: 256
+          text_rnn_hidden_dim: 128
+          text_rnn_dropout: 0.3
+          text_attention_dim: 128
+          learning_rate: 0.0002
+          weight_decay: 0.01
+      - name: neural_bigru_attention_gmu_resnet18_h384_drop03
+        params:
+          text_encoder: bigru_attention
+          fusion: gmu
+          image_encoder: resnet18
+          hidden_dim: 384
+          text_rnn_hidden_dim: 192
+          text_rnn_dropout: 0.3
+          text_attention_dim: 192
+          learning_rate: 0.0001
+          weight_decay: 0.01
+      - name: neural_bigru_attention_concat_resnet18_h256
+        params:
+          text_encoder: bigru_attention
           fusion: concat
           image_encoder: resnet18
           hidden_dim: 256
-          text_cnn_channels: 128
+          text_rnn_hidden_dim: 128
+          text_attention_dim: 128
           learning_rate: 0.0001
           weight_decay: 0.01
-      - name: neural_gmu_resnet18_h128
+      - name: neural_transformer_gmu_resnet18_h256
         params:
+          text_encoder: transformer
           fusion: gmu
           image_encoder: resnet18
-          hidden_dim: 128
-          text_cnn_channels: 96
+          hidden_dim: 256
+          text_transformer_layers: 2
+          text_transformer_heads: 6
+          text_transformer_ff_dim: 512
+          text_transformer_dropout: 0.1
+          learning_rate: 0.0001
+          weight_decay: 0.01
+      - name: neural_transformer_gmu_resnet18_h256_lr2e4
+        params:
+          text_encoder: transformer
+          fusion: gmu
+          image_encoder: resnet18
+          hidden_dim: 256
+          text_transformer_layers: 2
+          text_transformer_heads: 6
+          text_transformer_ff_dim: 512
+          text_transformer_dropout: 0.1
           learning_rate: 0.0002
           weight_decay: 0.01
 
@@ -93,12 +126,12 @@ image:
 
 classic:
   model_name: classic_multimodal_sgd
-  text_max_features: 10000
+  text_max_features: 8000
   text_ngram_min: 1
   text_ngram_max: 1
   text_min_df: 3
-  image_hist_bins: 16
-  image_thumbnail_size: [32, 20]
+  image_hist_bins: 8
+  image_thumbnail_size: [24, 16]
   logistic_max_iter: 2000
   logistic_c: 1.0
   logistic_penalty: l2
@@ -119,13 +152,21 @@ classic:
   random_state: 42
 
 neural:
-  model_name: multimodal_textcnn_resnet18_gmu
-  text_encoder: textcnn
+  model_name: multimodal_bigru_attention_resnet18_gmu
+  text_encoder: bigru_attention
   image_encoder: resnet18
   fusion: gmu
   hidden_dim: 256
   text_cnn_channels: 128
   text_cnn_kernels: [3, 4, 5]
+  text_rnn_hidden_dim: 128
+  text_rnn_layers: 1
+  text_rnn_dropout: 0.2
+  text_attention_dim: 128
+  text_transformer_layers: 2
+  text_transformer_heads: 6
+  text_transformer_ff_dim: 512
+  text_transformer_dropout: 0.1
   pretrained_image: true
   freeze_image_backbone: true
   batch_size: 16

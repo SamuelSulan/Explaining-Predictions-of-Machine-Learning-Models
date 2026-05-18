@@ -18,13 +18,21 @@ from mmimdb.utils import ensure_dir, resolve_path, save_json, set_seed
 
 @dataclass
 class NeuralConfig:
-    model_name: str = "multimodal_textcnn_resnet18_gmu"
-    text_encoder: str = "textcnn"
+    model_name: str = "multimodal_bigru_attention_resnet18_gmu"
+    text_encoder: str = "bigru_attention"
     image_encoder: str = "resnet18"
     fusion: str = "gmu"
     hidden_dim: int = 256
     text_cnn_channels: int = 128
     text_cnn_kernels: tuple[int, ...] = (3, 4, 5)
+    text_rnn_hidden_dim: int = 128
+    text_rnn_layers: int = 1
+    text_rnn_dropout: float = 0.2
+    text_attention_dim: int = 128
+    text_transformer_layers: int = 2
+    text_transformer_heads: int = 6
+    text_transformer_ff_dim: int = 512
+    text_transformer_dropout: float = 0.1
     pretrained_image: bool = True
     freeze_image_backbone: bool = True
     batch_size: int = 16
@@ -46,13 +54,21 @@ class NeuralConfig:
         text = config.get("text", {})
         image = config.get("image", {})
         return cls(
-            model_name=str(raw.get("model_name", "multimodal_textcnn_resnet18_gmu")),
-            text_encoder=str(raw.get("text_encoder", "textcnn")),
+            model_name=str(raw.get("model_name", "multimodal_bigru_attention_resnet18_gmu")),
+            text_encoder=str(raw.get("text_encoder", "bigru_attention")),
             image_encoder=str(raw.get("image_encoder", "resnet18")),
             fusion=str(raw.get("fusion", "gmu")),
             hidden_dim=int(raw.get("hidden_dim", 256)),
             text_cnn_channels=int(raw.get("text_cnn_channels", 128)),
             text_cnn_kernels=tuple(int(k) for k in raw.get("text_cnn_kernels", [3, 4, 5])),
+            text_rnn_hidden_dim=int(raw.get("text_rnn_hidden_dim", 128)),
+            text_rnn_layers=int(raw.get("text_rnn_layers", 1)),
+            text_rnn_dropout=float(raw.get("text_rnn_dropout", 0.2)),
+            text_attention_dim=int(raw.get("text_attention_dim", 128)),
+            text_transformer_layers=int(raw.get("text_transformer_layers", 2)),
+            text_transformer_heads=int(raw.get("text_transformer_heads", 6)),
+            text_transformer_ff_dim=int(raw.get("text_transformer_ff_dim", 512)),
+            text_transformer_dropout=float(raw.get("text_transformer_dropout", 0.1)),
             pretrained_image=bool(raw.get("pretrained_image", True)),
             freeze_image_backbone=bool(raw.get("freeze_image_backbone", True)),
             batch_size=int(raw.get("batch_size", 16)),
@@ -206,10 +222,184 @@ class TextCNNEncoder:
         return self.cls(*args, **kwargs)
 
 
+class BiGRUAttentionEncoder:
+    def __init__(self, *args, **kwargs):
+        import torch.nn as nn
+
+        class _BiGRUAttention(nn.Module):
+            def __init__(
+                self,
+                embedding_matrix: np.ndarray,
+                rnn_hidden_dim: int,
+                rnn_layers: int,
+                rnn_dropout: float,
+                attention_dim: int,
+                output_dim: int,
+                freeze_embeddings: bool,
+                pad_id: int,
+            ) -> None:
+                super().__init__()
+                weights = torch_tensor(embedding_matrix)
+                self.embedding = nn.Embedding.from_pretrained(
+                    weights,
+                    freeze=freeze_embeddings,
+                    padding_idx=pad_id,
+                )
+                embedding_dim = int(embedding_matrix.shape[1])
+                self.dropout = nn.Dropout(float(rnn_dropout))
+                self.gru = nn.GRU(
+                    input_size=embedding_dim,
+                    hidden_size=int(rnn_hidden_dim),
+                    num_layers=int(rnn_layers),
+                    batch_first=True,
+                    bidirectional=True,
+                    dropout=float(rnn_dropout) if int(rnn_layers) > 1 else 0.0,
+                )
+                rnn_out_dim = int(rnn_hidden_dim) * 2
+                self.attention = nn.Sequential(
+                    nn.Linear(rnn_out_dim, int(attention_dim)),
+                    nn.Tanh(),
+                    nn.Linear(int(attention_dim), 1),
+                )
+                self.proj = nn.Sequential(
+                    nn.Dropout(float(rnn_dropout)),
+                    nn.Linear(rnn_out_dim, output_dim),
+                )
+
+            def forward(self, tokens, mask):
+                import torch
+
+                emb = self.dropout(self.embedding(tokens))
+                lengths = mask.sum(dim=1).clamp_min(1).to(dtype=torch.long).cpu()
+                packed = nn.utils.rnn.pack_padded_sequence(
+                    emb,
+                    lengths,
+                    batch_first=True,
+                    enforce_sorted=False,
+                )
+                packed_out, _ = self.gru(packed)
+                out, _ = nn.utils.rnn.pad_packed_sequence(
+                    packed_out,
+                    batch_first=True,
+                    total_length=tokens.shape[1],
+                )
+                scores = self.attention(out).squeeze(-1)
+                scores = scores.masked_fill(mask == 0, -1e4)
+                weights = torch.softmax(scores, dim=1)
+                pooled = torch.sum(out * weights.unsqueeze(-1), dim=1)
+                return self.proj(pooled)
+
+        self.cls = _BiGRUAttention
+
+    def __call__(self, *args, **kwargs):
+        return self.cls(*args, **kwargs)
+
+
+class TransformerTextEncoder:
+    def __init__(self, *args, **kwargs):
+        import torch.nn as nn
+
+        class _TransformerText(nn.Module):
+            def __init__(
+                self,
+                embedding_matrix: np.ndarray,
+                max_length: int,
+                num_layers: int,
+                num_heads: int,
+                ff_dim: int,
+                dropout: float,
+                output_dim: int,
+                freeze_embeddings: bool,
+                pad_id: int,
+            ) -> None:
+                super().__init__()
+                weights = torch_tensor(embedding_matrix)
+                self.embedding = nn.Embedding.from_pretrained(
+                    weights,
+                    freeze=freeze_embeddings,
+                    padding_idx=pad_id,
+                )
+                embedding_dim = int(embedding_matrix.shape[1])
+                if embedding_dim % int(num_heads) != 0:
+                    raise ValueError(
+                        f"text_transformer_heads={num_heads} must divide embedding_dim={embedding_dim}."
+                    )
+                self.position_embedding = nn.Embedding(int(max_length), embedding_dim)
+                encoder_layer = nn.TransformerEncoderLayer(
+                    d_model=embedding_dim,
+                    nhead=int(num_heads),
+                    dim_feedforward=int(ff_dim),
+                    dropout=float(dropout),
+                    activation="gelu",
+                    batch_first=True,
+                )
+                self.encoder = nn.TransformerEncoder(
+                    encoder_layer,
+                    num_layers=int(num_layers),
+                    enable_nested_tensor=False,
+                )
+                self.dropout = nn.Dropout(float(dropout))
+                self.proj = nn.Linear(embedding_dim, output_dim)
+
+            def forward(self, tokens, mask):
+                import torch
+
+                positions = torch.arange(tokens.shape[1], device=tokens.device).unsqueeze(0)
+                x = self.embedding(tokens) + self.position_embedding(positions)
+                x = self.dropout(x)
+                key_padding_mask = mask == 0
+                h = self.encoder(x, src_key_padding_mask=key_padding_mask)
+                mask_f = mask.unsqueeze(-1)
+                pooled = (h * mask_f).sum(dim=1) / mask_f.sum(dim=1).clamp_min(1.0)
+                return self.proj(self.dropout(pooled))
+
+        self.cls = _TransformerText
+
+    def __call__(self, *args, **kwargs):
+        return self.cls(*args, **kwargs)
+
+
 def torch_tensor(arr: np.ndarray):
     import torch
 
     return torch.tensor(arr, dtype=torch.float32)
+
+
+def build_text_encoder(embedding_matrix: np.ndarray, pad_id: int, cfg: NeuralConfig):
+    name = cfg.text_encoder.lower()
+    if name == "textcnn":
+        return TextCNNEncoder()(
+            embedding_matrix=embedding_matrix,
+            channels=cfg.text_cnn_channels,
+            kernels=cfg.text_cnn_kernels,
+            output_dim=cfg.hidden_dim,
+            freeze_embeddings=cfg.freeze_embeddings,
+            pad_id=pad_id,
+        )
+    if name in {"bigru", "bigru_attention", "gru_attention"}:
+        return BiGRUAttentionEncoder()(
+            embedding_matrix=embedding_matrix,
+            rnn_hidden_dim=cfg.text_rnn_hidden_dim,
+            rnn_layers=cfg.text_rnn_layers,
+            rnn_dropout=cfg.text_rnn_dropout,
+            attention_dim=cfg.text_attention_dim,
+            output_dim=cfg.hidden_dim,
+            freeze_embeddings=cfg.freeze_embeddings,
+            pad_id=pad_id,
+        )
+    if name in {"transformer", "transformer_encoder"}:
+        return TransformerTextEncoder()(
+            embedding_matrix=embedding_matrix,
+            max_length=cfg.max_length,
+            num_layers=cfg.text_transformer_layers,
+            num_heads=cfg.text_transformer_heads,
+            ff_dim=cfg.text_transformer_ff_dim,
+            dropout=cfg.text_transformer_dropout,
+            output_dim=cfg.hidden_dim,
+            freeze_embeddings=cfg.freeze_embeddings,
+            pad_id=pad_id,
+        )
+    raise ValueError(f"Unsupported text encoder: {cfg.text_encoder}")
 
 
 def build_image_encoder(name: str, pretrained: bool, freeze_backbone: bool):
@@ -254,14 +444,7 @@ class MultimodalGenreModel:
         class _Model(nn.Module):
             def __init__(self) -> None:
                 super().__init__()
-                self.text_encoder = TextCNNEncoder()(
-                    embedding_matrix=embedding_matrix,
-                    channels=cfg.text_cnn_channels,
-                    kernels=cfg.text_cnn_kernels,
-                    output_dim=cfg.hidden_dim,
-                    freeze_embeddings=cfg.freeze_embeddings,
-                    pad_id=pad_id,
-                )
+                self.text_encoder = build_text_encoder(embedding_matrix, pad_id, cfg)
                 self.image_encoder, image_dim = build_image_encoder(
                     cfg.image_encoder,
                     pretrained=cfg.pretrained_image,

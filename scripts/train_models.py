@@ -45,6 +45,7 @@ def main() -> None:
         {
             "metric": summary["metric"],
             "n_folds": summary["n_folds"],
+            "best_by_kind": summary.get("best_by_kind"),
             "overall_best": summary.get("overall_best"),
             "summary_path": str(
                 resolve_path(config.get("training", {}).get("output_dir", "outputs/model_selection"))

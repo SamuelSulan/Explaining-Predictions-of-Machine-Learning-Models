@@ -250,17 +250,19 @@ def make_feature_blocks(
 def build_base_estimator(cfg: ClassicConfig):
     estimator_name = cfg.estimator.lower()
     if estimator_name in {"logistic", "logreg", "logistic_regression"}:
-        return LogisticRegression(
-            penalty=cfg.logistic_penalty,
-            C=cfg.logistic_c,
-            class_weight=cfg.logistic_class_weight,
-            max_iter=cfg.logistic_max_iter,
-            l1_ratio=cfg.logistic_l1_ratio if cfg.logistic_penalty == "elasticnet" else None,
-            solver=cfg.logistic_solver,
-            n_jobs=1,
-            random_state=cfg.random_state,
-            verbose=0,
-        )
+        kwargs = {
+            "C": cfg.logistic_c,
+            "class_weight": cfg.logistic_class_weight,
+            "max_iter": cfg.logistic_max_iter,
+            "solver": cfg.logistic_solver,
+            "random_state": cfg.random_state,
+            "verbose": 0,
+        }
+        if cfg.logistic_penalty != "l2":
+            kwargs["penalty"] = cfg.logistic_penalty
+            if cfg.logistic_penalty == "elasticnet":
+                kwargs["l1_ratio"] = cfg.logistic_l1_ratio
+        return LogisticRegression(**kwargs)
     if estimator_name in {"sgd", "sgd_classifier", "sgdclassifier"}:
         if cfg.sgd_loss not in {"log_loss", "modified_huber"}:
             raise ValueError(

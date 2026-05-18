@@ -25,7 +25,7 @@ def update_best_model(
     model_kind: str,
     is_full_run: bool,
 ) -> dict:
-    """Copy a run model to the canonical best path when it improves validation metric."""
+    """Copy a run model to the canonical per-family best path when it improves."""
     if registry_cfg.get("update_best_only_for_full_runs", True) and not is_full_run:
         return {
             "updated": False,
@@ -54,7 +54,7 @@ def update_best_model(
             previous = json.load(f)
         previous_score = previous.get("registry", {}).get("score")
 
-    should_update = previous_score is None or candidate_score >= float(previous_score)
+    should_update = previous_score is None or candidate_score > float(previous_score)
     registry = {
         "updated": bool(should_update),
         "metric": metric,
@@ -62,6 +62,7 @@ def update_best_model(
         "previous_score": previous_score,
         "best_model_path": str(best_model_path),
         "best_metrics_path": str(best_metrics_path),
+        "model_kind": model_kind,
     }
 
     if should_update:
@@ -69,5 +70,7 @@ def update_best_model(
         payload = dict(result)
         payload["registry"] = registry
         save_json(payload, best_metrics_path)
+    else:
+        registry["reason"] = "existing best model has an equal or better score"
 
     return registry

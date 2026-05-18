@@ -28,14 +28,19 @@ Controls the one-command training/model-selection workflow:
 - `training.n_folds`: number of cross-validation folds.
 - `training.combine_train_val_for_cv`: when `true`, the saved train and validation indices are combined for candidate selection while the saved test split remains untouched.
 - `training.classic.enabled` and `training.neural.enabled`: allow either model family to be skipped.
+- `training.<family>.final_only`: when `true`, skip CV/model selection for that family and train the first configured candidate directly. This is enabled for classic ML by default because the scikit-learn pipeline is CPU-bound and repeated folds are slow in Colab.
 - `training.<family>.candidates`: explicit candidate list. Each candidate has a `name` and a flat `params` map that overrides fields from `ClassicConfig` or `NeuralConfig`.
 - `training.<family>.grid`: optional Cartesian grid alternative. Each key is a config field and each value is a list of values to try.
 
-The selected candidate is final-trained with the original train/validation split so thresholds and neural early stopping are still tuned without touching the test split. Full runs update the best-model registry used by XAI; limited smoke runs do not.
+The selected candidate is final-trained with the original train/validation split so thresholds and neural early stopping are still tuned without touching the test split. Full runs update separate best-model registry files for classic ML and neural models, comparing the new validation metric against any existing saved best model of the same family. Limited smoke runs do not update the registry.
 
 ## Text
 
-Controls token sequence length and embedding behavior for the neural text branch.
+Controls token sequence length and embedding behavior for the neural text branch. The active text encoder is selected with `neural.text_encoder`:
+
+- `bigru_attention`: Word2Vec-initialized bidirectional GRU plus attention pooling. This is the default non-CNN text branch.
+- `transformer`: lightweight in-repo Transformer encoder over the same token embeddings.
+- `textcnn`: original parallel-convolution text branch retained for ablation.
 
 ## Image
 
@@ -49,6 +54,7 @@ Controls the classic multimodal baseline:
 - Poster descriptor size.
 - `classic.estimator`: `sgd` for the faster default linear classifier or `logistic` for Logistic Regression.
 - SGDClassifier `loss`, `penalty`, `alpha`, `max_iter`, `tol`, and class weighting. Keep `sgd_loss: log_loss` or `modified_huber` when threshold tuning needs probabilities.
+- `classic.image_hist_bins` and `classic.image_thumbnail_size`: lower values reduce poster descriptor extraction time while keeping the model multimodal.
 - Logistic Regression iteration count.
 - Logistic Regression `C`, `penalty`, `solver`, optional `l1_ratio`, and class weighting.
 - Threshold tuning metric.
@@ -60,7 +66,9 @@ Controls the classic multimodal baseline:
 
 Controls the neural multimodal model:
 
-- image encoder, fusion type, hidden sizes,
+- text encoder, image encoder, fusion type, hidden sizes,
+- BiGRU-attention settings: `text_rnn_hidden_dim`, `text_rnn_layers`, `text_rnn_dropout`, and `text_attention_dim`,
+- Transformer settings: `text_transformer_layers`, `text_transformer_heads`, `text_transformer_ff_dim`, and `text_transformer_dropout`,
 - frozen/unfrozen pretrained image branch,
 - batch size, epochs, optimizer settings,
 - early stopping and threshold metric.

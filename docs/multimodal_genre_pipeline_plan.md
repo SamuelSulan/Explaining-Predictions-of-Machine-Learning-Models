@@ -145,14 +145,16 @@ The thesis document should include a focused technical model-research section.
 Text model candidates:
 
 - Word2Vec-initialized TextCNN.
-- Word2Vec-initialized BiGRU/BiLSTM.
+- Word2Vec-initialized BiGRU/BiLSTM with attention pooling.
+- Lightweight Transformer encoder over Word2Vec-initialized token embeddings.
 - Lightweight attention pooling over token embeddings.
 - Optional DistilBERT/BERT route after reconstructing plot strings, but this is secondary because the dataset provides token IDs rather than original raw plot strings.
 
 Recommended text branch for the first final multimodal neural model:
 
 - Embedding layer initialized from `metadata["lookup"]`.
-- TextCNN or BiGRU encoder.
+- BiGRU with attention as the default non-CNN text encoder.
+- TextCNN and lightweight Transformer encoders as ablations.
 - Mask-aware pooling.
 - Keep token-to-word mapping intact for later Integrated Gradients or token occlusion.
 
@@ -205,7 +207,7 @@ At minimum, train and compare two final multimodal models:
    - Classifier: ClassifierChain Logistic Regression, with One-vs-Rest as a baseline/ablation.
 
 2. Neural multimodal model:
-   - Text branch: embedding plus TextCNN or BiGRU.
+   - Text branch: embedding plus BiGRU-attention by default, with TextCNN/Transformer ablations.
    - Image branch: pretrained CNN from `torchvision`.
    - Fusion: concatenation or GMU-style gated fusion.
    - Output: 23 sigmoid logits.

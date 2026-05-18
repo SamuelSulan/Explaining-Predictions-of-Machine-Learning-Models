@@ -100,7 +100,7 @@ The intended project split is a new iterative multilabel stratified split: 70% t
 - Classic multimodal final model: reconstructed plot TF-IDF plus reversible poster descriptors, fused by concatenation, classified with ClassifierChain Logistic Regression by default and One-vs-Rest as a baseline option.
 - Neural multimodal final model: Word2Vec-initialized text encoder plus pretrained `torchvision` image encoder, fused by concatenation or GMU-style gated fusion, trained with 23 sigmoid outputs.
 - Recommended neural image branch starts with ResNet18/ResNet50 because these are stable pretrained CNNs and straightforward to explain later with Grad-CAM.
-- Recommended text branch starts with TextCNN or BiGRU because token attributions can be mapped back to words from `ix_to_word`.
+- Recommended text branch starts with BiGRU-attention, with TextCNN and lightweight Transformer variants retained as ablations because token attributions can be mapped back to words from `ix_to_word`.
 
 ## XAI Readiness
 
