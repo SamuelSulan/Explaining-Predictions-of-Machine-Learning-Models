@@ -926,9 +926,7 @@ def neural_image_occlusion(
     _, _, height, width = image.shape
 
     with torch.no_grad():
-        text_h = model.text_encoder(tokens, mask)
-        image_h = model.image_proj(model.image_encoder(image))
-        baseline_logits = neural_logits_from_features(model, text_h, image_h)
+        baseline_logits = model(tokens, mask, image)
         baseline_logit = float(baseline_logits[0, target_idx].detach().cpu().item())
         baseline_probability = float(torch.sigmoid(baseline_logits)[0, target_idx].detach().cpu().item())
 
@@ -948,9 +946,9 @@ def neural_image_occlusion(
             image_batch = image.repeat(len(batch_cells), 1, 1, 1)
             for row_i, (_row, _col, y0, y1, x0, x1) in enumerate(batch_cells):
                 image_batch[row_i, :, y0:y1, x0:x1] = 0.0
-            image_h_batch = model.image_proj(model.image_encoder(image_batch))
-            text_h_batch = text_h.expand(len(batch_cells), -1)
-            logits = neural_logits_from_features(model, text_h_batch, image_h_batch)
+            token_batch = tokens.expand(len(batch_cells), -1)
+            mask_batch = mask.expand(len(batch_cells), -1)
+            logits = model(token_batch, mask_batch, image_batch)
             probs = torch.sigmoid(logits)[:, target_idx].detach().cpu().numpy()
             logits_np = logits[:, target_idx].detach().cpu().numpy()
             for cell, probability, logit in zip(batch_cells, probs, logits_np):
