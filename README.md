@@ -310,6 +310,20 @@ y = load_labels(paths.hdf5)
 y.shape
 ```
 
+## Google Colab Training
+
+Open `notebooks/training_pipeline_control.ipynb` in Colab and use a GPU runtime for full neural training.
+
+The setup cell can:
+
+- mount Google Drive,
+- use or clone the repository at `/content/drive/MyDrive/Explaining-Predictions-of-Machine-Learning-Models`,
+- install notebook dependencies without replacing Colab's CUDA-enabled PyTorch,
+- override dataset paths through `COLAB_DATA_ROOT`, `COLAB_HDF5_PATH`, and `COLAB_METADATA_PATH`,
+- optionally persist outputs through `COLAB_OUTPUT_DIR`.
+
+If your repository or dataset is stored elsewhere on Drive, edit those `COLAB_*` constants in the first setup cell, then run the notebook from top to bottom.
+
 ## XAI Readiness
 
 The current pipeline keeps:
