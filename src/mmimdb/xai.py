@@ -873,9 +873,7 @@ def neural_token_occlusion(
 
     batch_size = max(1, int(batch_size))
     with torch.no_grad():
-        text_h = model.text_encoder(tokens, mask)
-        image_h = model.image_proj(model.image_encoder(image))
-        baseline_logits = neural_logits_from_features(model, text_h, image_h)
+        baseline_logits = model(tokens, mask, image)
         baseline_logit = float(baseline_logits[0, target_idx].detach().cpu().item())
         baseline_probability = float(torch.sigmoid(baseline_logits)[0, target_idx].detach().cpu().item())
 
@@ -887,9 +885,8 @@ def neural_token_occlusion(
             mask_batch = mask.repeat(len(batch_positions), 1)
             for row_i, pos in enumerate(batch_positions):
                 token_batch[row_i, pos] = int(pad_id)
-            text_h_batch = model.text_encoder(token_batch, mask_batch)
-            image_h_batch = image_h.expand(len(batch_positions), -1)
-            logits = neural_logits_from_features(model, text_h_batch, image_h_batch)
+            image_batch = image.expand(len(batch_positions), -1, -1, -1)
+            logits = model(token_batch, mask_batch, image_batch)
             probs = torch.sigmoid(logits)[:, target_idx].detach().cpu().numpy()
             logits_np = logits[:, target_idx].detach().cpu().numpy()
             for pos, probability, logit in zip(batch_positions, probs, logits_np):
