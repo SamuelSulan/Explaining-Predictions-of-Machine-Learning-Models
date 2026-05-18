@@ -312,7 +312,12 @@ y.shape
 
 ## Google Colab Training
 
-Open `notebooks/training_pipeline_control.ipynb` in Colab and use a GPU runtime for full neural training.
+Use one of the two Colab-ready notebooks:
+
+- Neural model training: [notebooks/training_pipeline_neural_colab.ipynb](https://colab.research.google.com/github/SamuelSulan/Explaining-Predictions-of-Machine-Learning-Models/blob/main/notebooks/training_pipeline_neural_colab.ipynb)
+- Classic ML training: [notebooks/training_pipeline_classic_ml_colab.ipynb](https://colab.research.google.com/github/SamuelSulan/Explaining-Predictions-of-Machine-Learning-Models/blob/main/notebooks/training_pipeline_classic_ml_colab.ipynb)
+
+Use a GPU runtime for the neural notebook when running full training.
 
 The setup cell can:
 

@@ -2,6 +2,11 @@
 
 The project is implemented as Python modules and scripts so notebooks can stay thin.
 
+Colab-ready training notebooks:
+
+- `notebooks/training_pipeline_neural_colab.ipynb`
+- `notebooks/training_pipeline_classic_ml_colab.ipynb`
+
 Recommended workflow:
 
 1. Activate the environment: `conda activate mmimdb-xai`
