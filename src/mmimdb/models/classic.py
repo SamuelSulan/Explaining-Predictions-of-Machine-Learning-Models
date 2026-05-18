@@ -98,6 +98,9 @@ class ClassicConfig:
     sgd_class_weight: str | None = "balanced"
     threshold_metric: str = "macro_f1"
     threshold_strategy: str = "per_label"
+    threshold_min: float = 0.01
+    threshold_max: float = 0.99
+    threshold_steps: int = 99
     classifier: str = "classifier_chain"
     chain_order: str | list[int] | None = None
     random_state: int = 42
@@ -133,6 +136,9 @@ class ClassicConfig:
             sgd_class_weight=raw.get("sgd_class_weight", "balanced"),
             threshold_metric=str(raw.get("threshold_metric", "macro_f1")),
             threshold_strategy=str(raw.get("threshold_strategy", "per_label")),
+            threshold_min=float(raw.get("threshold_min", 0.01)),
+            threshold_max=float(raw.get("threshold_max", 0.99)),
+            threshold_steps=int(raw.get("threshold_steps", 99)),
             classifier=str(raw.get("classifier", "classifier_chain")),
             chain_order=chain_order,
             random_state=int(raw.get("random_state", config.get("project", {}).get("seed", 42))),
@@ -333,6 +339,9 @@ def train_classic_multimodal(
         val_prob,
         metric=cfg.threshold_metric,
         strategy=cfg.threshold_strategy,
+        threshold_min=cfg.threshold_min,
+        threshold_max=cfg.threshold_max,
+        threshold_steps=cfg.threshold_steps,
     )
     test_metrics = None
     if x_test is not None and y_test is not None:
@@ -364,6 +373,11 @@ def train_classic_multimodal(
         "model_path": str(model_path),
         "threshold": threshold_saved,
         "threshold_strategy": cfg.threshold_strategy,
+        "threshold_grid": {
+            "min": float(cfg.threshold_min),
+            "max": float(cfg.threshold_max),
+            "steps": int(cfg.threshold_steps),
+        },
         "classifier": cfg.classifier,
         "estimator": cfg.estimator,
         "feature_info": {

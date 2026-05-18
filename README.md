@@ -123,6 +123,12 @@ Smoke-test both model families:
 python scripts\train_models.py --model-type both --limit 12 --folds 2 --epochs 1 --batch-size 2 --no-pretrained-image
 ```
 
+Smoke-test the current neural candidate set in the project conda environment:
+
+```powershell
+conda run -n mmimdb-xai python scripts\train_models.py --model-type neural --limit 8 --folds 2 --epochs 1 --batch-size 2 --no-pretrained-image
+```
+
 Runs with `--limit` do not overwrite the best-model registry.
 
 ## Technical Report
@@ -182,11 +188,22 @@ The one-command model-selection workflow above is preferred for final training. 
 
 Model:
 
-- text branch: Word2Vec-initialized BiGRU with attention by default, with TextCNN and a lightweight Transformer encoder still available by config
-- image branch: pretrained `torchvision` ResNet18
-- fusion: GMU-style gated fusion
+- text branch: Word2Vec-initialized lightweight Transformer for the current selected candidates, with BiGRU-attention and TextCNN still available by config
+- image branch: pretrained `torchvision` ResNet18 by default, with EfficientNet-B0 available for the unfrozen image-backbone experiment
+- fusion: GMU-style gated fusion for multimodal candidates
 - classifier: 23 sigmoid multilabel outputs
+- thresholding: per-label validation-tuned thresholds on a fine 0.01-0.99 grid
+- optional scheduler: `scheduler: plateau`
+- optional rare-label experiment: `loss: focal` with clipped positive weights
 - optional experimental residual label-correlation head, controlled by config
+
+The configured neural candidate list includes:
+
+- best previous baseline: Transformer + GMU + ResNet18 at learning rate `2e-4`
+- same baseline with `ReduceLROnPlateau`
+- Transformer + GMU + unfrozen EfficientNet-B0
+- text-only and image-only ablations, marked `selection_eligible: false`
+- focal-loss variant for rare-label macro-F1 experiments
 
 Smoke test:
 

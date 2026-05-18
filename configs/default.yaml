@@ -48,62 +48,9 @@ training:
   neural:
     enabled: true
     candidates:
-      - name: neural_bigru_attention_gmu_resnet18_h256
-        params:
-          text_encoder: bigru_attention
-          fusion: gmu
-          image_encoder: resnet18
-          hidden_dim: 256
-          text_rnn_hidden_dim: 128
-          text_attention_dim: 128
-          learning_rate: 0.0001
-          weight_decay: 0.01
-      - name: neural_bigru_attention_gmu_resnet18_h256_lr2e4_drop03
-        params:
-          text_encoder: bigru_attention
-          fusion: gmu
-          image_encoder: resnet18
-          hidden_dim: 256
-          text_rnn_hidden_dim: 128
-          text_rnn_dropout: 0.3
-          text_attention_dim: 128
-          learning_rate: 0.0002
-          weight_decay: 0.01
-      - name: neural_bigru_attention_gmu_resnet18_h384_drop03
-        params:
-          text_encoder: bigru_attention
-          fusion: gmu
-          image_encoder: resnet18
-          hidden_dim: 384
-          text_rnn_hidden_dim: 192
-          text_rnn_dropout: 0.3
-          text_attention_dim: 192
-          learning_rate: 0.0001
-          weight_decay: 0.01
-      - name: neural_bigru_attention_concat_resnet18_h256
-        params:
-          text_encoder: bigru_attention
-          fusion: concat
-          image_encoder: resnet18
-          hidden_dim: 256
-          text_rnn_hidden_dim: 128
-          text_attention_dim: 128
-          learning_rate: 0.0001
-          weight_decay: 0.01
-      - name: neural_transformer_gmu_resnet18_h256
-        params:
-          text_encoder: transformer
-          fusion: gmu
-          image_encoder: resnet18
-          hidden_dim: 256
-          text_transformer_layers: 2
-          text_transformer_heads: 6
-          text_transformer_ff_dim: 512
-          text_transformer_dropout: 0.1
-          learning_rate: 0.0001
-          weight_decay: 0.01
       - name: neural_transformer_gmu_resnet18_h256_lr2e4
         params:
+          modality: multimodal
           text_encoder: transformer
           fusion: gmu
           image_encoder: resnet18
@@ -114,6 +61,74 @@ training:
           text_transformer_dropout: 0.1
           learning_rate: 0.0002
           weight_decay: 0.01
+      - name: neural_transformer_gmu_resnet18_h256_lr2e4_plateau
+        params:
+          modality: multimodal
+          text_encoder: transformer
+          fusion: gmu
+          image_encoder: resnet18
+          hidden_dim: 256
+          text_transformer_layers: 2
+          text_transformer_heads: 6
+          text_transformer_ff_dim: 512
+          text_transformer_dropout: 0.1
+          learning_rate: 0.0002
+          weight_decay: 0.01
+          scheduler: plateau
+      - name: neural_transformer_gmu_efficientnet_b0_unfrozen_lr1e4
+        params:
+          modality: multimodal
+          text_encoder: transformer
+          fusion: gmu
+          image_encoder: efficientnet_b0
+          freeze_image_backbone: false
+          hidden_dim: 256
+          text_transformer_layers: 2
+          text_transformer_heads: 6
+          text_transformer_ff_dim: 512
+          text_transformer_dropout: 0.1
+          learning_rate: 0.0001
+          weight_decay: 0.01
+          scheduler: plateau
+      - name: neural_transformer_text_only_h256_lr2e4
+        selection_eligible: false
+        params:
+          modality: text_only
+          text_encoder: transformer
+          hidden_dim: 256
+          text_transformer_layers: 2
+          text_transformer_heads: 6
+          text_transformer_ff_dim: 512
+          text_transformer_dropout: 0.1
+          learning_rate: 0.0002
+          weight_decay: 0.01
+          scheduler: plateau
+      - name: neural_efficientnet_b0_image_only_unfrozen_lr1e4
+        selection_eligible: false
+        params:
+          modality: image_only
+          image_encoder: efficientnet_b0
+          freeze_image_backbone: false
+          hidden_dim: 256
+          learning_rate: 0.0001
+          weight_decay: 0.01
+          scheduler: plateau
+      - name: neural_transformer_gmu_resnet18_h256_lr2e4_focal
+        params:
+          modality: multimodal
+          text_encoder: transformer
+          fusion: gmu
+          image_encoder: resnet18
+          hidden_dim: 256
+          text_transformer_layers: 2
+          text_transformer_heads: 6
+          text_transformer_ff_dim: 512
+          text_transformer_dropout: 0.1
+          learning_rate: 0.0002
+          weight_decay: 0.01
+          loss: focal
+          focal_gamma: 2.0
+          pos_weight_clip: 10.0
 
 text:
   max_length: 512
@@ -147,6 +162,9 @@ classic:
   sgd_class_weight: balanced
   threshold_metric: macro_f1
   threshold_strategy: per_label
+  threshold_min: 0.01
+  threshold_max: 0.99
+  threshold_steps: 99
   classifier: ovr
   chain_order: null
   random_state: 42
@@ -173,10 +191,20 @@ neural:
   epochs: 10
   learning_rate: 0.0001
   weight_decay: 0.01
+  scheduler: none
+  scheduler_factor: 0.5
+  scheduler_patience: 1
+  min_learning_rate: 0.000001
+  loss: bce
+  focal_gamma: 2.0
+  pos_weight_clip: null
   num_workers: 0
   patience: 3
   threshold_metric: macro_f1
   threshold_strategy: per_label
+  threshold_min: 0.01
+  threshold_max: 0.99
+  threshold_steps: 99
   enable_label_correlation: true
 
 xai:

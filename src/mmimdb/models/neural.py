@@ -19,6 +19,7 @@ from mmimdb.utils import ensure_dir, resolve_path, save_json, set_seed
 @dataclass
 class NeuralConfig:
     model_name: str = "multimodal_bigru_attention_resnet18_gmu"
+    modality: str = "multimodal"
     text_encoder: str = "bigru_attention"
     image_encoder: str = "resnet18"
     fusion: str = "gmu"
@@ -43,6 +44,16 @@ class NeuralConfig:
     patience: int = 3
     threshold_metric: str = "macro_f1"
     threshold_strategy: str = "per_label"
+    threshold_min: float = 0.01
+    threshold_max: float = 0.99
+    threshold_steps: int = 99
+    loss: str = "bce"
+    focal_gamma: float = 2.0
+    pos_weight_clip: float | None = None
+    scheduler: str = "none"
+    scheduler_factor: float = 0.5
+    scheduler_patience: int = 1
+    min_learning_rate: float = 1e-6
     enable_label_correlation: bool = False
     max_length: int = 512
     input_size: int = 224
@@ -55,6 +66,7 @@ class NeuralConfig:
         image = config.get("image", {})
         return cls(
             model_name=str(raw.get("model_name", "multimodal_bigru_attention_resnet18_gmu")),
+            modality=str(raw.get("modality", "multimodal")),
             text_encoder=str(raw.get("text_encoder", "bigru_attention")),
             image_encoder=str(raw.get("image_encoder", "resnet18")),
             fusion=str(raw.get("fusion", "gmu")),
@@ -79,6 +91,18 @@ class NeuralConfig:
             patience=int(raw.get("patience", 3)),
             threshold_metric=str(raw.get("threshold_metric", "macro_f1")),
             threshold_strategy=str(raw.get("threshold_strategy", "per_label")),
+            threshold_min=float(raw.get("threshold_min", 0.01)),
+            threshold_max=float(raw.get("threshold_max", 0.99)),
+            threshold_steps=int(raw.get("threshold_steps", 99)),
+            loss=str(raw.get("loss", "bce")),
+            focal_gamma=float(raw.get("focal_gamma", 2.0)),
+            pos_weight_clip=(
+                None if raw.get("pos_weight_clip", None) is None else float(raw.get("pos_weight_clip"))
+            ),
+            scheduler=str(raw.get("scheduler", "none")),
+            scheduler_factor=float(raw.get("scheduler_factor", 0.5)),
+            scheduler_patience=int(raw.get("scheduler_patience", 1)),
+            min_learning_rate=float(raw.get("min_learning_rate", 1e-6)),
             enable_label_correlation=bool(raw.get("enable_label_correlation", False)),
             max_length=int(text.get("max_length", 512)),
             input_size=int(image.get("input_size", 224)),
@@ -444,19 +468,33 @@ class MultimodalGenreModel:
         class _Model(nn.Module):
             def __init__(self) -> None:
                 super().__init__()
-                self.text_encoder = build_text_encoder(embedding_matrix, pad_id, cfg)
-                self.image_encoder, image_dim = build_image_encoder(
-                    cfg.image_encoder,
-                    pretrained=cfg.pretrained_image,
-                    freeze_backbone=cfg.freeze_image_backbone,
-                )
-                self.image_proj = nn.Sequential(
-                    nn.Linear(image_dim, cfg.hidden_dim),
-                    nn.ReLU(),
-                    nn.Dropout(0.2),
-                )
+                self.modality = cfg.modality.lower()
+                if self.modality not in {"multimodal", "text_only", "image_only"}:
+                    raise ValueError(f"Unsupported modality: {cfg.modality}")
+                self.uses_text = self.modality in {"multimodal", "text_only"}
+                self.uses_image = self.modality in {"multimodal", "image_only"}
+                if self.uses_text:
+                    self.text_encoder = build_text_encoder(embedding_matrix, pad_id, cfg)
+                else:
+                    self.text_encoder = None
+                if self.uses_image:
+                    self.image_encoder, image_dim = build_image_encoder(
+                        cfg.image_encoder,
+                        pretrained=cfg.pretrained_image,
+                        freeze_backbone=cfg.freeze_image_backbone,
+                    )
+                    self.image_proj = nn.Sequential(
+                        nn.Linear(image_dim, cfg.hidden_dim),
+                        nn.ReLU(),
+                        nn.Dropout(0.2),
+                    )
+                else:
+                    self.image_encoder = None
+                    self.image_proj = None
                 self.fusion = cfg.fusion.lower()
-                if self.fusion == "gmu":
+                if self.modality != "multimodal":
+                    classifier_input = cfg.hidden_dim
+                elif self.fusion == "gmu":
                     self.text_gate_proj = nn.Linear(cfg.hidden_dim, cfg.hidden_dim)
                     self.image_gate_proj = nn.Linear(cfg.hidden_dim, cfg.hidden_dim)
                     self.gate = nn.Linear(cfg.hidden_dim * 2, cfg.hidden_dim)
@@ -480,15 +518,21 @@ class MultimodalGenreModel:
             def forward(self, tokens, mask, image, return_gate: bool = False):
                 import torch
 
-                text_h = self.text_encoder(tokens, mask)
-                image_h = self.image_proj(self.image_encoder(image))
                 gate_value = None
-                if self.fusion == "gmu":
+                if self.modality == "text_only":
+                    fused = self.text_encoder(tokens, mask)
+                elif self.modality == "image_only":
+                    fused = self.image_proj(self.image_encoder(image))
+                elif self.fusion == "gmu":
+                    text_h = self.text_encoder(tokens, mask)
+                    image_h = self.image_proj(self.image_encoder(image))
                     text_z = torch.tanh(self.text_gate_proj(text_h))
                     image_z = torch.tanh(self.image_gate_proj(image_h))
                     gate_value = torch.sigmoid(self.gate(torch.cat([text_h, image_h], dim=1)))
                     fused = gate_value * text_z + (1.0 - gate_value) * image_z
                 else:
+                    text_h = self.text_encoder(tokens, mask)
+                    image_h = self.image_proj(self.image_encoder(image))
                     fused = torch.cat([text_h, image_h], dim=1)
                 logits = self.classifier(fused)
                 if self.enable_label_correlation:
@@ -516,13 +560,61 @@ def make_loader(dataset, batch_size: int, shuffle: bool, num_workers: int):
     )
 
 
-def compute_pos_weight(y_train: np.ndarray):
+def compute_pos_weight(y_train: np.ndarray, clip_max: float | None = None):
     import torch
 
     pos = y_train.sum(axis=0).astype(np.float32)
     neg = y_train.shape[0] - pos
     weights = neg / np.maximum(pos, 1.0)
+    if clip_max is not None:
+        weights = np.minimum(weights, float(clip_max))
     return torch.tensor(weights, dtype=torch.float32)
+
+
+class FocalBCEWithLogitsLoss:
+    def __init__(self, pos_weight, gamma: float = 2.0) -> None:
+        import torch.nn as nn
+
+        self.bce = nn.BCEWithLogitsLoss(pos_weight=pos_weight, reduction="none")
+        self.gamma = float(gamma)
+
+    def __call__(self, logits, labels):
+        import torch
+
+        bce = self.bce(logits, labels)
+        prob = torch.sigmoid(logits)
+        p_t = prob * labels + (1.0 - prob) * (1.0 - labels)
+        focal_weight = (1.0 - p_t).clamp_min(1e-6).pow(self.gamma)
+        return (focal_weight * bce).mean()
+
+
+def build_criterion(cfg: NeuralConfig, y_train: np.ndarray, device: str):
+    import torch.nn as nn
+
+    pos_weight = compute_pos_weight(y_train, clip_max=cfg.pos_weight_clip).to(device)
+    loss_name = cfg.loss.lower()
+    if loss_name in {"bce", "weighted_bce", "bce_with_logits"}:
+        return nn.BCEWithLogitsLoss(pos_weight=pos_weight)
+    if loss_name in {"focal", "focal_bce", "focal_loss"}:
+        return FocalBCEWithLogitsLoss(pos_weight=pos_weight, gamma=cfg.focal_gamma)
+    raise ValueError(f"Unsupported neural loss: {cfg.loss}")
+
+
+def build_scheduler(optimizer, cfg: NeuralConfig):
+    from torch.optim.lr_scheduler import ReduceLROnPlateau
+
+    scheduler_name = cfg.scheduler.lower()
+    if scheduler_name in {"", "none", "off"}:
+        return None
+    if scheduler_name in {"plateau", "reduce_on_plateau", "reduce_lr_on_plateau"}:
+        return ReduceLROnPlateau(
+            optimizer,
+            mode="max",
+            factor=cfg.scheduler_factor,
+            patience=cfg.scheduler_patience,
+            min_lr=cfg.min_learning_rate,
+        )
+    raise ValueError(f"Unsupported scheduler: {cfg.scheduler}")
 
 
 def run_epoch(model, loader, criterion, optimizer, device: str, train: bool) -> float:
@@ -579,7 +671,6 @@ def train_neural_multimodal(
     limit: int | None = None,
 ) -> dict:
     import torch
-    import torch.nn as nn
     from torch.optim import AdamW
 
     set_seed(seed)
@@ -621,12 +712,13 @@ def train_neural_multimodal(
     ).to(device)
     model = wrapper.module
 
-    criterion = nn.BCEWithLogitsLoss(pos_weight=compute_pos_weight(y_train).to(device))
+    criterion = build_criterion(cfg, y_train, device)
     optimizer = AdamW(
         [p for p in model.parameters() if p.requires_grad],
         lr=cfg.learning_rate,
         weight_decay=cfg.weight_decay,
     )
+    scheduler = build_scheduler(optimizer, cfg)
 
     out = ensure_dir(output_dir)
     suffix = f"_limit{limit}" if limit is not None else ""
@@ -645,13 +737,19 @@ def train_neural_multimodal(
             val_prob,
             metric=cfg.threshold_metric,
             strategy=cfg.threshold_strategy,
+            threshold_min=cfg.threshold_min,
+            threshold_max=cfg.threshold_max,
+            threshold_steps=cfg.threshold_steps,
         )
         score = float(val_metrics[cfg.threshold_metric])
+        if scheduler is not None:
+            scheduler.step(score)
         record = {
             "epoch": epoch,
             "train_loss": train_loss,
             "val_loss": val_loss,
             cfg.threshold_metric: score,
+            "learning_rate": float(optimizer.param_groups[0]["lr"]),
         }
         history.append(record)
         if score > best_score:
@@ -686,6 +784,9 @@ def train_neural_multimodal(
         val_prob,
         metric=cfg.threshold_metric,
         strategy=cfg.threshold_strategy,
+        threshold_min=cfg.threshold_min,
+        threshold_max=cfg.threshold_max,
+        threshold_steps=cfg.threshold_steps,
     )
     test_metrics = None
     if test_loader is not None:
@@ -704,6 +805,14 @@ def train_neural_multimodal(
         "device": device,
         "threshold": threshold_saved,
         "threshold_strategy": cfg.threshold_strategy,
+        "threshold_grid": {
+            "min": float(cfg.threshold_min),
+            "max": float(cfg.threshold_max),
+            "steps": int(cfg.threshold_steps),
+        },
+        "loss": cfg.loss,
+        "scheduler": cfg.scheduler,
+        "modality": cfg.modality,
         "enable_label_correlation": bool(cfg.enable_label_correlation),
         "best_epoch": int(best_epoch),
         "best_validation_score": float(best_score),

@@ -21,6 +21,7 @@ from mmimdb.utils import ensure_dir, resolve_path, save_json
 class Candidate:
     name: str
     params: dict[str, Any]
+    selection_eligible: bool = True
 
 
 def _slug(value: Any) -> str:
@@ -49,10 +50,14 @@ def _candidate_from_raw(raw: dict[str, Any], default_name: str) -> Candidate:
         raise ValueError("Candidate entries must be dictionaries.")
     params = dict(raw.get("params", {}))
     for key, value in raw.items():
-        if key not in {"name", "params"}:
+        if key not in {"name", "params", "selection_eligible"}:
             params[key] = value
     name = str(raw.get("name") or f"{default_name}_{_param_suffix(params)}")
-    return Candidate(name=_slug(name), params=params)
+    return Candidate(
+        name=_slug(name),
+        params=params,
+        selection_eligible=bool(raw.get("selection_eligible", True)),
+    )
 
 
 def configured_candidates(training_cfg: dict[str, Any], kind: str) -> list[Candidate]:
@@ -81,7 +86,13 @@ def configured_candidates(training_cfg: dict[str, Any], kind: str) -> list[Candi
         count = seen.get(candidate.name, 0)
         seen[candidate.name] = count + 1
         name = candidate.name if count == 0 else f"{candidate.name}_{count + 1}"
-        unique.append(Candidate(name=name, params=dict(candidate.params)))
+        unique.append(
+            Candidate(
+                name=name,
+                params=dict(candidate.params),
+                selection_eligible=candidate.selection_eligible,
+            )
+        )
     return unique
 
 
@@ -137,6 +148,43 @@ def _metric_score(result: dict[str, Any], metric: str) -> float:
     if "test" in result and metric in result["test"]:
         return float(result["test"][metric])
     raise KeyError(f"Metric '{metric}' not found in result.")
+
+
+def _compact_metrics(metrics: dict[str, Any]) -> dict[str, Any]:
+    keys = [
+        "sample_f1",
+        "micro_f1",
+        "macro_f1",
+        "weighted_f1",
+        "micro_precision",
+        "micro_recall",
+        "hamming_loss",
+    ]
+    return {key: metrics[key] for key in keys if key in metrics}
+
+
+def _final_metric_writeup(summary: dict[str, Any]) -> dict[str, Any]:
+    rows = []
+    for kind, result in summary.get("kinds", {}).items():
+        final = result.get("final", {})
+        if not final:
+            continue
+        row = {
+            "kind": kind,
+            "candidate": final.get("selection", {}).get("candidate"),
+            "model_path": final.get("model_path"),
+            "validation": _compact_metrics(final.get("validation", {})),
+        }
+        if "test" in final:
+            row["test"] = _compact_metrics(final.get("test", {}))
+        rows.append(row)
+    return {
+        "note": (
+            "Macro F1 is used for selection, but sample/micro/weighted F1, precision, recall, "
+            "and hamming loss are included for the final selected models."
+        ),
+        "rows": rows,
+    }
 
 
 def _json_safe(value: Any) -> Any:
@@ -327,6 +375,7 @@ def _run_kind_selection(
                 {
                     "name": candidate.name,
                     "params": candidate.params,
+                    "selection_eligible": candidate.selection_eligible,
                     "status": "selected_without_cv",
                 }
             ],
@@ -379,6 +428,7 @@ def _run_kind_selection(
         summary = {
             "name": candidate.name,
             "params": candidate.params,
+            "selection_eligible": candidate.selection_eligible,
             "status": "failed" if candidate_failed or len(scores) != len(folds) else "completed",
             "folds": fold_results,
         }
@@ -397,7 +447,8 @@ def _run_kind_selection(
         }
 
     completed.sort(key=lambda item: (float(item["mean_score"]), -float(item["std_score"])), reverse=True)
-    best_summary = completed[0]
+    eligible_completed = [candidate for candidate in completed if candidate.get("selection_eligible", True)]
+    best_summary = (eligible_completed or completed)[0]
     best_candidate = next(candidate for candidate in candidates if candidate.name == best_summary["name"])
 
     print(f"[{kind}] selected {best_candidate.name} ({metric}={best_summary['mean_score']:.4f})")
@@ -523,6 +574,7 @@ def run_training_process(
             "score": _metric_score(ranked[0][1], metric),
             "metric": metric,
         }
+    summary["final_metric_writeup"] = _final_metric_writeup(summary)
 
     save_json(_json_safe(summary), output_dir / "training_summary.json")
     return summary

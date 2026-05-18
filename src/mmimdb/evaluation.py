@@ -125,7 +125,12 @@ def tune_thresholds(
     metric: str = "macro_f1",
     strategy: str = "global",
     thresholds: np.ndarray | None = None,
+    threshold_min: float = 0.05,
+    threshold_max: float = 0.95,
+    threshold_steps: int = 19,
 ) -> tuple[float | np.ndarray, dict]:
+    if thresholds is None:
+        thresholds = np.linspace(float(threshold_min), float(threshold_max), int(threshold_steps))
     strategy = strategy.lower()
     if strategy == "global":
         return tune_global_threshold(y_true, y_prob, metric=metric, thresholds=thresholds)

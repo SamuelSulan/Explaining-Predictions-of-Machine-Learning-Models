@@ -30,6 +30,7 @@ Controls the one-command training/model-selection workflow:
 - `training.classic.enabled` and `training.neural.enabled`: allow either model family to be skipped.
 - `training.<family>.final_only`: when `true`, skip CV/model selection for that family and train the first configured candidate directly. This is enabled for classic ML by default because the scikit-learn pipeline is CPU-bound and repeated folds are slow in Colab.
 - `training.<family>.candidates`: explicit candidate list. Each candidate has a `name` and a flat `params` map that overrides fields from `ClassicConfig` or `NeuralConfig`.
+- `training.<family>.candidates[].selection_eligible`: when `false`, the candidate is evaluated and reported but cannot be selected for the final model. This is used for text-only and image-only ablations.
 - `training.<family>.grid`: optional Cartesian grid alternative. Each key is a config field and each value is a list of values to try.
 
 The selected candidate is final-trained with the original train/validation split so thresholds and neural early stopping are still tuned without touching the test split. Full runs update separate best-model registry files for classic ML and neural models, comparing the new validation metric against any existing saved best model of the same family. Limited smoke runs do not update the registry.
@@ -70,10 +71,16 @@ Controls the neural multimodal model:
 - BiGRU-attention settings: `text_rnn_hidden_dim`, `text_rnn_layers`, `text_rnn_dropout`, and `text_attention_dim`,
 - Transformer settings: `text_transformer_layers`, `text_transformer_heads`, `text_transformer_ff_dim`, and `text_transformer_dropout`,
 - frozen/unfrozen pretrained image branch,
+- `modality`: `multimodal`, `text_only`, or `image_only` for ablation runs,
 - batch size, epochs, optimizer settings,
+- optional `scheduler: plateau` to reduce learning rate when validation macro F1 stops improving,
+- optional `loss: focal` with `focal_gamma` and `pos_weight_clip` for rare-label experiments,
 - early stopping and threshold metric.
 - `neural.threshold_strategy`: `global` or `per_label`.
+- `threshold_min`, `threshold_max`, and `threshold_steps`: threshold-search grid; the default uses a finer 0.01-0.99 grid.
 - `neural.enable_label_correlation`: experimental residual label-correlation head over the 23 logits.
+
+The default neural candidate set is intentionally compact: the previous best Transformer+GMU+ResNet18 setup, a plateau-scheduler variant, an unfrozen EfficientNet-B0 variant, text-only/image-only ablations, and a focal-loss variant. The ablations are useful for analysis but are not final-selection eligible.
 
 ## XAI
 
