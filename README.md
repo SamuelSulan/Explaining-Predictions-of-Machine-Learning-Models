@@ -10,6 +10,34 @@ The dataset, trained model checkpoints, and generated reports/figures are intent
 
 Final comparison models are multimodal. Single-modality models are allowed only as baselines or ablations.
 
+## Dataset
+
+Download MM-IMDb from Kaggle:
+
+- [johnarevalo/mmimdb](https://www.kaggle.com/datasets/johnarevalo/mmimdb/data)
+
+After downloading, put the files in this layout:
+
+```text
+dataset/
+  data/
+    multimodal_imdb.hdf5
+    metadata.npy
+  Article about dataset and how was it used.pdf
+```
+
+The HDF5 and metadata files are required. The PDF is used only when regenerating the technical dataset report.
+
+If you use the Kaggle CLI, first configure your Kaggle API token, then run:
+
+```powershell
+python -m pip install kaggle
+kaggle datasets download -d johnarevalo/mmimdb -p dataset\_kaggle_download --unzip
+New-Item -ItemType Directory -Force dataset\data
+Move-Item dataset\_kaggle_download\multimodal_imdb.hdf5 dataset\data\
+Move-Item dataset\_kaggle_download\metadata.npy dataset\data\
+```
+
 ## Environment
 
 Create and activate the conda environment:
