@@ -145,7 +145,7 @@ Model:
 - text: reconstructed plot TF-IDF
 - image: reversible poster color/thumbnail descriptors
 - fusion: concatenated features
-- classifier: ClassifierChain Logistic Regression by default, with One-vs-Rest still available by config
+- classifier: One-vs-Rest `SGDClassifier(loss="log_loss")` by default for faster CPU training, with Logistic Regression and ClassifierChain still available by config
 - thresholds: per-label validation-tuned thresholds by default
 
 Smoke test:
@@ -216,7 +216,7 @@ Research summary:
 
 Implemented explanation methods:
 
-- Classic multimodal Logistic Regression:
+- Classic multimodal linear classifier:
   - linear TF-IDF word/ngram contributions
   - linear poster descriptor contributions
   - classifier-chain label dependency contributions when enabled

@@ -47,6 +47,8 @@ Controls the classic multimodal baseline:
 
 - TF-IDF vocabulary size and n-gram range.
 - Poster descriptor size.
+- `classic.estimator`: `sgd` for the faster default linear classifier or `logistic` for Logistic Regression.
+- SGDClassifier `loss`, `penalty`, `alpha`, `max_iter`, `tol`, and class weighting. Keep `sgd_loss: log_loss` or `modified_huber` when threshold tuning needs probabilities.
 - Logistic Regression iteration count.
 - Logistic Regression `C`, `penalty`, `solver`, optional `l1_ratio`, and class weighting.
 - Threshold tuning metric.

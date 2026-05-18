@@ -29,29 +29,30 @@ training:
   classic:
     enabled: true
     candidates:
-      - name: classic_chain_bigram_c1
+      - name: classic_ovr_sgd_unigram_10k
         params:
-          classifier: classifier_chain
-          text_max_features: 30000
-          text_ngram_min: 1
-          text_ngram_max: 2
-          logistic_c: 1.0
-          logistic_penalty: l2
-      - name: classic_ovr_bigram_c1
-        params:
+          estimator: sgd
           classifier: ovr
-          text_max_features: 30000
-          text_ngram_min: 1
-          text_ngram_max: 2
-          logistic_c: 1.0
-          logistic_penalty: l2
-      - name: classic_chain_unigram_c05
-        params:
-          classifier: classifier_chain
-          text_max_features: 20000
+          text_max_features: 10000
           text_ngram_min: 1
           text_ngram_max: 1
-          logistic_c: 0.5
+          text_min_df: 3
+          sgd_loss: log_loss
+          sgd_penalty: l2
+          sgd_alpha: 0.00001
+          sgd_max_iter: 1000
+          sgd_tol: 0.001
+      - name: classic_ovr_logreg_unigram_10k
+        params:
+          estimator: logistic
+          classifier: ovr
+          text_max_features: 10000
+          text_ngram_min: 1
+          text_ngram_max: 1
+          text_min_df: 3
+          logistic_solver: liblinear
+          logistic_max_iter: 2000
+          logistic_c: 1.0
           logistic_penalty: l2
   neural:
     enabled: true
@@ -91,22 +92,29 @@ image:
   caffe_bgr_mean: [103.939, 116.779, 123.68]
 
 classic:
-  model_name: classic_multimodal_logreg
-  text_max_features: 30000
+  model_name: classic_multimodal_sgd
+  text_max_features: 10000
   text_ngram_min: 1
-  text_ngram_max: 2
-  text_min_df: 2
+  text_ngram_max: 1
+  text_min_df: 3
   image_hist_bins: 16
   image_thumbnail_size: [32, 20]
-  logistic_max_iter: 1000
+  logistic_max_iter: 2000
   logistic_c: 1.0
   logistic_penalty: l2
-  logistic_solver: saga
+  logistic_solver: liblinear
   logistic_l1_ratio: null
   logistic_class_weight: balanced
+  estimator: sgd
+  sgd_loss: log_loss
+  sgd_penalty: l2
+  sgd_alpha: 0.00001
+  sgd_max_iter: 1000
+  sgd_tol: 0.001
+  sgd_class_weight: balanced
   threshold_metric: macro_f1
   threshold_strategy: per_label
-  classifier: classifier_chain
+  classifier: ovr
   chain_order: null
   random_state: 42
 

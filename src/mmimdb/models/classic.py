@@ -12,6 +12,7 @@ from scipy import sparse
 from sklearn.base import BaseEstimator, ClassifierMixin, clone
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.linear_model import LogisticRegression
+from sklearn.linear_model import SGDClassifier
 from sklearn.multiclass import OneVsRestClassifier
 from sklearn.multioutput import ClassifierChain
 from sklearn.preprocessing import StandardScaler
@@ -88,6 +89,13 @@ class ClassicConfig:
     logistic_solver: str = "saga"
     logistic_l1_ratio: float | None = None
     logistic_class_weight: str | None = "balanced"
+    estimator: str = "logistic"
+    sgd_loss: str = "log_loss"
+    sgd_penalty: str = "l2"
+    sgd_alpha: float = 1e-5
+    sgd_max_iter: int = 1000
+    sgd_tol: float = 1e-3
+    sgd_class_weight: str | None = "balanced"
     threshold_metric: str = "macro_f1"
     threshold_strategy: str = "per_label"
     classifier: str = "classifier_chain"
@@ -116,6 +124,13 @@ class ClassicConfig:
                 None if raw.get("logistic_l1_ratio", None) is None else float(raw.get("logistic_l1_ratio"))
             ),
             logistic_class_weight=raw.get("logistic_class_weight", "balanced"),
+            estimator=str(raw.get("estimator", "logistic")),
+            sgd_loss=str(raw.get("sgd_loss", "log_loss")),
+            sgd_penalty=str(raw.get("sgd_penalty", "l2")),
+            sgd_alpha=float(raw.get("sgd_alpha", 1e-5)),
+            sgd_max_iter=int(raw.get("sgd_max_iter", 1000)),
+            sgd_tol=float(raw.get("sgd_tol", 1e-3)),
+            sgd_class_weight=raw.get("sgd_class_weight", "balanced"),
             threshold_metric=str(raw.get("threshold_metric", "macro_f1")),
             threshold_strategy=str(raw.get("threshold_strategy", "per_label")),
             classifier=str(raw.get("classifier", "classifier_chain")),
@@ -232,6 +247,39 @@ def make_feature_blocks(
     return x_train, x_val, x_test, artifacts
 
 
+def build_base_estimator(cfg: ClassicConfig):
+    estimator_name = cfg.estimator.lower()
+    if estimator_name in {"logistic", "logreg", "logistic_regression"}:
+        return LogisticRegression(
+            penalty=cfg.logistic_penalty,
+            C=cfg.logistic_c,
+            class_weight=cfg.logistic_class_weight,
+            max_iter=cfg.logistic_max_iter,
+            l1_ratio=cfg.logistic_l1_ratio if cfg.logistic_penalty == "elasticnet" else None,
+            solver=cfg.logistic_solver,
+            n_jobs=1,
+            random_state=cfg.random_state,
+            verbose=0,
+        )
+    if estimator_name in {"sgd", "sgd_classifier", "sgdclassifier"}:
+        if cfg.sgd_loss not in {"log_loss", "modified_huber"}:
+            raise ValueError(
+                "SGD classic estimator requires sgd_loss='log_loss' or "
+                "sgd_loss='modified_huber' so predict_proba is available."
+            )
+        return SGDClassifier(
+            loss=cfg.sgd_loss,
+            penalty=cfg.sgd_penalty,
+            alpha=cfg.sgd_alpha,
+            max_iter=cfg.sgd_max_iter,
+            tol=cfg.sgd_tol,
+            class_weight=cfg.sgd_class_weight,
+            random_state=cfg.random_state,
+            n_jobs=1,
+        )
+    raise ValueError(f"Unsupported classic estimator: {cfg.estimator}")
+
+
 def train_classic_multimodal(
     hdf5_path: str | Path,
     metadata_path: str | Path,
@@ -263,17 +311,7 @@ def train_classic_multimodal(
         cfg,
     )
 
-    base = LogisticRegression(
-        penalty=cfg.logistic_penalty,
-        C=cfg.logistic_c,
-        class_weight=cfg.logistic_class_weight,
-        max_iter=cfg.logistic_max_iter,
-        l1_ratio=cfg.logistic_l1_ratio if cfg.logistic_penalty == "elasticnet" else None,
-        solver=cfg.logistic_solver,
-        n_jobs=1,
-        random_state=cfg.random_state,
-        verbose=0,
-    )
+    base = build_base_estimator(cfg)
     classifier_name = cfg.classifier.lower()
     if classifier_name in {"ovr", "one_vs_rest", "one-vs-rest"}:
         classifier = OneVsRestClassifier(base, n_jobs=-1)
@@ -311,6 +349,7 @@ def train_classic_multimodal(
             "threshold": threshold_saved,
             "genre_labels": GENRE_LABELS,
             "config": cfg.__dict__,
+            "estimator": cfg.estimator,
             "feature_info": {
                 "text_feature_count": artifacts["text_feature_count"],
                 "image_feature_count": artifacts["image_feature_count"],
@@ -324,6 +363,7 @@ def train_classic_multimodal(
         "threshold": threshold_saved,
         "threshold_strategy": cfg.threshold_strategy,
         "classifier": cfg.classifier,
+        "estimator": cfg.estimator,
         "feature_info": {
             "text_feature_count": artifacts["text_feature_count"],
             "image_feature_count": artifacts["image_feature_count"],
