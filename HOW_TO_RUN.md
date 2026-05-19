@@ -34,9 +34,12 @@ scripts/xai_dashboard.py    Local dashboard for XAI reports and inference
 src/mmimdb/                 Project Python package
 ```
 
-Generated files in `dataset/` and `outputs/` are intentionally ignored by Git.
-This means a user who downloads the repository must download the dataset and
-train models locally, or copy already trained model files into the expected
+The local dataset files in `dataset/` and trained model checkpoint aliases under
+`outputs/models/best/` are not committed to Git. Some generated reports,
+figures, metrics, and XAI examples under `outputs/` are committed as project
+artifacts, and new local runs can create additional output folders. A user who
+downloads the repository must still download the dataset and train models
+locally, or copy already trained model files into the expected
 `outputs/models/best/` paths.
 
 ## 2. Install Python Requirements

@@ -7,7 +7,7 @@ The project needs explanations for final multimodal models trained on plot token
 ## Model Families In This Project
 
 - Classic multimodal model: TF-IDF text features plus reversible poster descriptors, trained with a linear classifier. The fast default is One-vs-Rest `SGDClassifier(loss="log_loss")`; Logistic Regression and ClassifierChain remain available as config options.
-- Neural multimodal model: token embedding text branch, pretrained ResNet image branch, and GMU-style gated fusion. The default text branch is BiGRU with attention; TextCNN and a lightweight Transformer encoder are retained as ablations.
+- Neural multimodal model: token embedding text branch, pretrained `torchvision` image branch, and GMU-style gated fusion. The base config still defaults to BiGRU-attention, but the active model-selection candidates in `configs/default.yaml` use the lightweight Transformer text encoder with ResNet18 or EfficientNet-B0 variants. TextCNN and BiGRU-attention remain supported by code and config.
 
 ## Recommended Methods
 
@@ -41,7 +41,7 @@ The models produce 23 probabilities per sample, so XAI should not be limited to 
 
 - `predicted`: explain every label whose probability crosses the saved threshold, optionally capped by `max_targets_per_sample`.
 - `top_k`: explain the top-k most probable labels.
-- `explicit`: explain only the genres passed through `target_genres` or `--target-genres`.
+- explicit targets: explain only the genres passed through `xai.target_genre`, `xai.target_genres`, `--target-genre`, or `--target-genres`.
 - `all`: explain all 23 labels when a comprehensive audit is needed.
 
 Each selected genre gets its own normal per-label explanation. The experimental set-level report additionally explains the selected genre group as a single target: classic models sum the selected linear outputs, while neural models attribute the sum of the selected logits. Keep this enabled for thesis experiments and disable it for faster routine debugging.

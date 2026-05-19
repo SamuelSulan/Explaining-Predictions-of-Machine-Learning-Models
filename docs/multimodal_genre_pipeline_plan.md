@@ -1,8 +1,8 @@
-# Multimodal IMDb Genre Classification Pipeline Plan
+# Multimodal IMDb Genre Classification Pipeline Status
 
 ## Summary
 
-Build a full Python-based AI pipeline for multilabel movie genre classification on `dataset/data/multimodal_imdb.hdf5`, using the closest available original modalities in the dataset:
+This document records the implemented pipeline for multilabel movie genre classification on `dataset/data/multimodal_imdb.hdf5`, using the closest available original modalities in the dataset:
 
 - `sequences`: tokenized movie plot text.
 - `images`: preprocessed movie poster tensors.
@@ -150,11 +150,12 @@ Text model candidates:
 - Lightweight attention pooling over token embeddings.
 - Optional DistilBERT/BERT route after reconstructing plot strings, but this is secondary because the dataset provides token IDs rather than original raw plot strings.
 
-Recommended text branch for the first final multimodal neural model:
+Implemented text branches:
 
 - Embedding layer initialized from `metadata["lookup"]`.
-- BiGRU with attention as the default non-CNN text encoder.
-- TextCNN and lightweight Transformer encoders as ablations.
+- BiGRU with attention as the base-config default.
+- Lightweight Transformer encoder used by the current configured model-selection candidates.
+- TextCNN retained as a supported ablation.
 - Mask-aware pooling.
 - Keep token-to-word mapping intact for later Integrated Gradients or token occlusion.
 
@@ -190,10 +191,11 @@ Classic ML candidates:
 - Fusion: concatenate text and image descriptors.
 - Classifier: One-vs-Rest Logistic Regression or Linear SVM.
 
-Recommended final classic ML model:
+Implemented classic ML model:
 
 - Multimodal TF-IDF text features plus image descriptors.
-- ClassifierChain Logistic Regression to model label co-occurrence, with One-vs-Rest Logistic Regression retained as a simpler baseline.
+- The current base config uses One-vs-Rest `SGDClassifier(loss="log_loss")` for faster CPU training.
+- Logistic Regression and ClassifierChain remain supported by config and have historical model-selection artifacts in `outputs/model_selection/`.
 - Single-modality text-only and image-only versions may be used as baselines/ablations.
 
 ## Final Models To Train
@@ -204,15 +206,15 @@ At minimum, train and compare two final multimodal models:
    - Text: TF-IDF from reconstructed plot tokens.
    - Image: handcrafted descriptors from restored poster images.
    - Fusion: feature concatenation.
-   - Classifier: ClassifierChain Logistic Regression, with One-vs-Rest as a baseline/ablation.
+   - Classifier: current base config uses One-vs-Rest SGD; Logistic Regression and ClassifierChain are supported options.
 
 2. Neural multimodal model:
-   - Text branch: embedding plus BiGRU-attention by default, with TextCNN/Transformer ablations.
-   - Image branch: pretrained CNN from `torchvision`.
-   - Fusion: concatenation or GMU-style gated fusion.
+   - Text branch: embedding plus Transformer for the active candidate list; BiGRU-attention and TextCNN remain supported.
+   - Image branch: pretrained ResNet18 or EfficientNet-B0 for the active candidate list; ResNet50 remains supported.
+   - Fusion: GMU-style gated fusion for the active multimodal candidates, with concatenation supported.
    - Output: 23 sigmoid logits.
-   - Loss: `BCEWithLogitsLoss`.
-   - Handle class imbalance with positive class weights or sampling, chosen based on validation behavior.
+   - Loss: `BCEWithLogitsLoss` or focal BCE with clipped positive weights.
+   - Per-label threshold tuning on validation data.
 
 Allowed baselines and ablations:
 
@@ -268,29 +270,30 @@ Save results:
 - model checkpoints
 - plots for training curves and label performance
 
-## XAI Readiness
+## XAI Implementation
 
-XAI methods are not implemented in the main pipeline now, but the design must support them later.
+XAI is implemented as a separate step after training and saved model registration.
 
 Text explanations:
 
-- Integrated Gradients on embeddings.
-- Token occlusion.
-- SHAP-style token attribution if feasible.
-- Attention visualization only if the model includes attention, and only as a supporting signal.
+- Layer Integrated Gradients on embeddings for neural models.
+- Token occlusion for neural models.
+- Linear TF-IDF feature contributions for classic models.
 
 Image explanations:
 
 - Grad-CAM on final convolutional layers.
 - Integrated Gradients on image pixels.
 - Occlusion sensitivity maps.
+- Classic poster descriptor heatmaps.
 
 Multimodal explanations:
 
 - Text-only vs image-only ablation.
-- Modality dropout or modality masking.
+- Modality masking/ablation.
 - Gated fusion weights if a GMU-style model is used.
 - Per-genre explanations for every selected predicted/top-k/explicit label, plus optional experimental label-set explanations.
+- Exact two-modality Shapley utilization from blank/text-only/image-only/both coalitions.
 
 The pipeline must save enough metadata to map explanations back to:
 
@@ -314,13 +317,13 @@ Sections:
 - Training protocol.
 - Evaluation protocol.
 - Limitations.
-- XAI readiness and planned future explainability methods.
+- XAI implementation and possible future explainability extensions.
 
 The document should include tables and plots generated from the actual dataset where useful.
 
 ## Code Structure
 
-Recommended project structure:
+Current project structure:
 
 ```text
 configs/
@@ -329,35 +332,48 @@ docs/
   multimodal_genre_pipeline_plan.md
   dataset_preprocessing_report.md
 notebooks/
-  01_data_inspection.ipynb
-  02_training_runner.ipynb
+  training_pipeline_neural_colab.ipynb
+  training_pipeline_classic_ml_colab.ipynb
+  best_model_test_inference_colab.ipynb
+  final_test_xai_all_models_colab.ipynb
 src/
   mmimdb/
     __init__.py
+    constants.py
     data.py
     splits.py
-    preprocessing.py
     image_utils.py
     text_utils.py
+    evaluation.py
+    final_analysis.py
+    model_registry.py
+    model_selection.py
+    perf.py
+    reporting.py
+    utils.py
+    xai.py
     models/
       classic.py
       neural.py
-      fusion.py
-    training.py
-    evaluation.py
-    reporting.py
 scripts/
   create_splits.py
   inspect_dataset.py
+  train_models.py
   train_classic.py
   train_neural.py
-  evaluate.py
+  run_xai.py
+  xai_dashboard.py
+  final_xai_analysis.py
+  run_from_notebook_example.py
   build_report.py
 outputs/
   splits/
   models/
+  model_selection/
   metrics/
   figures/
+  xai/
+  final_xai_analysis/
 ```
 
 ## References For Research Section

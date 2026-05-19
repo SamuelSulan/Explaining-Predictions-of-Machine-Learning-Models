@@ -274,13 +274,15 @@ The neural model uses a lazy HDF5-backed PyTorch dataset. Each training sample c
 - normalized poster image
 - 23-dimensional binary genre vector
 
-Default neural architecture:
+Base neural architecture in `configs/default.yaml`:
 
 - text encoder: BiGRU with attention
 - image encoder: pretrained ResNet18
 - fusion: Gated Multimodal Unit style fusion
 - output layer: 23 sigmoid outputs
 - loss: binary cross entropy with logits
+
+The current `training.neural.candidates` list overrides that base configuration for model selection and mainly uses lightweight Transformer text encoders with GMU fusion, ResNet18 or EfficientNet-B0 image branches, scheduler/loss variants, and text-only/image-only ablations.
 
 Supported text encoders:
 
@@ -322,8 +324,8 @@ Default tuning metric:
 
 Thresholds are searched from:
 
-- `0.05` to `0.95`
-- step size: `0.05`
+- `0.01` to `0.99`
+- `99` evenly spaced steps
 
 Per-label thresholding is useful because genre frequencies differ strongly. Rare genres may need different decision thresholds from common genres.
 
@@ -492,7 +494,7 @@ Important generated output files include:
 - `outputs/figures/label_lift_heatmap.png`
 - `outputs/figures/label_conditional_probability.png`
 
-Some currently saved training outputs are smoke-test runs with very small limits. These are useful for verifying that the pipeline works, but they should not be interpreted as final model performance.
+The repository contains both final/report artifacts and smaller smoke-test artifacts. Use the files under `outputs/final_xai_analysis/` and the best-model metrics under `outputs/models/best/` for the current final comparison; treat limited `--limit` outputs as pipeline checks only.
 
 For a deeper label relationship analysis, including scaled co-occurrence, lift, phi correlation, directional conditional probabilities, and strongest positive/negative label relationships, see:
 

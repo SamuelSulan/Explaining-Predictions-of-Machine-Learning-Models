@@ -12,7 +12,7 @@ and single-instance XAI analysis, see:
 
 - [HOW_TO_RUN.md](HOW_TO_RUN.md)
 
-The dataset, trained model checkpoints, and generated reports/figures are intentionally not tracked in Git. Place the MM-IMDb files in the paths above before running the pipeline; scripts will recreate `outputs/` locally.
+The dataset files and trained model checkpoints are intentionally not tracked in Git. Some generated reports, figures, metrics, and XAI examples under `outputs/` are committed as project artifacts, while new local runs may create additional ignored or untracked output folders. Place the MM-IMDb files in the paths above before running the pipeline.
 
 Final comparison models are multimodal. Single-modality models are allowed only as baselines or ablations.
 

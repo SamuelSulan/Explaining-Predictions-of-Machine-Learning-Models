@@ -97,13 +97,13 @@ The intended project split is a new iterative multilabel stratified split: 70% t
 
 ## Model Choices
 
-- Classic multimodal final model: reconstructed plot TF-IDF plus reversible poster descriptors, fused by concatenation, classified with ClassifierChain Logistic Regression by default and One-vs-Rest as a baseline option.
-- Neural multimodal final model: Word2Vec-initialized text encoder plus pretrained `torchvision` image encoder, fused by concatenation or GMU-style gated fusion, trained with 23 sigmoid outputs.
-- Recommended neural image branch starts with ResNet18/ResNet50 because these are stable pretrained CNNs and straightforward to explain later with Grad-CAM.
-- Recommended text branch starts with BiGRU-attention, with TextCNN and lightweight Transformer variants retained as ablations because token attributions can be mapped back to words from `ix_to_word`.
+- Classic multimodal model: reconstructed plot TF-IDF plus reversible poster descriptors, fused by concatenation. The current base config uses One-vs-Rest `SGDClassifier(loss="log_loss")` for faster CPU training; Logistic Regression and ClassifierChain remain supported options.
+- Neural multimodal model: Word2Vec-initialized text encoder plus pretrained `torchvision` image encoder, fused by concatenation or GMU-style gated fusion, trained with 23 sigmoid outputs.
+- The current configured neural candidate list focuses on Transformer text encoders with GMU fusion, ResNet18 or EfficientNet-B0 image branches, scheduler/loss variants, and text-only/image-only ablations.
+- BiGRU-attention and TextCNN remain supported text branches, and ResNet50 remains a supported image branch, but they are not in the active default candidate list.
 
 ## XAI Readiness
 
-- Text explanations can use Integrated Gradients, token occlusion, or SHAP-style token attribution.
-- Image explanations can use Grad-CAM, Integrated Gradients, or occlusion sensitivity.
-- Multimodal explanations can compare text-only, image-only, and fused predictions, and can inspect GMU gate values if gated fusion is used.
+- Implemented text explanations include Layer Integrated Gradients for embedding-based neural encoders, token occlusion, and linear TF-IDF feature contributions for the classic model.
+- Implemented image explanations include Integrated Gradients, Grad-CAM, neural image occlusion, and classic poster descriptor heatmaps.
+- Implemented multimodal explanations include modality ablation, two-modality Shapley utilization, and GMU gate summaries when gated fusion is used.

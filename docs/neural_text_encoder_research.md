@@ -1,6 +1,6 @@
 # Neural Text Encoder Research
 
-The original neural baseline used a Word2Vec-initialized TextCNN. The current default is changed to a Word2Vec-initialized BiGRU with attention because it better matches document-classification research while still fitting the existing MM-IMDb token representation and XAI workflow.
+The original neural baseline used a Word2Vec-initialized TextCNN. The code now supports three in-repo text encoders over the existing MM-IMDb token IDs: TextCNN, BiGRU-attention, and a lightweight Transformer. The base `neural` config still names BiGRU-attention as the standalone default, while the active model-selection candidates in `configs/default.yaml` currently use the lightweight Transformer because recent full runs selected Transformer-GMU variants.
 
 ## Researched Options
 
@@ -16,7 +16,7 @@ Implementation in this project:
 - mask-aware attention pooling
 - projection to the shared multimodal hidden size
 
-This is the recommended first replacement for TextCNN.
+This remains a supported replacement for TextCNN and the standalone base-config default.
 
 ### Lightweight Transformer Encoder
 
@@ -30,7 +30,7 @@ Implementation in this project:
 - PyTorch `TransformerEncoder`
 - mask-aware mean pooling
 
-This is useful as an ablation, but it may train more slowly than BiGRU-attention.
+This is the text encoder used by the current configured model-selection candidates.
 
 ### BERT / DistilBERT / Vision-Language Transformers
 
@@ -38,13 +38,16 @@ These are strong options for future work. They are not the new default because t
 
 ## Recommended Search
 
-The default neural model-selection candidates now compare:
+The current configured neural model-selection candidates compare:
 
-- BiGRU-attention + GMU + ResNet18
-- BiGRU-attention + concatenation + ResNet18
-- lightweight Transformer + GMU + ResNet18
+- lightweight Transformer + GMU + ResNet18 at learning rate `2e-4`
+- the same Transformer-GMU-ResNet18 setup with `ReduceLROnPlateau`
+- lightweight Transformer + GMU + unfrozen EfficientNet-B0 at learning rate `1e-4`
+- Transformer text-only ablation, marked `selection_eligible: false`
+- unfrozen EfficientNet-B0 image-only ablation, marked `selection_eligible: false`
+- Transformer-GMU-ResNet18 with focal loss and clipped positive weights
 
-ResNet50 and the original TextCNN channel/hidden-size variants remain supported by the code, but they are intentionally not active default candidates after being trained separately. The current default search is a small hyperparameter sweep over recurrent attention vs self-attention, gated vs concatenation fusion, learning rate, recurrent dropout, and hidden size.
+BiGRU-attention, TextCNN, ResNet50, concatenation fusion, and additional hidden-size variants remain supported by the code, but they are not in the active default candidate list. The current search is focused on Transformer text encoding, GMU fusion, ResNet18 versus EfficientNet-B0 image branches, scheduler/loss variants, and text-only/image-only ablations.
 
 ## References
 

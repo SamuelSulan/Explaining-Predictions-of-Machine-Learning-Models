@@ -8,10 +8,11 @@
 - The selection metric was macro F1.
 
 ### Classic model validation
-- Candidate models:
+- Historical persisted model-selection artifacts include:
   - `classic_ovr_logreg_unigram_10k`
   - `classic_ovr_sgd_unigram_10k`
-- The best classic validation candidate was `classic_ovr_logreg_unigram_10k`.
+- The saved best classic registry artifact was selected from `classic_ovr_logreg_unigram_10k`.
+- The current `configs/default.yaml` classic candidate list has since been simplified to `classic_ovr_sgd_fast_multimodal` with `training.classic.final_only: true` for faster CPU/Colab runs.
 - Cross-validation macro F1:
   - Logistic regression OvR: 0.411 mean macro F1.
   - SGD OvR: 0.241 mean macro F1.
@@ -23,8 +24,9 @@
   - hamming loss: 0.112
 
 ### Neural model validation
-- Candidate models included multimodal Transformer-GMU-ResNet18, Transformer-GMU-EfficientNet-B0, text-only Transformer, and image-only EfficientNet-B0 variants.
-- The best neural cross-validation candidate was `neural_transformer_gmu_resnet18_h256_lr2e4_focal`.
+- The current `configs/default.yaml` neural candidate list includes multimodal Transformer-GMU-ResNet18, Transformer-GMU-EfficientNet-B0, text-only Transformer, image-only EfficientNet-B0, scheduler, and focal-loss variants.
+- The latest `outputs/model_selection/training_summary.json` selected `neural_transformer_gmu_resnet18_h256_lr2e4_focal`, but it did not replace the registry because the existing saved best neural model had a higher validation macro F1.
+- The saved best neural registry artifact is `neural_concat_resnet18_h256`.
 - Cross-validation macro F1:
   - Transformer-GMU-ResNet18 with focal loss: 0.452 mean macro F1.
   - Transformer-GMU-ResNet18: 0.437 mean macro F1.
@@ -32,6 +34,8 @@
   - Transformer text-only ablation: 0.421 mean macro F1.
   - Transformer-GMU-EfficientNet-B0: 0.402 mean macro F1.
   - EfficientNet-B0 image-only ablation: 0.358 mean macro F1.
+- Saved best registry model CV macro F1:
+  - `neural_concat_resnet18_h256`: 0.465 mean macro F1.
 - Final saved neural validation metrics:
   - sample F1: 0.559
   - micro F1: 0.569

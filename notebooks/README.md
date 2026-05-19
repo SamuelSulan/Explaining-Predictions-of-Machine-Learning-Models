@@ -9,6 +9,7 @@ Colab-ready training notebooks:
 
 Colab-ready final evaluation/XAI notebook:
 
+- `notebooks/best_model_test_inference_colab.ipynb`
 - `notebooks/final_test_xai_all_models_colab.ipynb`
 
 Recommended workflow:
