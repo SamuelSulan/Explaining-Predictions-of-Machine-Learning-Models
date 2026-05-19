@@ -1,0 +1,517 @@
+{
+  "index": 24,
+  "target_genre": "label_set",
+  "target_genres": [
+    "War",
+    "Drama"
+  ],
+  "true_genres": [
+    "Drama",
+    "Film-Noir"
+  ],
+  "predicted_genres": [
+    "War",
+    "Drama"
+  ],
+  "probability": 0.6304025053977966,
+  "set_logit": 1.1403748989105225,
+  "top_probabilities": {
+    "War": 0.748893678188324,
+    "Action": 0.6149876117706299,
+    "Adventure": 0.6147804260253906,
+    "Drama": 0.5119113326072693,
+    "History": 0.30873870849609375
+  },
+  "threshold": [
+    0.30000001192092896,
+    0.5,
+    0.44999998807907104,
+    0.44999998807907104,
+    0.550000011920929,
+    0.6499999761581421,
+    0.800000011920929,
+    0.6499999761581421,
+    0.800000011920929,
+    0.6000000238418579,
+    0.800000011920929,
+    0.6000000238418579,
+    0.699999988079071,
+    0.699999988079071,
+    0.6499999761581421,
+    0.75,
+    0.8999999761581421,
+    0.699999988079071,
+    0.800000011920929,
+    0.8500000238418579,
+    0.800000011920929,
+    0.550000011920929,
+    0.699999988079071
+  ],
+  "target_selection": {
+    "policy": "predicted",
+    "target_indices": [
+      14,
+      0
+    ],
+    "target_genres": [
+      "War",
+      "Drama"
+    ],
+    "all_selected_indices": [
+      14,
+      0
+    ],
+    "all_selected_genres": [
+      "War",
+      "Drama"
+    ],
+    "predicted_indices": [
+      14,
+      0
+    ],
+    "predicted_genres": [
+      "War",
+      "Drama"
+    ],
+    "threshold": [
+      0.30000001192092896,
+      0.5,
+      0.44999998807907104,
+      0.44999998807907104,
+      0.550000011920929,
+      0.6499999761581421,
+      0.800000011920929,
+      0.6499999761581421,
+      0.800000011920929,
+      0.6000000238418579,
+      0.800000011920929,
+      0.6000000238418579,
+      0.699999988079071,
+      0.699999988079071,
+      0.6499999761581421,
+      0.75,
+      0.8999999761581421,
+      0.699999988079071,
+      0.800000011920929,
+      0.8500000238418579,
+      0.800000011920929,
+      0.550000011920929,
+      0.699999988079071
+    ],
+    "max_targets_per_sample": 3
+  },
+  "methods": [
+    "experimental_set_level_attribution",
+    "LayerIntegratedGradients_text_embedding",
+    "IntegratedGradients_image_pixels",
+    "GradCAM_image_branch",
+    "modality_shapley",
+    "modality_ablation",
+    "experimental_label_correlation_head"
+  ],
+  "top_tokens": [
+    {
+      "position": 55,
+      "token": "war",
+      "attribution": 7.125397682189941
+    },
+    {
+      "position": 12,
+      "token": "thriller",
+      "attribution": -1.7876009941101074
+    },
+    {
+      "position": 73,
+      "token": "leader",
+      "attribution": 1.1848207712173462
+    },
+    {
+      "position": 58,
+      "token": "suddenly",
+      "attribution": -1.0851774215698242
+    },
+    {
+      "position": 47,
+      "token": "handguns",
+      "attribution": 0.98678058385849
+    },
+    {
+      "position": 126,
+      "token": "testimony",
+      "attribution": 0.9065179824829102
+    },
+    {
+      "position": 110,
+      "token": "find",
+      "attribution": -0.8910448551177979
+    },
+    {
+      "position": 78,
+      "token": "loading",
+      "attribution": 0.7843586206436157
+    },
+    {
+      "position": 113,
+      "token": "solve",
+      "attribution": -0.7469612956047058
+    },
+    {
+      "position": 59,
+      "token": "someone",
+      "attribution": -0.7371412515640259
+    },
+    {
+      "position": 125,
+      "token": "a",
+      "attribution": -0.7269952297210693
+    },
+    {
+      "position": 46,
+      "token": "loading",
+      "attribution": 0.7218890190124512
+    }
+  ],
+  "gate_mean": null,
+  "gate_std": null,
+  "config": {
+    "model_name": "neural_concat_resnet18_h256",
+    "modality": "multimodal",
+    "text_encoder": "textcnn",
+    "image_encoder": "resnet18",
+    "fusion": "concat",
+    "hidden_dim": 256,
+    "text_cnn_channels": 128,
+    "text_cnn_kernels": [
+      3,
+      4,
+      5
+    ],
+    "text_rnn_hidden_dim": 128,
+    "text_rnn_layers": 1,
+    "text_rnn_dropout": 0.2,
+    "text_attention_dim": 128,
+    "text_transformer_layers": 2,
+    "text_transformer_heads": 6,
+    "text_transformer_ff_dim": 512,
+    "text_transformer_dropout": 0.1,
+    "pretrained_image": false,
+    "freeze_image_backbone": true,
+    "batch_size": 16,
+    "epochs": 10,
+    "learning_rate": 0.0001,
+    "weight_decay": 0.01,
+    "num_workers": 0,
+    "patience": 3,
+    "threshold_metric": "macro_f1",
+    "threshold_strategy": "per_label",
+    "threshold_min": 0.01,
+    "threshold_max": 0.99,
+    "threshold_steps": 99,
+    "loss": "bce",
+    "focal_gamma": 2.0,
+    "pos_weight_clip": null,
+    "scheduler": "none",
+    "scheduler_factor": 0.5,
+    "scheduler_patience": 1,
+    "min_learning_rate": 1e-06,
+    "enable_label_correlation": true,
+    "max_length": 512,
+    "input_size": 224,
+    "freeze_embeddings": false
+  },
+  "performance": {
+    "measurements": [
+      {
+        "name": "neural_set_text_layer_integrated_gradients_idx_24",
+        "wall_time_s": 0.1427249920000122,
+        "process_cpu_time_s": 0.07669059400000577,
+        "process_cpu_util_percent": 53.73312194685512,
+        "rss_start_mb": 2008.2578125,
+        "rss_end_mb": 2083.78515625,
+        "rss_delta_mb": 75.52734375,
+        "rss_peak_mb": 2083.78515625,
+        "cuda_start": {
+          "cuda_available": true,
+          "cuda_device": "NVIDIA A100-SXM4-40GB",
+          "cuda_allocated_mb": 355.6923828125,
+          "cuda_reserved_mb": 712.0,
+          "cuda_peak_allocated_mb": 355.6923828125,
+          "cuda_peak_reserved_mb": 712.0
+        },
+        "cuda_end": {
+          "cuda_available": true,
+          "cuda_device": "NVIDIA A100-SXM4-40GB",
+          "cuda_allocated_mb": 355.6923828125,
+          "cuda_reserved_mb": 712.0,
+          "cuda_peak_allocated_mb": 422.7158203125,
+          "cuda_peak_reserved_mb": 712.0
+        }
+      },
+      {
+        "name": "neural_set_text_visualization_idx_24",
+        "wall_time_s": 0.18562534700004107,
+        "process_cpu_time_s": 0.18071435200000252,
+        "process_cpu_util_percent": 97.35435107359693,
+        "rss_start_mb": 2083.8515625,
+        "rss_end_mb": 2090.2265625,
+        "rss_delta_mb": 6.375,
+        "rss_peak_mb": 2090.2265625,
+        "cuda_start": {
+          "cuda_available": true,
+          "cuda_device": "NVIDIA A100-SXM4-40GB",
+          "cuda_allocated_mb": 355.6923828125,
+          "cuda_reserved_mb": 712.0,
+          "cuda_peak_allocated_mb": 355.6923828125,
+          "cuda_peak_reserved_mb": 712.0
+        },
+        "cuda_end": {
+          "cuda_available": true,
+          "cuda_device": "NVIDIA A100-SXM4-40GB",
+          "cuda_allocated_mb": 355.6923828125,
+          "cuda_reserved_mb": 712.0,
+          "cuda_peak_allocated_mb": 355.6923828125,
+          "cuda_peak_reserved_mb": 712.0
+        }
+      },
+      {
+        "name": "neural_set_image_integrated_gradients_idx_24",
+        "wall_time_s": 0.011789578000048095,
+        "process_cpu_time_s": 0.011849397000005979,
+        "process_cpu_util_percent": 100.50738881372716,
+        "rss_start_mb": 2090.265625,
+        "rss_end_mb": 2090.3046875,
+        "rss_delta_mb": 0.0390625,
+        "rss_peak_mb": 2090.30078125,
+        "cuda_start": {
+          "cuda_available": true,
+          "cuda_device": "NVIDIA A100-SXM4-40GB",
+          "cuda_allocated_mb": 355.6923828125,
+          "cuda_reserved_mb": 712.0,
+          "cuda_peak_allocated_mb": 355.6923828125,
+          "cuda_peak_reserved_mb": 712.0
+        },
+        "cuda_end": {
+          "cuda_available": true,
+          "cuda_device": "NVIDIA A100-SXM4-40GB",
+          "cuda_allocated_mb": 355.6923828125,
+          "cuda_reserved_mb": 712.0,
+          "cuda_peak_allocated_mb": 551.693359375,
+          "cuda_peak_reserved_mb": 712.0
+        }
+      },
+      {
+        "name": "neural_set_image_ig_visualization_idx_24",
+        "wall_time_s": 0.024351447999947595,
+        "process_cpu_time_s": 0.018892178999998066,
+        "process_cpu_util_percent": 77.58133725780382,
+        "rss_start_mb": 2090.33203125,
+        "rss_end_mb": 2090.39453125,
+        "rss_delta_mb": 0.0625,
+        "rss_peak_mb": 2090.39453125,
+        "cuda_start": {
+          "cuda_available": true,
+          "cuda_device": "NVIDIA A100-SXM4-40GB",
+          "cuda_allocated_mb": 355.6923828125,
+          "cuda_reserved_mb": 712.0,
+          "cuda_peak_allocated_mb": 355.6923828125,
+          "cuda_peak_reserved_mb": 712.0
+        },
+        "cuda_end": {
+          "cuda_available": true,
+          "cuda_device": "NVIDIA A100-SXM4-40GB",
+          "cuda_allocated_mb": 355.6923828125,
+          "cuda_reserved_mb": 712.0,
+          "cuda_peak_allocated_mb": 355.6923828125,
+          "cuda_peak_reserved_mb": 712.0
+        }
+      },
+      {
+        "name": "neural_set_image_gradcam_idx_24",
+        "wall_time_s": 0.01137428100003035,
+        "process_cpu_time_s": 0.011433615000001396,
+        "process_cpu_util_percent": 100.52165055506266,
+        "rss_start_mb": 2090.4453125,
+        "rss_end_mb": 2090.4453125,
+        "rss_delta_mb": 0.0,
+        "rss_peak_mb": 2090.44921875,
+        "cuda_start": {
+          "cuda_available": true,
+          "cuda_device": "NVIDIA A100-SXM4-40GB",
+          "cuda_allocated_mb": 355.6923828125,
+          "cuda_reserved_mb": 712.0,
+          "cuda_peak_allocated_mb": 355.6923828125,
+          "cuda_peak_reserved_mb": 712.0
+        },
+        "cuda_end": {
+          "cuda_available": true,
+          "cuda_device": "NVIDIA A100-SXM4-40GB",
+          "cuda_allocated_mb": 355.6923828125,
+          "cuda_reserved_mb": 712.0,
+          "cuda_peak_allocated_mb": 358.20556640625,
+          "cuda_peak_reserved_mb": 712.0
+        }
+      },
+      {
+        "name": "neural_set_image_gradcam_visualization_idx_24",
+        "wall_time_s": 0.030212961999950494,
+        "process_cpu_time_s": 0.02410563899999829,
+        "process_cpu_util_percent": 79.78575222130749,
+        "rss_start_mb": 2090.4453125,
+        "rss_end_mb": 2090.44921875,
+        "rss_delta_mb": 0.00390625,
+        "rss_peak_mb": 2090.453125,
+        "cuda_start": {
+          "cuda_available": true,
+          "cuda_device": "NVIDIA A100-SXM4-40GB",
+          "cuda_allocated_mb": 355.6923828125,
+          "cuda_reserved_mb": 712.0,
+          "cuda_peak_allocated_mb": 355.6923828125,
+          "cuda_peak_reserved_mb": 712.0
+        },
+        "cuda_end": {
+          "cuda_available": true,
+          "cuda_device": "NVIDIA A100-SXM4-40GB",
+          "cuda_allocated_mb": 355.6923828125,
+          "cuda_reserved_mb": 712.0,
+          "cuda_peak_allocated_mb": 355.6923828125,
+          "cuda_peak_reserved_mb": 712.0
+        }
+      },
+      {
+        "name": "neural_set_modality_shapley_idx_24",
+        "wall_time_s": 0.01744637900003454,
+        "process_cpu_time_s": 0.017520113000003334,
+        "process_cpu_util_percent": 100.4226321116184,
+        "rss_start_mb": 2090.44921875,
+        "rss_end_mb": 2090.484375,
+        "rss_delta_mb": 0.03515625,
+        "rss_peak_mb": 2090.48828125,
+        "cuda_start": {
+          "cuda_available": true,
+          "cuda_device": "NVIDIA A100-SXM4-40GB",
+          "cuda_allocated_mb": 355.6923828125,
+          "cuda_reserved_mb": 712.0,
+          "cuda_peak_allocated_mb": 355.6923828125,
+          "cuda_peak_reserved_mb": 712.0
+        },
+        "cuda_end": {
+          "cuda_available": true,
+          "cuda_device": "NVIDIA A100-SXM4-40GB",
+          "cuda_allocated_mb": 355.6923828125,
+          "cuda_reserved_mb": 712.0,
+          "cuda_peak_allocated_mb": 365.9716796875,
+          "cuda_peak_reserved_mb": 712.0
+        }
+      },
+      {
+        "name": "neural_set_modality_shapley_visualization_idx_24",
+        "wall_time_s": 0.12850743700005296,
+        "process_cpu_time_s": 0.12370256799999879,
+        "process_cpu_util_percent": 96.26101872994931,
+        "rss_start_mb": 2090.49609375,
+        "rss_end_mb": 2090.671875,
+        "rss_delta_mb": 0.17578125,
+        "rss_peak_mb": 2090.671875,
+        "cuda_start": {
+          "cuda_available": true,
+          "cuda_device": "NVIDIA A100-SXM4-40GB",
+          "cuda_allocated_mb": 355.6923828125,
+          "cuda_reserved_mb": 712.0,
+          "cuda_peak_allocated_mb": 355.6923828125,
+          "cuda_peak_reserved_mb": 712.0
+        },
+        "cuda_end": {
+          "cuda_available": true,
+          "cuda_device": "NVIDIA A100-SXM4-40GB",
+          "cuda_allocated_mb": 355.6923828125,
+          "cuda_reserved_mb": 712.0,
+          "cuda_peak_allocated_mb": 355.6923828125,
+          "cuda_peak_reserved_mb": 712.0
+        }
+      },
+      {
+        "name": "neural_set_modality_ablation_idx_24",
+        "wall_time_s": 0.017786740000019563,
+        "process_cpu_time_s": 0.017891263000002766,
+        "process_cpu_util_percent": 100.58764562805263,
+        "rss_start_mb": 2090.68359375,
+        "rss_end_mb": 2090.703125,
+        "rss_delta_mb": 0.01953125,
+        "rss_peak_mb": 2090.70703125,
+        "cuda_start": {
+          "cuda_available": true,
+          "cuda_device": "NVIDIA A100-SXM4-40GB",
+          "cuda_allocated_mb": 355.6923828125,
+          "cuda_reserved_mb": 712.0,
+          "cuda_peak_allocated_mb": 355.6923828125,
+          "cuda_peak_reserved_mb": 712.0
+        },
+        "cuda_end": {
+          "cuda_available": true,
+          "cuda_device": "NVIDIA A100-SXM4-40GB",
+          "cuda_allocated_mb": 355.6923828125,
+          "cuda_reserved_mb": 712.0,
+          "cuda_peak_allocated_mb": 365.97119140625,
+          "cuda_peak_reserved_mb": 712.0
+        }
+      }
+    ],
+    "summary": {
+      "count": 9,
+      "total_wall_time_s": 0.5698191640001369,
+      "mean_wall_time_s": 0.06331324044445966,
+      "total_process_cpu_time_s": 0.4827997200000169,
+      "mean_process_cpu_util_percent": 89.63943314866373,
+      "max_rss_peak_mb": 2090.70703125
+    }
+  },
+  "modality_shapley": {
+    "method": "two_modality_shapley",
+    "probability": {
+      "values": {
+        "blank": 0.2896866500377655,
+        "text_only": 0.7527533769607544,
+        "image_only": 0.2037595957517624,
+        "both": 0.6304025053977966
+      },
+      "shapley": {
+        "text": 0.44485481828451157,
+        "image": -0.10413896292448044,
+        "interaction": -0.03642381727695465,
+        "blank_to_both_delta": 0.34071585536003113,
+        "abs_total": 0.548993781208992,
+        "text_utilization": 0.8103093942245648,
+        "image_utilization": 0.18969060577543523
+      }
+    },
+    "logit": {
+      "values": {
+        "blank": -2.2199440002441406,
+        "text_only": 2.303523063659668,
+        "image_only": -3.206961154937744,
+        "both": 1.1403748989105225
+      },
+      "shapley": {
+        "text": 4.435401558876038,
+        "image": -1.0750826597213745,
+        "interaction": -0.176131010055542,
+        "blank_to_both_delta": 3.360318899154663,
+        "abs_total": 5.510484218597412,
+        "text_utilization": 0.804902324900403,
+        "image_utilization": 0.195097675099597
+      }
+    }
+  },
+  "modality_ablation": {
+    "both": 0.6304025053977966,
+    "no_text": 0.2037595957517624,
+    "no_image": 0.7527533769607544,
+    "blank": 0.2896866500377655,
+    "text_delta": 0.42664290964603424,
+    "image_delta": -0.12235087156295776,
+    "both_logit": 1.1403748989105225,
+    "no_text_logit": -3.206961154937744,
+    "no_image_logit": 2.303523063659668,
+    "blank_logit": -2.2199440002441406
+  }
+}

@@ -1,0 +1,3622 @@
+{
+  "index": 4033,
+  "target_genre": "Romance",
+  "target_genres": [
+    "Romance"
+  ],
+  "true_genres": [
+    "Drama",
+    "Romance",
+    "Biography"
+  ],
+  "predicted_genres": [
+    "Drama",
+    "Romance"
+  ],
+  "probability": 0.6543560028076172,
+  "top_probabilities": {
+    "Drama": 0.8571102023124695,
+    "Romance": 0.6543560028076172,
+    "Comedy": 0.44629979133605957,
+    "Crime": 0.3224959671497345,
+    "Biography": 0.14367902278900146
+  },
+  "threshold": [
+    0.30000001192092896,
+    0.5,
+    0.44999998807907104,
+    0.44999998807907104,
+    0.550000011920929,
+    0.6499999761581421,
+    0.800000011920929,
+    0.6499999761581421,
+    0.800000011920929,
+    0.6000000238418579,
+    0.800000011920929,
+    0.6000000238418579,
+    0.699999988079071,
+    0.699999988079071,
+    0.6499999761581421,
+    0.75,
+    0.8999999761581421,
+    0.699999988079071,
+    0.800000011920929,
+    0.8500000238418579,
+    0.800000011920929,
+    0.550000011920929,
+    0.699999988079071
+  ],
+  "target_selection": {
+    "policy": "predicted",
+    "target_indices": [
+      0,
+      2
+    ],
+    "target_genres": [
+      "Drama",
+      "Romance"
+    ],
+    "all_selected_indices": [
+      0,
+      2
+    ],
+    "all_selected_genres": [
+      "Drama",
+      "Romance"
+    ],
+    "predicted_indices": [
+      0,
+      2
+    ],
+    "predicted_genres": [
+      "Drama",
+      "Romance"
+    ],
+    "threshold": [
+      0.30000001192092896,
+      0.5,
+      0.44999998807907104,
+      0.44999998807907104,
+      0.550000011920929,
+      0.6499999761581421,
+      0.800000011920929,
+      0.6499999761581421,
+      0.800000011920929,
+      0.6000000238418579,
+      0.800000011920929,
+      0.6000000238418579,
+      0.699999988079071,
+      0.699999988079071,
+      0.6499999761581421,
+      0.75,
+      0.8999999761581421,
+      0.699999988079071,
+      0.800000011920929,
+      0.8500000238418579,
+      0.800000011920929,
+      0.550000011920929,
+      0.699999988079071
+    ],
+    "max_targets_per_sample": 3
+  },
+  "methods": [
+    "LayerIntegratedGradients_text_embedding",
+    "token_occlusion",
+    "IntegratedGradients_image_pixels",
+    "GradCAM_image_branch",
+    "image_occlusion_sensitivity",
+    "modality_shapley",
+    "modality_ablation",
+    "experimental_label_correlation_head"
+  ],
+  "top_tokens": [
+    {
+      "position": 176,
+      "token": "love",
+      "attribution": 1.1414562463760376
+    },
+    {
+      "position": 301,
+      "token": "power",
+      "attribution": -0.6542069911956787
+    },
+    {
+      "position": 187,
+      "token": "james",
+      "attribution": 0.4877488613128662
+    },
+    {
+      "position": 15,
+      "token": "how",
+      "attribution": -0.40805280208587646
+    },
+    {
+      "position": 209,
+      "token": "tommy",
+      "attribution": 0.31777462363243103
+    },
+    {
+      "position": 2,
+      "token": "elderly",
+      "attribution": -0.2802310287952423
+    },
+    {
+      "position": 338,
+      "token": "beliefs",
+      "attribution": 0.2729264199733734
+    },
+    {
+      "position": 30,
+      "token": "british",
+      "attribution": 0.27256444096565247
+    },
+    {
+      "position": 31,
+      "token": "upbringing",
+      "attribution": -0.25714999437332153
+    },
+    {
+      "position": 10,
+      "token": "american",
+      "attribution": -0.24988840520381927
+    },
+    {
+      "position": 299,
+      "token": "struggle",
+      "attribution": -0.2487487941980362
+    },
+    {
+      "position": 315,
+      "token": "tyrannical",
+      "attribution": 0.2441571056842804
+    }
+  ],
+  "gate_mean": null,
+  "gate_std": null,
+  "config": {
+    "model_name": "neural_concat_resnet18_h256",
+    "modality": "multimodal",
+    "text_encoder": "textcnn",
+    "image_encoder": "resnet18",
+    "fusion": "concat",
+    "hidden_dim": 256,
+    "text_cnn_channels": 128,
+    "text_cnn_kernels": [
+      3,
+      4,
+      5
+    ],
+    "text_rnn_hidden_dim": 128,
+    "text_rnn_layers": 1,
+    "text_rnn_dropout": 0.2,
+    "text_attention_dim": 128,
+    "text_transformer_layers": 2,
+    "text_transformer_heads": 6,
+    "text_transformer_ff_dim": 512,
+    "text_transformer_dropout": 0.1,
+    "pretrained_image": false,
+    "freeze_image_backbone": true,
+    "batch_size": 16,
+    "epochs": 10,
+    "learning_rate": 0.0001,
+    "weight_decay": 0.01,
+    "num_workers": 0,
+    "patience": 3,
+    "threshold_metric": "macro_f1",
+    "threshold_strategy": "per_label",
+    "threshold_min": 0.01,
+    "threshold_max": 0.99,
+    "threshold_steps": 99,
+    "loss": "bce",
+    "focal_gamma": 2.0,
+    "pos_weight_clip": null,
+    "scheduler": "none",
+    "scheduler_factor": 0.5,
+    "scheduler_patience": 1,
+    "min_learning_rate": 1e-06,
+    "enable_label_correlation": true,
+    "max_length": 512,
+    "input_size": 224,
+    "freeze_embeddings": false
+  },
+  "performance": {
+    "measurements": [
+      {
+        "name": "neural_text_layer_integrated_gradients_idx_4033_Romance",
+        "wall_time_s": 0.018869942000037554,
+        "process_cpu_time_s": 0.018976784000003022,
+        "process_cpu_util_percent": 100.56620205809459,
+        "rss_start_mb": 2146.5703125,
+        "rss_end_mb": 2146.58203125,
+        "rss_delta_mb": 0.01171875,
+        "rss_peak_mb": 2146.58203125,
+        "cuda_start": {
+          "cuda_available": true,
+          "cuda_device": "NVIDIA A100-SXM4-40GB",
+          "cuda_allocated_mb": 355.6923828125,
+          "cuda_reserved_mb": 712.0,
+          "cuda_peak_allocated_mb": 355.6923828125,
+          "cuda_peak_reserved_mb": 712.0
+        },
+        "cuda_end": {
+          "cuda_available": true,
+          "cuda_device": "NVIDIA A100-SXM4-40GB",
+          "cuda_allocated_mb": 355.6923828125,
+          "cuda_reserved_mb": 712.0,
+          "cuda_peak_allocated_mb": 422.7158203125,
+          "cuda_peak_reserved_mb": 712.0
+        }
+      },
+      {
+        "name": "neural_text_visualization_idx_4033_Romance",
+        "wall_time_s": 0.20363131300007353,
+        "process_cpu_time_s": 0.199114797,
+        "process_cpu_util_percent": 97.78201302465112,
+        "rss_start_mb": 2146.61328125,
+        "rss_end_mb": 2150.25,
+        "rss_delta_mb": 3.63671875,
+        "rss_peak_mb": 2150.25390625,
+        "cuda_start": {
+          "cuda_available": true,
+          "cuda_device": "NVIDIA A100-SXM4-40GB",
+          "cuda_allocated_mb": 355.6923828125,
+          "cuda_reserved_mb": 712.0,
+          "cuda_peak_allocated_mb": 355.6923828125,
+          "cuda_peak_reserved_mb": 712.0
+        },
+        "cuda_end": {
+          "cuda_available": true,
+          "cuda_device": "NVIDIA A100-SXM4-40GB",
+          "cuda_allocated_mb": 355.6923828125,
+          "cuda_reserved_mb": 712.0,
+          "cuda_peak_allocated_mb": 355.6923828125,
+          "cuda_peak_reserved_mb": 712.0
+        }
+      },
+      {
+        "name": "neural_token_occlusion_idx_4033_Romance",
+        "wall_time_s": 0.07446659000004274,
+        "process_cpu_time_s": 0.07486570200000386,
+        "process_cpu_util_percent": 100.53596116051627,
+        "rss_start_mb": 2150.25390625,
+        "rss_end_mb": 2150.38671875,
+        "rss_delta_mb": 0.1328125,
+        "rss_peak_mb": 2150.37890625,
+        "cuda_start": {
+          "cuda_available": true,
+          "cuda_device": "NVIDIA A100-SXM4-40GB",
+          "cuda_allocated_mb": 355.6923828125,
+          "cuda_reserved_mb": 712.0,
+          "cuda_peak_allocated_mb": 355.6923828125,
+          "cuda_peak_reserved_mb": 712.0
+        },
+        "cuda_end": {
+          "cuda_available": true,
+          "cuda_device": "NVIDIA A100-SXM4-40GB",
+          "cuda_allocated_mb": 355.6923828125,
+          "cuda_reserved_mb": 712.0,
+          "cuda_peak_allocated_mb": 551.91455078125,
+          "cuda_peak_reserved_mb": 712.0
+        }
+      },
+      {
+        "name": "neural_token_occlusion_visualization_idx_4033_Romance",
+        "wall_time_s": 0.21486678099995515,
+        "process_cpu_time_s": 0.18797598800000515,
+        "process_cpu_util_percent": 87.48489977147486,
+        "rss_start_mb": 2150.3984375,
+        "rss_end_mb": 2154.12109375,
+        "rss_delta_mb": 3.72265625,
+        "rss_peak_mb": 2154.11328125,
+        "cuda_start": {
+          "cuda_available": true,
+          "cuda_device": "NVIDIA A100-SXM4-40GB",
+          "cuda_allocated_mb": 355.6923828125,
+          "cuda_reserved_mb": 712.0,
+          "cuda_peak_allocated_mb": 355.6923828125,
+          "cuda_peak_reserved_mb": 712.0
+        },
+        "cuda_end": {
+          "cuda_available": true,
+          "cuda_device": "NVIDIA A100-SXM4-40GB",
+          "cuda_allocated_mb": 355.6923828125,
+          "cuda_reserved_mb": 712.0,
+          "cuda_peak_allocated_mb": 355.6923828125,
+          "cuda_peak_reserved_mb": 712.0
+        }
+      },
+      {
+        "name": "neural_image_integrated_gradients_idx_4033_Romance",
+        "wall_time_s": 0.012669355999946674,
+        "process_cpu_time_s": 0.012731137999999476,
+        "process_cpu_util_percent": 100.48764909639496,
+        "rss_start_mb": 2154.16015625,
+        "rss_end_mb": 2154.21484375,
+        "rss_delta_mb": 0.0546875,
+        "rss_peak_mb": 2154.21484375,
+        "cuda_start": {
+          "cuda_available": true,
+          "cuda_device": "NVIDIA A100-SXM4-40GB",
+          "cuda_allocated_mb": 355.6923828125,
+          "cuda_reserved_mb": 712.0,
+          "cuda_peak_allocated_mb": 355.6923828125,
+          "cuda_peak_reserved_mb": 712.0
+        },
+        "cuda_end": {
+          "cuda_available": true,
+          "cuda_device": "NVIDIA A100-SXM4-40GB",
+          "cuda_allocated_mb": 355.6923828125,
+          "cuda_reserved_mb": 712.0,
+          "cuda_peak_allocated_mb": 551.69384765625,
+          "cuda_peak_reserved_mb": 712.0
+        }
+      },
+      {
+        "name": "neural_image_ig_visualization_idx_4033_Romance",
+        "wall_time_s": 0.03128777500000979,
+        "process_cpu_time_s": 0.02541975099999405,
+        "process_cpu_util_percent": 81.24499425090502,
+        "rss_start_mb": 2154.24609375,
+        "rss_end_mb": 2154.296875,
+        "rss_delta_mb": 0.05078125,
+        "rss_peak_mb": 2154.30078125,
+        "cuda_start": {
+          "cuda_available": true,
+          "cuda_device": "NVIDIA A100-SXM4-40GB",
+          "cuda_allocated_mb": 355.6923828125,
+          "cuda_reserved_mb": 712.0,
+          "cuda_peak_allocated_mb": 355.6923828125,
+          "cuda_peak_reserved_mb": 712.0
+        },
+        "cuda_end": {
+          "cuda_available": true,
+          "cuda_device": "NVIDIA A100-SXM4-40GB",
+          "cuda_allocated_mb": 355.6923828125,
+          "cuda_reserved_mb": 712.0,
+          "cuda_peak_allocated_mb": 355.6923828125,
+          "cuda_peak_reserved_mb": 712.0
+        }
+      },
+      {
+        "name": "neural_image_gradcam_idx_4033_Romance",
+        "wall_time_s": 0.013253864999910547,
+        "process_cpu_time_s": 0.013335976000000471,
+        "process_cpu_util_percent": 100.61952494680216,
+        "rss_start_mb": 2154.35546875,
+        "rss_end_mb": 2154.35546875,
+        "rss_delta_mb": 0.0,
+        "rss_peak_mb": 2154.359375,
+        "cuda_start": {
+          "cuda_available": true,
+          "cuda_device": "NVIDIA A100-SXM4-40GB",
+          "cuda_allocated_mb": 355.6923828125,
+          "cuda_reserved_mb": 712.0,
+          "cuda_peak_allocated_mb": 355.6923828125,
+          "cuda_peak_reserved_mb": 712.0
+        },
+        "cuda_end": {
+          "cuda_available": true,
+          "cuda_device": "NVIDIA A100-SXM4-40GB",
+          "cuda_allocated_mb": 355.6923828125,
+          "cuda_reserved_mb": 712.0,
+          "cuda_peak_allocated_mb": 358.20556640625,
+          "cuda_peak_reserved_mb": 712.0
+        }
+      },
+      {
+        "name": "neural_image_gradcam_visualization_idx_4033_Romance",
+        "wall_time_s": 0.03331724400004532,
+        "process_cpu_time_s": 0.02764371500000351,
+        "process_cpu_util_percent": 82.97119353559349,
+        "rss_start_mb": 2154.359375,
+        "rss_end_mb": 2154.359375,
+        "rss_delta_mb": 0.0,
+        "rss_peak_mb": 2154.36328125,
+        "cuda_start": {
+          "cuda_available": true,
+          "cuda_device": "NVIDIA A100-SXM4-40GB",
+          "cuda_allocated_mb": 355.6923828125,
+          "cuda_reserved_mb": 712.0,
+          "cuda_peak_allocated_mb": 355.6923828125,
+          "cuda_peak_reserved_mb": 712.0
+        },
+        "cuda_end": {
+          "cuda_available": true,
+          "cuda_device": "NVIDIA A100-SXM4-40GB",
+          "cuda_allocated_mb": 355.6923828125,
+          "cuda_reserved_mb": 712.0,
+          "cuda_peak_allocated_mb": 355.6923828125,
+          "cuda_peak_reserved_mb": 712.0
+        }
+      },
+      {
+        "name": "neural_image_occlusion_idx_4033_Romance",
+        "wall_time_s": 0.009785426999997071,
+        "process_cpu_time_s": 0.009856705999993665,
+        "process_cpu_util_percent": 100.72841992481895,
+        "rss_start_mb": 2154.359375,
+        "rss_end_mb": 2154.39453125,
+        "rss_delta_mb": 0.03515625,
+        "rss_peak_mb": 2154.3984375,
+        "cuda_start": {
+          "cuda_available": true,
+          "cuda_device": "NVIDIA A100-SXM4-40GB",
+          "cuda_allocated_mb": 355.6923828125,
+          "cuda_reserved_mb": 712.0,
+          "cuda_peak_allocated_mb": 355.6923828125,
+          "cuda_peak_reserved_mb": 712.0
+        },
+        "cuda_end": {
+          "cuda_available": true,
+          "cuda_device": "NVIDIA A100-SXM4-40GB",
+          "cuda_allocated_mb": 355.6923828125,
+          "cuda_reserved_mb": 712.0,
+          "cuda_peak_allocated_mb": 462.89599609375,
+          "cuda_peak_reserved_mb": 712.0
+        }
+      },
+      {
+        "name": "neural_image_occlusion_visualization_idx_4033_Romance",
+        "wall_time_s": 0.03511675300001116,
+        "process_cpu_time_s": 0.029477221000000497,
+        "process_cpu_util_percent": 83.9406223006755,
+        "rss_start_mb": 2154.40625,
+        "rss_end_mb": 2154.46875,
+        "rss_delta_mb": 0.0625,
+        "rss_peak_mb": 2154.47265625,
+        "cuda_start": {
+          "cuda_available": true,
+          "cuda_device": "NVIDIA A100-SXM4-40GB",
+          "cuda_allocated_mb": 355.6923828125,
+          "cuda_reserved_mb": 712.0,
+          "cuda_peak_allocated_mb": 355.6923828125,
+          "cuda_peak_reserved_mb": 712.0
+        },
+        "cuda_end": {
+          "cuda_available": true,
+          "cuda_device": "NVIDIA A100-SXM4-40GB",
+          "cuda_allocated_mb": 355.6923828125,
+          "cuda_reserved_mb": 712.0,
+          "cuda_peak_allocated_mb": 355.6923828125,
+          "cuda_peak_reserved_mb": 712.0
+        }
+      },
+      {
+        "name": "neural_modality_shapley_idx_4033_Romance",
+        "wall_time_s": 0.017922803000033127,
+        "process_cpu_time_s": 0.017991429999995034,
+        "process_cpu_util_percent": 100.38290327669048,
+        "rss_start_mb": 2154.47265625,
+        "rss_end_mb": 2154.4765625,
+        "rss_delta_mb": 0.00390625,
+        "rss_peak_mb": 2154.4765625,
+        "cuda_start": {
+          "cuda_available": true,
+          "cuda_device": "NVIDIA A100-SXM4-40GB",
+          "cuda_allocated_mb": 355.6923828125,
+          "cuda_reserved_mb": 712.0,
+          "cuda_peak_allocated_mb": 355.6923828125,
+          "cuda_peak_reserved_mb": 712.0
+        },
+        "cuda_end": {
+          "cuda_available": true,
+          "cuda_device": "NVIDIA A100-SXM4-40GB",
+          "cuda_allocated_mb": 355.6923828125,
+          "cuda_reserved_mb": 712.0,
+          "cuda_peak_allocated_mb": 365.9716796875,
+          "cuda_peak_reserved_mb": 712.0
+        }
+      },
+      {
+        "name": "neural_modality_shapley_visualization_idx_4033_Romance",
+        "wall_time_s": 0.14172954800005755,
+        "process_cpu_time_s": 0.136256460999995,
+        "process_cpu_util_percent": 96.13835853053004,
+        "rss_start_mb": 2154.48046875,
+        "rss_end_mb": 2154.65234375,
+        "rss_delta_mb": 0.171875,
+        "rss_peak_mb": 2154.65625,
+        "cuda_start": {
+          "cuda_available": true,
+          "cuda_device": "NVIDIA A100-SXM4-40GB",
+          "cuda_allocated_mb": 355.6923828125,
+          "cuda_reserved_mb": 712.0,
+          "cuda_peak_allocated_mb": 355.6923828125,
+          "cuda_peak_reserved_mb": 712.0
+        },
+        "cuda_end": {
+          "cuda_available": true,
+          "cuda_device": "NVIDIA A100-SXM4-40GB",
+          "cuda_allocated_mb": 355.6923828125,
+          "cuda_reserved_mb": 712.0,
+          "cuda_peak_allocated_mb": 355.6923828125,
+          "cuda_peak_reserved_mb": 712.0
+        }
+      },
+      {
+        "name": "neural_modality_ablation_idx_4033_Romance",
+        "wall_time_s": 0.017244013999970775,
+        "process_cpu_time_s": 0.017373960000000466,
+        "process_cpu_util_percent": 100.7535716453832,
+        "rss_start_mb": 2154.66015625,
+        "rss_end_mb": 2154.6796875,
+        "rss_delta_mb": 0.01953125,
+        "rss_peak_mb": 2154.68359375,
+        "cuda_start": {
+          "cuda_available": true,
+          "cuda_device": "NVIDIA A100-SXM4-40GB",
+          "cuda_allocated_mb": 355.6923828125,
+          "cuda_reserved_mb": 712.0,
+          "cuda_peak_allocated_mb": 355.6923828125,
+          "cuda_peak_reserved_mb": 712.0
+        },
+        "cuda_end": {
+          "cuda_available": true,
+          "cuda_device": "NVIDIA A100-SXM4-40GB",
+          "cuda_allocated_mb": 355.6923828125,
+          "cuda_reserved_mb": 712.0,
+          "cuda_peak_allocated_mb": 365.97119140625,
+          "cuda_peak_reserved_mb": 712.0
+        }
+      }
+    ],
+    "summary": {
+      "count": 13,
+      "total_wall_time_s": 0.824161411000091,
+      "mean_wall_time_s": 0.06339703161539162,
+      "total_process_cpu_time_s": 0.7710196289999942,
+      "mean_process_cpu_util_percent": 94.89510104019466,
+      "max_rss_peak_mb": 2154.68359375
+    }
+  },
+  "token_occlusion": {
+    "baseline_probability": 0.6543560028076172,
+    "baseline_logit": 0.638242244720459,
+    "top_tokens": [
+      {
+        "position": 176,
+        "token": "love",
+        "occluded_probability": 0.48361435532569885,
+        "probability_delta": 0.17074164748191833,
+        "occluded_logit": -0.06556618213653564,
+        "logit_delta": 0.7038084268569946
+      },
+      {
+        "position": 301,
+        "token": "power",
+        "occluded_probability": 0.7294232249259949,
+        "probability_delta": -0.07506722211837769,
+        "occluded_logit": 0.9916984438896179,
+        "logit_delta": -0.35345619916915894
+      },
+      {
+        "position": 187,
+        "token": "james",
+        "occluded_probability": 0.5958831906318665,
+        "probability_delta": 0.05847281217575073,
+        "occluded_logit": 0.38834062218666077,
+        "logit_delta": 0.24990162253379822
+      },
+      {
+        "position": 10,
+        "token": "american",
+        "occluded_probability": 0.707462728023529,
+        "probability_delta": -0.053106725215911865,
+        "occluded_logit": 0.8830931186676025,
+        "logit_delta": -0.24485087394714355
+      },
+      {
+        "position": 186,
+        "token": "student",
+        "occluded_probability": 0.707364559173584,
+        "probability_delta": -0.0530085563659668,
+        "occluded_logit": 0.8826186656951904,
+        "logit_delta": -0.24437642097473145
+      },
+      {
+        "position": 15,
+        "token": "how",
+        "occluded_probability": 0.7063056826591492,
+        "probability_delta": -0.05194967985153198,
+        "occluded_logit": 0.8775086402893066,
+        "logit_delta": -0.23926639556884766
+      },
+      {
+        "position": 14,
+        "token": "about",
+        "occluded_probability": 0.6038434505462646,
+        "probability_delta": 0.05051255226135254,
+        "occluded_logit": 0.42150548100471497,
+        "logit_delta": 0.21673676371574402
+      },
+      {
+        "position": 31,
+        "token": "upbringing",
+        "occluded_probability": 0.6997551918029785,
+        "probability_delta": -0.04539918899536133,
+        "occluded_logit": 0.8461323976516724,
+        "logit_delta": -0.20789015293121338
+      },
+      {
+        "position": 298,
+        "token": "a",
+        "occluded_probability": 0.6116218566894531,
+        "probability_delta": 0.04273414611816406,
+        "occluded_logit": 0.4541347324848175,
+        "logit_delta": 0.18410751223564148
+      },
+      {
+        "position": 16,
+        "token": "his",
+        "occluded_probability": 0.614706814289093,
+        "probability_delta": 0.03964918851852417,
+        "occluded_logit": 0.46714112162590027,
+        "logit_delta": 0.17110112309455872
+      },
+      {
+        "position": 199,
+        "token": "friendly",
+        "occluded_probability": 0.6157448291778564,
+        "probability_delta": 0.03861117362976074,
+        "occluded_logit": 0.4715256094932556,
+        "logit_delta": 0.16671663522720337
+      },
+      {
+        "position": 188,
+        "token": "harcourt",
+        "occluded_probability": 0.6908199191093445,
+        "probability_delta": -0.036463916301727295,
+        "occluded_logit": 0.8039553165435791,
+        "logit_delta": -0.16571307182312012
+      }
+    ],
+    "all_scores": [
+      {
+        "position": 0,
+        "token": "moscow",
+        "occluded_probability": 0.6521126627922058,
+        "probability_delta": 0.002243340015411377,
+        "occluded_logit": 0.6283386945724487,
+        "logit_delta": 0.009903550148010254
+      },
+      {
+        "position": 1,
+        "token": ".",
+        "occluded_probability": 0.6485959887504578,
+        "probability_delta": 0.005760014057159424,
+        "occluded_logit": 0.6128734946250916,
+        "logit_delta": 0.02536875009536743
+      },
+      {
+        "position": 2,
+        "token": "elderly",
+        "occluded_probability": 0.6803964376449585,
+        "probability_delta": -0.02604043483734131,
+        "occluded_logit": 0.7555941343307495,
+        "logit_delta": -0.11735188961029053
+      },
+      {
+        "position": 3,
+        "token": "brit",
+        "occluded_probability": 0.6536372303962708,
+        "probability_delta": 0.0007187724113464355,
+        "occluded_logit": 0.635066032409668,
+        "logit_delta": 0.0031762123107910156
+      },
+      {
+        "position": 4,
+        "token": "guy",
+        "occluded_probability": 0.6304724812507629,
+        "probability_delta": 0.023883521556854248,
+        "occluded_logit": 0.5342442989349365,
+        "logit_delta": 0.10399794578552246
+      },
+      {
+        "position": 5,
+        "token": "bennett",
+        "occluded_probability": 0.6710250973701477,
+        "probability_delta": -0.016669094562530518,
+        "occluded_logit": 0.7128249406814575,
+        "logit_delta": -0.07458269596099854
+      },
+      {
+        "position": 6,
+        "token": "is",
+        "occluded_probability": 0.6415613889694214,
+        "probability_delta": 0.0127946138381958,
+        "occluded_logit": 0.5821473598480225,
+        "logit_delta": 0.05609488487243652
+      },
+      {
+        "position": 7,
+        "token": "being",
+        "occluded_probability": 0.6579446792602539,
+        "probability_delta": -0.0035886764526367188,
+        "occluded_logit": 0.6541483402252197,
+        "logit_delta": -0.015906095504760742
+      },
+      {
+        "position": 8,
+        "token": "interviewed",
+        "occluded_probability": 0.6585207581520081,
+        "probability_delta": -0.004164755344390869,
+        "occluded_logit": 0.6567090749740601,
+        "logit_delta": -0.018466830253601074
+      },
+      {
+        "position": 9,
+        "token": "by",
+        "occluded_probability": 0.6454833149909973,
+        "probability_delta": 0.008872687816619873,
+        "occluded_logit": 0.5992438197135925,
+        "logit_delta": 0.038998425006866455
+      },
+      {
+        "position": 10,
+        "token": "american",
+        "occluded_probability": 0.707462728023529,
+        "probability_delta": -0.053106725215911865,
+        "occluded_logit": 0.8830931186676025,
+        "logit_delta": -0.24485087394714355
+      },
+      {
+        "position": 11,
+        "token": "journalist",
+        "occluded_probability": 0.690694272518158,
+        "probability_delta": -0.03633826971054077,
+        "occluded_logit": 0.8033669590950012,
+        "logit_delta": -0.16512471437454224
+      },
+      {
+        "position": 12,
+        "token": "julia",
+        "occluded_probability": 0.6475107669830322,
+        "probability_delta": 0.006845235824584961,
+        "occluded_logit": 0.6081151962280273,
+        "logit_delta": 0.03012704849243164
+      },
+      {
+        "position": 13,
+        "token": "schofield",
+        "occluded_probability": 0.6419823169708252,
+        "probability_delta": 0.012373685836791992,
+        "occluded_logit": 0.5839783549308777,
+        "logit_delta": 0.0542638897895813
+      },
+      {
+        "position": 14,
+        "token": "about",
+        "occluded_probability": 0.6038434505462646,
+        "probability_delta": 0.05051255226135254,
+        "occluded_logit": 0.42150548100471497,
+        "logit_delta": 0.21673676371574402
+      },
+      {
+        "position": 15,
+        "token": "how",
+        "occluded_probability": 0.7063056826591492,
+        "probability_delta": -0.05194967985153198,
+        "occluded_logit": 0.8775086402893066,
+        "logit_delta": -0.23926639556884766
+      },
+      {
+        "position": 16,
+        "token": "his",
+        "occluded_probability": 0.614706814289093,
+        "probability_delta": 0.03964918851852417,
+        "occluded_logit": 0.46714112162590027,
+        "logit_delta": 0.17110112309455872
+      },
+      {
+        "position": 17,
+        "token": "life",
+        "occluded_probability": 0.652889609336853,
+        "probability_delta": 0.0014663934707641602,
+        "occluded_logit": 0.6317651867866516,
+        "logit_delta": 0.006477057933807373
+      },
+      {
+        "position": 18,
+        "token": "ended",
+        "occluded_probability": 0.6557541489601135,
+        "probability_delta": -0.0013981461524963379,
+        "occluded_logit": 0.6444300413131714,
+        "logit_delta": -0.006187796592712402
+      },
+      {
+        "position": 19,
+        "token": "up",
+        "occluded_probability": 0.6622551083564758,
+        "probability_delta": -0.007899105548858643,
+        "occluded_logit": 0.6733599901199341,
+        "logit_delta": -0.0351177453994751
+      },
+      {
+        "position": 20,
+        "token": "on",
+        "occluded_probability": 0.6530700922012329,
+        "probability_delta": 0.0012859106063842773,
+        "occluded_logit": 0.6325615644454956,
+        "logit_delta": 0.005680680274963379
+      },
+      {
+        "position": 21,
+        "token": "the",
+        "occluded_probability": 0.6602239012718201,
+        "probability_delta": -0.005867898464202881,
+        "occluded_logit": 0.6642922163009644,
+        "logit_delta": -0.02604997158050537
+      },
+      {
+        "position": 22,
+        "token": "path",
+        "occluded_probability": 0.6582915782928467,
+        "probability_delta": -0.003935575485229492,
+        "occluded_logit": 0.6556901931762695,
+        "logit_delta": -0.017447948455810547
+      },
+      {
+        "position": 23,
+        "token": "it",
+        "occluded_probability": 0.6508561968803406,
+        "probability_delta": 0.0034998059272766113,
+        "occluded_logit": 0.6228048801422119,
+        "logit_delta": 0.01543736457824707
+      },
+      {
+        "position": 24,
+        "token": "did",
+        "occluded_probability": 0.6541885137557983,
+        "probability_delta": 0.00016748905181884766,
+        "occluded_logit": 0.6375015377998352,
+        "logit_delta": 0.0007407069206237793
+      },
+      {
+        "position": 25,
+        "token": ",",
+        "occluded_probability": 0.6294009685516357,
+        "probability_delta": 0.024955034255981445,
+        "occluded_logit": 0.5296480059623718,
+        "logit_delta": 0.10859423875808716
+      },
+      {
+        "position": 26,
+        "token": "unusual",
+        "occluded_probability": 0.6669936180114746,
+        "probability_delta": -0.012637615203857422,
+        "occluded_logit": 0.6946189403533936,
+        "logit_delta": -0.05637669563293457
+      },
+      {
+        "position": 27,
+        "token": "considering",
+        "occluded_probability": 0.6720399260520935,
+        "probability_delta": -0.01768392324447632,
+        "occluded_logit": 0.7174258232116699,
+        "logit_delta": -0.07918357849121094
+      },
+      {
+        "position": 28,
+        "token": "his",
+        "occluded_probability": 0.6355541348457336,
+        "probability_delta": 0.018801867961883545,
+        "occluded_logit": 0.5561192035675049,
+        "logit_delta": 0.0821230411529541
+      },
+      {
+        "position": 29,
+        "token": "proper",
+        "occluded_probability": 0.6748491525650024,
+        "probability_delta": -0.020493149757385254,
+        "occluded_logit": 0.7302000522613525,
+        "logit_delta": -0.09195780754089355
+      },
+      {
+        "position": 30,
+        "token": "british",
+        "occluded_probability": 0.6683911681175232,
+        "probability_delta": -0.014035165309906006,
+        "occluded_logit": 0.7009174823760986,
+        "logit_delta": -0.06267523765563965
+      },
+      {
+        "position": 31,
+        "token": "upbringing",
+        "occluded_probability": 0.6997551918029785,
+        "probability_delta": -0.04539918899536133,
+        "occluded_logit": 0.8461323976516724,
+        "logit_delta": -0.20789015293121338
+      },
+      {
+        "position": 32,
+        "token": ".",
+        "occluded_probability": 0.6595123410224915,
+        "probability_delta": -0.005156338214874268,
+        "occluded_logit": 0.6611218452453613,
+        "logit_delta": -0.022879600524902344
+      },
+      {
+        "position": 33,
+        "token": "in",
+        "occluded_probability": 0.6439897418022156,
+        "probability_delta": 0.010366261005401611,
+        "occluded_logit": 0.5927232503890991,
+        "logit_delta": 0.04551899433135986
+      },
+      {
+        "position": 34,
+        "token": "relaying",
+        "occluded_probability": 0.683934211730957,
+        "probability_delta": -0.029578208923339844,
+        "occluded_logit": 0.7719113826751709,
+        "logit_delta": -0.13366913795471191
+      },
+      {
+        "position": 35,
+        "token": "his",
+        "occluded_probability": 0.6542748212814331,
+        "probability_delta": 8.118152618408203e-05,
+        "occluded_logit": 0.6378834247589111,
+        "logit_delta": 0.00035881996154785156
+      },
+      {
+        "position": 36,
+        "token": "story",
+        "occluded_probability": 0.6480124592781067,
+        "probability_delta": 0.006343543529510498,
+        "occluded_logit": 0.6103142499923706,
+        "logit_delta": 0.02792799472808838
+      },
+      {
+        "position": 37,
+        "token": ",",
+        "occluded_probability": 0.6602015495300293,
+        "probability_delta": -0.005845546722412109,
+        "occluded_logit": 0.6641926765441895,
+        "logit_delta": -0.02595043182373047
+      },
+      {
+        "position": 38,
+        "token": "he",
+        "occluded_probability": 0.6532189249992371,
+        "probability_delta": 0.001137077808380127,
+        "occluded_logit": 0.6332187056541443,
+        "logit_delta": 0.005023539066314697
+      },
+      {
+        "position": 39,
+        "token": "focuses",
+        "occluded_probability": 0.652746319770813,
+        "probability_delta": 0.0016096830368041992,
+        "occluded_logit": 0.631132960319519,
+        "logit_delta": 0.007109284400939941
+      },
+      {
+        "position": 40,
+        "token": "on",
+        "occluded_probability": 0.6543319821357727,
+        "probability_delta": 2.4020671844482422e-05,
+        "occluded_logit": 0.6381360292434692,
+        "logit_delta": 0.0001062154769897461
+      },
+      {
+        "position": 41,
+        "token": "the",
+        "occluded_probability": 0.6542031764984131,
+        "probability_delta": 0.00015282630920410156,
+        "occluded_logit": 0.6375667452812195,
+        "logit_delta": 0.000675499439239502
+      },
+      {
+        "position": 42,
+        "token": "transition",
+        "occluded_probability": 0.6503507494926453,
+        "probability_delta": 0.004005253314971924,
+        "occluded_logit": 0.6205814480781555,
+        "logit_delta": 0.017660796642303467
+      },
+      {
+        "position": 43,
+        "token": "into",
+        "occluded_probability": 0.6684765815734863,
+        "probability_delta": -0.01412057876586914,
+        "occluded_logit": 0.7013029456138611,
+        "logit_delta": -0.0630607008934021
+      },
+      {
+        "position": 44,
+        "token": "his",
+        "occluded_probability": 0.655118465423584,
+        "probability_delta": -0.0007624626159667969,
+        "occluded_logit": 0.641615092754364,
+        "logit_delta": -0.0033728480339050293
+      },
+      {
+        "position": 45,
+        "token": "senior",
+        "occluded_probability": 0.6547220349311829,
+        "probability_delta": -0.00036603212356567383,
+        "occluded_logit": 0.6398611068725586,
+        "logit_delta": -0.0016188621520996094
+      },
+      {
+        "position": 46,
+        "token": "year",
+        "occluded_probability": 0.6503995656967163,
+        "probability_delta": 0.003956437110900879,
+        "occluded_logit": 0.6207959651947021,
+        "logit_delta": 0.017446279525756836
+      },
+      {
+        "position": 47,
+        "token": "at",
+        "occluded_probability": 0.6570689678192139,
+        "probability_delta": -0.0027129650115966797,
+        "occluded_logit": 0.6502596139907837,
+        "logit_delta": -0.012017369270324707
+      },
+      {
+        "position": 48,
+        "token": "a",
+        "occluded_probability": 0.6491323113441467,
+        "probability_delta": 0.005223691463470459,
+        "occluded_logit": 0.6152271032333374,
+        "logit_delta": 0.023015141487121582
+      },
+      {
+        "position": 49,
+        "token": "prestigious",
+        "occluded_probability": 0.6587088704109192,
+        "probability_delta": -0.004352867603302002,
+        "occluded_logit": 0.657545804977417,
+        "logit_delta": -0.019303560256958008
+      },
+      {
+        "position": 50,
+        "token": "boys",
+        "occluded_probability": 0.649861752986908,
+        "probability_delta": 0.0044942498207092285,
+        "occluded_logit": 0.6184317469596863,
+        "logit_delta": 0.019810497760772705
+      },
+      {
+        "position": 51,
+        "token": "school",
+        "occluded_probability": 0.6557607054710388,
+        "probability_delta": -0.0014047026634216309,
+        "occluded_logit": 0.6444587111473083,
+        "logit_delta": -0.006216466426849365
+      },
+      {
+        "position": 52,
+        "token": "in",
+        "occluded_probability": 0.6527664661407471,
+        "probability_delta": 0.0015895366668701172,
+        "occluded_logit": 0.6312219500541687,
+        "logit_delta": 0.007020294666290283
+      },
+      {
+        "position": 53,
+        "token": "britain",
+        "occluded_probability": 0.6576787233352661,
+        "probability_delta": -0.0033227205276489258,
+        "occluded_logit": 0.6529667377471924,
+        "logit_delta": -0.014724493026733398
+      },
+      {
+        "position": 54,
+        "token": "in",
+        "occluded_probability": 0.6542895436286926,
+        "probability_delta": 6.645917892456055e-05,
+        "occluded_logit": 0.6379485130310059,
+        "logit_delta": 0.000293731689453125
+      },
+      {
+        "position": 55,
+        "token": "the",
+        "occluded_probability": 0.6537186503410339,
+        "probability_delta": 0.000637352466583252,
+        "occluded_logit": 0.6354254484176636,
+        "logit_delta": 0.00281679630279541
+      },
+      {
+        "position": 56,
+        "token": "N",
+        "occluded_probability": 0.6545600891113281,
+        "probability_delta": -0.0002040863037109375,
+        "occluded_logit": 0.6391448974609375,
+        "logit_delta": -0.0009026527404785156
+      },
+      {
+        "position": 57,
+        "token": "s",
+        "occluded_probability": 0.6510681509971619,
+        "probability_delta": 0.0032878518104553223,
+        "occluded_logit": 0.6237375736236572,
+        "logit_delta": 0.014504671096801758
+      },
+      {
+        "position": 58,
+        "token": ".",
+        "occluded_probability": 0.6535997986793518,
+        "probability_delta": 0.0007562041282653809,
+        "occluded_logit": 0.6349002718925476,
+        "logit_delta": 0.003341972827911377
+      },
+      {
+        "position": 59,
+        "token": "he",
+        "occluded_probability": 0.6542031764984131,
+        "probability_delta": 0.00015282630920410156,
+        "occluded_logit": 0.6375667452812195,
+        "logit_delta": 0.000675499439239502
+      },
+      {
+        "position": 60,
+        "token": "was",
+        "occluded_probability": 0.6350792050361633,
+        "probability_delta": 0.019276797771453857,
+        "occluded_logit": 0.5540693998336792,
+        "logit_delta": 0.08417284488677979
+      },
+      {
+        "position": 61,
+        "token": "friends",
+        "occluded_probability": 0.6411682963371277,
+        "probability_delta": 0.013187706470489502,
+        "occluded_logit": 0.580438494682312,
+        "logit_delta": 0.05780375003814697
+      },
+      {
+        "position": 62,
+        "token": "with",
+        "occluded_probability": 0.6866728663444519,
+        "probability_delta": -0.03231686353683472,
+        "occluded_logit": 0.7846103310585022,
+        "logit_delta": -0.1463680863380432
+      },
+      {
+        "position": 63,
+        "token": "tommy",
+        "occluded_probability": 0.6607401371002197,
+        "probability_delta": -0.006384134292602539,
+        "occluded_logit": 0.6665942072868347,
+        "logit_delta": -0.028351962566375732
+      },
+      {
+        "position": 64,
+        "token": "judd",
+        "occluded_probability": 0.661972165107727,
+        "probability_delta": -0.007616162300109863,
+        "occluded_logit": 0.6720951795578003,
+        "logit_delta": -0.03385293483734131
+      },
+      {
+        "position": 65,
+        "token": ",",
+        "occluded_probability": 0.6643434762954712,
+        "probability_delta": -0.009987473487854004,
+        "occluded_logit": 0.682711124420166,
+        "logit_delta": -0.04446887969970703
+      },
+      {
+        "position": 66,
+        "token": "largely",
+        "occluded_probability": 0.6402615308761597,
+        "probability_delta": 0.01409447193145752,
+        "occluded_logit": 0.576499342918396,
+        "logit_delta": 0.06174290180206299
+      },
+      {
+        "position": 67,
+        "token": "because",
+        "occluded_probability": 0.6603711843490601,
+        "probability_delta": -0.006015181541442871,
+        "occluded_logit": 0.6649488806724548,
+        "logit_delta": -0.02670663595199585
+      },
+      {
+        "position": 68,
+        "token": "of",
+        "occluded_probability": 0.6518527865409851,
+        "probability_delta": 0.00250321626663208,
+        "occluded_logit": 0.6271932721138,
+        "logit_delta": 0.011048972606658936
+      },
+      {
+        "position": 69,
+        "token": "them",
+        "occluded_probability": 0.6527889370918274,
+        "probability_delta": 0.001567065715789795,
+        "occluded_logit": 0.6313208937644958,
+        "logit_delta": 0.006921350955963135
+      },
+      {
+        "position": 70,
+        "token": "both",
+        "occluded_probability": 0.6559065580368042,
+        "probability_delta": -0.0015505552291870117,
+        "occluded_logit": 0.6451051235198975,
+        "logit_delta": -0.0068628787994384766
+      },
+      {
+        "position": 71,
+        "token": "lying",
+        "occluded_probability": 0.666280210018158,
+        "probability_delta": -0.011924207210540771,
+        "occluded_logit": 0.691408634185791,
+        "logit_delta": -0.05316638946533203
+      },
+      {
+        "position": 72,
+        "token": "somewhat",
+        "occluded_probability": 0.6504988670349121,
+        "probability_delta": 0.003857135772705078,
+        "occluded_logit": 0.6212328672409058,
+        "logit_delta": 0.017009377479553223
+      },
+      {
+        "position": 73,
+        "token": "outside",
+        "occluded_probability": 0.6481543183326721,
+        "probability_delta": 0.006201684474945068,
+        "occluded_logit": 0.6109361052513123,
+        "logit_delta": 0.02730613946914673
+      },
+      {
+        "position": 74,
+        "token": "the",
+        "occluded_probability": 0.6543535590171814,
+        "probability_delta": 2.4437904357910156e-06,
+        "occluded_logit": 0.6382313966751099,
+        "logit_delta": 1.0848045349121094e-05
+      },
+      {
+        "position": 75,
+        "token": "lives",
+        "occluded_probability": 0.646099328994751,
+        "probability_delta": 0.008256673812866211,
+        "occluded_logit": 0.601936936378479,
+        "logit_delta": 0.03630530834197998
+      },
+      {
+        "position": 76,
+        "token": "of",
+        "occluded_probability": 0.6555010080337524,
+        "probability_delta": -0.001145005226135254,
+        "occluded_logit": 0.643308699131012,
+        "logit_delta": -0.0050664544105529785
+      },
+      {
+        "position": 77,
+        "token": "the",
+        "occluded_probability": 0.6576476097106934,
+        "probability_delta": -0.003291606903076172,
+        "occluded_logit": 0.6528284549713135,
+        "logit_delta": -0.014586210250854492
+      },
+      {
+        "position": 78,
+        "token": "other",
+        "occluded_probability": 0.6543504595756531,
+        "probability_delta": 5.543231964111328e-06,
+        "occluded_logit": 0.6382176876068115,
+        "logit_delta": 2.4557113647460938e-05
+      },
+      {
+        "position": 79,
+        "token": "students",
+        "occluded_probability": 0.6639617681503296,
+        "probability_delta": -0.009605765342712402,
+        "occluded_logit": 0.6809996366500854,
+        "logit_delta": -0.042757391929626465
+      },
+      {
+        "position": 80,
+        "token": ".",
+        "occluded_probability": 0.6517235636711121,
+        "probability_delta": 0.002632439136505127,
+        "occluded_logit": 0.6266241073608398,
+        "logit_delta": 0.01161813735961914
+      },
+      {
+        "position": 81,
+        "token": "judd",
+        "occluded_probability": 0.6536672115325928,
+        "probability_delta": 0.0006887912750244141,
+        "occluded_logit": 0.6351982355117798,
+        "logit_delta": 0.0030440092086791992
+      },
+      {
+        "position": 82,
+        "token": "was",
+        "occluded_probability": 0.6512619256973267,
+        "probability_delta": 0.0030940771102905273,
+        "occluded_logit": 0.6245907545089722,
+        "logit_delta": 0.013651490211486816
+      },
+      {
+        "position": 83,
+        "token": "an",
+        "occluded_probability": 0.6445558071136475,
+        "probability_delta": 0.009800195693969727,
+        "occluded_logit": 0.5951934456825256,
+        "logit_delta": 0.04304879903793335
+      },
+      {
+        "position": 84,
+        "token": "intellectual",
+        "occluded_probability": 0.6361423134803772,
+        "probability_delta": 0.01821368932723999,
+        "occluded_logit": 0.558659553527832,
+        "logit_delta": 0.07958269119262695
+      },
+      {
+        "position": 85,
+        "token": "marxist",
+        "occluded_probability": 0.6425430774688721,
+        "probability_delta": 0.011812925338745117,
+        "occluded_logit": 0.5864191651344299,
+        "logit_delta": 0.05182307958602905
+      },
+      {
+        "position": 86,
+        "token": ",",
+        "occluded_probability": 0.661097526550293,
+        "probability_delta": -0.006741523742675781,
+        "occluded_logit": 0.6681888699531555,
+        "logit_delta": -0.029946625232696533
+      },
+      {
+        "position": 87,
+        "token": "who",
+        "occluded_probability": 0.6508137583732605,
+        "probability_delta": 0.0035422444343566895,
+        "occluded_logit": 0.6226181983947754,
+        "logit_delta": 0.015624046325683594
+      },
+      {
+        "position": 88,
+        "token": "would",
+        "occluded_probability": 0.6555615663528442,
+        "probability_delta": -0.0012055635452270508,
+        "occluded_logit": 0.6435770988464355,
+        "logit_delta": -0.0053348541259765625
+      },
+      {
+        "position": 89,
+        "token": "not",
+        "occluded_probability": 0.64906907081604,
+        "probability_delta": 0.0052869319915771484,
+        "occluded_logit": 0.614949643611908,
+        "logit_delta": 0.023292601108551025
+      },
+      {
+        "position": 90,
+        "token": "participate",
+        "occluded_probability": 0.6540011167526245,
+        "probability_delta": 0.0003548860549926758,
+        "occluded_logit": 0.6366733908653259,
+        "logit_delta": 0.0015688538551330566
+      },
+      {
+        "position": 91,
+        "token": "in",
+        "occluded_probability": 0.646841287612915,
+        "probability_delta": 0.0075147151947021484,
+        "occluded_logit": 0.6051836013793945,
+        "logit_delta": 0.03305864334106445
+      },
+      {
+        "position": 92,
+        "token": "what",
+        "occluded_probability": 0.6466855406761169,
+        "probability_delta": 0.007670462131500244,
+        "occluded_logit": 0.604501485824585,
+        "logit_delta": 0.03374075889587402
+      },
+      {
+        "position": 93,
+        "token": "he",
+        "occluded_probability": 0.6498502492904663,
+        "probability_delta": 0.004505753517150879,
+        "occluded_logit": 0.6183809041976929,
+        "logit_delta": 0.019861340522766113
+      },
+      {
+        "position": 94,
+        "token": "considered",
+        "occluded_probability": 0.6517333984375,
+        "probability_delta": 0.0026226043701171875,
+        "occluded_logit": 0.6266673803329468,
+        "logit_delta": 0.011574864387512207
+      },
+      {
+        "position": 95,
+        "token": "the",
+        "occluded_probability": 0.6446745991706848,
+        "probability_delta": 0.009681403636932373,
+        "occluded_logit": 0.5957118272781372,
+        "logit_delta": 0.04253041744232178
+      },
+      {
+        "position": 96,
+        "token": "oppression",
+        "occluded_probability": 0.648827850818634,
+        "probability_delta": 0.005528151988983154,
+        "occluded_logit": 0.6138907670974731,
+        "logit_delta": 0.02435147762298584
+      },
+      {
+        "position": 97,
+        "token": "of",
+        "occluded_probability": 0.6705114245414734,
+        "probability_delta": -0.0161554217338562,
+        "occluded_logit": 0.7104989886283875,
+        "logit_delta": -0.07225674390792847
+      },
+      {
+        "position": 98,
+        "token": "school",
+        "occluded_probability": 0.656923770904541,
+        "probability_delta": -0.002567768096923828,
+        "occluded_logit": 0.6496152877807617,
+        "logit_delta": -0.011373043060302734
+      },
+      {
+        "position": 99,
+        "token": "traditions",
+        "occluded_probability": 0.6568478941917419,
+        "probability_delta": -0.002491891384124756,
+        "occluded_logit": 0.6492788195610046,
+        "logit_delta": -0.011036574840545654
+      },
+      {
+        "position": 100,
+        "token": "which",
+        "occluded_probability": 0.649337887763977,
+        "probability_delta": 0.005018115043640137,
+        "occluded_logit": 0.616129994392395,
+        "logit_delta": 0.022112250328063965
+      },
+      {
+        "position": 101,
+        "token": "were",
+        "occluded_probability": 0.6635341644287109,
+        "probability_delta": -0.00917816162109375,
+        "occluded_logit": 0.6790837049484253,
+        "logit_delta": -0.04084146022796631
+      },
+      {
+        "position": 102,
+        "token": "perpetuated",
+        "occluded_probability": 0.6521829962730408,
+        "probability_delta": 0.002173006534576416,
+        "occluded_logit": 0.6286487579345703,
+        "logit_delta": 0.009593486785888672
+      },
+      {
+        "position": 103,
+        "token": "by",
+        "occluded_probability": 0.6805073022842407,
+        "probability_delta": -0.026151299476623535,
+        "occluded_logit": 0.7561041116714478,
+        "logit_delta": -0.11786186695098877
+      },
+      {
+        "position": 104,
+        "token": "fathers",
+        "occluded_probability": 0.6625511646270752,
+        "probability_delta": -0.008195161819458008,
+        "occluded_logit": 0.674683690071106,
+        "logit_delta": -0.03644144535064697
+      },
+      {
+        "position": 105,
+        "token": "-",
+        "occluded_probability": 0.6578750610351562,
+        "probability_delta": -0.0035190582275390625,
+        "occluded_logit": 0.6538391709327698,
+        "logit_delta": -0.015596926212310791
+      },
+      {
+        "position": 106,
+        "token": "former",
+        "occluded_probability": 0.6522430181503296,
+        "probability_delta": 0.0021129846572875977,
+        "occluded_logit": 0.6289132833480835,
+        "logit_delta": 0.009328961372375488
+      },
+      {
+        "position": 107,
+        "token": "students",
+        "occluded_probability": 0.6539219617843628,
+        "probability_delta": 0.00043404102325439453,
+        "occluded_logit": 0.6363239288330078,
+        "logit_delta": 0.0019183158874511719
+      },
+      {
+        "position": 108,
+        "token": "-",
+        "occluded_probability": 0.6528026461601257,
+        "probability_delta": 0.001553356647491455,
+        "occluded_logit": 0.6313813924789429,
+        "logit_delta": 0.006860852241516113
+      },
+      {
+        "position": 109,
+        "token": "sending",
+        "occluded_probability": 0.6538028120994568,
+        "probability_delta": 0.0005531907081604004,
+        "occluded_logit": 0.635797381401062,
+        "logit_delta": 0.0024448633193969727
+      },
+      {
+        "position": 110,
+        "token": "their",
+        "occluded_probability": 0.6550036668777466,
+        "probability_delta": -0.0006476640701293945,
+        "occluded_logit": 0.6411068439483643,
+        "logit_delta": -0.0028645992279052734
+      },
+      {
+        "position": 111,
+        "token": "sons",
+        "occluded_probability": 0.6531033515930176,
+        "probability_delta": 0.0012526512145996094,
+        "occluded_logit": 0.6327083706855774,
+        "logit_delta": 0.005533874034881592
+      },
+      {
+        "position": 112,
+        "token": "to",
+        "occluded_probability": 0.6519242525100708,
+        "probability_delta": 0.0024317502975463867,
+        "occluded_logit": 0.6275081634521484,
+        "logit_delta": 0.010734081268310547
+      },
+      {
+        "position": 113,
+        "token": "their",
+        "occluded_probability": 0.6502649784088135,
+        "probability_delta": 0.004091024398803711,
+        "occluded_logit": 0.6202042102813721,
+        "logit_delta": 0.018038034439086914
+      },
+      {
+        "position": 114,
+        "token": "alma",
+        "occluded_probability": 0.6838857531547546,
+        "probability_delta": -0.02952975034713745,
+        "occluded_logit": 0.7716870903968811,
+        "logit_delta": -0.13344484567642212
+      },
+      {
+        "position": 115,
+        "token": "mater",
+        "occluded_probability": 0.6793466806411743,
+        "probability_delta": -0.02499067783355713,
+        "occluded_logit": 0.7507710456848145,
+        "logit_delta": -0.11252880096435547
+      },
+      {
+        "position": 116,
+        "token": ".",
+        "occluded_probability": 0.6427403092384338,
+        "probability_delta": 0.01161569356918335,
+        "occluded_logit": 0.587277889251709,
+        "logit_delta": 0.05096435546875
+      },
+      {
+        "position": 117,
+        "token": "guy",
+        "occluded_probability": 0.6563102602958679,
+        "probability_delta": -0.0019542574882507324,
+        "occluded_logit": 0.6468943357467651,
+        "logit_delta": -0.008652091026306152
+      },
+      {
+        "position": 118,
+        "token": ",",
+        "occluded_probability": 0.6549926996231079,
+        "probability_delta": -0.0006366968154907227,
+        "occluded_logit": 0.6410583257675171,
+        "logit_delta": -0.0028160810470581055
+      },
+      {
+        "position": 119,
+        "token": "who",
+        "occluded_probability": 0.6473760008811951,
+        "probability_delta": 0.006980001926422119,
+        "occluded_logit": 0.6075248718261719,
+        "logit_delta": 0.03071737289428711
+      },
+      {
+        "position": 120,
+        "token": "did",
+        "occluded_probability": 0.6524773240089417,
+        "probability_delta": 0.0018786787986755371,
+        "occluded_logit": 0.6299464702606201,
+        "logit_delta": 0.008295774459838867
+      },
+      {
+        "position": 121,
+        "token": "aspire",
+        "occluded_probability": 0.654595136642456,
+        "probability_delta": -0.0002391338348388672,
+        "occluded_logit": 0.6392995715141296,
+        "logit_delta": -0.0010573267936706543
+      },
+      {
+        "position": 122,
+        "token": "to",
+        "occluded_probability": 0.6463583707809448,
+        "probability_delta": 0.007997632026672363,
+        "occluded_logit": 0.6030699014663696,
+        "logit_delta": 0.035172343254089355
+      },
+      {
+        "position": 123,
+        "token": "the",
+        "occluded_probability": 0.6656857132911682,
+        "probability_delta": -0.011329710483551025,
+        "occluded_logit": 0.688736081123352,
+        "logit_delta": -0.050493836402893066
+      },
+      {
+        "position": 124,
+        "token": "top",
+        "occluded_probability": 0.6361439228057861,
+        "probability_delta": 0.018212080001831055,
+        "occluded_logit": 0.558666467666626,
+        "logit_delta": 0.07957577705383301
+      },
+      {
+        "position": 125,
+        "token": "rung",
+        "occluded_probability": 0.6551412343978882,
+        "probability_delta": -0.0007852315902709961,
+        "occluded_logit": 0.6417161226272583,
+        "logit_delta": -0.0034738779067993164
+      },
+      {
+        "position": 126,
+        "token": "of",
+        "occluded_probability": 0.6374456882476807,
+        "probability_delta": 0.016910314559936523,
+        "occluded_logit": 0.564294695854187,
+        "logit_delta": 0.07394754886627197
+      },
+      {
+        "position": 127,
+        "token": "the",
+        "occluded_probability": 0.670499861240387,
+        "probability_delta": -0.016143858432769775,
+        "occluded_logit": 0.710446834564209,
+        "logit_delta": -0.07220458984375
+      },
+      {
+        "position": 128,
+        "token": "student",
+        "occluded_probability": 0.6729964017868042,
+        "probability_delta": -0.01864039897918701,
+        "occluded_logit": 0.7217687368392944,
+        "logit_delta": -0.08352649211883545
+      },
+      {
+        "position": 129,
+        "token": "hierarchy",
+        "occluded_probability": 0.6369791626930237,
+        "probability_delta": 0.017376840114593506,
+        "occluded_logit": 0.5622768402099609,
+        "logit_delta": 0.07596540451049805
+      },
+      {
+        "position": 130,
+        "token": "by",
+        "occluded_probability": 0.6412524580955505,
+        "probability_delta": 0.01310354471206665,
+        "occluded_logit": 0.5808042883872986,
+        "logit_delta": 0.0574379563331604
+      },
+      {
+        "position": 131,
+        "token": "becoming",
+        "occluded_probability": 0.6478874087333679,
+        "probability_delta": 0.006468594074249268,
+        "occluded_logit": 0.6097661256790161,
+        "logit_delta": 0.02847611904144287
+      },
+      {
+        "position": 132,
+        "token": "a",
+        "occluded_probability": 0.6286755800247192,
+        "probability_delta": 0.02568042278289795,
+        "occluded_logit": 0.5265392065048218,
+        "logit_delta": 0.11170303821563721
+      },
+      {
+        "position": 133,
+        "token": "\"",
+        "occluded_probability": 0.6620067954063416,
+        "probability_delta": -0.007650792598724365,
+        "occluded_logit": 0.6722501516342163,
+        "logit_delta": -0.034007906913757324
+      },
+      {
+        "position": 134,
+        "token": "god",
+        "occluded_probability": 0.6566711664199829,
+        "probability_delta": -0.0023151636123657227,
+        "occluded_logit": 0.6484948992729187,
+        "logit_delta": -0.010252654552459717
+      },
+      {
+        "position": 135,
+        "token": "\"",
+        "occluded_probability": 0.6531909704208374,
+        "probability_delta": 0.0011650323867797852,
+        "occluded_logit": 0.6330953240394592,
+        "logit_delta": 0.005146920680999756
+      },
+      {
+        "position": 136,
+        "token": "-",
+        "occluded_probability": 0.6533284783363342,
+        "probability_delta": 0.001027524471282959,
+        "occluded_logit": 0.6337023973464966,
+        "logit_delta": 0.004539847373962402
+      },
+      {
+        "position": 137,
+        "token": "one",
+        "occluded_probability": 0.6531320810317993,
+        "probability_delta": 0.001223921775817871,
+        "occluded_logit": 0.6328352093696594,
+        "logit_delta": 0.0054070353507995605
+      },
+      {
+        "position": 138,
+        "token": "of",
+        "occluded_probability": 0.6514866352081299,
+        "probability_delta": 0.0028693675994873047,
+        "occluded_logit": 0.6255801916122437,
+        "logit_delta": 0.012662053108215332
+      },
+      {
+        "position": 139,
+        "token": "the",
+        "occluded_probability": 0.6524368524551392,
+        "probability_delta": 0.0019191503524780273,
+        "occluded_logit": 0.6297681927680969,
+        "logit_delta": 0.00847405195236206
+      },
+      {
+        "position": 140,
+        "token": "top",
+        "occluded_probability": 0.6565747261047363,
+        "probability_delta": -0.0022187232971191406,
+        "occluded_logit": 0.6480669379234314,
+        "logit_delta": -0.009824693202972412
+      },
+      {
+        "position": 141,
+        "token": "prefects",
+        "occluded_probability": 0.6540618538856506,
+        "probability_delta": 0.00029414892196655273,
+        "occluded_logit": 0.6369419097900391,
+        "logit_delta": 0.0013003349304199219
+      },
+      {
+        "position": 142,
+        "token": "-",
+        "occluded_probability": 0.6521635055541992,
+        "probability_delta": 0.0021924972534179688,
+        "occluded_logit": 0.628562867641449,
+        "logit_delta": 0.00967937707901001
+      },
+      {
+        "position": 143,
+        "token": "in",
+        "occluded_probability": 0.6635438799858093,
+        "probability_delta": -0.009187877178192139,
+        "occluded_logit": 0.6791273355484009,
+        "logit_delta": -0.040885090827941895
+      },
+      {
+        "position": 144,
+        "token": "his",
+        "occluded_probability": 0.6521611213684082,
+        "probability_delta": 0.0021948814392089844,
+        "occluded_logit": 0.6285525560379028,
+        "logit_delta": 0.009689688682556152
+      },
+      {
+        "position": 145,
+        "token": "senior",
+        "occluded_probability": 0.6521027684211731,
+        "probability_delta": 0.002253234386444092,
+        "occluded_logit": 0.6282951831817627,
+        "logit_delta": 0.009947061538696289
+      },
+      {
+        "position": 146,
+        "token": "year",
+        "occluded_probability": 0.6495411396026611,
+        "probability_delta": 0.004814863204956055,
+        "occluded_logit": 0.617022693157196,
+        "logit_delta": 0.02121955156326294
+      },
+      {
+        "position": 147,
+        "token": "as",
+        "occluded_probability": 0.656367838382721,
+        "probability_delta": -0.0020118355751037598,
+        "occluded_logit": 0.6471496820449829,
+        "logit_delta": -0.008907437324523926
+      },
+      {
+        "position": 148,
+        "token": "a",
+        "occluded_probability": 0.6557601094245911,
+        "probability_delta": -0.001404106616973877,
+        "occluded_logit": 0.6444562673568726,
+        "logit_delta": -0.006214022636413574
+      },
+      {
+        "position": 149,
+        "token": "stepping",
+        "occluded_probability": 0.6537387371063232,
+        "probability_delta": 0.0006172657012939453,
+        "occluded_logit": 0.6355141401290894,
+        "logit_delta": 0.002728104591369629
+      },
+      {
+        "position": 150,
+        "token": "stone",
+        "occluded_probability": 0.6388029456138611,
+        "probability_delta": 0.015553057193756104,
+        "occluded_logit": 0.5701721906661987,
+        "logit_delta": 0.06807005405426025
+      },
+      {
+        "position": 151,
+        "token": "to",
+        "occluded_probability": 0.641131579875946,
+        "probability_delta": 0.013224422931671143,
+        "occluded_logit": 0.5802789330482483,
+        "logit_delta": 0.05796331167221069
+      },
+      {
+        "position": 152,
+        "token": "becoming",
+        "occluded_probability": 0.6418749094009399,
+        "probability_delta": 0.012481093406677246,
+        "occluded_logit": 0.5835110545158386,
+        "logit_delta": 0.05473119020462036
+      },
+      {
+        "position": 153,
+        "token": "a",
+        "occluded_probability": 0.6551369428634644,
+        "probability_delta": -0.000780940055847168,
+        "occluded_logit": 0.6416967511177063,
+        "logit_delta": -0.0034545063972473145
+      },
+      {
+        "position": 154,
+        "token": "diplomat",
+        "occluded_probability": 0.6476571559906006,
+        "probability_delta": 0.0066988468170166016,
+        "occluded_logit": 0.6087565422058105,
+        "logit_delta": 0.029485702514648438
+      },
+      {
+        "position": 155,
+        "token": "as",
+        "occluded_probability": 0.6625762581825256,
+        "probability_delta": -0.008220255374908447,
+        "occluded_logit": 0.6747963428497314,
+        "logit_delta": -0.03655409812927246
+      },
+      {
+        "position": 156,
+        "token": "a",
+        "occluded_probability": 0.6543636918067932,
+        "probability_delta": -7.68899917602539e-06,
+        "occluded_logit": 0.6382761597633362,
+        "logit_delta": -3.3915042877197266e-05
+      },
+      {
+        "position": 157,
+        "token": "career",
+        "occluded_probability": 0.6549402475357056,
+        "probability_delta": -0.0005842447280883789,
+        "occluded_logit": 0.6408265829086304,
+        "logit_delta": -0.0025843381881713867
+      },
+      {
+        "position": 158,
+        "token": ",",
+        "occluded_probability": 0.6490254402160645,
+        "probability_delta": 0.005330562591552734,
+        "occluded_logit": 0.6147582530975342,
+        "logit_delta": 0.023483991622924805
+      },
+      {
+        "position": 159,
+        "token": "was",
+        "occluded_probability": 0.633084237575531,
+        "probability_delta": 0.02127176523208618,
+        "occluded_logit": 0.5454711318016052,
+        "logit_delta": 0.09277111291885376
+      },
+      {
+        "position": 160,
+        "token": "open",
+        "occluded_probability": 0.663803219795227,
+        "probability_delta": -0.009447216987609863,
+        "occluded_logit": 0.6802889704704285,
+        "logit_delta": -0.04204672574996948
+      },
+      {
+        "position": 161,
+        "token": "about",
+        "occluded_probability": 0.665850043296814,
+        "probability_delta": -0.011494040489196777,
+        "occluded_logit": 0.6894746422767639,
+        "logit_delta": -0.05123239755630493
+      },
+      {
+        "position": 162,
+        "token": "his",
+        "occluded_probability": 0.6309939622879028,
+        "probability_delta": 0.023362040519714355,
+        "occluded_logit": 0.5364833474159241,
+        "logit_delta": 0.10175889730453491
+      },
+      {
+        "position": 163,
+        "token": "homosexuality",
+        "occluded_probability": 0.6463644504547119,
+        "probability_delta": 0.007991552352905273,
+        "occluded_logit": 0.6030967831611633,
+        "logit_delta": 0.035145461559295654
+      },
+      {
+        "position": 164,
+        "token": "to",
+        "occluded_probability": 0.660464346408844,
+        "probability_delta": -0.006108343601226807,
+        "occluded_logit": 0.6653643846511841,
+        "logit_delta": -0.027122139930725098
+      },
+      {
+        "position": 165,
+        "token": "his",
+        "occluded_probability": 0.6700040102005005,
+        "probability_delta": -0.0156480073928833,
+        "occluded_logit": 0.7082029581069946,
+        "logit_delta": -0.06996071338653564
+      },
+      {
+        "position": 166,
+        "token": "classmates",
+        "occluded_probability": 0.6581816673278809,
+        "probability_delta": -0.003825664520263672,
+        "occluded_logit": 0.6552017331123352,
+        "logit_delta": -0.01695948839187622
+      },
+      {
+        "position": 167,
+        "token": ".",
+        "occluded_probability": 0.6525216102600098,
+        "probability_delta": 0.0018343925476074219,
+        "occluded_logit": 0.6301419734954834,
+        "logit_delta": 0.008100271224975586
+      },
+      {
+        "position": 168,
+        "token": "that",
+        "occluded_probability": 0.651204526424408,
+        "probability_delta": 0.0031514763832092285,
+        "occluded_logit": 0.624337911605835,
+        "logit_delta": 0.013904333114624023
+      },
+      {
+        "position": 169,
+        "token": "year",
+        "occluded_probability": 0.6542031764984131,
+        "probability_delta": 0.00015282630920410156,
+        "occluded_logit": 0.6375667452812195,
+        "logit_delta": 0.000675499439239502
+      },
+      {
+        "position": 170,
+        "token": ",",
+        "occluded_probability": 0.6550338864326477,
+        "probability_delta": -0.0006778836250305176,
+        "occluded_logit": 0.6412408351898193,
+        "logit_delta": -0.0029985904693603516
+      },
+      {
+        "position": 171,
+        "token": "he",
+        "occluded_probability": 0.6502227187156677,
+        "probability_delta": 0.004133284091949463,
+        "occluded_logit": 0.6200185418128967,
+        "logit_delta": 0.018223702907562256
+      },
+      {
+        "position": 172,
+        "token": "believed",
+        "occluded_probability": 0.6517661213874817,
+        "probability_delta": 0.002589881420135498,
+        "occluded_logit": 0.6268113255500793,
+        "logit_delta": 0.011430919170379639
+      },
+      {
+        "position": 173,
+        "token": "he",
+        "occluded_probability": 0.6647012233734131,
+        "probability_delta": -0.010345220565795898,
+        "occluded_logit": 0.6843156814575195,
+        "logit_delta": -0.04607343673706055
+      },
+      {
+        "position": 174,
+        "token": "fell",
+        "occluded_probability": 0.6458532214164734,
+        "probability_delta": 0.008502781391143799,
+        "occluded_logit": 0.6008606553077698,
+        "logit_delta": 0.03738158941268921
+      },
+      {
+        "position": 175,
+        "token": "in",
+        "occluded_probability": 0.6377048492431641,
+        "probability_delta": 0.016651153564453125,
+        "occluded_logit": 0.5654163360595703,
+        "logit_delta": 0.07282590866088867
+      },
+      {
+        "position": 176,
+        "token": "love",
+        "occluded_probability": 0.48361435532569885,
+        "probability_delta": 0.17074164748191833,
+        "occluded_logit": -0.06556618213653564,
+        "logit_delta": 0.7038084268569946
+      },
+      {
+        "position": 177,
+        "token": "for",
+        "occluded_probability": 0.6719112992286682,
+        "probability_delta": -0.017555296421051025,
+        "occluded_logit": 0.7168424129486084,
+        "logit_delta": -0.07860016822814941
+      },
+      {
+        "position": 178,
+        "token": "the",
+        "occluded_probability": 0.6639561653137207,
+        "probability_delta": -0.009600162506103516,
+        "occluded_logit": 0.6809743642807007,
+        "logit_delta": -0.0427321195602417
+      },
+      {
+        "position": 179,
+        "token": "first",
+        "occluded_probability": 0.644108235836029,
+        "probability_delta": 0.010247766971588135,
+        "occluded_logit": 0.5932402014732361,
+        "logit_delta": 0.0450020432472229
+      },
+      {
+        "position": 180,
+        "token": "time",
+        "occluded_probability": 0.6548089385032654,
+        "probability_delta": -0.00045293569564819336,
+        "occluded_logit": 0.6402454376220703,
+        "logit_delta": -0.002003192901611328
+      },
+      {
+        "position": 181,
+        "token": "in",
+        "occluded_probability": 0.6497421860694885,
+        "probability_delta": 0.004613816738128662,
+        "occluded_logit": 0.6179059743881226,
+        "logit_delta": 0.020336270332336426
+      },
+      {
+        "position": 182,
+        "token": "his",
+        "occluded_probability": 0.6620556712150574,
+        "probability_delta": -0.0076996684074401855,
+        "occluded_logit": 0.6724684238433838,
+        "logit_delta": -0.034226179122924805
+      },
+      {
+        "position": 183,
+        "token": "life",
+        "occluded_probability": 0.6544442772865295,
+        "probability_delta": -8.827447891235352e-05,
+        "occluded_logit": 0.6386325359344482,
+        "logit_delta": -0.0003902912139892578
+      },
+      {
+        "position": 184,
+        "token": "with",
+        "occluded_probability": 0.6339583396911621,
+        "probability_delta": 0.020397663116455078,
+        "occluded_logit": 0.5492360591888428,
+        "logit_delta": 0.08900618553161621
+      },
+      {
+        "position": 185,
+        "token": "fellow",
+        "occluded_probability": 0.6385026574134827,
+        "probability_delta": 0.01585334539413452,
+        "occluded_logit": 0.5688710808753967,
+        "logit_delta": 0.06937116384506226
+      },
+      {
+        "position": 186,
+        "token": "student",
+        "occluded_probability": 0.707364559173584,
+        "probability_delta": -0.0530085563659668,
+        "occluded_logit": 0.8826186656951904,
+        "logit_delta": -0.24437642097473145
+      },
+      {
+        "position": 187,
+        "token": "james",
+        "occluded_probability": 0.5958831906318665,
+        "probability_delta": 0.05847281217575073,
+        "occluded_logit": 0.38834062218666077,
+        "logit_delta": 0.24990162253379822
+      },
+      {
+        "position": 188,
+        "token": "harcourt",
+        "occluded_probability": 0.6908199191093445,
+        "probability_delta": -0.036463916301727295,
+        "occluded_logit": 0.8039553165435791,
+        "logit_delta": -0.16571307182312012
+      },
+      {
+        "position": 189,
+        "token": ",",
+        "occluded_probability": 0.6739636063575745,
+        "probability_delta": -0.019607603549957275,
+        "occluded_logit": 0.7261670827865601,
+        "logit_delta": -0.08792483806610107
+      },
+      {
+        "position": 190,
+        "token": "those",
+        "occluded_probability": 0.6755504012107849,
+        "probability_delta": -0.021194398403167725,
+        "occluded_logit": 0.7333975434303284,
+        "logit_delta": -0.09515529870986938
+      },
+      {
+        "position": 191,
+        "token": "feelings",
+        "occluded_probability": 0.6496503949165344,
+        "probability_delta": 0.004705607891082764,
+        "occluded_logit": 0.6175026893615723,
+        "logit_delta": 0.02073955535888672
+      },
+      {
+        "position": 192,
+        "token": "reciprocated",
+        "occluded_probability": 0.6554600596427917,
+        "probability_delta": -0.0011040568351745605,
+        "occluded_logit": 0.6431272625923157,
+        "logit_delta": -0.0048850178718566895
+      },
+      {
+        "position": 193,
+        "token": ".",
+        "occluded_probability": 0.6831805109977722,
+        "probability_delta": -0.02882450819015503,
+        "occluded_logit": 0.768426775932312,
+        "logit_delta": -0.13018453121185303
+      },
+      {
+        "position": 194,
+        "token": "both",
+        "occluded_probability": 0.6573994755744934,
+        "probability_delta": -0.0030434727668762207,
+        "occluded_logit": 0.6517267823219299,
+        "logit_delta": -0.013484537601470947
+      },
+      {
+        "position": 195,
+        "token": "guy",
+        "occluded_probability": 0.6540213823318481,
+        "probability_delta": 0.00033462047576904297,
+        "occluded_logit": 0.6367632150650024,
+        "logit_delta": 0.001479029655456543
+      },
+      {
+        "position": 196,
+        "token": "and",
+        "occluded_probability": 0.6558377146720886,
+        "probability_delta": -0.0014817118644714355,
+        "occluded_logit": 0.6448003053665161,
+        "logit_delta": -0.006558060646057129
+      },
+      {
+        "position": 197,
+        "token": "tommy",
+        "occluded_probability": 0.6541181802749634,
+        "probability_delta": 0.0002378225326538086,
+        "occluded_logit": 0.6371910572052002,
+        "logit_delta": 0.001051187515258789
+      },
+      {
+        "position": 198,
+        "token": "were",
+        "occluded_probability": 0.6794273257255554,
+        "probability_delta": -0.025071322917938232,
+        "occluded_logit": 0.7511413097381592,
+        "logit_delta": -0.1128990650177002
+      },
+      {
+        "position": 199,
+        "token": "friendly",
+        "occluded_probability": 0.6157448291778564,
+        "probability_delta": 0.03861117362976074,
+        "occluded_logit": 0.4715256094932556,
+        "logit_delta": 0.16671663522720337
+      },
+      {
+        "position": 200,
+        "token": "enough",
+        "occluded_probability": 0.6601641178131104,
+        "probability_delta": -0.005808115005493164,
+        "occluded_logit": 0.6640258431434631,
+        "logit_delta": -0.02578359842300415
+      },
+      {
+        "position": 201,
+        "token": "with",
+        "occluded_probability": 0.6829672455787659,
+        "probability_delta": -0.02861124277114868,
+        "occluded_logit": 0.7674416303634644,
+        "logit_delta": -0.12919938564300537
+      },
+      {
+        "position": 202,
+        "token": "their",
+        "occluded_probability": 0.6395481824874878,
+        "probability_delta": 0.014807820320129395,
+        "occluded_logit": 0.5734034776687622,
+        "logit_delta": 0.06483876705169678
+      },
+      {
+        "position": 203,
+        "token": "fellow",
+        "occluded_probability": 0.6590371131896973,
+        "probability_delta": -0.004681110382080078,
+        "occluded_logit": 0.6590062975883484,
+        "logit_delta": -0.020764052867889404
+      },
+      {
+        "position": 204,
+        "token": "house",
+        "occluded_probability": 0.6451910734176636,
+        "probability_delta": 0.009164929389953613,
+        "occluded_logit": 0.5979670286178589,
+        "logit_delta": 0.0402752161026001
+      },
+      {
+        "position": 205,
+        "token": "upperclassmen",
+        "occluded_probability": 0.6554449200630188,
+        "probability_delta": -0.0010889172554016113,
+        "occluded_logit": 0.643060028553009,
+        "logit_delta": -0.004817783832550049
+      },
+      {
+        "position": 206,
+        "token": ",",
+        "occluded_probability": 0.6636669635772705,
+        "probability_delta": -0.00931096076965332,
+        "occluded_logit": 0.6796786785125732,
+        "logit_delta": -0.04143643379211426
+      },
+      {
+        "position": 207,
+        "token": "who",
+        "occluded_probability": 0.6577418446540833,
+        "probability_delta": -0.0033858418464660645,
+        "occluded_logit": 0.6532471179962158,
+        "logit_delta": -0.015004873275756836
+      },
+      {
+        "position": 208,
+        "token": "respected",
+        "occluded_probability": 0.6545761227607727,
+        "probability_delta": -0.00022011995315551758,
+        "occluded_logit": 0.6392155885696411,
+        "logit_delta": -0.0009733438491821289
+      },
+      {
+        "position": 209,
+        "token": "tommy",
+        "occluded_probability": 0.6489713191986084,
+        "probability_delta": 0.005384683609008789,
+        "occluded_logit": 0.6145207285881042,
+        "logit_delta": 0.023721516132354736
+      },
+      {
+        "position": 210,
+        "token": "for",
+        "occluded_probability": 0.6458318829536438,
+        "probability_delta": 0.008524119853973389,
+        "occluded_logit": 0.6007673144340515,
+        "logit_delta": 0.03747493028640747
+      },
+      {
+        "position": 211,
+        "token": "having",
+        "occluded_probability": 0.657053530216217,
+        "probability_delta": -0.0026975274085998535,
+        "occluded_logit": 0.6501911878585815,
+        "logit_delta": -0.011948943138122559
+      },
+      {
+        "position": 212,
+        "token": "principles",
+        "occluded_probability": 0.655659019947052,
+        "probability_delta": -0.0013030171394348145,
+        "occluded_logit": 0.6440085172653198,
+        "logit_delta": -0.00576627254486084
+      },
+      {
+        "position": 213,
+        "token": "to",
+        "occluded_probability": 0.6557647585868835,
+        "probability_delta": -0.0014087557792663574,
+        "occluded_logit": 0.6444768905639648,
+        "logit_delta": -0.006234645843505859
+      },
+      {
+        "position": 214,
+        "token": "which",
+        "occluded_probability": 0.6570047736167908,
+        "probability_delta": -0.002648770809173584,
+        "occluded_logit": 0.6499746441841125,
+        "logit_delta": -0.011732399463653564
+      },
+      {
+        "position": 215,
+        "token": "he",
+        "occluded_probability": 0.6509416103363037,
+        "probability_delta": 0.0034143924713134766,
+        "occluded_logit": 0.6231809854507446,
+        "logit_delta": 0.015061259269714355
+      },
+      {
+        "position": 216,
+        "token": "did",
+        "occluded_probability": 0.6571025848388672,
+        "probability_delta": -0.00274658203125,
+        "occluded_logit": 0.650408923625946,
+        "logit_delta": -0.01216667890548706
+      },
+      {
+        "position": 217,
+        "token": "not",
+        "occluded_probability": 0.6508565545082092,
+        "probability_delta": 0.003499448299407959,
+        "occluded_logit": 0.6228066682815552,
+        "logit_delta": 0.015435576438903809
+      },
+      {
+        "position": 218,
+        "token": "stray",
+        "occluded_probability": 0.6523891091346741,
+        "probability_delta": 0.0019668936729431152,
+        "occluded_logit": 0.6295573711395264,
+        "logit_delta": 0.008684873580932617
+      },
+      {
+        "position": 219,
+        "token": ",",
+        "occluded_probability": 0.6542031764984131,
+        "probability_delta": 0.00015282630920410156,
+        "occluded_logit": 0.6375667452812195,
+        "logit_delta": 0.000675499439239502
+      },
+      {
+        "position": 220,
+        "token": "and",
+        "occluded_probability": 0.6542031764984131,
+        "probability_delta": 0.00015282630920410156,
+        "occluded_logit": 0.6375667452812195,
+        "logit_delta": 0.000675499439239502
+      },
+      {
+        "position": 221,
+        "token": "turned",
+        "occluded_probability": 0.6557494401931763,
+        "probability_delta": -0.001393437385559082,
+        "occluded_logit": 0.6444091796875,
+        "logit_delta": -0.006166934967041016
+      },
+      {
+        "position": 222,
+        "token": "a",
+        "occluded_probability": 0.6268071532249451,
+        "probability_delta": 0.02754884958267212,
+        "occluded_logit": 0.5185437202453613,
+        "logit_delta": 0.11969852447509766
+      },
+      {
+        "position": 223,
+        "token": "blind",
+        "occluded_probability": 0.6599101424217224,
+        "probability_delta": -0.005554139614105225,
+        "occluded_logit": 0.6628938317298889,
+        "logit_delta": -0.02465158700942993
+      },
+      {
+        "position": 224,
+        "token": "eye",
+        "occluded_probability": 0.6635594367980957,
+        "probability_delta": -0.009203433990478516,
+        "occluded_logit": 0.6791969537734985,
+        "logit_delta": -0.04095470905303955
+      },
+      {
+        "position": 225,
+        "token": "to",
+        "occluded_probability": 0.6429004073143005,
+        "probability_delta": 0.01145559549331665,
+        "occluded_logit": 0.5879748463630676,
+        "logit_delta": 0.05026739835739136
+      },
+      {
+        "position": 226,
+        "token": "guy",
+        "occluded_probability": 0.6499031782150269,
+        "probability_delta": 0.004452824592590332,
+        "occluded_logit": 0.6186133623123169,
+        "logit_delta": 0.01962888240814209
+      },
+      {
+        "position": 227,
+        "token": "'",
+        "occluded_probability": 0.6605784296989441,
+        "probability_delta": -0.006222426891326904,
+        "occluded_logit": 0.6658728122711182,
+        "logit_delta": -0.02763056755065918
+      },
+      {
+        "position": 228,
+        "token": "s",
+        "occluded_probability": 0.6577882170677185,
+        "probability_delta": -0.0034322142601013184,
+        "occluded_logit": 0.6534532308578491,
+        "logit_delta": -0.015210986137390137
+      },
+      {
+        "position": 229,
+        "token": "sexual",
+        "occluded_probability": 0.6508400440216064,
+        "probability_delta": 0.003515958786010742,
+        "occluded_logit": 0.6227336525917053,
+        "logit_delta": 0.015508592128753662
+      },
+      {
+        "position": 230,
+        "token": "activities",
+        "occluded_probability": 0.6534416079521179,
+        "probability_delta": 0.0009143948554992676,
+        "occluded_logit": 0.6342018246650696,
+        "logit_delta": 0.004040420055389404
+      },
+      {
+        "position": 231,
+        "token": "if",
+        "occluded_probability": 0.6486557126045227,
+        "probability_delta": 0.005700290203094482,
+        "occluded_logit": 0.6131355166435242,
+        "logit_delta": 0.025106728076934814
+      },
+      {
+        "position": 232,
+        "token": "only",
+        "occluded_probability": 0.6557626724243164,
+        "probability_delta": -0.0014066696166992188,
+        "occluded_logit": 0.6444674730300903,
+        "logit_delta": -0.006225228309631348
+      },
+      {
+        "position": 233,
+        "token": "to",
+        "occluded_probability": 0.6629133820533752,
+        "probability_delta": -0.008557379245758057,
+        "occluded_logit": 0.6763044595718384,
+        "logit_delta": -0.038062214851379395
+      },
+      {
+        "position": 234,
+        "token": "maintain",
+        "occluded_probability": 0.6359533667564392,
+        "probability_delta": 0.01840263605117798,
+        "occluded_logit": 0.5578433275222778,
+        "logit_delta": 0.08039891719818115
+      },
+      {
+        "position": 235,
+        "token": "overall",
+        "occluded_probability": 0.6459608674049377,
+        "probability_delta": 0.008395135402679443,
+        "occluded_logit": 0.6013314723968506,
+        "logit_delta": 0.0369107723236084
+      },
+      {
+        "position": 236,
+        "token": "peace",
+        "occluded_probability": 0.6456592679023743,
+        "probability_delta": 0.00869673490524292,
+        "occluded_logit": 0.6000129580497742,
+        "logit_delta": 0.038229286670684814
+      },
+      {
+        "position": 237,
+        "token": ".",
+        "occluded_probability": 0.6296104788780212,
+        "probability_delta": 0.024745523929595947,
+        "occluded_logit": 0.5305463075637817,
+        "logit_delta": 0.10769593715667725
+      },
+      {
+        "position": 238,
+        "token": "an",
+        "occluded_probability": 0.6461113095283508,
+        "probability_delta": 0.008244693279266357,
+        "occluded_logit": 0.6019892692565918,
+        "logit_delta": 0.03625297546386719
+      },
+      {
+        "position": 239,
+        "token": "event",
+        "occluded_probability": 0.6563467979431152,
+        "probability_delta": -0.001990795135498047,
+        "occluded_logit": 0.6470563411712646,
+        "logit_delta": -0.008814096450805664
+      },
+      {
+        "position": 240,
+        "token": "at",
+        "occluded_probability": 0.6524126529693604,
+        "probability_delta": 0.001943349838256836,
+        "occluded_logit": 0.6296610832214355,
+        "logit_delta": 0.008581161499023438
+      },
+      {
+        "position": 241,
+        "token": "the",
+        "occluded_probability": 0.6576246023178101,
+        "probability_delta": -0.003268599510192871,
+        "occluded_logit": 0.6527263522148132,
+        "logit_delta": -0.014484107494354248
+      },
+      {
+        "position": 242,
+        "token": "school",
+        "occluded_probability": 0.6490007638931274,
+        "probability_delta": 0.005355238914489746,
+        "occluded_logit": 0.6146498918533325,
+        "logit_delta": 0.023592352867126465
+      },
+      {
+        "position": 243,
+        "token": "that",
+        "occluded_probability": 0.6396160125732422,
+        "probability_delta": 0.014739990234375,
+        "occluded_logit": 0.5736979246139526,
+        "logit_delta": 0.06454432010650635
+      },
+      {
+        "position": 244,
+        "token": "year",
+        "occluded_probability": 0.6451248526573181,
+        "probability_delta": 0.009231150150299072,
+        "occluded_logit": 0.5976778268814087,
+        "logit_delta": 0.04056441783905029
+      },
+      {
+        "position": 245,
+        "token": "involving",
+        "occluded_probability": 0.6536277532577515,
+        "probability_delta": 0.0007282495498657227,
+        "occluded_logit": 0.6350239515304565,
+        "logit_delta": 0.0032182931900024414
+      },
+      {
+        "position": 246,
+        "token": "another",
+        "occluded_probability": 0.6504831314086914,
+        "probability_delta": 0.0038728713989257812,
+        "occluded_logit": 0.6211634278297424,
+        "logit_delta": 0.017078816890716553
+      },
+      {
+        "position": 247,
+        "token": "student",
+        "occluded_probability": 0.6451074481010437,
+        "probability_delta": 0.009248554706573486,
+        "occluded_logit": 0.5976017713546753,
+        "logit_delta": 0.04064047336578369
+      },
+      {
+        "position": 248,
+        "token": "would",
+        "occluded_probability": 0.652362585067749,
+        "probability_delta": 0.001993417739868164,
+        "occluded_logit": 0.6294405460357666,
+        "logit_delta": 0.008801698684692383
+      },
+      {
+        "position": 249,
+        "token": "place",
+        "occluded_probability": 0.6702114343643188,
+        "probability_delta": -0.01585543155670166,
+        "occluded_logit": 0.7091413736343384,
+        "logit_delta": -0.0708991289138794
+      },
+      {
+        "position": 250,
+        "token": "greater",
+        "occluded_probability": 0.6628262996673584,
+        "probability_delta": -0.008470296859741211,
+        "occluded_logit": 0.675915002822876,
+        "logit_delta": -0.03767275810241699
+      },
+      {
+        "position": 251,
+        "token": "scrutiny",
+        "occluded_probability": 0.6385554075241089,
+        "probability_delta": 0.0158005952835083,
+        "occluded_logit": 0.5690997838973999,
+        "logit_delta": 0.06914246082305908
+      },
+      {
+        "position": 252,
+        "token": "on",
+        "occluded_probability": 0.6577178239822388,
+        "probability_delta": -0.003361821174621582,
+        "occluded_logit": 0.6531405448913574,
+        "logit_delta": -0.014898300170898438
+      },
+      {
+        "position": 253,
+        "token": "the",
+        "occluded_probability": 0.6491432189941406,
+        "probability_delta": 0.0052127838134765625,
+        "occluded_logit": 0.6152752041816711,
+        "logit_delta": 0.022967040538787842
+      },
+      {
+        "position": 254,
+        "token": "activities",
+        "occluded_probability": 0.6702820658683777,
+        "probability_delta": -0.015926063060760498,
+        "occluded_logit": 0.7094610333442688,
+        "logit_delta": -0.07121878862380981
+      },
+      {
+        "position": 255,
+        "token": "and",
+        "occluded_probability": 0.6248664855957031,
+        "probability_delta": 0.029489517211914062,
+        "occluded_logit": 0.5102558732032776,
+        "logit_delta": 0.1279863715171814
+      },
+      {
+        "position": 256,
+        "token": "behaviors",
+        "occluded_probability": 0.6543864607810974,
+        "probability_delta": -3.045797348022461e-05,
+        "occluded_logit": 0.6383768320083618,
+        "logit_delta": -0.00013458728790283203
+      },
+      {
+        "position": 257,
+        "token": "of",
+        "occluded_probability": 0.6688448786735535,
+        "probability_delta": -0.01448887586593628,
+        "occluded_logit": 0.7029651999473572,
+        "logit_delta": -0.0647229552268982
+      },
+      {
+        "position": 258,
+        "token": "the",
+        "occluded_probability": 0.6574513912200928,
+        "probability_delta": -0.003095388412475586,
+        "occluded_logit": 0.6519574522972107,
+        "logit_delta": -0.013715207576751709
+      },
+      {
+        "position": 259,
+        "token": "entire",
+        "occluded_probability": 0.6562799215316772,
+        "probability_delta": -0.0019239187240600586,
+        "occluded_logit": 0.6467597484588623,
+        "logit_delta": -0.00851750373840332
+      },
+      {
+        "position": 260,
+        "token": "student",
+        "occluded_probability": 0.6521777510643005,
+        "probability_delta": 0.0021782517433166504,
+        "occluded_logit": 0.628625750541687,
+        "logit_delta": 0.009616494178771973
+      },
+      {
+        "position": 261,
+        "token": "body",
+        "occluded_probability": 0.6722858548164368,
+        "probability_delta": -0.01792985200881958,
+        "occluded_logit": 0.7185418605804443,
+        "logit_delta": -0.08029961585998535
+      },
+      {
+        "position": 262,
+        "token": ".",
+        "occluded_probability": 0.6568717360496521,
+        "probability_delta": -0.002515733242034912,
+        "occluded_logit": 0.6493842601776123,
+        "logit_delta": -0.01114201545715332
+      },
+      {
+        "position": 263,
+        "token": "tommy",
+        "occluded_probability": 0.6644808053970337,
+        "probability_delta": -0.010124802589416504,
+        "occluded_logit": 0.6833269000053406,
+        "logit_delta": -0.04508465528488159
+      },
+      {
+        "position": 264,
+        "token": "would",
+        "occluded_probability": 0.6416069269180298,
+        "probability_delta": 0.012749075889587402,
+        "occluded_logit": 0.5823453664779663,
+        "logit_delta": 0.055896878242492676
+      },
+      {
+        "position": 265,
+        "token": "be",
+        "occluded_probability": 0.6492815017700195,
+        "probability_delta": 0.005074501037597656,
+        "occluded_logit": 0.6158824563026428,
+        "logit_delta": 0.022359788417816162
+      },
+      {
+        "position": 266,
+        "token": "asked",
+        "occluded_probability": 0.6475841403007507,
+        "probability_delta": 0.006771862506866455,
+        "occluded_logit": 0.6084369421005249,
+        "logit_delta": 0.029805302619934082
+      },
+      {
+        "position": 267,
+        "token": "to",
+        "occluded_probability": 0.6508845090866089,
+        "probability_delta": 0.0034714937210083008,
+        "occluded_logit": 0.6229294538497925,
+        "logit_delta": 0.015312790870666504
+      },
+      {
+        "position": 268,
+        "token": "do",
+        "occluded_probability": 0.6527202725410461,
+        "probability_delta": 0.001635730266571045,
+        "occluded_logit": 0.6310180425643921,
+        "logit_delta": 0.0072242021560668945
+      },
+      {
+        "position": 269,
+        "token": "something",
+        "occluded_probability": 0.6696427464485168,
+        "probability_delta": -0.015286743640899658,
+        "occluded_logit": 0.7065696716308594,
+        "logit_delta": -0.06832742691040039
+      },
+      {
+        "position": 270,
+        "token": "that",
+        "occluded_probability": 0.6744539141654968,
+        "probability_delta": -0.02009791135787964,
+        "occluded_logit": 0.7283991575241089,
+        "logit_delta": -0.0901569128036499
+      },
+      {
+        "position": 271,
+        "token": "both",
+        "occluded_probability": 0.6437943577766418,
+        "probability_delta": 0.010561645030975342,
+        "occluded_logit": 0.5918709635734558,
+        "logit_delta": 0.046371281147003174
+      },
+      {
+        "position": 272,
+        "token": "appealed",
+        "occluded_probability": 0.6193222403526306,
+        "probability_delta": 0.03503376245498657,
+        "occluded_logit": 0.4866724908351898,
+        "logit_delta": 0.15156975388526917
+      },
+      {
+        "position": 273,
+        "token": "to",
+        "occluded_probability": 0.6760731339454651,
+        "probability_delta": -0.0217171311378479,
+        "occluded_logit": 0.7357836365699768,
+        "logit_delta": -0.09754139184951782
+      },
+      {
+        "position": 274,
+        "token": "his",
+        "occluded_probability": 0.6581025123596191,
+        "probability_delta": -0.003746509552001953,
+        "occluded_logit": 0.6548497676849365,
+        "logit_delta": -0.01660752296447754
+      },
+      {
+        "position": 275,
+        "token": "marxist",
+        "occluded_probability": 0.6391943693161011,
+        "probability_delta": 0.015161633491516113,
+        "occluded_logit": 0.5718692541122437,
+        "logit_delta": 0.06637299060821533
+      },
+      {
+        "position": 276,
+        "token": "ideals",
+        "occluded_probability": 0.6616581678390503,
+        "probability_delta": -0.0073021650314331055,
+        "occluded_logit": 0.6706923246383667,
+        "logit_delta": -0.032450079917907715
+      },
+      {
+        "position": 277,
+        "token": "of",
+        "occluded_probability": 0.6433475017547607,
+        "probability_delta": 0.011008501052856445,
+        "occluded_logit": 0.5899230241775513,
+        "logit_delta": 0.048319220542907715
+      },
+      {
+        "position": 278,
+        "token": "working",
+        "occluded_probability": 0.6570428013801575,
+        "probability_delta": -0.002686798572540283,
+        "occluded_logit": 0.6501434445381165,
+        "logit_delta": -0.01190119981765747
+      },
+      {
+        "position": 279,
+        "token": "for",
+        "occluded_probability": 0.6403170228004456,
+        "probability_delta": 0.01403898000717163,
+        "occluded_logit": 0.5767403244972229,
+        "logit_delta": 0.061501920223236084
+      },
+      {
+        "position": 280,
+        "token": "the",
+        "occluded_probability": 0.6415300369262695,
+        "probability_delta": 0.012825965881347656,
+        "occluded_logit": 0.5820112228393555,
+        "logit_delta": 0.056231021881103516
+      },
+      {
+        "position": 281,
+        "token": "greater",
+        "occluded_probability": 0.6570591330528259,
+        "probability_delta": -0.0027031302452087402,
+        "occluded_logit": 0.6502158045768738,
+        "logit_delta": -0.011973559856414795
+      },
+      {
+        "position": 282,
+        "token": "good",
+        "occluded_probability": 0.6576763391494751,
+        "probability_delta": -0.00332033634185791,
+        "occluded_logit": 0.6529562473297119,
+        "logit_delta": -0.01471400260925293
+      },
+      {
+        "position": 283,
+        "token": ",",
+        "occluded_probability": 0.6394671201705933,
+        "probability_delta": 0.014888882637023926,
+        "occluded_logit": 0.573051929473877,
+        "logit_delta": 0.06519031524658203
+      },
+      {
+        "position": 284,
+        "token": "but",
+        "occluded_probability": 0.6518032550811768,
+        "probability_delta": 0.0025527477264404297,
+        "occluded_logit": 0.6269749402999878,
+        "logit_delta": 0.011267304420471191
+      },
+      {
+        "position": 285,
+        "token": "that",
+        "occluded_probability": 0.6542031764984131,
+        "probability_delta": 0.00015282630920410156,
+        "occluded_logit": 0.6375667452812195,
+        "logit_delta": 0.000675499439239502
+      },
+      {
+        "position": 286,
+        "token": "also",
+        "occluded_probability": 0.6438243985176086,
+        "probability_delta": 0.010531604290008545,
+        "occluded_logit": 0.5920021533966064,
+        "logit_delta": 0.04624009132385254
+      },
+      {
+        "position": 287,
+        "token": "went",
+        "occluded_probability": 0.6542031764984131,
+        "probability_delta": 0.00015282630920410156,
+        "occluded_logit": 0.6375667452812195,
+        "logit_delta": 0.000675499439239502
+      },
+      {
+        "position": 288,
+        "token": "against",
+        "occluded_probability": 0.6547823548316956,
+        "probability_delta": -0.00042635202407836914,
+        "occluded_logit": 0.640127956867218,
+        "logit_delta": -0.0018857121467590332
+      },
+      {
+        "position": 289,
+        "token": "his",
+        "occluded_probability": 0.663827121257782,
+        "probability_delta": -0.009471118450164795,
+        "occluded_logit": 0.6803959608078003,
+        "logit_delta": -0.04215371608734131
+      },
+      {
+        "position": 290,
+        "token": "principles",
+        "occluded_probability": 0.6419211030006409,
+        "probability_delta": 0.012434899806976318,
+        "occluded_logit": 0.583712100982666,
+        "logit_delta": 0.05453014373779297
+      },
+      {
+        "position": 291,
+        "token": "against",
+        "occluded_probability": 0.6440606713294983,
+        "probability_delta": 0.010295331478118896,
+        "occluded_logit": 0.5930324792861938,
+        "logit_delta": 0.04520976543426514
+      },
+      {
+        "position": 292,
+        "token": "the",
+        "occluded_probability": 0.6606324911117554,
+        "probability_delta": -0.006276488304138184,
+        "occluded_logit": 0.6661138534545898,
+        "logit_delta": -0.02787160873413086
+      },
+      {
+        "position": 293,
+        "token": "traditions",
+        "occluded_probability": 0.652025580406189,
+        "probability_delta": 0.0023304224014282227,
+        "occluded_logit": 0.6279550790786743,
+        "logit_delta": 0.010287165641784668
+      },
+      {
+        "position": 294,
+        "token": "of",
+        "occluded_probability": 0.6417418122291565,
+        "probability_delta": 0.012614190578460693,
+        "occluded_logit": 0.5829323530197144,
+        "logit_delta": 0.05530989170074463
+      },
+      {
+        "position": 295,
+        "token": "the",
+        "occluded_probability": 0.6636205315589905,
+        "probability_delta": -0.009264528751373291,
+        "occluded_logit": 0.6794704794883728,
+        "logit_delta": -0.04122823476791382
+      },
+      {
+        "position": 296,
+        "token": "school",
+        "occluded_probability": 0.651711106300354,
+        "probability_delta": 0.0026448965072631836,
+        "occluded_logit": 0.6265690326690674,
+        "logit_delta": 0.011673212051391602
+      },
+      {
+        "position": 297,
+        "token": ".",
+        "occluded_probability": 0.6552466750144958,
+        "probability_delta": -0.0008906722068786621,
+        "occluded_logit": 0.6421827077865601,
+        "logit_delta": -0.003940463066101074
+      },
+      {
+        "position": 298,
+        "token": "a",
+        "occluded_probability": 0.6116218566894531,
+        "probability_delta": 0.04273414611816406,
+        "occluded_logit": 0.4541347324848175,
+        "logit_delta": 0.18410751223564148
+      },
+      {
+        "position": 299,
+        "token": "struggle",
+        "occluded_probability": 0.6806958317756653,
+        "probability_delta": -0.026339828968048096,
+        "occluded_logit": 0.756971538066864,
+        "logit_delta": -0.11872929334640503
+      },
+      {
+        "position": 300,
+        "token": "for",
+        "occluded_probability": 0.6270738840103149,
+        "probability_delta": 0.027282118797302246,
+        "occluded_logit": 0.5196839570999146,
+        "logit_delta": 0.11855828762054443
+      },
+      {
+        "position": 301,
+        "token": "power",
+        "occluded_probability": 0.7294232249259949,
+        "probability_delta": -0.07506722211837769,
+        "occluded_logit": 0.9916984438896179,
+        "logit_delta": -0.35345619916915894
+      },
+      {
+        "position": 302,
+        "token": ",",
+        "occluded_probability": 0.6404715180397034,
+        "probability_delta": 0.013884484767913818,
+        "occluded_logit": 0.5774114727973938,
+        "logit_delta": 0.060830771923065186
+      },
+      {
+        "position": 303,
+        "token": "with",
+        "occluded_probability": 0.656282901763916,
+        "probability_delta": -0.0019268989562988281,
+        "occluded_logit": 0.6467729806900024,
+        "logit_delta": -0.008530735969543457
+      },
+      {
+        "position": 304,
+        "token": "all",
+        "occluded_probability": 0.655247151851654,
+        "probability_delta": -0.0008911490440368652,
+        "occluded_logit": 0.6421847343444824,
+        "logit_delta": -0.0039424896240234375
+      },
+      {
+        "position": 305,
+        "token": "students",
+        "occluded_probability": 0.6542031764984131,
+        "probability_delta": 0.00015282630920410156,
+        "occluded_logit": 0.6375667452812195,
+        "logit_delta": 0.000675499439239502
+      },
+      {
+        "position": 306,
+        "token": ",",
+        "occluded_probability": 0.6645472645759583,
+        "probability_delta": -0.010191261768341064,
+        "occluded_logit": 0.6836248636245728,
+        "logit_delta": -0.04538261890411377
+      },
+      {
+        "position": 307,
+        "token": "including",
+        "occluded_probability": 0.6609043478965759,
+        "probability_delta": -0.00654834508895874,
+        "occluded_logit": 0.6673269271850586,
+        "logit_delta": -0.02908468246459961
+      },
+      {
+        "position": 308,
+        "token": "guy",
+        "occluded_probability": 0.658581018447876,
+        "probability_delta": -0.004225015640258789,
+        "occluded_logit": 0.6569771766662598,
+        "logit_delta": -0.01873493194580078
+      },
+      {
+        "position": 309,
+        "token": "and",
+        "occluded_probability": 0.6555172204971313,
+        "probability_delta": -0.0011612176895141602,
+        "occluded_logit": 0.6433805823326111,
+        "logit_delta": -0.0051383376121521
+      },
+      {
+        "position": 310,
+        "token": "tommy",
+        "occluded_probability": 0.6543790102005005,
+        "probability_delta": -2.300739288330078e-05,
+        "occluded_logit": 0.6383438110351562,
+        "logit_delta": -0.00010156631469726562
+      },
+      {
+        "position": 311,
+        "token": ",",
+        "occluded_probability": 0.64499831199646,
+        "probability_delta": 0.009357690811157227,
+        "occluded_logit": 0.5971249938011169,
+        "logit_delta": 0.04111725091934204
+      },
+      {
+        "position": 312,
+        "token": "largely",
+        "occluded_probability": 0.6286994218826294,
+        "probability_delta": 0.025656580924987793,
+        "occluded_logit": 0.5266413688659668,
+        "logit_delta": 0.11160087585449219
+      },
+      {
+        "position": 313,
+        "token": "against",
+        "occluded_probability": 0.6502981185913086,
+        "probability_delta": 0.004057884216308594,
+        "occluded_logit": 0.6203498840332031,
+        "logit_delta": 0.01789236068725586
+      },
+      {
+        "position": 314,
+        "token": "a",
+        "occluded_probability": 0.6633266806602478,
+        "probability_delta": -0.008970677852630615,
+        "occluded_logit": 0.6781544089317322,
+        "logit_delta": -0.03991216421127319
+      },
+      {
+        "position": 315,
+        "token": "tyrannical",
+        "occluded_probability": 0.6290116906166077,
+        "probability_delta": 0.02534431219100952,
+        "occluded_logit": 0.5279793739318848,
+        "logit_delta": 0.11026287078857422
+      },
+      {
+        "position": 316,
+        "token": "student",
+        "occluded_probability": 0.6526111960411072,
+        "probability_delta": 0.0017448067665100098,
+        "occluded_logit": 0.6305368542671204,
+        "logit_delta": 0.007705390453338623
+      },
+      {
+        "position": 317,
+        "token": "named",
+        "occluded_probability": 0.6667361855506897,
+        "probability_delta": -0.01238018274307251,
+        "occluded_logit": 0.6934599876403809,
+        "logit_delta": -0.055217742919921875
+      },
+      {
+        "position": 318,
+        "token": "fowler",
+        "occluded_probability": 0.654438853263855,
+        "probability_delta": -8.285045623779297e-05,
+        "occluded_logit": 0.6386088132858276,
+        "logit_delta": -0.00036656856536865234
+      },
+      {
+        "position": 319,
+        "token": ",",
+        "occluded_probability": 0.6419199109077454,
+        "probability_delta": 0.012436091899871826,
+        "occluded_logit": 0.5837068557739258,
+        "logit_delta": 0.0545353889465332
+      },
+      {
+        "position": 320,
+        "token": "who",
+        "occluded_probability": 0.6626331210136414,
+        "probability_delta": -0.00827711820602417,
+        "occluded_logit": 0.6750506162643433,
+        "logit_delta": -0.03680837154388428
+      },
+      {
+        "position": 321,
+        "token": "likened",
+        "occluded_probability": 0.6564258933067322,
+        "probability_delta": -0.0020698904991149902,
+        "occluded_logit": 0.6474069356918335,
+        "logit_delta": -0.009164690971374512
+      },
+      {
+        "position": 322,
+        "token": "himself",
+        "occluded_probability": 0.6542171239852905,
+        "probability_delta": 0.00013887882232666016,
+        "occluded_logit": 0.6376282572746277,
+        "logit_delta": 0.0006139874458312988
+      },
+      {
+        "position": 323,
+        "token": "to",
+        "occluded_probability": 0.6615104675292969,
+        "probability_delta": -0.0071544647216796875,
+        "occluded_logit": 0.6700327396392822,
+        "logit_delta": -0.03179049491882324
+      },
+      {
+        "position": 324,
+        "token": "a",
+        "occluded_probability": 0.6379745006561279,
+        "probability_delta": 0.016381502151489258,
+        "occluded_logit": 0.5665837526321411,
+        "logit_delta": 0.07165849208831787
+      },
+      {
+        "position": 325,
+        "token": "military",
+        "occluded_probability": 0.6569689512252808,
+        "probability_delta": -0.0026129484176635742,
+        "occluded_logit": 0.6498159170150757,
+        "logit_delta": -0.0115736722946167
+      },
+      {
+        "position": 326,
+        "token": "officer",
+        "occluded_probability": 0.6312608122825623,
+        "probability_delta": 0.02309519052505493,
+        "occluded_logit": 0.5376295447349548,
+        "logit_delta": 0.10061269998550415
+      },
+      {
+        "position": 327,
+        "token": ",",
+        "occluded_probability": 0.6779832243919373,
+        "probability_delta": -0.02362722158432007,
+        "occluded_logit": 0.744519054889679,
+        "logit_delta": -0.10627681016921997
+      },
+      {
+        "position": 328,
+        "token": "would",
+        "occluded_probability": 0.6535241007804871,
+        "probability_delta": 0.000831902027130127,
+        "occluded_logit": 0.6345661878585815,
+        "logit_delta": 0.0036760568618774414
+      },
+      {
+        "position": 329,
+        "token": "have",
+        "occluded_probability": 0.6602897047996521,
+        "probability_delta": -0.005933701992034912,
+        "occluded_logit": 0.6645854711532593,
+        "logit_delta": -0.026343226432800293
+      },
+      {
+        "position": 330,
+        "token": "a",
+        "occluded_probability": 0.6558194756507874,
+        "probability_delta": -0.001463472843170166,
+        "occluded_logit": 0.6447194218635559,
+        "logit_delta": -0.006477177143096924
+      },
+      {
+        "position": 331,
+        "token": "profound",
+        "occluded_probability": 0.6542584896087646,
+        "probability_delta": 9.751319885253906e-05,
+        "occluded_logit": 0.637811005115509,
+        "logit_delta": 0.00043123960494995117
+      },
+      {
+        "position": 332,
+        "token": "affect",
+        "occluded_probability": 0.6476300358772278,
+        "probability_delta": 0.006725966930389404,
+        "occluded_logit": 0.608637809753418,
+        "logit_delta": 0.029604434967041016
+      },
+      {
+        "position": 333,
+        "token": "on",
+        "occluded_probability": 0.6574668288230896,
+        "probability_delta": -0.003110826015472412,
+        "occluded_logit": 0.6520258188247681,
+        "logit_delta": -0.013783574104309082
+      },
+      {
+        "position": 334,
+        "token": "guy",
+        "occluded_probability": 0.6572496891021729,
+        "probability_delta": -0.002893686294555664,
+        "occluded_logit": 0.6510618925094604,
+        "logit_delta": -0.012819647789001465
+      },
+      {
+        "position": 335,
+        "token": "and",
+        "occluded_probability": 0.6510975360870361,
+        "probability_delta": 0.0032584667205810547,
+        "occluded_logit": 0.6238671541213989,
+        "logit_delta": 0.014375090599060059
+      },
+      {
+        "position": 336,
+        "token": "his",
+        "occluded_probability": 0.6553711891174316,
+        "probability_delta": -0.0010151863098144531,
+        "occluded_logit": 0.6427337527275085,
+        "logit_delta": -0.0044915080070495605
+      },
+      {
+        "position": 337,
+        "token": "life",
+        "occluded_probability": 0.6817014813423157,
+        "probability_delta": -0.027345478534698486,
+        "occluded_logit": 0.7616021037101746,
+        "logit_delta": -0.12335985898971558
+      },
+      {
+        "position": 338,
+        "token": "beliefs",
+        "occluded_probability": 0.6325350999832153,
+        "probability_delta": 0.021820902824401855,
+        "occluded_logit": 0.5431079864501953,
+        "logit_delta": 0.09513425827026367
+      },
+      {
+        "position": 339,
+        "token": ".",
+        "occluded_probability": 0.6577327847480774,
+        "probability_delta": -0.003376781940460205,
+        "occluded_logit": 0.6532070636749268,
+        "logit_delta": -0.014964818954467773
+      }
+    ]
+  },
+  "image_occlusion": {
+    "baseline_probability": 0.6543560028076172,
+    "baseline_logit": 0.638242244720459,
+    "grid_size": 4,
+    "top_patches": [
+      {
+        "row": 1,
+        "col": 1,
+        "y0": 56,
+        "y1": 112,
+        "x0": 56,
+        "x1": 112,
+        "occluded_probability": 0.379660040140152,
+        "probability_delta": 0.2746959626674652,
+        "occluded_logit": -0.4909915328025818,
+        "logit_delta": 1.1292338371276855
+      },
+      {
+        "row": 2,
+        "col": 1,
+        "y0": 112,
+        "y1": 168,
+        "x0": 56,
+        "x1": 112,
+        "occluded_probability": 0.5256832838058472,
+        "probability_delta": 0.12867271900177002,
+        "occluded_logit": 0.10282373428344727,
+        "logit_delta": 0.5354185104370117
+      },
+      {
+        "row": 2,
+        "col": 2,
+        "y0": 112,
+        "y1": 168,
+        "x0": 112,
+        "x1": 168,
+        "occluded_probability": 0.5426385998725891,
+        "probability_delta": 0.11171740293502808,
+        "occluded_logit": 0.17096972465515137,
+        "logit_delta": 0.4672725200653076
+      },
+      {
+        "row": 1,
+        "col": 2,
+        "y0": 56,
+        "y1": 112,
+        "x0": 112,
+        "x1": 168,
+        "occluded_probability": 0.5766119956970215,
+        "probability_delta": 0.0777440071105957,
+        "occluded_logit": 0.30888062715530396,
+        "logit_delta": 0.32936161756515503
+      },
+      {
+        "row": 3,
+        "col": 1,
+        "y0": 168,
+        "y1": 224,
+        "x0": 56,
+        "x1": 112,
+        "occluded_probability": 0.6115376949310303,
+        "probability_delta": 0.042818307876586914,
+        "occluded_logit": 0.4537803530693054,
+        "logit_delta": 0.18446189165115356
+      },
+      {
+        "row": 0,
+        "col": 1,
+        "y0": 0,
+        "y1": 56,
+        "x0": 56,
+        "x1": 112,
+        "occluded_probability": 0.612761378288269,
+        "probability_delta": 0.041594624519348145,
+        "occluded_logit": 0.4589344263076782,
+        "logit_delta": 0.17930781841278076
+      },
+      {
+        "row": 3,
+        "col": 3,
+        "y0": 168,
+        "y1": 224,
+        "x0": 168,
+        "x1": 224,
+        "occluded_probability": 0.6178517937660217,
+        "probability_delta": 0.03650420904159546,
+        "occluded_logit": 0.4804401993751526,
+        "logit_delta": 0.1578020453453064
+      },
+      {
+        "row": 0,
+        "col": 2,
+        "y0": 0,
+        "y1": 56,
+        "x0": 112,
+        "x1": 168,
+        "occluded_probability": 0.6306571960449219,
+        "probability_delta": 0.023698806762695312,
+        "occluded_logit": 0.5350372195243835,
+        "logit_delta": 0.10320502519607544
+      },
+      {
+        "row": 2,
+        "col": 3,
+        "y0": 112,
+        "y1": 168,
+        "x0": 168,
+        "x1": 224,
+        "occluded_probability": 0.6317311525344849,
+        "probability_delta": 0.022624850273132324,
+        "occluded_logit": 0.539650559425354,
+        "logit_delta": 0.09859168529510498
+      },
+      {
+        "row": 0,
+        "col": 3,
+        "y0": 0,
+        "y1": 56,
+        "x0": 168,
+        "x1": 224,
+        "occluded_probability": 0.6342597603797913,
+        "probability_delta": 0.020096242427825928,
+        "occluded_logit": 0.5505352020263672,
+        "logit_delta": 0.0877070426940918
+      },
+      {
+        "row": 2,
+        "col": 0,
+        "y0": 112,
+        "y1": 168,
+        "x0": 0,
+        "x1": 56,
+        "occluded_probability": 0.6356844902038574,
+        "probability_delta": 0.018671512603759766,
+        "occluded_logit": 0.5566819906234741,
+        "logit_delta": 0.08156025409698486
+      },
+      {
+        "row": 0,
+        "col": 0,
+        "y0": 0,
+        "y1": 56,
+        "x0": 0,
+        "x1": 56,
+        "occluded_probability": 0.6360810995101929,
+        "probability_delta": 0.018274903297424316,
+        "occluded_logit": 0.5583948493003845,
+        "logit_delta": 0.07984739542007446
+      }
+    ],
+    "heatmap": [
+      [
+        0.018274903297424316,
+        0.041594624519348145,
+        0.023698806762695312,
+        0.020096242427825928
+      ],
+      [
+        0.004789412021636963,
+        0.2746959626674652,
+        0.0777440071105957,
+        0.016157925128936768
+      ],
+      [
+        0.018671512603759766,
+        0.12867271900177002,
+        0.11171740293502808,
+        0.022624850273132324
+      ],
+      [
+        0.009785294532775879,
+        0.042818307876586914,
+        0.00889652967453003,
+        0.03650420904159546
+      ]
+    ]
+  },
+  "modality_shapley": {
+    "method": "two_modality_shapley",
+    "probability": {
+      "values": {
+        "blank": 0.194041907787323,
+        "text_only": 0.5014247298240662,
+        "image_only": 0.3094245195388794,
+        "both": 0.6543560028076172
+      },
+      "shapley": {
+        "text": 0.3261571526527405,
+        "image": 0.1341569423675537,
+        "interaction": 0.03754866123199463,
+        "blank_to_both_delta": 0.4603140950202942,
+        "abs_total": 0.4603140950202942,
+        "text_utilization": 0.7085534772476627,
+        "image_utilization": 0.2914465227523373
+      }
+    },
+    "logit": {
+      "values": {
+        "blank": -1.4239575862884521,
+        "text_only": 0.005698859691619873,
+        "image_only": -0.8028112053871155,
+        "both": 0.638242244720459
+      },
+      "shapley": {
+        "text": 1.4353549480438232,
+        "image": 0.6268448829650879,
+        "interaction": 0.011397004127502441,
+        "blank_to_both_delta": 2.062199831008911,
+        "abs_total": 2.062199831008911,
+        "text_utilization": 0.6960309696764886,
+        "image_utilization": 0.30396903032351147
+      }
+    }
+  },
+  "modality_ablation": {
+    "both": 0.6543560028076172,
+    "no_text": 0.3094245195388794,
+    "no_image": 0.5014247298240662,
+    "blank": 0.194041907787323,
+    "text_delta": 0.3449314832687378,
+    "image_delta": 0.15293127298355103,
+    "both_logit": 0.638242244720459,
+    "no_text_logit": -0.8028112053871155,
+    "no_image_logit": 0.005698859691619873,
+    "blank_logit": -1.4239575862884521
+  }
+}

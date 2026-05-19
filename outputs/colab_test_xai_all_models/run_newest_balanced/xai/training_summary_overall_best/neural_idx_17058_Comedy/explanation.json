@@ -1,0 +1,1423 @@
+{
+  "index": 17058,
+  "target_genre": "Comedy",
+  "target_genres": [
+    "Comedy"
+  ],
+  "true_genres": [
+    "Comedy",
+    "Action"
+  ],
+  "predicted_genres": [
+    "Comedy"
+  ],
+  "probability": 0.5389551520347595,
+  "top_probabilities": {
+    "Comedy": 0.5389551520347595,
+    "Adventure": 0.516300618648529,
+    "Sport": 0.5116707682609558,
+    "Family": 0.5099462270736694,
+    "Short": 0.4967265725135803
+  },
+  "threshold": [
+    0.46000000834465027,
+    0.49000000953674316,
+    0.5199999809265137,
+    0.5099999904632568,
+    0.5299999713897705,
+    0.5799999833106995,
+    0.5699999928474426,
+    0.5799999833106995,
+    0.7300000190734863,
+    0.5799999833106995,
+    0.5600000023841858,
+    0.5299999713897705,
+    0.5899999737739563,
+    0.5400000214576721,
+    0.5899999737739563,
+    0.5699999928474426,
+    0.550000011920929,
+    0.6100000143051147,
+    0.46000000834465027,
+    0.6700000166893005,
+    0.5400000214576721,
+    0.5799999833106995,
+    0.5600000023841858
+  ],
+  "target_selection": {
+    "policy": "predicted",
+    "target_indices": [
+      1
+    ],
+    "target_genres": [
+      "Comedy"
+    ],
+    "all_selected_indices": [
+      1
+    ],
+    "all_selected_genres": [
+      "Comedy"
+    ],
+    "predicted_indices": [
+      1
+    ],
+    "predicted_genres": [
+      "Comedy"
+    ],
+    "threshold": [
+      0.46000000834465027,
+      0.49000000953674316,
+      0.5199999809265137,
+      0.5099999904632568,
+      0.5299999713897705,
+      0.5799999833106995,
+      0.5699999928474426,
+      0.5799999833106995,
+      0.7300000190734863,
+      0.5799999833106995,
+      0.5600000023841858,
+      0.5299999713897705,
+      0.5899999737739563,
+      0.5400000214576721,
+      0.5899999737739563,
+      0.5699999928474426,
+      0.550000011920929,
+      0.6100000143051147,
+      0.46000000834465027,
+      0.6700000166893005,
+      0.5400000214576721,
+      0.5799999833106995,
+      0.5600000023841858
+    ],
+    "max_targets_per_sample": 3
+  },
+  "methods": [
+    "LayerIntegratedGradients_text_embedding",
+    "token_occlusion",
+    "IntegratedGradients_image_pixels",
+    "GradCAM_image_branch",
+    "image_occlusion_sensitivity",
+    "modality_shapley",
+    "modality_ablation",
+    "GMU_gate_summary",
+    "experimental_label_correlation_head"
+  ],
+  "top_tokens": [
+    {
+      "position": 15,
+      "token": "N",
+      "attribution": -0.10233292728662491
+    },
+    {
+      "position": 28,
+      "token": "bandit",
+      "attribution": -0.08522966504096985
+    },
+    {
+      "position": 64,
+      "token": "less",
+      "attribution": 0.07343365997076035
+    },
+    {
+      "position": 51,
+      "token": "another",
+      "attribution": 0.06498564034700394
+    },
+    {
+      "position": 11,
+      "token": "bandit",
+      "attribution": -0.058889489620923996
+    },
+    {
+      "position": 4,
+      "token": "a",
+      "attribution": 0.05634649097919464
+    },
+    {
+      "position": 57,
+      "token": "elephant",
+      "attribution": -0.054422177374362946
+    },
+    {
+      "position": 7,
+      "token": "since",
+      "attribution": 0.05352439358830452
+    },
+    {
+      "position": 61,
+      "token": "N",
+      "attribution": -0.050937652587890625
+    },
+    {
+      "position": 35,
+      "token": "has",
+      "attribution": 0.050794344395399094
+    },
+    {
+      "position": 45,
+      "token": "enos",
+      "attribution": -0.047347430139780045
+    },
+    {
+      "position": 41,
+      "token": "past",
+      "attribution": 0.044221654534339905
+    }
+  ],
+  "gate_mean": 0.35762837529182434,
+  "gate_std": 0.1811244934797287,
+  "config": {
+    "model_name": "neural_transformer_gmu_resnet18_h256_lr2e4_focal",
+    "modality": "multimodal",
+    "text_encoder": "transformer",
+    "image_encoder": "resnet18",
+    "fusion": "gmu",
+    "hidden_dim": 256,
+    "text_cnn_channels": 128,
+    "text_cnn_kernels": [
+      3,
+      4,
+      5
+    ],
+    "text_rnn_hidden_dim": 128,
+    "text_rnn_layers": 1,
+    "text_rnn_dropout": 0.2,
+    "text_attention_dim": 128,
+    "text_transformer_layers": 2,
+    "text_transformer_heads": 6,
+    "text_transformer_ff_dim": 512,
+    "text_transformer_dropout": 0.1,
+    "pretrained_image": false,
+    "freeze_image_backbone": true,
+    "batch_size": 16,
+    "epochs": 10,
+    "learning_rate": 0.0002,
+    "weight_decay": 0.01,
+    "num_workers": 0,
+    "patience": 3,
+    "threshold_metric": "macro_f1",
+    "threshold_strategy": "per_label",
+    "threshold_min": 0.01,
+    "threshold_max": 0.99,
+    "threshold_steps": 99,
+    "loss": "focal",
+    "focal_gamma": 2.0,
+    "pos_weight_clip": 10.0,
+    "scheduler": "none",
+    "scheduler_factor": 0.5,
+    "scheduler_patience": 1,
+    "min_learning_rate": 1e-06,
+    "enable_label_correlation": true,
+    "max_length": 512,
+    "input_size": 224,
+    "freeze_embeddings": false
+  },
+  "performance": {
+    "measurements": [
+      {
+        "name": "neural_text_layer_integrated_gradients_idx_17058_Comedy",
+        "wall_time_s": 0.023460641000042415,
+        "process_cpu_time_s": 0.02361210799999469,
+        "process_cpu_util_percent": 100.64562174559511,
+        "rss_start_mb": 2491.4609375,
+        "rss_end_mb": 2491.484375,
+        "rss_delta_mb": 0.0234375,
+        "rss_peak_mb": 2491.48828125,
+        "cuda_start": {
+          "cuda_available": true,
+          "cuda_device": "NVIDIA A100-SXM4-40GB",
+          "cuda_allocated_mb": 374.13720703125,
+          "cuda_reserved_mb": 1590.0,
+          "cuda_peak_allocated_mb": 374.13720703125,
+          "cuda_peak_reserved_mb": 1590.0
+        },
+        "cuda_end": {
+          "cuda_available": true,
+          "cuda_device": "NVIDIA A100-SXM4-40GB",
+          "cuda_allocated_mb": 374.13720703125,
+          "cuda_reserved_mb": 1590.0,
+          "cuda_peak_allocated_mb": 711.05224609375,
+          "cuda_peak_reserved_mb": 1590.0
+        }
+      },
+      {
+        "name": "neural_text_visualization_idx_17058_Comedy",
+        "wall_time_s": 0.18952829299996665,
+        "process_cpu_time_s": 0.18519747300000233,
+        "process_cpu_util_percent": 97.71494802627433,
+        "rss_start_mb": 2491.53515625,
+        "rss_end_mb": 2493.95703125,
+        "rss_delta_mb": 2.421875,
+        "rss_peak_mb": 2493.953125,
+        "cuda_start": {
+          "cuda_available": true,
+          "cuda_device": "NVIDIA A100-SXM4-40GB",
+          "cuda_allocated_mb": 374.13720703125,
+          "cuda_reserved_mb": 1590.0,
+          "cuda_peak_allocated_mb": 374.13720703125,
+          "cuda_peak_reserved_mb": 1590.0
+        },
+        "cuda_end": {
+          "cuda_available": true,
+          "cuda_device": "NVIDIA A100-SXM4-40GB",
+          "cuda_allocated_mb": 374.13720703125,
+          "cuda_reserved_mb": 1590.0,
+          "cuda_peak_allocated_mb": 374.13720703125,
+          "cuda_peak_reserved_mb": 1590.0
+        }
+      },
+      {
+        "name": "neural_token_occlusion_idx_17058_Comedy",
+        "wall_time_s": 0.03945505399997273,
+        "process_cpu_time_s": 0.039636686999998005,
+        "process_cpu_util_percent": 100.46035420462331,
+        "rss_start_mb": 2493.98828125,
+        "rss_end_mb": 2494.03515625,
+        "rss_delta_mb": 0.046875,
+        "rss_peak_mb": 2494.03515625,
+        "cuda_start": {
+          "cuda_available": true,
+          "cuda_device": "NVIDIA A100-SXM4-40GB",
+          "cuda_allocated_mb": 374.13720703125,
+          "cuda_reserved_mb": 1590.0,
+          "cuda_peak_allocated_mb": 374.13720703125,
+          "cuda_peak_reserved_mb": 1590.0
+        },
+        "cuda_end": {
+          "cuda_available": true,
+          "cuda_device": "NVIDIA A100-SXM4-40GB",
+          "cuda_allocated_mb": 374.13720703125,
+          "cuda_reserved_mb": 1590.0,
+          "cuda_peak_allocated_mb": 852.17578125,
+          "cuda_peak_reserved_mb": 1590.0
+        }
+      },
+      {
+        "name": "neural_token_occlusion_visualization_idx_17058_Comedy",
+        "wall_time_s": 0.17612722399996983,
+        "process_cpu_time_s": 0.16927437500000053,
+        "process_cpu_util_percent": 96.10914835064312,
+        "rss_start_mb": 2494.0859375,
+        "rss_end_mb": 2495.75,
+        "rss_delta_mb": 1.6640625,
+        "rss_peak_mb": 2495.75390625,
+        "cuda_start": {
+          "cuda_available": true,
+          "cuda_device": "NVIDIA A100-SXM4-40GB",
+          "cuda_allocated_mb": 374.13720703125,
+          "cuda_reserved_mb": 1590.0,
+          "cuda_peak_allocated_mb": 374.13720703125,
+          "cuda_peak_reserved_mb": 1590.0
+        },
+        "cuda_end": {
+          "cuda_available": true,
+          "cuda_device": "NVIDIA A100-SXM4-40GB",
+          "cuda_allocated_mb": 374.13720703125,
+          "cuda_reserved_mb": 1590.0,
+          "cuda_peak_allocated_mb": 374.13720703125,
+          "cuda_peak_reserved_mb": 1590.0
+        }
+      },
+      {
+        "name": "neural_image_integrated_gradients_idx_17058_Comedy",
+        "wall_time_s": 0.014021726000009949,
+        "process_cpu_time_s": 0.014085778000008986,
+        "process_cpu_util_percent": 100.45680538900126,
+        "rss_start_mb": 2495.78515625,
+        "rss_end_mb": 2495.828125,
+        "rss_delta_mb": 0.04296875,
+        "rss_peak_mb": 2495.82421875,
+        "cuda_start": {
+          "cuda_available": true,
+          "cuda_device": "NVIDIA A100-SXM4-40GB",
+          "cuda_allocated_mb": 374.13720703125,
+          "cuda_reserved_mb": 1590.0,
+          "cuda_peak_allocated_mb": 374.13720703125,
+          "cuda_peak_reserved_mb": 1590.0
+        },
+        "cuda_end": {
+          "cuda_available": true,
+          "cuda_device": "NVIDIA A100-SXM4-40GB",
+          "cuda_allocated_mb": 374.13720703125,
+          "cuda_reserved_mb": 1590.0,
+          "cuda_peak_allocated_mb": 782.0029296875,
+          "cuda_peak_reserved_mb": 1590.0
+        }
+      },
+      {
+        "name": "neural_image_ig_visualization_idx_17058_Comedy",
+        "wall_time_s": 0.027368623000029402,
+        "process_cpu_time_s": 0.0218170049999884,
+        "process_cpu_util_percent": 79.71539159995356,
+        "rss_start_mb": 2495.84765625,
+        "rss_end_mb": 2495.93359375,
+        "rss_delta_mb": 0.0859375,
+        "rss_peak_mb": 2495.9375,
+        "cuda_start": {
+          "cuda_available": true,
+          "cuda_device": "NVIDIA A100-SXM4-40GB",
+          "cuda_allocated_mb": 374.13720703125,
+          "cuda_reserved_mb": 1590.0,
+          "cuda_peak_allocated_mb": 374.13720703125,
+          "cuda_peak_reserved_mb": 1590.0
+        },
+        "cuda_end": {
+          "cuda_available": true,
+          "cuda_device": "NVIDIA A100-SXM4-40GB",
+          "cuda_allocated_mb": 374.13720703125,
+          "cuda_reserved_mb": 1590.0,
+          "cuda_peak_allocated_mb": 374.13720703125,
+          "cuda_peak_reserved_mb": 1590.0
+        }
+      },
+      {
+        "name": "neural_image_gradcam_idx_17058_Comedy",
+        "wall_time_s": 0.015495843000053355,
+        "process_cpu_time_s": 0.015552157000001898,
+        "process_cpu_util_percent": 100.3634135938803,
+        "rss_start_mb": 2495.98046875,
+        "rss_end_mb": 2495.98046875,
+        "rss_delta_mb": 0.0,
+        "rss_peak_mb": 2495.984375,
+        "cuda_start": {
+          "cuda_available": true,
+          "cuda_device": "NVIDIA A100-SXM4-40GB",
+          "cuda_allocated_mb": 374.13720703125,
+          "cuda_reserved_mb": 1590.0,
+          "cuda_peak_allocated_mb": 374.13720703125,
+          "cuda_peak_reserved_mb": 1590.0
+        },
+        "cuda_end": {
+          "cuda_available": true,
+          "cuda_device": "NVIDIA A100-SXM4-40GB",
+          "cuda_allocated_mb": 374.13720703125,
+          "cuda_reserved_mb": 1590.0,
+          "cuda_peak_allocated_mb": 376.064453125,
+          "cuda_peak_reserved_mb": 1590.0
+        }
+      },
+      {
+        "name": "neural_image_gradcam_visualization_idx_17058_Comedy",
+        "wall_time_s": 0.02943256600008226,
+        "process_cpu_time_s": 0.024304249000010714,
+        "process_cpu_util_percent": 82.57604518730302,
+        "rss_start_mb": 2495.9921875,
+        "rss_end_mb": 2496.0,
+        "rss_delta_mb": 0.0078125,
+        "rss_peak_mb": 2496.00390625,
+        "cuda_start": {
+          "cuda_available": true,
+          "cuda_device": "NVIDIA A100-SXM4-40GB",
+          "cuda_allocated_mb": 374.13720703125,
+          "cuda_reserved_mb": 1590.0,
+          "cuda_peak_allocated_mb": 374.13720703125,
+          "cuda_peak_reserved_mb": 1590.0
+        },
+        "cuda_end": {
+          "cuda_available": true,
+          "cuda_device": "NVIDIA A100-SXM4-40GB",
+          "cuda_allocated_mb": 374.13720703125,
+          "cuda_reserved_mb": 1590.0,
+          "cuda_peak_allocated_mb": 374.13720703125,
+          "cuda_peak_reserved_mb": 1590.0
+        }
+      },
+      {
+        "name": "neural_image_occlusion_idx_17058_Comedy",
+        "wall_time_s": 0.014218733999996402,
+        "process_cpu_time_s": 0.014288262999997414,
+        "process_cpu_util_percent": 100.48899571509693,
+        "rss_start_mb": 2496.0,
+        "rss_end_mb": 2496.03125,
+        "rss_delta_mb": 0.03125,
+        "rss_peak_mb": 2496.03125,
+        "cuda_start": {
+          "cuda_available": true,
+          "cuda_device": "NVIDIA A100-SXM4-40GB",
+          "cuda_allocated_mb": 374.13720703125,
+          "cuda_reserved_mb": 1590.0,
+          "cuda_peak_allocated_mb": 374.13720703125,
+          "cuda_peak_reserved_mb": 1590.0
+        },
+        "cuda_end": {
+          "cuda_available": true,
+          "cuda_device": "NVIDIA A100-SXM4-40GB",
+          "cuda_allocated_mb": 374.13720703125,
+          "cuda_reserved_mb": 1590.0,
+          "cuda_peak_allocated_mb": 622.2509765625,
+          "cuda_peak_reserved_mb": 1590.0
+        }
+      },
+      {
+        "name": "neural_image_occlusion_visualization_idx_17058_Comedy",
+        "wall_time_s": 0.030782081000097605,
+        "process_cpu_time_s": 0.025368559000000346,
+        "process_cpu_util_percent": 82.41339823620082,
+        "rss_start_mb": 2496.03125,
+        "rss_end_mb": 2496.0390625,
+        "rss_delta_mb": 0.0078125,
+        "rss_peak_mb": 2496.04296875,
+        "cuda_start": {
+          "cuda_available": true,
+          "cuda_device": "NVIDIA A100-SXM4-40GB",
+          "cuda_allocated_mb": 374.13720703125,
+          "cuda_reserved_mb": 1590.0,
+          "cuda_peak_allocated_mb": 374.13720703125,
+          "cuda_peak_reserved_mb": 1590.0
+        },
+        "cuda_end": {
+          "cuda_available": true,
+          "cuda_device": "NVIDIA A100-SXM4-40GB",
+          "cuda_allocated_mb": 374.13720703125,
+          "cuda_reserved_mb": 1590.0,
+          "cuda_peak_allocated_mb": 374.13720703125,
+          "cuda_peak_reserved_mb": 1590.0
+        }
+      },
+      {
+        "name": "neural_modality_shapley_idx_17058_Comedy",
+        "wall_time_s": 0.019316438000032576,
+        "process_cpu_time_s": 0.019413310000004458,
+        "process_cpu_util_percent": 100.50150032822675,
+        "rss_start_mb": 2496.0390625,
+        "rss_end_mb": 2496.0390625,
+        "rss_delta_mb": 0.0,
+        "rss_peak_mb": 2496.04296875,
+        "cuda_start": {
+          "cuda_available": true,
+          "cuda_device": "NVIDIA A100-SXM4-40GB",
+          "cuda_allocated_mb": 374.13720703125,
+          "cuda_reserved_mb": 1590.0,
+          "cuda_peak_allocated_mb": 374.13720703125,
+          "cuda_peak_reserved_mb": 1590.0
+        },
+        "cuda_end": {
+          "cuda_available": true,
+          "cuda_device": "NVIDIA A100-SXM4-40GB",
+          "cuda_allocated_mb": 374.13720703125,
+          "cuda_reserved_mb": 1590.0,
+          "cuda_peak_allocated_mb": 390.40234375,
+          "cuda_peak_reserved_mb": 1590.0
+        }
+      },
+      {
+        "name": "neural_modality_shapley_visualization_idx_17058_Comedy",
+        "wall_time_s": 0.1253609929999584,
+        "process_cpu_time_s": 0.12029539099999909,
+        "process_cpu_util_percent": 95.95918803869,
+        "rss_start_mb": 2496.046875,
+        "rss_end_mb": 2496.15234375,
+        "rss_delta_mb": 0.10546875,
+        "rss_peak_mb": 2496.15234375,
+        "cuda_start": {
+          "cuda_available": true,
+          "cuda_device": "NVIDIA A100-SXM4-40GB",
+          "cuda_allocated_mb": 374.13720703125,
+          "cuda_reserved_mb": 1590.0,
+          "cuda_peak_allocated_mb": 374.13720703125,
+          "cuda_peak_reserved_mb": 1590.0
+        },
+        "cuda_end": {
+          "cuda_available": true,
+          "cuda_device": "NVIDIA A100-SXM4-40GB",
+          "cuda_allocated_mb": 374.13720703125,
+          "cuda_reserved_mb": 1590.0,
+          "cuda_peak_allocated_mb": 374.13720703125,
+          "cuda_peak_reserved_mb": 1590.0
+        }
+      },
+      {
+        "name": "neural_modality_ablation_idx_17058_Comedy",
+        "wall_time_s": 0.020167986000046767,
+        "process_cpu_time_s": 0.020235099000004197,
+        "process_cpu_util_percent": 100.33276996501918,
+        "rss_start_mb": 2496.17578125,
+        "rss_end_mb": 2496.2109375,
+        "rss_delta_mb": 0.03515625,
+        "rss_peak_mb": 2496.21484375,
+        "cuda_start": {
+          "cuda_available": true,
+          "cuda_device": "NVIDIA A100-SXM4-40GB",
+          "cuda_allocated_mb": 374.13720703125,
+          "cuda_reserved_mb": 1590.0,
+          "cuda_peak_allocated_mb": 374.13720703125,
+          "cuda_peak_reserved_mb": 1590.0
+        },
+        "cuda_end": {
+          "cuda_available": true,
+          "cuda_device": "NVIDIA A100-SXM4-40GB",
+          "cuda_allocated_mb": 374.13720703125,
+          "cuda_reserved_mb": 1590.0,
+          "cuda_peak_allocated_mb": 390.40185546875,
+          "cuda_peak_reserved_mb": 1590.0
+        }
+      }
+    ],
+    "summary": {
+      "count": 13,
+      "total_wall_time_s": 0.7247362020002583,
+      "mean_wall_time_s": 0.05574893861540449,
+      "total_process_cpu_time_s": 0.6930804540000111,
+      "mean_process_cpu_util_percent": 95.2105831061929,
+      "max_rss_peak_mb": 2496.21484375
+    }
+  },
+  "token_occlusion": {
+    "baseline_probability": 0.5389551520347595,
+    "baseline_logit": 0.1561369150876999,
+    "top_tokens": [
+      {
+        "position": 15,
+        "token": "N",
+        "occluded_probability": 0.5620239973068237,
+        "probability_delta": -0.02306884527206421,
+        "occluded_logit": 0.24938024580478668,
+        "logit_delta": -0.09324333071708679
+      },
+      {
+        "position": 28,
+        "token": "bandit",
+        "occluded_probability": 0.558937132358551,
+        "probability_delta": -0.019981980323791504,
+        "occluded_logit": 0.23684971034526825,
+        "logit_delta": -0.08071279525756836
+      },
+      {
+        "position": 64,
+        "token": "less",
+        "occluded_probability": 0.5207297205924988,
+        "probability_delta": 0.018225431442260742,
+        "occluded_logit": 0.08296641707420349,
+        "logit_delta": 0.0731704980134964
+      },
+      {
+        "position": 51,
+        "token": "another",
+        "occluded_probability": 0.5227545499801636,
+        "probability_delta": 0.016200602054595947,
+        "occluded_logit": 0.0910811796784401,
+        "logit_delta": 0.0650557354092598
+      },
+      {
+        "position": 4,
+        "token": "a",
+        "occluded_probability": 0.5248162150382996,
+        "probability_delta": 0.014138936996459961,
+        "occluded_logit": 0.09934656322002411,
+        "logit_delta": 0.05679035186767578
+      },
+      {
+        "position": 11,
+        "token": "bandit",
+        "occluded_probability": 0.5530763864517212,
+        "probability_delta": -0.01412123441696167,
+        "occluded_logit": 0.21310850977897644,
+        "logit_delta": -0.05697159469127655
+      },
+      {
+        "position": 7,
+        "token": "since",
+        "occluded_probability": 0.5254865884780884,
+        "probability_delta": 0.013468563556671143,
+        "occluded_logit": 0.10203467309474945,
+        "logit_delta": 0.05410224199295044
+      },
+      {
+        "position": 57,
+        "token": "elephant",
+        "occluded_probability": 0.5521305799484253,
+        "probability_delta": -0.013175427913665771,
+        "occluded_logit": 0.20928287506103516,
+        "logit_delta": -0.053145959973335266
+      },
+      {
+        "position": 35,
+        "token": "has",
+        "occluded_probability": 0.5265435576438904,
+        "probability_delta": 0.01241159439086914,
+        "occluded_logit": 0.10627426952123642,
+        "logit_delta": 0.04986264556646347
+      },
+      {
+        "position": 45,
+        "token": "enos",
+        "occluded_probability": 0.550069272518158,
+        "probability_delta": -0.011114120483398438,
+        "occluded_logit": 0.2009505182504654,
+        "logit_delta": -0.0448136031627655
+      },
+      {
+        "position": 41,
+        "token": "past",
+        "occluded_probability": 0.5280538201332092,
+        "probability_delta": 0.010901331901550293,
+        "occluded_logit": 0.11233340203762054,
+        "logit_delta": 0.043803513050079346
+      },
+      {
+        "position": 61,
+        "token": "N",
+        "occluded_probability": 0.5497789978981018,
+        "probability_delta": -0.010823845863342285,
+        "occluded_logit": 0.19977790117263794,
+        "logit_delta": -0.04364098608493805
+      }
+    ],
+    "all_scores": [
+      {
+        "position": 0,
+        "token": "it",
+        "occluded_probability": 0.5335084199905396,
+        "probability_delta": 0.005446732044219971,
+        "occluded_logit": 0.13423484563827515,
+        "logit_delta": 0.021902069449424744
+      },
+      {
+        "position": 1,
+        "token": "'",
+        "occluded_probability": 0.5356678366661072,
+        "probability_delta": 0.0032873153686523438,
+        "occluded_logit": 0.1429142951965332,
+        "logit_delta": 0.013222619891166687
+      },
+      {
+        "position": 2,
+        "token": "s",
+        "occluded_probability": 0.5344934463500977,
+        "probability_delta": 0.004461705684661865,
+        "occluded_logit": 0.13819333910942078,
+        "logit_delta": 0.017943575978279114
+      },
+      {
+        "position": 3,
+        "token": "been",
+        "occluded_probability": 0.536611020565033,
+        "probability_delta": 0.0023441314697265625,
+        "occluded_logit": 0.14670653641223907,
+        "logit_delta": 0.009430378675460815
+      },
+      {
+        "position": 4,
+        "token": "a",
+        "occluded_probability": 0.5248162150382996,
+        "probability_delta": 0.014138936996459961,
+        "occluded_logit": 0.09934656322002411,
+        "logit_delta": 0.05679035186767578
+      },
+      {
+        "position": 5,
+        "token": "few",
+        "occluded_probability": 0.5388034582138062,
+        "probability_delta": 0.00015169382095336914,
+        "occluded_logit": 0.15552662312984467,
+        "logit_delta": 0.0006102919578552246
+      },
+      {
+        "position": 6,
+        "token": "years",
+        "occluded_probability": 0.5344204902648926,
+        "probability_delta": 0.004534661769866943,
+        "occluded_logit": 0.1378999650478363,
+        "logit_delta": 0.018236950039863586
+      },
+      {
+        "position": 7,
+        "token": "since",
+        "occluded_probability": 0.5254865884780884,
+        "probability_delta": 0.013468563556671143,
+        "occluded_logit": 0.10203467309474945,
+        "logit_delta": 0.05410224199295044
+      },
+      {
+        "position": 8,
+        "token": "cletus",
+        "occluded_probability": 0.5388919711112976,
+        "probability_delta": 6.318092346191406e-05,
+        "occluded_logit": 0.1558828353881836,
+        "logit_delta": 0.0002540796995162964
+      },
+      {
+        "position": 9,
+        "token": "and",
+        "occluded_probability": 0.5425733923912048,
+        "probability_delta": -0.0036182403564453125,
+        "occluded_logit": 0.17070691287517548,
+        "logit_delta": -0.014569997787475586
+      },
+      {
+        "position": 10,
+        "token": "the",
+        "occluded_probability": 0.5453996658325195,
+        "probability_delta": -0.00644451379776001,
+        "occluded_logit": 0.18210019171237946,
+        "logit_delta": -0.025963276624679565
+      },
+      {
+        "position": 11,
+        "token": "bandit",
+        "occluded_probability": 0.5530763864517212,
+        "probability_delta": -0.01412123441696167,
+        "occluded_logit": 0.21310850977897644,
+        "logit_delta": -0.05697159469127655
+      },
+      {
+        "position": 12,
+        "token": "made",
+        "occluded_probability": 0.5420898199081421,
+        "probability_delta": -0.0031346678733825684,
+        "occluded_logit": 0.16875863075256348,
+        "logit_delta": -0.012621715664863586
+      },
+      {
+        "position": 13,
+        "token": "their",
+        "occluded_probability": 0.5327634811401367,
+        "probability_delta": 0.006191670894622803,
+        "occluded_logit": 0.13124200701713562,
+        "logit_delta": 0.02489490807056427
+      },
+      {
+        "position": 14,
+        "token": "famous",
+        "occluded_probability": 0.5422472357749939,
+        "probability_delta": -0.003292083740234375,
+        "occluded_logit": 0.16939285397529602,
+        "logit_delta": -0.01325593888759613
+      },
+      {
+        "position": 15,
+        "token": "N",
+        "occluded_probability": 0.5620239973068237,
+        "probability_delta": -0.02306884527206421,
+        "occluded_logit": 0.24938024580478668,
+        "logit_delta": -0.09324333071708679
+      },
+      {
+        "position": 16,
+        "token": "-",
+        "occluded_probability": 0.53252112865448,
+        "probability_delta": 0.006434023380279541,
+        "occluded_logit": 0.1302684098482132,
+        "logit_delta": 0.025868505239486694
+      },
+      {
+        "position": 17,
+        "token": "hour",
+        "occluded_probability": 0.5282031893730164,
+        "probability_delta": 0.010751962661743164,
+        "occluded_logit": 0.11293260753154755,
+        "logit_delta": 0.043204307556152344
+      },
+      {
+        "position": 18,
+        "token": "run",
+        "occluded_probability": 0.5380368828773499,
+        "probability_delta": 0.000918269157409668,
+        "occluded_logit": 0.15244190394878387,
+        "logit_delta": 0.0036950111389160156
+      },
+      {
+        "position": 19,
+        "token": "to",
+        "occluded_probability": 0.5333451628684998,
+        "probability_delta": 0.005609989166259766,
+        "occluded_logit": 0.133578822016716,
+        "logit_delta": 0.022558093070983887
+      },
+      {
+        "position": 20,
+        "token": "texas",
+        "occluded_probability": 0.5492647290229797,
+        "probability_delta": -0.010309576988220215,
+        "occluded_logit": 0.19770023226737976,
+        "logit_delta": -0.04156331717967987
+      },
+      {
+        "position": 21,
+        "token": "for",
+        "occluded_probability": 0.5396836400032043,
+        "probability_delta": -0.0007284879684448242,
+        "occluded_logit": 0.1590690016746521,
+        "logit_delta": -0.0029320865869522095
+      },
+      {
+        "position": 22,
+        "token": "a",
+        "occluded_probability": 0.5323454737663269,
+        "probability_delta": 0.006609678268432617,
+        "occluded_logit": 0.1295628398656845,
+        "logit_delta": 0.02657407522201538
+      },
+      {
+        "position": 23,
+        "token": "few",
+        "occluded_probability": 0.5390757918357849,
+        "probability_delta": -0.00012063980102539062,
+        "occluded_logit": 0.15662263333797455,
+        "logit_delta": -0.0004857182502746582
+      },
+      {
+        "position": 24,
+        "token": "cases",
+        "occluded_probability": 0.5423547029495239,
+        "probability_delta": -0.0033995509147644043,
+        "occluded_logit": 0.16982585191726685,
+        "logit_delta": -0.013688936829566956
+      },
+      {
+        "position": 25,
+        "token": "of",
+        "occluded_probability": 0.5439610481262207,
+        "probability_delta": -0.005005896091461182,
+        "occluded_logit": 0.17629925906658173,
+        "logit_delta": -0.020162343978881836
+      },
+      {
+        "position": 26,
+        "token": "coors",
+        "occluded_probability": 0.5361581444740295,
+        "probability_delta": 0.0027970075607299805,
+        "occluded_logit": 0.14488562941551208,
+        "logit_delta": 0.011251285672187805
+      },
+      {
+        "position": 27,
+        "token": ".",
+        "occluded_probability": 0.5324053168296814,
+        "probability_delta": 0.006549835205078125,
+        "occluded_logit": 0.12980331480503082,
+        "logit_delta": 0.026333600282669067
+      },
+      {
+        "position": 28,
+        "token": "bandit",
+        "occluded_probability": 0.558937132358551,
+        "probability_delta": -0.019981980323791504,
+        "occluded_logit": 0.23684971034526825,
+        "logit_delta": -0.08071279525756836
+      },
+      {
+        "position": 29,
+        "token": "is",
+        "occluded_probability": 0.5379977822303772,
+        "probability_delta": 0.0009573698043823242,
+        "occluded_logit": 0.1522848755121231,
+        "logit_delta": 0.0038520395755767822
+      },
+      {
+        "position": 30,
+        "token": "now",
+        "occluded_probability": 0.5331867337226868,
+        "probability_delta": 0.005768418312072754,
+        "occluded_logit": 0.1329425424337387,
+        "logit_delta": 0.02319437265396118
+      },
+      {
+        "position": 31,
+        "token": "a",
+        "occluded_probability": 0.528645396232605,
+        "probability_delta": 0.010309755802154541,
+        "occluded_logit": 0.1147073358297348,
+        "logit_delta": 0.04142957925796509
+      },
+      {
+        "position": 32,
+        "token": "washed",
+        "occluded_probability": 0.533036470413208,
+        "probability_delta": 0.005918681621551514,
+        "occluded_logit": 0.1323387324810028,
+        "logit_delta": 0.023798182606697083
+      },
+      {
+        "position": 33,
+        "token": "-",
+        "occluded_probability": 0.5368032455444336,
+        "probability_delta": 0.0021519064903259277,
+        "occluded_logit": 0.1474795788526535,
+        "logit_delta": 0.008657336235046387
+      },
+      {
+        "position": 34,
+        "token": "up",
+        "occluded_probability": 0.531488299369812,
+        "probability_delta": 0.00746685266494751,
+        "occluded_logit": 0.1261199712753296,
+        "logit_delta": 0.0300169438123703
+      },
+      {
+        "position": 35,
+        "token": "has",
+        "occluded_probability": 0.5265435576438904,
+        "probability_delta": 0.01241159439086914,
+        "occluded_logit": 0.10627426952123642,
+        "logit_delta": 0.04986264556646347
+      },
+      {
+        "position": 36,
+        "token": "-",
+        "occluded_probability": 0.5328961610794067,
+        "probability_delta": 0.006058990955352783,
+        "occluded_logit": 0.1317751109600067,
+        "logit_delta": 0.024361804127693176
+      },
+      {
+        "position": 37,
+        "token": "been",
+        "occluded_probability": 0.5384014844894409,
+        "probability_delta": 0.0005536675453186035,
+        "occluded_logit": 0.15390907227993011,
+        "logit_delta": 0.0022278428077697754
+      },
+      {
+        "position": 38,
+        "token": "living",
+        "occluded_probability": 0.5317506194114685,
+        "probability_delta": 0.007204532623291016,
+        "occluded_logit": 0.12717361748218536,
+        "logit_delta": 0.028963297605514526
+      },
+      {
+        "position": 39,
+        "token": "in",
+        "occluded_probability": 0.5374003052711487,
+        "probability_delta": 0.0015548467636108398,
+        "occluded_logit": 0.1498813033103943,
+        "logit_delta": 0.006255611777305603
+      },
+      {
+        "position": 40,
+        "token": "the",
+        "occluded_probability": 0.5406116247177124,
+        "probability_delta": -0.0016564726829528809,
+        "occluded_logit": 0.16280505061149597,
+        "logit_delta": -0.0066681355237960815
+      },
+      {
+        "position": 41,
+        "token": "past",
+        "occluded_probability": 0.5280538201332092,
+        "probability_delta": 0.010901331901550293,
+        "occluded_logit": 0.11233340203762054,
+        "logit_delta": 0.043803513050079346
+      },
+      {
+        "position": 42,
+        "token": ",",
+        "occluded_probability": 0.5370011925697327,
+        "probability_delta": 0.0019539594650268555,
+        "occluded_logit": 0.14827574789524078,
+        "logit_delta": 0.007861167192459106
+      },
+      {
+        "position": 43,
+        "token": "until",
+        "occluded_probability": 0.5395646095275879,
+        "probability_delta": -0.0006094574928283691,
+        "occluded_logit": 0.15859003365039825,
+        "logit_delta": -0.0024531185626983643
+      },
+      {
+        "position": 44,
+        "token": "big",
+        "occluded_probability": 0.5390931963920593,
+        "probability_delta": -0.0001380443572998047,
+        "occluded_logit": 0.15669262409210205,
+        "logit_delta": -0.0005557090044021606
+      },
+      {
+        "position": 45,
+        "token": "enos",
+        "occluded_probability": 0.550069272518158,
+        "probability_delta": -0.011114120483398438,
+        "occluded_logit": 0.2009505182504654,
+        "logit_delta": -0.0448136031627655
+      },
+      {
+        "position": 46,
+        "token": "and",
+        "occluded_probability": 0.5412439703941345,
+        "probability_delta": -0.002288818359375,
+        "occluded_logit": 0.16535165905952454,
+        "logit_delta": -0.009214743971824646
+      },
+      {
+        "position": 47,
+        "token": "little",
+        "occluded_probability": 0.5374854207038879,
+        "probability_delta": 0.001469731330871582,
+        "occluded_logit": 0.15022358298301697,
+        "logit_delta": 0.005913332104682922
+      },
+      {
+        "position": 48,
+        "token": "enos",
+        "occluded_probability": 0.5397948622703552,
+        "probability_delta": -0.0008397102355957031,
+        "occluded_logit": 0.15951690077781677,
+        "logit_delta": -0.0033799856901168823
+      },
+      {
+        "position": 49,
+        "token": "make",
+        "occluded_probability": 0.540361762046814,
+        "probability_delta": -0.0014066100120544434,
+        "occluded_logit": 0.16179899871349335,
+        "logit_delta": -0.005662083625793457
+      },
+      {
+        "position": 50,
+        "token": "him",
+        "occluded_probability": 0.5343087315559387,
+        "probability_delta": 0.004646420478820801,
+        "occluded_logit": 0.1374509632587433,
+        "logit_delta": 0.018685951828956604
+      },
+      {
+        "position": 51,
+        "token": "another",
+        "occluded_probability": 0.5227545499801636,
+        "probability_delta": 0.016200602054595947,
+        "occluded_logit": 0.0910811796784401,
+        "logit_delta": 0.0650557354092598
+      },
+      {
+        "position": 52,
+        "token": "offer",
+        "occluded_probability": 0.5438589453697205,
+        "probability_delta": -0.0049037933349609375,
+        "occluded_logit": 0.17588797211647034,
+        "logit_delta": -0.019751057028770447
+      },
+      {
+        "position": 53,
+        "token": ":",
+        "occluded_probability": 0.5422366261482239,
+        "probability_delta": -0.0032814741134643555,
+        "occluded_logit": 0.16935016214847565,
+        "logit_delta": -0.013213247060775757
+      },
+      {
+        "position": 54,
+        "token": "transport",
+        "occluded_probability": 0.5319470763206482,
+        "probability_delta": 0.007008075714111328,
+        "occluded_logit": 0.12796266376972198,
+        "logit_delta": 0.028174251317977905
+      },
+      {
+        "position": 55,
+        "token": "a",
+        "occluded_probability": 0.5357480049133301,
+        "probability_delta": 0.0032071471214294434,
+        "occluded_logit": 0.14323629438877106,
+        "logit_delta": 0.012900620698928833
+      },
+      {
+        "position": 56,
+        "token": "live",
+        "occluded_probability": 0.5357434749603271,
+        "probability_delta": 0.003211677074432373,
+        "occluded_logit": 0.14321812987327576,
+        "logit_delta": 0.012918785214424133
+      },
+      {
+        "position": 57,
+        "token": "elephant",
+        "occluded_probability": 0.5521305799484253,
+        "probability_delta": -0.013175427913665771,
+        "occluded_logit": 0.20928287506103516,
+        "logit_delta": -0.053145959973335266
+      },
+      {
+        "position": 58,
+        "token": "across",
+        "occluded_probability": 0.5465015172958374,
+        "probability_delta": -0.007546365261077881,
+        "occluded_logit": 0.18654511868953705,
+        "logit_delta": -0.030408203601837158
+      },
+      {
+        "position": 59,
+        "token": "country",
+        "occluded_probability": 0.5452602505683899,
+        "probability_delta": -0.006305098533630371,
+        "occluded_logit": 0.1815379559993744,
+        "logit_delta": -0.0254010409116745
+      },
+      {
+        "position": 60,
+        "token": "in",
+        "occluded_probability": 0.5386301875114441,
+        "probability_delta": 0.0003249645233154297,
+        "occluded_logit": 0.15482932329177856,
+        "logit_delta": 0.0013075917959213257
+      },
+      {
+        "position": 61,
+        "token": "N",
+        "occluded_probability": 0.5497789978981018,
+        "probability_delta": -0.010823845863342285,
+        "occluded_logit": 0.19977790117263794,
+        "logit_delta": -0.04364098608493805
+      },
+      {
+        "position": 62,
+        "token": "days",
+        "occluded_probability": 0.5355457067489624,
+        "probability_delta": 0.003409445285797119,
+        "occluded_logit": 0.1424231231212616,
+        "logit_delta": 0.013713791966438293
+      },
+      {
+        "position": 63,
+        "token": "or",
+        "occluded_probability": 0.5373049378395081,
+        "probability_delta": 0.0016502141952514648,
+        "occluded_logit": 0.14949753880500793,
+        "logit_delta": 0.006639376282691956
+      },
+      {
+        "position": 64,
+        "token": "less",
+        "occluded_probability": 0.5207297205924988,
+        "probability_delta": 0.018225431442260742,
+        "occluded_logit": 0.08296641707420349,
+        "logit_delta": 0.0731704980134964
+      },
+      {
+        "position": 65,
+        "token": ".",
+        "occluded_probability": 0.5352494716644287,
+        "probability_delta": 0.0037056803703308105,
+        "occluded_logit": 0.1412322223186493,
+        "logit_delta": 0.014904692769050598
+      }
+    ]
+  },
+  "image_occlusion": {
+    "baseline_probability": 0.5389551520347595,
+    "baseline_logit": 0.1561369150876999,
+    "grid_size": 4,
+    "top_patches": [
+      {
+        "row": 1,
+        "col": 2,
+        "y0": 56,
+        "y1": 112,
+        "x0": 112,
+        "x1": 168,
+        "occluded_probability": 0.49540337920188904,
+        "probability_delta": 0.04355177283287048,
+        "occluded_logit": -0.018386855721473694,
+        "logit_delta": 0.17452377080917358
+      },
+      {
+        "row": 1,
+        "col": 1,
+        "y0": 56,
+        "y1": 112,
+        "x0": 56,
+        "x1": 112,
+        "occluded_probability": 0.5035855174064636,
+        "probability_delta": 0.0353696346282959,
+        "occluded_logit": 0.014342345297336578,
+        "logit_delta": 0.14179456233978271
+      },
+      {
+        "row": 1,
+        "col": 3,
+        "y0": 56,
+        "y1": 112,
+        "x0": 168,
+        "x1": 224,
+        "occluded_probability": 0.503757655620575,
+        "probability_delta": 0.03519749641418457,
+        "occluded_logit": 0.015031062066555023,
+        "logit_delta": 0.14110586047172546
+      },
+      {
+        "row": 0,
+        "col": 2,
+        "y0": 0,
+        "y1": 56,
+        "x0": 112,
+        "x1": 168,
+        "occluded_probability": 0.5733766555786133,
+        "probability_delta": -0.03442150354385376,
+        "occluded_logit": 0.29564130306243896,
+        "logit_delta": -0.13950438797473907
+      },
+      {
+        "row": 2,
+        "col": 0,
+        "y0": 112,
+        "y1": 168,
+        "x0": 0,
+        "x1": 56,
+        "occluded_probability": 0.5115873217582703,
+        "probability_delta": 0.027367830276489258,
+        "occluded_logit": 0.046357687562704086,
+        "logit_delta": 0.1097792237997055
+      },
+      {
+        "row": 3,
+        "col": 1,
+        "y0": 168,
+        "y1": 224,
+        "x0": 56,
+        "x1": 112,
+        "occluded_probability": 0.5601664185523987,
+        "probability_delta": -0.02121126651763916,
+        "occluded_logit": 0.24183739721775055,
+        "logit_delta": -0.08570048213005066
+      },
+      {
+        "row": 0,
+        "col": 3,
+        "y0": 0,
+        "y1": 56,
+        "x0": 168,
+        "x1": 224,
+        "occluded_probability": 0.5597407817840576,
+        "probability_delta": -0.020785629749298096,
+        "occluded_logit": 0.24011020362377167,
+        "logit_delta": -0.08397328853607178
+      },
+      {
+        "row": 3,
+        "col": 2,
+        "y0": 168,
+        "y1": 224,
+        "x0": 112,
+        "x1": 168,
+        "occluded_probability": 0.5210670828819275,
+        "probability_delta": 0.01788806915283203,
+        "occluded_logit": 0.08431827276945114,
+        "logit_delta": 0.07181864231824875
+      },
+      {
+        "row": 2,
+        "col": 3,
+        "y0": 112,
+        "y1": 168,
+        "x0": 168,
+        "x1": 224,
+        "occluded_probability": 0.5261391997337341,
+        "probability_delta": 0.01281595230102539,
+        "occluded_logit": 0.10465235263109207,
+        "logit_delta": 0.05148456245660782
+      },
+      {
+        "row": 2,
+        "col": 2,
+        "y0": 112,
+        "y1": 168,
+        "x0": 112,
+        "x1": 168,
+        "occluded_probability": 0.5268232226371765,
+        "probability_delta": 0.012131929397583008,
+        "occluded_logit": 0.10739599168300629,
+        "logit_delta": 0.048740923404693604
+      },
+      {
+        "row": 3,
+        "col": 0,
+        "y0": 168,
+        "y1": 224,
+        "x0": 0,
+        "x1": 56,
+        "occluded_probability": 0.5489963889122009,
+        "probability_delta": -0.010041236877441406,
+        "occluded_logit": 0.19661656022071838,
+        "logit_delta": -0.040479645133018494
+      },
+      {
+        "row": 0,
+        "col": 0,
+        "y0": 0,
+        "y1": 56,
+        "x0": 0,
+        "x1": 56,
+        "occluded_probability": 0.5457656383514404,
+        "probability_delta": -0.006810486316680908,
+        "occluded_logit": 0.1835763156414032,
+        "logit_delta": -0.027439400553703308
+      }
+    ],
+    "heatmap": [
+      [
+        -0.006810486316680908,
+        -0.00425952672958374,
+        -0.03442150354385376,
+        -0.020785629749298096
+      ],
+      [
+        0.0025224685668945312,
+        0.0353696346282959,
+        0.04355177283287048,
+        0.03519749641418457
+      ],
+      [
+        0.027367830276489258,
+        0.0013247132301330566,
+        0.012131929397583008,
+        0.01281595230102539
+      ],
+      [
+        -0.010041236877441406,
+        -0.02121126651763916,
+        0.01788806915283203,
+        -0.005753636360168457
+      ]
+    ]
+  },
+  "modality_shapley": {
+    "method": "two_modality_shapley",
+    "probability": {
+      "values": {
+        "blank": 0.38559767603874207,
+        "text_only": 0.42757052183151245,
+        "image_only": 0.47331440448760986,
+        "both": 0.5389551520347595
+      },
+      "shapley": {
+        "text": 0.05380679666996002,
+        "image": 0.09955067932605743,
+        "interaction": 0.023667901754379272,
+        "blank_to_both_delta": 0.15335747599601746,
+        "abs_total": 0.15335747599601746,
+        "text_utilization": 0.3508586478780945,
+        "image_utilization": 0.6491413521219055
+      }
+    },
+    "logit": {
+      "values": {
+        "blank": -0.4658554494380951,
+        "text_only": -0.2917703092098236,
+        "image_only": -0.10684379190206528,
+        "both": 0.1561369150876999
+      },
+      "shapley": {
+        "text": 0.21853292360901833,
+        "image": 0.40345944091677666,
+        "interaction": 0.08889556676149368,
+        "blank_to_both_delta": 0.621992364525795,
+        "abs_total": 0.621992364525795,
+        "text_utilization": 0.35134341846081524,
+        "image_utilization": 0.6486565815391847
+      }
+    }
+  },
+  "modality_ablation": {
+    "both": 0.5389551520347595,
+    "no_text": 0.47331440448760986,
+    "no_image": 0.42757052183151245,
+    "blank": 0.38559767603874207,
+    "text_delta": 0.06564074754714966,
+    "image_delta": 0.11138463020324707,
+    "both_logit": 0.1561369150876999,
+    "no_text_logit": -0.10684379190206528,
+    "no_image_logit": -0.2917703092098236,
+    "blank_logit": -0.4658554494380951
+  }
+}

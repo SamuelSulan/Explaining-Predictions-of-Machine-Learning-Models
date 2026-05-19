@@ -1,0 +1,1547 @@
+{
+  "index": 15613,
+  "target_genre": "Animation",
+  "target_genres": [
+    "Animation"
+  ],
+  "true_genres": [
+    "Family",
+    "Animation",
+    "Musical",
+    "Short"
+  ],
+  "predicted_genres": [
+    "Animation",
+    "Family",
+    "Comedy",
+    "Fantasy"
+  ],
+  "probability": 0.9957962036132812,
+  "top_probabilities": {
+    "Animation": 0.9957962036132812,
+    "Family": 0.974819540977478,
+    "Comedy": 0.9686354994773865,
+    "Adventure": 0.7087337970733643,
+    "Musical": 0.6392678618431091
+  },
+  "threshold": [
+    0.30000001192092896,
+    0.5,
+    0.44999998807907104,
+    0.44999998807907104,
+    0.550000011920929,
+    0.6499999761581421,
+    0.800000011920929,
+    0.6499999761581421,
+    0.800000011920929,
+    0.6000000238418579,
+    0.800000011920929,
+    0.6000000238418579,
+    0.699999988079071,
+    0.699999988079071,
+    0.6499999761581421,
+    0.75,
+    0.8999999761581421,
+    0.699999988079071,
+    0.800000011920929,
+    0.8500000238418579,
+    0.800000011920929,
+    0.550000011920929,
+    0.699999988079071
+  ],
+  "target_selection": {
+    "policy": "predicted",
+    "target_indices": [
+      17,
+      12,
+      1
+    ],
+    "target_genres": [
+      "Animation",
+      "Family",
+      "Comedy"
+    ],
+    "all_selected_indices": [
+      17,
+      12,
+      1,
+      11
+    ],
+    "all_selected_genres": [
+      "Animation",
+      "Family",
+      "Comedy",
+      "Fantasy"
+    ],
+    "predicted_indices": [
+      17,
+      12,
+      1,
+      11
+    ],
+    "predicted_genres": [
+      "Animation",
+      "Family",
+      "Comedy",
+      "Fantasy"
+    ],
+    "threshold": [
+      0.30000001192092896,
+      0.5,
+      0.44999998807907104,
+      0.44999998807907104,
+      0.550000011920929,
+      0.6499999761581421,
+      0.800000011920929,
+      0.6499999761581421,
+      0.800000011920929,
+      0.6000000238418579,
+      0.800000011920929,
+      0.6000000238418579,
+      0.699999988079071,
+      0.699999988079071,
+      0.6499999761581421,
+      0.75,
+      0.8999999761581421,
+      0.699999988079071,
+      0.800000011920929,
+      0.8500000238418579,
+      0.800000011920929,
+      0.550000011920929,
+      0.699999988079071
+    ],
+    "max_targets_per_sample": 3
+  },
+  "methods": [
+    "LayerIntegratedGradients_text_embedding",
+    "token_occlusion",
+    "IntegratedGradients_image_pixels",
+    "GradCAM_image_branch",
+    "image_occlusion_sensitivity",
+    "modality_shapley",
+    "modality_ablation",
+    "experimental_label_correlation_head"
+  ],
+  "top_tokens": [
+    {
+      "position": 22,
+      "token": "soon",
+      "attribution": -0.7796083688735962
+    },
+    {
+      "position": 6,
+      "token": "starts",
+      "attribution": -0.7102844715118408
+    },
+    {
+      "position": 15,
+      "token": "homes",
+      "attribution": -0.6678699851036072
+    },
+    {
+      "position": 62,
+      "token": "must",
+      "attribution": 0.5715404748916626
+    },
+    {
+      "position": 35,
+      "token": "trip",
+      "attribution": 0.5198813676834106
+    },
+    {
+      "position": 64,
+      "token": "stopped",
+      "attribution": 0.5137178897857666
+    },
+    {
+      "position": 16,
+      "token": "because",
+      "attribution": -0.49840331077575684
+    },
+    {
+      "position": 19,
+      "token": "the",
+      "attribution": 0.4771622121334076
+    },
+    {
+      "position": 38,
+      "token": "euphemism",
+      "attribution": 0.45988643169403076
+    },
+    {
+      "position": 61,
+      "token": "grinch",
+      "attribution": 0.4331897795200348
+    },
+    {
+      "position": 44,
+      "token": "the",
+      "attribution": 0.3777969479560852
+    },
+    {
+      "position": 40,
+      "token": "outhouse",
+      "attribution": -0.3632054328918457
+    }
+  ],
+  "gate_mean": null,
+  "gate_std": null,
+  "config": {
+    "model_name": "neural_concat_resnet18_h256",
+    "modality": "multimodal",
+    "text_encoder": "textcnn",
+    "image_encoder": "resnet18",
+    "fusion": "concat",
+    "hidden_dim": 256,
+    "text_cnn_channels": 128,
+    "text_cnn_kernels": [
+      3,
+      4,
+      5
+    ],
+    "text_rnn_hidden_dim": 128,
+    "text_rnn_layers": 1,
+    "text_rnn_dropout": 0.2,
+    "text_attention_dim": 128,
+    "text_transformer_layers": 2,
+    "text_transformer_heads": 6,
+    "text_transformer_ff_dim": 512,
+    "text_transformer_dropout": 0.1,
+    "pretrained_image": false,
+    "freeze_image_backbone": true,
+    "batch_size": 16,
+    "epochs": 10,
+    "learning_rate": 0.0001,
+    "weight_decay": 0.01,
+    "num_workers": 0,
+    "patience": 3,
+    "threshold_metric": "macro_f1",
+    "threshold_strategy": "per_label",
+    "threshold_min": 0.01,
+    "threshold_max": 0.99,
+    "threshold_steps": 99,
+    "loss": "bce",
+    "focal_gamma": 2.0,
+    "pos_weight_clip": null,
+    "scheduler": "none",
+    "scheduler_factor": 0.5,
+    "scheduler_patience": 1,
+    "min_learning_rate": 1e-06,
+    "enable_label_correlation": true,
+    "max_length": 512,
+    "input_size": 224,
+    "freeze_embeddings": false
+  },
+  "performance": {
+    "measurements": [
+      {
+        "name": "neural_text_layer_integrated_gradients_idx_15613_Animation",
+        "wall_time_s": 0.017007162000027165,
+        "process_cpu_time_s": 0.017101538999995114,
+        "process_cpu_util_percent": 100.5549250366863,
+        "rss_start_mb": 2097.0625,
+        "rss_end_mb": 2097.0859375,
+        "rss_delta_mb": 0.0234375,
+        "rss_peak_mb": 2097.0859375,
+        "cuda_start": {
+          "cuda_available": true,
+          "cuda_device": "NVIDIA A100-SXM4-40GB",
+          "cuda_allocated_mb": 355.6923828125,
+          "cuda_reserved_mb": 712.0,
+          "cuda_peak_allocated_mb": 355.6923828125,
+          "cuda_peak_reserved_mb": 712.0
+        },
+        "cuda_end": {
+          "cuda_available": true,
+          "cuda_device": "NVIDIA A100-SXM4-40GB",
+          "cuda_allocated_mb": 355.6923828125,
+          "cuda_reserved_mb": 712.0,
+          "cuda_peak_allocated_mb": 422.7158203125,
+          "cuda_peak_reserved_mb": 712.0
+        }
+      },
+      {
+        "name": "neural_text_visualization_idx_15613_Animation",
+        "wall_time_s": 0.19649868099998002,
+        "process_cpu_time_s": 0.1923421819999973,
+        "process_cpu_util_percent": 97.88471913458639,
+        "rss_start_mb": 2097.109375,
+        "rss_end_mb": 2101.20703125,
+        "rss_delta_mb": 4.09765625,
+        "rss_peak_mb": 2101.2109375,
+        "cuda_start": {
+          "cuda_available": true,
+          "cuda_device": "NVIDIA A100-SXM4-40GB",
+          "cuda_allocated_mb": 355.6923828125,
+          "cuda_reserved_mb": 712.0,
+          "cuda_peak_allocated_mb": 355.6923828125,
+          "cuda_peak_reserved_mb": 712.0
+        },
+        "cuda_end": {
+          "cuda_available": true,
+          "cuda_device": "NVIDIA A100-SXM4-40GB",
+          "cuda_allocated_mb": 355.6923828125,
+          "cuda_reserved_mb": 712.0,
+          "cuda_peak_allocated_mb": 355.6923828125,
+          "cuda_peak_reserved_mb": 712.0
+        }
+      },
+      {
+        "name": "neural_token_occlusion_idx_15613_Animation",
+        "wall_time_s": 0.04231637600003069,
+        "process_cpu_time_s": 0.042524862999997026,
+        "process_cpu_util_percent": 100.49268633014839,
+        "rss_start_mb": 2101.23828125,
+        "rss_end_mb": 2101.29296875,
+        "rss_delta_mb": 0.0546875,
+        "rss_peak_mb": 2101.296875,
+        "cuda_start": {
+          "cuda_available": true,
+          "cuda_device": "NVIDIA A100-SXM4-40GB",
+          "cuda_allocated_mb": 355.6923828125,
+          "cuda_reserved_mb": 712.0,
+          "cuda_peak_allocated_mb": 355.6923828125,
+          "cuda_peak_reserved_mb": 712.0
+        },
+        "cuda_end": {
+          "cuda_available": true,
+          "cuda_device": "NVIDIA A100-SXM4-40GB",
+          "cuda_allocated_mb": 355.6923828125,
+          "cuda_reserved_mb": 712.0,
+          "cuda_peak_allocated_mb": 551.91455078125,
+          "cuda_peak_reserved_mb": 712.0
+        }
+      },
+      {
+        "name": "neural_token_occlusion_visualization_idx_15613_Animation",
+        "wall_time_s": 0.17188063100002182,
+        "process_cpu_time_s": 0.16687627700000007,
+        "process_cpu_util_percent": 97.08847124256769,
+        "rss_start_mb": 2101.296875,
+        "rss_end_mb": 2102.99609375,
+        "rss_delta_mb": 1.69921875,
+        "rss_peak_mb": 2102.9921875,
+        "cuda_start": {
+          "cuda_available": true,
+          "cuda_device": "NVIDIA A100-SXM4-40GB",
+          "cuda_allocated_mb": 355.6923828125,
+          "cuda_reserved_mb": 712.0,
+          "cuda_peak_allocated_mb": 355.6923828125,
+          "cuda_peak_reserved_mb": 712.0
+        },
+        "cuda_end": {
+          "cuda_available": true,
+          "cuda_device": "NVIDIA A100-SXM4-40GB",
+          "cuda_allocated_mb": 355.6923828125,
+          "cuda_reserved_mb": 712.0,
+          "cuda_peak_allocated_mb": 355.6923828125,
+          "cuda_peak_reserved_mb": 712.0
+        }
+      },
+      {
+        "name": "neural_image_integrated_gradients_idx_15613_Animation",
+        "wall_time_s": 0.011902394000003369,
+        "process_cpu_time_s": 0.011964543000004824,
+        "process_cpu_util_percent": 100.52215545882146,
+        "rss_start_mb": 2103.0390625,
+        "rss_end_mb": 2103.08984375,
+        "rss_delta_mb": 0.05078125,
+        "rss_peak_mb": 2103.08984375,
+        "cuda_start": {
+          "cuda_available": true,
+          "cuda_device": "NVIDIA A100-SXM4-40GB",
+          "cuda_allocated_mb": 355.6923828125,
+          "cuda_reserved_mb": 712.0,
+          "cuda_peak_allocated_mb": 355.6923828125,
+          "cuda_peak_reserved_mb": 712.0
+        },
+        "cuda_end": {
+          "cuda_available": true,
+          "cuda_device": "NVIDIA A100-SXM4-40GB",
+          "cuda_allocated_mb": 355.6923828125,
+          "cuda_reserved_mb": 712.0,
+          "cuda_peak_allocated_mb": 551.69384765625,
+          "cuda_peak_reserved_mb": 712.0
+        }
+      },
+      {
+        "name": "neural_image_ig_visualization_idx_15613_Animation",
+        "wall_time_s": 0.025998601999958737,
+        "process_cpu_time_s": 0.02025450699999709,
+        "process_cpu_util_percent": 77.90613895327617,
+        "rss_start_mb": 2103.125,
+        "rss_end_mb": 2103.17578125,
+        "rss_delta_mb": 0.05078125,
+        "rss_peak_mb": 2103.1796875,
+        "cuda_start": {
+          "cuda_available": true,
+          "cuda_device": "NVIDIA A100-SXM4-40GB",
+          "cuda_allocated_mb": 355.6923828125,
+          "cuda_reserved_mb": 712.0,
+          "cuda_peak_allocated_mb": 355.6923828125,
+          "cuda_peak_reserved_mb": 712.0
+        },
+        "cuda_end": {
+          "cuda_available": true,
+          "cuda_device": "NVIDIA A100-SXM4-40GB",
+          "cuda_allocated_mb": 355.6923828125,
+          "cuda_reserved_mb": 712.0,
+          "cuda_peak_allocated_mb": 355.6923828125,
+          "cuda_peak_reserved_mb": 712.0
+        }
+      },
+      {
+        "name": "neural_image_gradcam_idx_15613_Animation",
+        "wall_time_s": 0.011323425000000498,
+        "process_cpu_time_s": 0.011420870999998556,
+        "process_cpu_util_percent": 100.860570013031,
+        "rss_start_mb": 2103.2421875,
+        "rss_end_mb": 2103.2421875,
+        "rss_delta_mb": 0.0,
+        "rss_peak_mb": 2103.24609375,
+        "cuda_start": {
+          "cuda_available": true,
+          "cuda_device": "NVIDIA A100-SXM4-40GB",
+          "cuda_allocated_mb": 355.6923828125,
+          "cuda_reserved_mb": 712.0,
+          "cuda_peak_allocated_mb": 355.6923828125,
+          "cuda_peak_reserved_mb": 712.0
+        },
+        "cuda_end": {
+          "cuda_available": true,
+          "cuda_device": "NVIDIA A100-SXM4-40GB",
+          "cuda_allocated_mb": 355.6923828125,
+          "cuda_reserved_mb": 712.0,
+          "cuda_peak_allocated_mb": 358.20556640625,
+          "cuda_peak_reserved_mb": 712.0
+        }
+      },
+      {
+        "name": "neural_image_gradcam_visualization_idx_15613_Animation",
+        "wall_time_s": 0.02995481200002814,
+        "process_cpu_time_s": 0.024423090000006198,
+        "process_cpu_util_percent": 81.53311060668067,
+        "rss_start_mb": 2103.25,
+        "rss_end_mb": 2103.25390625,
+        "rss_delta_mb": 0.00390625,
+        "rss_peak_mb": 2103.2578125,
+        "cuda_start": {
+          "cuda_available": true,
+          "cuda_device": "NVIDIA A100-SXM4-40GB",
+          "cuda_allocated_mb": 355.6923828125,
+          "cuda_reserved_mb": 712.0,
+          "cuda_peak_allocated_mb": 355.6923828125,
+          "cuda_peak_reserved_mb": 712.0
+        },
+        "cuda_end": {
+          "cuda_available": true,
+          "cuda_device": "NVIDIA A100-SXM4-40GB",
+          "cuda_allocated_mb": 355.6923828125,
+          "cuda_reserved_mb": 712.0,
+          "cuda_peak_allocated_mb": 355.6923828125,
+          "cuda_peak_reserved_mb": 712.0
+        }
+      },
+      {
+        "name": "neural_image_occlusion_idx_15613_Animation",
+        "wall_time_s": 0.009836807999931807,
+        "process_cpu_time_s": 0.009907257000001835,
+        "process_cpu_util_percent": 100.71617744364347,
+        "rss_start_mb": 2103.25390625,
+        "rss_end_mb": 2103.2734375,
+        "rss_delta_mb": 0.01953125,
+        "rss_peak_mb": 2103.27734375,
+        "cuda_start": {
+          "cuda_available": true,
+          "cuda_device": "NVIDIA A100-SXM4-40GB",
+          "cuda_allocated_mb": 355.6923828125,
+          "cuda_reserved_mb": 712.0,
+          "cuda_peak_allocated_mb": 355.6923828125,
+          "cuda_peak_reserved_mb": 712.0
+        },
+        "cuda_end": {
+          "cuda_available": true,
+          "cuda_device": "NVIDIA A100-SXM4-40GB",
+          "cuda_allocated_mb": 355.6923828125,
+          "cuda_reserved_mb": 712.0,
+          "cuda_peak_allocated_mb": 462.89599609375,
+          "cuda_peak_reserved_mb": 712.0
+        }
+      },
+      {
+        "name": "neural_image_occlusion_visualization_idx_15613_Animation",
+        "wall_time_s": 0.02958896799998456,
+        "process_cpu_time_s": 0.024406894999998485,
+        "process_cpu_util_percent": 82.48646928142685,
+        "rss_start_mb": 2103.30078125,
+        "rss_end_mb": 2103.30078125,
+        "rss_delta_mb": 0.0,
+        "rss_peak_mb": 2103.3046875,
+        "cuda_start": {
+          "cuda_available": true,
+          "cuda_device": "NVIDIA A100-SXM4-40GB",
+          "cuda_allocated_mb": 355.6923828125,
+          "cuda_reserved_mb": 712.0,
+          "cuda_peak_allocated_mb": 355.6923828125,
+          "cuda_peak_reserved_mb": 712.0
+        },
+        "cuda_end": {
+          "cuda_available": true,
+          "cuda_device": "NVIDIA A100-SXM4-40GB",
+          "cuda_allocated_mb": 355.6923828125,
+          "cuda_reserved_mb": 712.0,
+          "cuda_peak_allocated_mb": 355.6923828125,
+          "cuda_peak_reserved_mb": 712.0
+        }
+      },
+      {
+        "name": "neural_modality_shapley_idx_15613_Animation",
+        "wall_time_s": 0.016758867000021382,
+        "process_cpu_time_s": 0.016825251000000208,
+        "process_cpu_util_percent": 100.39611269651307,
+        "rss_start_mb": 2103.30078125,
+        "rss_end_mb": 2103.3046875,
+        "rss_delta_mb": 0.00390625,
+        "rss_peak_mb": 2103.30859375,
+        "cuda_start": {
+          "cuda_available": true,
+          "cuda_device": "NVIDIA A100-SXM4-40GB",
+          "cuda_allocated_mb": 355.6923828125,
+          "cuda_reserved_mb": 712.0,
+          "cuda_peak_allocated_mb": 355.6923828125,
+          "cuda_peak_reserved_mb": 712.0
+        },
+        "cuda_end": {
+          "cuda_available": true,
+          "cuda_device": "NVIDIA A100-SXM4-40GB",
+          "cuda_allocated_mb": 355.6923828125,
+          "cuda_reserved_mb": 712.0,
+          "cuda_peak_allocated_mb": 365.9716796875,
+          "cuda_peak_reserved_mb": 712.0
+        }
+      },
+      {
+        "name": "neural_modality_shapley_visualization_idx_15613_Animation",
+        "wall_time_s": 0.12367084199991041,
+        "process_cpu_time_s": 0.11933241199999856,
+        "process_cpu_util_percent": 96.49195402104968,
+        "rss_start_mb": 2103.30859375,
+        "rss_end_mb": 2103.44921875,
+        "rss_delta_mb": 0.140625,
+        "rss_peak_mb": 2103.4453125,
+        "cuda_start": {
+          "cuda_available": true,
+          "cuda_device": "NVIDIA A100-SXM4-40GB",
+          "cuda_allocated_mb": 355.6923828125,
+          "cuda_reserved_mb": 712.0,
+          "cuda_peak_allocated_mb": 355.6923828125,
+          "cuda_peak_reserved_mb": 712.0
+        },
+        "cuda_end": {
+          "cuda_available": true,
+          "cuda_device": "NVIDIA A100-SXM4-40GB",
+          "cuda_allocated_mb": 355.6923828125,
+          "cuda_reserved_mb": 712.0,
+          "cuda_peak_allocated_mb": 355.6923828125,
+          "cuda_peak_reserved_mb": 712.0
+        }
+      },
+      {
+        "name": "neural_modality_ablation_idx_15613_Animation",
+        "wall_time_s": 0.017186436999963917,
+        "process_cpu_time_s": 0.01725517599999904,
+        "process_cpu_util_percent": 100.39996073668595,
+        "rss_start_mb": 2103.46484375,
+        "rss_end_mb": 2103.5,
+        "rss_delta_mb": 0.03515625,
+        "rss_peak_mb": 2103.50390625,
+        "cuda_start": {
+          "cuda_available": true,
+          "cuda_device": "NVIDIA A100-SXM4-40GB",
+          "cuda_allocated_mb": 355.6923828125,
+          "cuda_reserved_mb": 712.0,
+          "cuda_peak_allocated_mb": 355.6923828125,
+          "cuda_peak_reserved_mb": 712.0
+        },
+        "cuda_end": {
+          "cuda_available": true,
+          "cuda_device": "NVIDIA A100-SXM4-40GB",
+          "cuda_allocated_mb": 355.6923828125,
+          "cuda_reserved_mb": 712.0,
+          "cuda_peak_allocated_mb": 365.97119140625,
+          "cuda_peak_reserved_mb": 712.0
+        }
+      }
+    ],
+    "summary": {
+      "count": 13,
+      "total_wall_time_s": 0.7039240049998625,
+      "mean_wall_time_s": 0.05414800038460481,
+      "total_process_cpu_time_s": 0.6746348629999943,
+      "mean_process_cpu_util_percent": 95.1794962273167,
+      "max_rss_peak_mb": 2103.50390625
+    }
+  },
+  "token_occlusion": {
+    "baseline_probability": 0.9957962036132812,
+    "baseline_logit": 5.467563629150391,
+    "top_tokens": [
+      {
+        "position": 19,
+        "token": "the",
+        "occluded_probability": 0.992708683013916,
+        "probability_delta": 0.0030875205993652344,
+        "occluded_logit": 4.913763046264648,
+        "logit_delta": 0.5538005828857422
+      },
+      {
+        "position": 10,
+        "token": "the",
+        "occluded_probability": 0.9927653670310974,
+        "probability_delta": 0.003030836582183838,
+        "occluded_logit": 4.921602725982666,
+        "logit_delta": 0.5459609031677246
+      },
+      {
+        "position": 13,
+        "token": "to",
+        "occluded_probability": 0.9931651949882507,
+        "probability_delta": 0.0026310086250305176,
+        "occluded_logit": 4.978866100311279,
+        "logit_delta": 0.48869752883911133
+      },
+      {
+        "position": 53,
+        "token": "the",
+        "occluded_probability": 0.9936057329177856,
+        "probability_delta": 0.0021904706954956055,
+        "occluded_logit": 5.045942783355713,
+        "logit_delta": 0.42162084579467773
+      },
+      {
+        "position": 6,
+        "token": "starts",
+        "occluded_probability": 0.9979326725006104,
+        "probability_delta": -0.0021364688873291016,
+        "occluded_logit": 6.179424285888672,
+        "logit_delta": -0.7118606567382812
+      },
+      {
+        "position": 65,
+        "token": ",",
+        "occluded_probability": 0.997731626033783,
+        "probability_delta": -0.001935422420501709,
+        "occluded_logit": 6.08643102645874,
+        "logit_delta": -0.6188673973083496
+      },
+      {
+        "position": 5,
+        "token": "wind",
+        "occluded_probability": 0.994125247001648,
+        "probability_delta": 0.0016709566116333008,
+        "occluded_logit": 5.1312103271484375,
+        "logit_delta": 0.3363533020019531
+      },
+      {
+        "position": 23,
+        "token": "be",
+        "occluded_probability": 0.9942348599433899,
+        "probability_delta": 0.0015613436698913574,
+        "occluded_logit": 5.150152206420898,
+        "logit_delta": 0.3174114227294922
+      },
+      {
+        "position": 44,
+        "token": "the",
+        "occluded_probability": 0.9943600296974182,
+        "probability_delta": 0.0014361739158630371,
+        "occluded_logit": 5.172224998474121,
+        "logit_delta": 0.29533863067626953
+      },
+      {
+        "position": 22,
+        "token": "soon",
+        "occluded_probability": 0.997211754322052,
+        "probability_delta": -0.001415550708770752,
+        "occluded_logit": 5.879533290863037,
+        "logit_delta": -0.4119696617126465
+      },
+      {
+        "position": 35,
+        "token": "trip",
+        "occluded_probability": 0.9943944215774536,
+        "probability_delta": 0.0014017820358276367,
+        "occluded_logit": 5.178378582000732,
+        "logit_delta": 0.2891850471496582
+      },
+      {
+        "position": 7,
+        "token": "blowing",
+        "occluded_probability": 0.9971350431442261,
+        "probability_delta": -0.0013388395309448242,
+        "occluded_logit": 5.85231876373291,
+        "logit_delta": -0.38475513458251953
+      }
+    ],
+    "all_scores": [
+      {
+        "position": 0,
+        "token": "when",
+        "occluded_probability": 0.9956718683242798,
+        "probability_delta": 0.00012433528900146484,
+        "occluded_logit": 5.438282012939453,
+        "logit_delta": 0.0292816162109375
+      },
+      {
+        "position": 1,
+        "token": "the",
+        "occluded_probability": 0.9961143732070923,
+        "probability_delta": -0.00031816959381103516,
+        "occluded_logit": 5.546572685241699,
+        "logit_delta": -0.0790090560913086
+      },
+      {
+        "position": 2,
+        "token": "sour",
+        "occluded_probability": 0.9961865544319153,
+        "probability_delta": -0.0003903508186340332,
+        "occluded_logit": 5.565394878387451,
+        "logit_delta": -0.09783124923706055
+      },
+      {
+        "position": 3,
+        "token": "-",
+        "occluded_probability": 0.995219886302948,
+        "probability_delta": 0.000576317310333252,
+        "occluded_logit": 5.338501453399658,
+        "logit_delta": 0.12906217575073242
+      },
+      {
+        "position": 4,
+        "token": "sweet",
+        "occluded_probability": 0.9966012239456177,
+        "probability_delta": -0.0008050203323364258,
+        "occluded_logit": 5.680934906005859,
+        "logit_delta": -0.21337127685546875
+      },
+      {
+        "position": 5,
+        "token": "wind",
+        "occluded_probability": 0.994125247001648,
+        "probability_delta": 0.0016709566116333008,
+        "occluded_logit": 5.1312103271484375,
+        "logit_delta": 0.3363533020019531
+      },
+      {
+        "position": 6,
+        "token": "starts",
+        "occluded_probability": 0.9979326725006104,
+        "probability_delta": -0.0021364688873291016,
+        "occluded_logit": 6.179424285888672,
+        "logit_delta": -0.7118606567382812
+      },
+      {
+        "position": 7,
+        "token": "blowing",
+        "occluded_probability": 0.9971350431442261,
+        "probability_delta": -0.0013388395309448242,
+        "occluded_logit": 5.85231876373291,
+        "logit_delta": -0.38475513458251953
+      },
+      {
+        "position": 8,
+        "token": "again",
+        "occluded_probability": 0.9956114888191223,
+        "probability_delta": 0.00018471479415893555,
+        "occluded_logit": 5.424353122711182,
+        "logit_delta": 0.043210506439208984
+      },
+      {
+        "position": 9,
+        "token": ",",
+        "occluded_probability": 0.9961119294166565,
+        "probability_delta": -0.00031572580337524414,
+        "occluded_logit": 5.545939922332764,
+        "logit_delta": -0.07837629318237305
+      },
+      {
+        "position": 10,
+        "token": "the",
+        "occluded_probability": 0.9927653670310974,
+        "probability_delta": 0.003030836582183838,
+        "occluded_logit": 4.921602725982666,
+        "logit_delta": 0.5459609031677246
+      },
+      {
+        "position": 11,
+        "token": "whos",
+        "occluded_probability": 0.9957250356674194,
+        "probability_delta": 7.11679458618164e-05,
+        "occluded_logit": 5.450685501098633,
+        "logit_delta": 0.016878128051757812
+      },
+      {
+        "position": 12,
+        "token": "retreat",
+        "occluded_probability": 0.9966155886650085,
+        "probability_delta": -0.0008193850517272949,
+        "occluded_logit": 5.685178279876709,
+        "logit_delta": -0.21761465072631836
+      },
+      {
+        "position": 13,
+        "token": "to",
+        "occluded_probability": 0.9931651949882507,
+        "probability_delta": 0.0026310086250305176,
+        "occluded_logit": 4.978866100311279,
+        "logit_delta": 0.48869752883911133
+      },
+      {
+        "position": 14,
+        "token": "their",
+        "occluded_probability": 0.9948421120643616,
+        "probability_delta": 0.0009540915489196777,
+        "occluded_logit": 5.262058258056641,
+        "logit_delta": 0.20550537109375
+      },
+      {
+        "position": 15,
+        "token": "homes",
+        "occluded_probability": 0.9967426657676697,
+        "probability_delta": -0.0009464621543884277,
+        "occluded_logit": 5.723578929901123,
+        "logit_delta": -0.2560153007507324
+      },
+      {
+        "position": 16,
+        "token": "because",
+        "occluded_probability": 0.9968500733375549,
+        "probability_delta": -0.0010538697242736816,
+        "occluded_logit": 5.757228851318359,
+        "logit_delta": -0.28966522216796875
+      },
+      {
+        "position": 17,
+        "token": "they",
+        "occluded_probability": 0.9948379397392273,
+        "probability_delta": 0.0009582638740539551,
+        "occluded_logit": 5.2612457275390625,
+        "logit_delta": 0.20631790161132812
+      },
+      {
+        "position": 18,
+        "token": "know",
+        "occluded_probability": 0.996569037437439,
+        "probability_delta": -0.0007728338241577148,
+        "occluded_logit": 5.671473503112793,
+        "logit_delta": -0.20390987396240234
+      },
+      {
+        "position": 19,
+        "token": "the",
+        "occluded_probability": 0.992708683013916,
+        "probability_delta": 0.0030875205993652344,
+        "occluded_logit": 4.913763046264648,
+        "logit_delta": 0.5538005828857422
+      },
+      {
+        "position": 20,
+        "token": "grinch",
+        "occluded_probability": 0.9955801367759705,
+        "probability_delta": 0.00021606683731079102,
+        "occluded_logit": 5.417229175567627,
+        "logit_delta": 0.05033445358276367
+      },
+      {
+        "position": 21,
+        "token": "will",
+        "occluded_probability": 0.9957220554351807,
+        "probability_delta": 7.414817810058594e-05,
+        "occluded_logit": 5.450003623962402,
+        "logit_delta": 0.01756000518798828
+      },
+      {
+        "position": 22,
+        "token": "soon",
+        "occluded_probability": 0.997211754322052,
+        "probability_delta": -0.001415550708770752,
+        "occluded_logit": 5.879533290863037,
+        "logit_delta": -0.4119696617126465
+      },
+      {
+        "position": 23,
+        "token": "be",
+        "occluded_probability": 0.9942348599433899,
+        "probability_delta": 0.0015613436698913574,
+        "occluded_logit": 5.150152206420898,
+        "logit_delta": 0.3174114227294922
+      },
+      {
+        "position": 24,
+        "token": "a",
+        "occluded_probability": 0.9952410459518433,
+        "probability_delta": 0.0005551576614379883,
+        "occluded_logit": 5.34295654296875,
+        "logit_delta": 0.12460708618164062
+      },
+      {
+        "position": 25,
+        "token": "'",
+        "occluded_probability": 0.9958985447883606,
+        "probability_delta": -0.0001023411750793457,
+        "occluded_logit": 5.49230432510376,
+        "logit_delta": -0.02474069595336914
+      },
+      {
+        "position": 26,
+        "token": "prowlin",
+        "occluded_probability": 0.9958996176719666,
+        "probability_delta": -0.00010341405868530273,
+        "occluded_logit": 5.492583751678467,
+        "logit_delta": -0.025020122528076172
+      },
+      {
+        "position": 27,
+        "token": ".",
+        "occluded_probability": 0.9948616623878479,
+        "probability_delta": 0.0009345412254333496,
+        "occluded_logit": 5.265865802764893,
+        "logit_delta": 0.20169782638549805
+      },
+      {
+        "position": 28,
+        "token": "young",
+        "occluded_probability": 0.9952014684677124,
+        "probability_delta": 0.0005947351455688477,
+        "occluded_logit": 5.3346405029296875,
+        "logit_delta": 0.13292312622070312
+      },
+      {
+        "position": 29,
+        "token": "eukariah",
+        "occluded_probability": 0.995805025100708,
+        "probability_delta": -8.821487426757812e-06,
+        "occluded_logit": 5.469662189483643,
+        "logit_delta": -0.002098560333251953
+      },
+      {
+        "position": 30,
+        "token": "who",
+        "occluded_probability": 0.9961788654327393,
+        "probability_delta": -0.0003826618194580078,
+        "occluded_logit": 5.563389778137207,
+        "logit_delta": -0.0958261489868164
+      },
+      {
+        "position": 31,
+        "token": "has",
+        "occluded_probability": 0.9957196116447449,
+        "probability_delta": 7.659196853637695e-05,
+        "occluded_logit": 5.449424743652344,
+        "logit_delta": 0.018138885498046875
+      },
+      {
+        "position": 32,
+        "token": "to",
+        "occluded_probability": 0.9954695701599121,
+        "probability_delta": 0.0003266334533691406,
+        "occluded_logit": 5.392409324645996,
+        "logit_delta": 0.07515430450439453
+      },
+      {
+        "position": 33,
+        "token": "make",
+        "occluded_probability": 0.9959027171134949,
+        "probability_delta": -0.00010651350021362305,
+        "occluded_logit": 5.493314266204834,
+        "logit_delta": -0.02575063705444336
+      },
+      {
+        "position": 34,
+        "token": "a",
+        "occluded_probability": 0.9951831698417664,
+        "probability_delta": 0.0006130337715148926,
+        "occluded_logit": 5.330817222595215,
+        "logit_delta": 0.13674640655517578
+      },
+      {
+        "position": 35,
+        "token": "trip",
+        "occluded_probability": 0.9943944215774536,
+        "probability_delta": 0.0014017820358276367,
+        "occluded_logit": 5.178378582000732,
+        "logit_delta": 0.2891850471496582
+      },
+      {
+        "position": 36,
+        "token": "to",
+        "occluded_probability": 0.9968233108520508,
+        "probability_delta": -0.0010271072387695312,
+        "occluded_logit": 5.748740196228027,
+        "logit_delta": -0.2811765670776367
+      },
+      {
+        "position": 37,
+        "token": "the",
+        "occluded_probability": 0.9966829419136047,
+        "probability_delta": -0.0008867383003234863,
+        "occluded_logit": 5.705360412597656,
+        "logit_delta": -0.23779678344726562
+      },
+      {
+        "position": 38,
+        "token": "euphemism",
+        "occluded_probability": 0.9952852129936218,
+        "probability_delta": 0.0005109906196594238,
+        "occluded_logit": 5.352327823638916,
+        "logit_delta": 0.11523580551147461
+      },
+      {
+        "position": 39,
+        "token": "(",
+        "occluded_probability": 0.9962462782859802,
+        "probability_delta": -0.0004500746726989746,
+        "occluded_logit": 5.58125638961792,
+        "logit_delta": -0.1136927604675293
+      },
+      {
+        "position": 40,
+        "token": "outhouse",
+        "occluded_probability": 0.9971200227737427,
+        "probability_delta": -0.0013238191604614258,
+        "occluded_logit": 5.847097873687744,
+        "logit_delta": -0.3795342445373535
+      },
+      {
+        "position": 41,
+        "token": ")",
+        "occluded_probability": 0.995424211025238,
+        "probability_delta": 0.0003719925880432129,
+        "occluded_logit": 5.382382869720459,
+        "logit_delta": 0.08518075942993164
+      },
+      {
+        "position": 42,
+        "token": ",",
+        "occluded_probability": 0.9961666464805603,
+        "probability_delta": -0.00037044286727905273,
+        "occluded_logit": 5.560192584991455,
+        "logit_delta": -0.09262895584106445
+      },
+      {
+        "position": 43,
+        "token": "when",
+        "occluded_probability": 0.9964849948883057,
+        "probability_delta": -0.0006887912750244141,
+        "occluded_logit": 5.647181510925293,
+        "logit_delta": -0.17961788177490234
+      },
+      {
+        "position": 44,
+        "token": "the",
+        "occluded_probability": 0.9943600296974182,
+        "probability_delta": 0.0014361739158630371,
+        "occluded_logit": 5.172224998474121,
+        "logit_delta": 0.29533863067626953
+      },
+      {
+        "position": 45,
+        "token": "wind",
+        "occluded_probability": 0.99648118019104,
+        "probability_delta": -0.0006849765777587891,
+        "occluded_logit": 5.646113395690918,
+        "logit_delta": -0.17854976654052734
+      },
+      {
+        "position": 46,
+        "token": "blows",
+        "occluded_probability": 0.9954648613929749,
+        "probability_delta": 0.0003313422203063965,
+        "occluded_logit": 5.391350269317627,
+        "logit_delta": 0.07621335983276367
+      },
+      {
+        "position": 47,
+        "token": "him",
+        "occluded_probability": 0.9959537982940674,
+        "probability_delta": -0.0001575946807861328,
+        "occluded_logit": 5.505910873413086,
+        "logit_delta": -0.03834724426269531
+      },
+      {
+        "position": 48,
+        "token": "away",
+        "occluded_probability": 0.9957097768783569,
+        "probability_delta": 8.64267349243164e-05,
+        "occluded_logit": 5.447109222412109,
+        "logit_delta": 0.02045440673828125
+      },
+      {
+        "position": 49,
+        "token": "to",
+        "occluded_probability": 0.9962145686149597,
+        "probability_delta": -0.0004183650016784668,
+        "occluded_logit": 5.572811603546143,
+        "logit_delta": -0.10524797439575195
+      },
+      {
+        "position": 50,
+        "token": "a",
+        "occluded_probability": 0.9962049126625061,
+        "probability_delta": -0.0004087090492248535,
+        "occluded_logit": 5.570226669311523,
+        "logit_delta": -0.10266304016113281
+      },
+      {
+        "position": 51,
+        "token": "confrontation",
+        "occluded_probability": 0.995776355266571,
+        "probability_delta": 1.9848346710205078e-05,
+        "occluded_logit": 5.462810516357422,
+        "logit_delta": 0.00475311279296875
+      },
+      {
+        "position": 52,
+        "token": "with",
+        "occluded_probability": 0.996211051940918,
+        "probability_delta": -0.00041484832763671875,
+        "occluded_logit": 5.571867942810059,
+        "logit_delta": -0.10430431365966797
+      },
+      {
+        "position": 53,
+        "token": "the",
+        "occluded_probability": 0.9936057329177856,
+        "probability_delta": 0.0021904706954956055,
+        "occluded_logit": 5.045942783355713,
+        "logit_delta": 0.42162084579467773
+      },
+      {
+        "position": 54,
+        "token": "gruesome",
+        "occluded_probability": 0.9959062337875366,
+        "probability_delta": -0.0001100301742553711,
+        "occluded_logit": 5.494200706481934,
+        "logit_delta": -0.02663707733154297
+      },
+      {
+        "position": 55,
+        "token": "grinch",
+        "occluded_probability": 0.996202290058136,
+        "probability_delta": -0.00040608644485473633,
+        "occluded_logit": 5.569555282592773,
+        "logit_delta": -0.10199165344238281
+      },
+      {
+        "position": 56,
+        "token": ".",
+        "occluded_probability": 0.9962218999862671,
+        "probability_delta": -0.00042569637298583984,
+        "occluded_logit": 5.574760437011719,
+        "logit_delta": -0.10719680786132812
+      },
+      {
+        "position": 57,
+        "token": "eukariah",
+        "occluded_probability": 0.995668888092041,
+        "probability_delta": 0.00012731552124023438,
+        "occluded_logit": 5.437578201293945,
+        "logit_delta": 0.029985427856445312
+      },
+      {
+        "position": 58,
+        "token": "decides",
+        "occluded_probability": 0.9962967038154602,
+        "probability_delta": -0.0005005002021789551,
+        "occluded_logit": 5.594813346862793,
+        "logit_delta": -0.12724971771240234
+      },
+      {
+        "position": 59,
+        "token": "that",
+        "occluded_probability": 0.9961631298065186,
+        "probability_delta": -0.0003669261932373047,
+        "occluded_logit": 5.5592546463012695,
+        "logit_delta": -0.0916910171508789
+      },
+      {
+        "position": 60,
+        "token": "the",
+        "occluded_probability": 0.9952422380447388,
+        "probability_delta": 0.0005539655685424805,
+        "occluded_logit": 5.3432087898254395,
+        "logit_delta": 0.12435483932495117
+      },
+      {
+        "position": 61,
+        "token": "grinch",
+        "occluded_probability": 0.9948424696922302,
+        "probability_delta": 0.0009537339210510254,
+        "occluded_logit": 5.262130260467529,
+        "logit_delta": 0.20543336868286133
+      },
+      {
+        "position": 62,
+        "token": "must",
+        "occluded_probability": 0.9953504800796509,
+        "probability_delta": 0.0004457235336303711,
+        "occluded_logit": 5.366334438323975,
+        "logit_delta": 0.10122919082641602
+      },
+      {
+        "position": 63,
+        "token": "be",
+        "occluded_probability": 0.9969596862792969,
+        "probability_delta": -0.001163482666015625,
+        "occluded_logit": 5.7927350997924805,
+        "logit_delta": -0.32517147064208984
+      },
+      {
+        "position": 64,
+        "token": "stopped",
+        "occluded_probability": 0.9951390027999878,
+        "probability_delta": 0.000657200813293457,
+        "occluded_logit": 5.3216328620910645,
+        "logit_delta": 0.14593076705932617
+      },
+      {
+        "position": 65,
+        "token": ",",
+        "occluded_probability": 0.997731626033783,
+        "probability_delta": -0.001935422420501709,
+        "occluded_logit": 6.08643102645874,
+        "logit_delta": -0.6188673973083496
+      },
+      {
+        "position": 66,
+        "token": "so",
+        "occluded_probability": 0.9961483478546143,
+        "probability_delta": -0.0003521442413330078,
+        "occluded_logit": 5.5553998947143555,
+        "logit_delta": -0.08783626556396484
+      },
+      {
+        "position": 67,
+        "token": "he",
+        "occluded_probability": 0.9966874718666077,
+        "probability_delta": -0.000891268253326416,
+        "occluded_logit": 5.706723690032959,
+        "logit_delta": -0.23916006088256836
+      },
+      {
+        "position": 68,
+        "token": "faces",
+        "occluded_probability": 0.9948809146881104,
+        "probability_delta": 0.0009152889251708984,
+        "occluded_logit": 5.269656181335449,
+        "logit_delta": 0.1979074478149414
+      },
+      {
+        "position": 69,
+        "token": "his",
+        "occluded_probability": 0.9962196946144104,
+        "probability_delta": -0.0004234910011291504,
+        "occluded_logit": 5.574164390563965,
+        "logit_delta": -0.10660076141357422
+      },
+      {
+        "position": 70,
+        "token": "fears",
+        "occluded_probability": 0.9954246878623962,
+        "probability_delta": 0.00037151575088500977,
+        "occluded_logit": 5.382501602172852,
+        "logit_delta": 0.08506202697753906
+      },
+      {
+        "position": 71,
+        "token": "and",
+        "occluded_probability": 0.9958795309066772,
+        "probability_delta": -8.33272933959961e-05,
+        "occluded_logit": 5.4876604080200195,
+        "logit_delta": -0.020096778869628906
+      },
+      {
+        "position": 72,
+        "token": "confronts",
+        "occluded_probability": 0.9956966638565063,
+        "probability_delta": 9.953975677490234e-05,
+        "occluded_logit": 5.444039821624756,
+        "logit_delta": 0.023523807525634766
+      },
+      {
+        "position": 73,
+        "token": "the",
+        "occluded_probability": 0.9961168766021729,
+        "probability_delta": -0.00032067298889160156,
+        "occluded_logit": 5.547212600708008,
+        "logit_delta": -0.07964897155761719
+      },
+      {
+        "position": 74,
+        "token": "grinch",
+        "occluded_probability": 0.9950290322303772,
+        "probability_delta": 0.0007671713829040527,
+        "occluded_logit": 5.2991509437561035,
+        "logit_delta": 0.1684126853942871
+      },
+      {
+        "position": 75,
+        "token": "and",
+        "occluded_probability": 0.9951581358909607,
+        "probability_delta": 0.0006380677223205566,
+        "occluded_logit": 5.325599193572998,
+        "logit_delta": 0.14196443557739258
+      },
+      {
+        "position": 76,
+        "token": "his",
+        "occluded_probability": 0.9958823919296265,
+        "probability_delta": -8.618831634521484e-05,
+        "occluded_logit": 5.488361358642578,
+        "logit_delta": -0.0207977294921875
+      },
+      {
+        "position": 77,
+        "token": "spooks",
+        "occluded_probability": 0.9951460957527161,
+        "probability_delta": 0.0006501078605651855,
+        "occluded_logit": 5.323111534118652,
+        "logit_delta": 0.14445209503173828
+      },
+      {
+        "position": 78,
+        "token": ".",
+        "occluded_probability": 0.9951510429382324,
+        "probability_delta": 0.0006451606750488281,
+        "occluded_logit": 5.324141979217529,
+        "logit_delta": 0.14342164993286133
+      }
+    ]
+  },
+  "image_occlusion": {
+    "baseline_probability": 0.9957962036132812,
+    "baseline_logit": 5.467563629150391,
+    "grid_size": 4,
+    "top_patches": [
+      {
+        "row": 3,
+        "col": 2,
+        "y0": 168,
+        "y1": 224,
+        "x0": 112,
+        "x1": 168,
+        "occluded_probability": 0.9825577139854431,
+        "probability_delta": 0.013238489627838135,
+        "occluded_logit": 4.0312604904174805,
+        "logit_delta": 1.4363031387329102
+      },
+      {
+        "row": 2,
+        "col": 2,
+        "y0": 112,
+        "y1": 168,
+        "x0": 112,
+        "x1": 168,
+        "occluded_probability": 0.9885579347610474,
+        "probability_delta": 0.007238268852233887,
+        "occluded_logit": 4.458950042724609,
+        "logit_delta": 1.0086135864257812
+      },
+      {
+        "row": 3,
+        "col": 3,
+        "y0": 168,
+        "y1": 224,
+        "x0": 168,
+        "x1": 224,
+        "occluded_probability": 0.989051878452301,
+        "probability_delta": 0.006744325160980225,
+        "occluded_logit": 4.503584861755371,
+        "logit_delta": 0.9639787673950195
+      },
+      {
+        "row": 0,
+        "col": 3,
+        "y0": 0,
+        "y1": 56,
+        "x0": 168,
+        "x1": 224,
+        "occluded_probability": 0.9899032115936279,
+        "probability_delta": 0.00589299201965332,
+        "occluded_logit": 4.585384368896484,
+        "logit_delta": 0.8821792602539062
+      },
+      {
+        "row": 3,
+        "col": 1,
+        "y0": 168,
+        "y1": 224,
+        "x0": 56,
+        "x1": 112,
+        "occluded_probability": 0.9900004267692566,
+        "probability_delta": 0.005795776844024658,
+        "occluded_logit": 4.5951619148254395,
+        "logit_delta": 0.8724017143249512
+      },
+      {
+        "row": 1,
+        "col": 2,
+        "y0": 56,
+        "y1": 112,
+        "x0": 112,
+        "x1": 168,
+        "occluded_probability": 0.9905315041542053,
+        "probability_delta": 0.005264699459075928,
+        "occluded_logit": 4.650267124176025,
+        "logit_delta": 0.8172965049743652
+      },
+      {
+        "row": 2,
+        "col": 3,
+        "y0": 112,
+        "y1": 168,
+        "x0": 168,
+        "x1": 224,
+        "occluded_probability": 0.990730345249176,
+        "probability_delta": 0.005065858364105225,
+        "occluded_logit": 4.671690940856934,
+        "logit_delta": 0.795872688293457
+      },
+      {
+        "row": 2,
+        "col": 1,
+        "y0": 112,
+        "y1": 168,
+        "x0": 56,
+        "x1": 112,
+        "occluded_probability": 0.9909855127334595,
+        "probability_delta": 0.004810690879821777,
+        "occluded_logit": 4.699862957000732,
+        "logit_delta": 0.7677006721496582
+      },
+      {
+        "row": 1,
+        "col": 3,
+        "y0": 56,
+        "y1": 112,
+        "x0": 168,
+        "x1": 224,
+        "occluded_probability": 0.9913302659988403,
+        "probability_delta": 0.004465937614440918,
+        "occluded_logit": 4.73921537399292,
+        "logit_delta": 0.7283482551574707
+      },
+      {
+        "row": 1,
+        "col": 1,
+        "y0": 56,
+        "y1": 112,
+        "x0": 56,
+        "x1": 112,
+        "occluded_probability": 0.9928508996963501,
+        "probability_delta": 0.0029453039169311523,
+        "occluded_logit": 4.933597087860107,
+        "logit_delta": 0.5339665412902832
+      },
+      {
+        "row": 3,
+        "col": 0,
+        "y0": 168,
+        "y1": 224,
+        "x0": 0,
+        "x1": 56,
+        "occluded_probability": 0.9929678440093994,
+        "probability_delta": 0.002828359603881836,
+        "occluded_logit": 4.950194358825684,
+        "logit_delta": 0.517369270324707
+      },
+      {
+        "row": 0,
+        "col": 1,
+        "y0": 0,
+        "y1": 56,
+        "x0": 56,
+        "x1": 112,
+        "occluded_probability": 0.9975290894508362,
+        "probability_delta": -0.0017328858375549316,
+        "occluded_logit": 6.000673294067383,
+        "logit_delta": -0.5331096649169922
+      }
+    ],
+    "heatmap": [
+      [
+        -0.0009778141975402832,
+        -0.0017328858375549316,
+        -0.00016254186630249023,
+        0.00589299201965332
+      ],
+      [
+        0.001087188720703125,
+        0.0029453039169311523,
+        0.005264699459075928,
+        0.004465937614440918
+      ],
+      [
+        -0.0006413459777832031,
+        0.004810690879821777,
+        0.007238268852233887,
+        0.005065858364105225
+      ],
+      [
+        0.002828359603881836,
+        0.005795776844024658,
+        0.013238489627838135,
+        0.006744325160980225
+      ]
+    ]
+  },
+  "modality_shapley": {
+    "method": "two_modality_shapley",
+    "probability": {
+      "values": {
+        "blank": 0.19512063264846802,
+        "text_only": 0.0551840215921402,
+        "image_only": 0.9980995059013367,
+        "both": 0.9957962036132812
+      },
+      "shapley": {
+        "text": -0.07111995667219162,
+        "image": 0.8717955276370049,
+        "interaction": 0.1376333087682724,
+        "blank_to_both_delta": 0.8006755709648132,
+        "abs_total": 0.9429154843091965,
+        "text_utilization": 0.07542558994488874,
+        "image_utilization": 0.9245744100551113
+      }
+    },
+    "logit": {
+      "values": {
+        "blank": -1.41707444190979,
+        "text_only": -2.8403167724609375,
+        "image_only": 6.263751029968262,
+        "both": 5.467563629150391
+      },
+      "shapley": {
+        "text": -1.1097148656845093,
+        "image": 7.99435293674469,
+        "interaction": 0.6270549297332764,
+        "blank_to_both_delta": 6.884638071060181,
+        "abs_total": 9.1040678024292,
+        "text_utilization": 0.12189220135074223,
+        "image_utilization": 0.8781077986492578
+      }
+    }
+  },
+  "modality_ablation": {
+    "both": 0.9957962036132812,
+    "no_text": 0.9980995059013367,
+    "no_image": 0.0551840215921402,
+    "blank": 0.19512063264846802,
+    "text_delta": -0.00230330228805542,
+    "image_delta": 0.940612182021141,
+    "both_logit": 5.467563629150391,
+    "no_text_logit": 6.263751029968262,
+    "no_image_logit": -2.8403167724609375,
+    "blank_logit": -1.41707444190979
+  }
+}
