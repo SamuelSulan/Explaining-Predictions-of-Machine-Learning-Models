@@ -403,7 +403,35 @@ The dashboard lets you:
 The dashboard uses the dataset paths and default model paths from
 `configs/default.yaml`.
 
-## 13. Train with Colab or Another GPU Machine
+## 13. Run Global XAI for the Best Neural Model
+
+Global XAI is separate from local per-instance XAI. It covers all 23 genre
+labels for the canonical best neural checkpoint:
+
+```powershell
+python scripts\run_global_xai.py --samples-per-label 25 --local-xai-dir outputs\colab_test_xai_all_models\run_newest_balanced\xai\best_neural
+```
+
+For a quick local smoke run:
+
+```powershell
+python scripts\run_global_xai.py --samples-per-label 1 --token-occlusion-top-k 1 --image-occlusion-grid 2
+```
+
+Outputs are written to:
+
+```text
+outputs/global_xai/best_neural/global_xai_summary.json
+outputs/global_xai/best_neural/global_xai_methods_for_thesis.csv
+outputs/global_xai/best_neural/global_token_occlusion.csv
+outputs/global_xai/best_neural/per_label_image_occlusion_heatmaps.csv
+```
+
+The dashboard's **Global XAI - Best Neural** tab reads these outputs. For Colab,
+use `notebooks/global_xai_best_neural_colab.ipynb`; set `RUN_MODE = 'smoke'`
+first, then switch to `RUN_MODE = 'full'` for thesis-quality figures.
+
+## 14. Train with Colab or Another GPU Machine
 
 The repository includes Colab-ready notebooks that can be used for training on
 Google Colab or on another machine with a GPU:
@@ -412,6 +440,8 @@ Google Colab or on another machine with a GPU:
   [notebooks/training_pipeline_neural_colab.ipynb](https://colab.research.google.com/github/SamuelSulan/Explaining-Predictions-of-Machine-Learning-Models/blob/main/notebooks/training_pipeline_neural_colab.ipynb)
 - Classic ML training:
   [notebooks/training_pipeline_classic_ml_colab.ipynb](https://colab.research.google.com/github/SamuelSulan/Explaining-Predictions-of-Machine-Learning-Models/blob/main/notebooks/training_pipeline_classic_ml_colab.ipynb)
+- Best-neural global XAI:
+  [notebooks/global_xai_best_neural_colab.ipynb](https://colab.research.google.com/github/SamuelSulan/Explaining-Predictions-of-Machine-Learning-Models/blob/main/notebooks/global_xai_best_neural_colab.ipynb)
 
 Use the neural notebook with a GPU runtime for full neural training. In Colab,
 select:
@@ -448,7 +478,7 @@ If you train on a remote machine, copy the relevant files back into
 `outputs/models/best/` in this repository checkout, or pass explicit paths to
 `scripts/run_xai.py` with `--classic-model` and `--neural-checkpoint`.
 
-## 14. Regenerate Dataset/Preprocessing Report
+## 15. Regenerate Dataset/Preprocessing Report
 
 If the dataset PDF is present, you can regenerate the report and figures:
 
@@ -464,7 +494,7 @@ outputs/figures/genre_label_counts.png
 outputs/figures/genre_cooccurrence.png
 ```
 
-## 15. Recommended Fresh-Clone Workflow
+## 16. Recommended Fresh-Clone Workflow
 
 For a new user starting from a clean repository download:
 
@@ -493,7 +523,7 @@ python scripts\run_xai.py --model-type both --split test --limit 1
 python scripts\xai_dashboard.py --port 8050
 ```
 
-## 16. Common Problems
+## 17. Common Problems
 
 ### Dataset file not found
 

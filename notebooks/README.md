@@ -11,6 +11,13 @@ Colab-ready final evaluation/XAI notebook:
 
 - `notebooks/best_model_test_inference_colab.ipynb`
 - `notebooks/final_test_xai_all_models_colab.ipynb`
+- `notebooks/global_xai_best_neural_colab.ipynb`
+
+Global XAI notebook:
+
+- `global_xai_best_neural_colab.ipynb` computes all-label global explanations for
+  the canonical best neural model and saves artifacts for the dashboard's
+  **Global XAI - Best Neural** tab.
 
 Recommended workflow:
 

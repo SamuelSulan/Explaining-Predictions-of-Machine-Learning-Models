@@ -282,6 +282,20 @@ python scripts\run_xai.py --model-type both --limit 5 --target-genres Crime,Dram
 
 For faster debugging, add `--no-occlusion` or reduce the poster patch grid with `--image-occlusion-grid 2`.
 
+Global XAI for the canonical best neural model:
+
+```powershell
+python scripts\run_global_xai.py --samples-per-label 25 --local-xai-dir outputs\colab_test_xai_all_models\run_newest_balanced\xai\best_neural
+```
+
+For a quick smoke run, use fewer samples and a smaller image grid:
+
+```powershell
+python scripts\run_global_xai.py --samples-per-label 1 --token-occlusion-top-k 1 --image-occlusion-grid 2
+```
+
+Global XAI outputs are saved under `outputs/global_xai/best_neural/` and include modality ablation, modality permutation importance, global token occlusion, aggregated Layer IG tokens, per-label image occlusion heatmaps, global modality Shapley, prediction context tables, and `global_xai_methods_for_thesis.csv`.
+
 Full model XAI after full training or model selection:
 
 ```powershell
@@ -296,7 +310,7 @@ Local XAI dashboard:
 python scripts\xai_dashboard.py --port 8050
 ```
 
-Open `http://127.0.0.1:8050` to browse saved XAI reports, inspect poster heatmaps/patch occlusion regions, compare highest-impact text/image features, and run saved-model inference for a dataset index.
+Open `http://127.0.0.1:8050` to browse the **Global XAI - Best Neural** dashboard tab, inspect local XAI reports, compare poster/text attributions, and run saved-model inference for a dataset index.
 
 XAI metrics saved in each summary:
 

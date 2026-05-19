@@ -1,0 +1,5333 @@
+{
+  "model_type": "neural",
+  "model_role": "best_neural",
+  "checkpoint_path": "C:\\Users\\samue\\Documents\\diplomka\\outputs\\models\\best\\neural_multimodal_best.pt",
+  "split": "test",
+  "num_labels": 23,
+  "label_names": [
+    "Drama",
+    "Comedy",
+    "Romance",
+    "Thriller",
+    "Crime",
+    "Action",
+    "Adventure",
+    "Horror",
+    "Documentary",
+    "Mystery",
+    "Sci-Fi",
+    "Fantasy",
+    "Family",
+    "Biography",
+    "War",
+    "History",
+    "Music",
+    "Animation",
+    "Musical",
+    "Western",
+    "Sport",
+    "Short",
+    "Film-Noir"
+  ],
+  "selected_sample_count": 23,
+  "samples_per_label_requested": 1,
+  "per_label_selected_indices": {
+    "Drama": [
+      8349
+    ],
+    "Comedy": [
+      23326
+    ],
+    "Romance": [
+      11900
+    ],
+    "Thriller": [
+      10069
+    ],
+    "Crime": [
+      10372
+    ],
+    "Action": [
+      3023
+    ],
+    "Adventure": [
+      17026
+    ],
+    "Horror": [
+      5963
+    ],
+    "Documentary": [
+      7431
+    ],
+    "Mystery": [
+      6600
+    ],
+    "Sci-Fi": [
+      6164
+    ],
+    "Fantasy": [
+      5047
+    ],
+    "Family": [
+      16050
+    ],
+    "Biography": [
+      18861
+    ],
+    "War": [
+      3318
+    ],
+    "History": [
+      2797
+    ],
+    "Music": [
+      2425
+    ],
+    "Animation": [
+      18403
+    ],
+    "Musical": [
+      1474
+    ],
+    "Western": [
+      18638
+    ],
+    "Sport": [
+      708
+    ],
+    "Short": [
+      217
+    ],
+    "Film-Noir": [
+      54
+    ]
+  },
+  "threshold": [
+    0.30000001192092896,
+    0.5,
+    0.44999998807907104,
+    0.44999998807907104,
+    0.550000011920929,
+    0.6499999761581421,
+    0.800000011920929,
+    0.6499999761581421,
+    0.800000011920929,
+    0.6000000238418579,
+    0.800000011920929,
+    0.6000000238418579,
+    0.699999988079071,
+    0.699999988079071,
+    0.6499999761581421,
+    0.75,
+    0.8999999761581421,
+    0.699999988079071,
+    0.800000011920929,
+    0.8500000238418579,
+    0.800000011920929,
+    0.550000011920929,
+    0.699999988079071
+  ],
+  "device": "cpu",
+  "runtime_seconds": 17.925625300005777,
+  "methods": [
+    {
+      "method": "global_modality_ablation",
+      "thesis_description": "Compares normal predictions with text-removed, image-removed, and blank-input variants to estimate dataset-level reliance on each modality."
+    },
+    {
+      "method": "permutation_importance_by_modality",
+      "thesis_description": "Shuffles text or image inputs across samples and measures metric degradation, testing whether a modality carries predictive signal beyond local examples."
+    },
+    {
+      "method": "global_token_occlusion",
+      "thesis_description": "Masks candidate words across many examples and aggregates probability/logit drops per genre to identify globally influential words."
+    },
+    {
+      "method": "aggregated_layer_integrated_gradients_tokens",
+      "thesis_description": "Aggregates saved local Layer Integrated Gradients token attributions into per-label positive and negative global token summaries."
+    },
+    {
+      "method": "per_label_image_occlusion_heatmaps",
+      "thesis_description": "Averages patch-occlusion sensitivity maps per genre, showing which poster regions tend to affect a label globally."
+    },
+    {
+      "method": "global_modality_shapley",
+      "thesis_description": "Computes two-modality Shapley values from global text/image/blank coalitions for interaction-aware modality contribution summaries."
+    },
+    {
+      "method": "prediction_context_summaries",
+      "thesis_description": "Reports support, prediction frequency, confidence, and per-label metrics so XAI patterns are read together with label imbalance and performance."
+    }
+  ],
+  "warnings": [
+    {
+      "genre": "Drama",
+      "selected_samples": 1,
+      "warning": "Few selected positive examples; interpret this label's global XAI cautiously."
+    },
+    {
+      "genre": "Comedy",
+      "selected_samples": 1,
+      "warning": "Few selected positive examples; interpret this label's global XAI cautiously."
+    },
+    {
+      "genre": "Romance",
+      "selected_samples": 1,
+      "warning": "Few selected positive examples; interpret this label's global XAI cautiously."
+    },
+    {
+      "genre": "Thriller",
+      "selected_samples": 1,
+      "warning": "Few selected positive examples; interpret this label's global XAI cautiously."
+    },
+    {
+      "genre": "Crime",
+      "selected_samples": 1,
+      "warning": "Few selected positive examples; interpret this label's global XAI cautiously."
+    },
+    {
+      "genre": "Action",
+      "selected_samples": 1,
+      "warning": "Few selected positive examples; interpret this label's global XAI cautiously."
+    },
+    {
+      "genre": "Adventure",
+      "selected_samples": 1,
+      "warning": "Few selected positive examples; interpret this label's global XAI cautiously."
+    },
+    {
+      "genre": "Horror",
+      "selected_samples": 1,
+      "warning": "Few selected positive examples; interpret this label's global XAI cautiously."
+    },
+    {
+      "genre": "Documentary",
+      "selected_samples": 1,
+      "warning": "Few selected positive examples; interpret this label's global XAI cautiously."
+    },
+    {
+      "genre": "Mystery",
+      "selected_samples": 1,
+      "warning": "Few selected positive examples; interpret this label's global XAI cautiously."
+    },
+    {
+      "genre": "Sci-Fi",
+      "selected_samples": 1,
+      "warning": "Few selected positive examples; interpret this label's global XAI cautiously."
+    },
+    {
+      "genre": "Fantasy",
+      "selected_samples": 1,
+      "warning": "Few selected positive examples; interpret this label's global XAI cautiously."
+    },
+    {
+      "genre": "Family",
+      "selected_samples": 1,
+      "warning": "Few selected positive examples; interpret this label's global XAI cautiously."
+    },
+    {
+      "genre": "Biography",
+      "selected_samples": 1,
+      "warning": "Few selected positive examples; interpret this label's global XAI cautiously."
+    },
+    {
+      "genre": "War",
+      "selected_samples": 1,
+      "warning": "Few selected positive examples; interpret this label's global XAI cautiously."
+    },
+    {
+      "genre": "History",
+      "selected_samples": 1,
+      "warning": "Few selected positive examples; interpret this label's global XAI cautiously."
+    },
+    {
+      "genre": "Music",
+      "selected_samples": 1,
+      "warning": "Few selected positive examples; interpret this label's global XAI cautiously."
+    },
+    {
+      "genre": "Animation",
+      "selected_samples": 1,
+      "warning": "Few selected positive examples; interpret this label's global XAI cautiously."
+    },
+    {
+      "genre": "Musical",
+      "selected_samples": 1,
+      "warning": "Few selected positive examples; interpret this label's global XAI cautiously."
+    },
+    {
+      "genre": "Western",
+      "selected_samples": 1,
+      "warning": "Few selected positive examples; interpret this label's global XAI cautiously."
+    },
+    {
+      "genre": "Sport",
+      "selected_samples": 1,
+      "warning": "Few selected positive examples; interpret this label's global XAI cautiously."
+    },
+    {
+      "genre": "Short",
+      "selected_samples": 1,
+      "warning": "Few selected positive examples; interpret this label's global XAI cautiously."
+    },
+    {
+      "genre": "Film-Noir",
+      "selected_samples": 1,
+      "warning": "Few selected positive examples; interpret this label's global XAI cautiously."
+    }
+  ],
+  "prediction_context": [
+    {
+      "genre": "Drama",
+      "support": 11,
+      "prediction_frequency": 0.6521739130434783,
+      "mean_probability": 0.4300593435764313,
+      "mean_positive_probability": 0.5884389281272888,
+      "f1": 0.8461538461538461,
+      "precision": 0.7333333333333333,
+      "recall": 1.0
+    },
+    {
+      "genre": "Comedy",
+      "support": 10,
+      "prediction_frequency": 0.30434782608695654,
+      "mean_probability": 0.39990827441215515,
+      "mean_positive_probability": 0.5906408429145813,
+      "f1": 0.7058823529411765,
+      "precision": 0.8571428571428571,
+      "recall": 0.6
+    },
+    {
+      "genre": "Romance",
+      "support": 5,
+      "prediction_frequency": 0.2608695652173913,
+      "mean_probability": 0.31119611859321594,
+      "mean_positive_probability": 0.5608102083206177,
+      "f1": 0.5454545454545454,
+      "precision": 0.5,
+      "recall": 0.6
+    },
+    {
+      "genre": "Thriller",
+      "support": 7,
+      "prediction_frequency": 0.34782608695652173,
+      "mean_probability": 0.35128793120384216,
+      "mean_positive_probability": 0.7801518440246582,
+      "f1": 0.8,
+      "precision": 0.75,
+      "recall": 0.8571428571428571
+    },
+    {
+      "genre": "Crime",
+      "support": 6,
+      "prediction_frequency": 0.21739130434782608,
+      "mean_probability": 0.30037546157836914,
+      "mean_positive_probability": 0.7169361710548401,
+      "f1": 0.7272727272727273,
+      "precision": 0.8,
+      "recall": 0.6666666666666666
+    },
+    {
+      "genre": "Action",
+      "support": 4,
+      "prediction_frequency": 0.2608695652173913,
+      "mean_probability": 0.29991528391838074,
+      "mean_positive_probability": 0.8888251185417175,
+      "f1": 0.8,
+      "precision": 0.6666666666666666,
+      "recall": 1.0
+    },
+    {
+      "genre": "Adventure",
+      "support": 3,
+      "prediction_frequency": 0.2608695652173913,
+      "mean_probability": 0.3167814612388611,
+      "mean_positive_probability": 0.9304367899894714,
+      "f1": 0.6666666666666666,
+      "precision": 0.5,
+      "recall": 1.0
+    },
+    {
+      "genre": "Horror",
+      "support": 4,
+      "prediction_frequency": 0.17391304347826086,
+      "mean_probability": 0.22876305878162384,
+      "mean_positive_probability": 0.9031650424003601,
+      "f1": 1.0,
+      "precision": 1.0,
+      "recall": 1.0
+    },
+    {
+      "genre": "Documentary",
+      "support": 2,
+      "prediction_frequency": 0.08695652173913043,
+      "mean_probability": 0.14516405761241913,
+      "mean_positive_probability": 0.9921563863754272,
+      "f1": 1.0,
+      "precision": 1.0,
+      "recall": 1.0
+    },
+    {
+      "genre": "Mystery",
+      "support": 2,
+      "prediction_frequency": 0.2608695652173913,
+      "mean_probability": 0.2791593074798584,
+      "mean_positive_probability": 0.8586117029190063,
+      "f1": 0.5,
+      "precision": 0.3333333333333333,
+      "recall": 1.0
+    },
+    {
+      "genre": "Sci-Fi",
+      "support": 3,
+      "prediction_frequency": 0.13043478260869565,
+      "mean_probability": 0.2528170645236969,
+      "mean_positive_probability": 0.9313574433326721,
+      "f1": 1.0,
+      "precision": 1.0,
+      "recall": 1.0
+    },
+    {
+      "genre": "Fantasy",
+      "support": 3,
+      "prediction_frequency": 0.2608695652173913,
+      "mean_probability": 0.24501590430736542,
+      "mean_positive_probability": 0.936552107334137,
+      "f1": 0.6666666666666666,
+      "precision": 0.5,
+      "recall": 1.0
+    },
+    {
+      "genre": "Family",
+      "support": 2,
+      "prediction_frequency": 0.13043478260869565,
+      "mean_probability": 0.1817634254693985,
+      "mean_positive_probability": 0.9744175672531128,
+      "f1": 0.8,
+      "precision": 0.6666666666666666,
+      "recall": 1.0
+    },
+    {
+      "genre": "Biography",
+      "support": 4,
+      "prediction_frequency": 0.13043478260869565,
+      "mean_probability": 0.21838515996932983,
+      "mean_positive_probability": 0.6248526573181152,
+      "f1": 0.5714285714285714,
+      "precision": 0.6666666666666666,
+      "recall": 0.5
+    },
+    {
+      "genre": "War",
+      "support": 2,
+      "prediction_frequency": 0.13043478260869565,
+      "mean_probability": 0.15082870423793793,
+      "mean_positive_probability": 0.9428752660751343,
+      "f1": 0.8,
+      "precision": 0.6666666666666666,
+      "recall": 1.0
+    },
+    {
+      "genre": "History",
+      "support": 4,
+      "prediction_frequency": 0.17391304347826086,
+      "mean_probability": 0.1946309506893158,
+      "mean_positive_probability": 0.7476732730865479,
+      "f1": 0.75,
+      "precision": 0.75,
+      "recall": 0.75
+    },
+    {
+      "genre": "Music",
+      "support": 1,
+      "prediction_frequency": 0.043478260869565216,
+      "mean_probability": 0.189309224486351,
+      "mean_positive_probability": 0.986650824546814,
+      "f1": 1.0,
+      "precision": 1.0,
+      "recall": 1.0
+    },
+    {
+      "genre": "Animation",
+      "support": 2,
+      "prediction_frequency": 0.08695652173913043,
+      "mean_probability": 0.13044457137584686,
+      "mean_positive_probability": 0.9907099008560181,
+      "f1": 1.0,
+      "precision": 1.0,
+      "recall": 1.0
+    },
+    {
+      "genre": "Musical",
+      "support": 2,
+      "prediction_frequency": 0.08695652173913043,
+      "mean_probability": 0.1373293101787567,
+      "mean_positive_probability": 0.7500189542770386,
+      "f1": 0.5,
+      "precision": 0.5,
+      "recall": 0.5
+    },
+    {
+      "genre": "Western",
+      "support": 1,
+      "prediction_frequency": 0.0,
+      "mean_probability": 0.11296402662992477,
+      "mean_positive_probability": 0.0007622012635692954,
+      "f1": 0.0,
+      "precision": 0.0,
+      "recall": 0.0
+    },
+    {
+      "genre": "Sport",
+      "support": 1,
+      "prediction_frequency": 0.13043478260869565,
+      "mean_probability": 0.14744828641414642,
+      "mean_positive_probability": 0.9959122538566589,
+      "f1": 0.5,
+      "precision": 0.3333333333333333,
+      "recall": 1.0
+    },
+    {
+      "genre": "Short",
+      "support": 2,
+      "prediction_frequency": 0.13043478260869565,
+      "mean_probability": 0.12308726459741592,
+      "mean_positive_probability": 0.9555040597915649,
+      "f1": 0.8,
+      "precision": 0.6666666666666666,
+      "recall": 1.0
+    },
+    {
+      "genre": "Film-Noir",
+      "support": 1,
+      "prediction_frequency": 0.043478260869565216,
+      "mean_probability": 0.047253578901290894,
+      "mean_positive_probability": 0.9992254972457886,
+      "f1": 1.0,
+      "precision": 1.0,
+      "recall": 1.0
+    }
+  ],
+  "metrics": {
+    "threshold": [
+      0.30000001192092896,
+      0.5,
+      0.44999998807907104,
+      0.44999998807907104,
+      0.550000011920929,
+      0.6499999761581421,
+      0.800000011920929,
+      0.6499999761581421,
+      0.800000011920929,
+      0.6000000238418579,
+      0.800000011920929,
+      0.6000000238418579,
+      0.699999988079071,
+      0.699999988079071,
+      0.6499999761581421,
+      0.75,
+      0.8999999761581421,
+      0.699999988079071,
+      0.800000011920929,
+      0.8500000238418579,
+      0.800000011920929,
+      0.550000011920929,
+      0.699999988079071
+    ],
+    "sample_f1": 0.7361708339969211,
+    "micro_f1": 0.7513812154696132,
+    "macro_f1": 0.7382402337645305,
+    "weighted_f1": 0.7541846245576519,
+    "micro_precision": 0.6868686868686869,
+    "micro_recall": 0.8292682926829268,
+    "hamming_loss": 0.08506616257088846,
+    "per_label": {
+      "Drama": {
+        "f1": 0.8461538461538461,
+        "precision": 0.7333333333333333,
+        "recall": 1.0,
+        "support": 11
+      },
+      "Comedy": {
+        "f1": 0.7058823529411765,
+        "precision": 0.8571428571428571,
+        "recall": 0.6,
+        "support": 10
+      },
+      "Romance": {
+        "f1": 0.5454545454545454,
+        "precision": 0.5,
+        "recall": 0.6,
+        "support": 5
+      },
+      "Thriller": {
+        "f1": 0.8,
+        "precision": 0.75,
+        "recall": 0.8571428571428571,
+        "support": 7
+      },
+      "Crime": {
+        "f1": 0.7272727272727273,
+        "precision": 0.8,
+        "recall": 0.6666666666666666,
+        "support": 6
+      },
+      "Action": {
+        "f1": 0.8,
+        "precision": 0.6666666666666666,
+        "recall": 1.0,
+        "support": 4
+      },
+      "Adventure": {
+        "f1": 0.6666666666666666,
+        "precision": 0.5,
+        "recall": 1.0,
+        "support": 3
+      },
+      "Horror": {
+        "f1": 1.0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "support": 4
+      },
+      "Documentary": {
+        "f1": 1.0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "support": 2
+      },
+      "Mystery": {
+        "f1": 0.5,
+        "precision": 0.3333333333333333,
+        "recall": 1.0,
+        "support": 2
+      },
+      "Sci-Fi": {
+        "f1": 1.0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "support": 3
+      },
+      "Fantasy": {
+        "f1": 0.6666666666666666,
+        "precision": 0.5,
+        "recall": 1.0,
+        "support": 3
+      },
+      "Family": {
+        "f1": 0.8,
+        "precision": 0.6666666666666666,
+        "recall": 1.0,
+        "support": 2
+      },
+      "Biography": {
+        "f1": 0.5714285714285714,
+        "precision": 0.6666666666666666,
+        "recall": 0.5,
+        "support": 4
+      },
+      "War": {
+        "f1": 0.8,
+        "precision": 0.6666666666666666,
+        "recall": 1.0,
+        "support": 2
+      },
+      "History": {
+        "f1": 0.75,
+        "precision": 0.75,
+        "recall": 0.75,
+        "support": 4
+      },
+      "Music": {
+        "f1": 1.0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "support": 1
+      },
+      "Animation": {
+        "f1": 1.0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "support": 2
+      },
+      "Musical": {
+        "f1": 0.5,
+        "precision": 0.5,
+        "recall": 0.5,
+        "support": 2
+      },
+      "Western": {
+        "f1": 0.0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "support": 1
+      },
+      "Sport": {
+        "f1": 0.5,
+        "precision": 0.3333333333333333,
+        "recall": 1.0,
+        "support": 1
+      },
+      "Short": {
+        "f1": 0.8,
+        "precision": 0.6666666666666666,
+        "recall": 1.0,
+        "support": 2
+      },
+      "Film-Noir": {
+        "f1": 1.0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "support": 1
+      }
+    }
+  },
+  "modality_ablation_and_permutation": [
+    {
+      "variant": "both",
+      "sample_f1": 0.7361708339969211,
+      "micro_f1": 0.7513812154696132,
+      "macro_f1": 0.7382402337645305,
+      "weighted_f1": 0.7541846245576519,
+      "hamming_loss": 0.08506616257088846
+    },
+    {
+      "variant": "text_only",
+      "sample_f1": 0.6621508925856752,
+      "micro_f1": 0.6740331491712708,
+      "macro_f1": 0.6540534747056487,
+      "weighted_f1": 0.6698142868874576,
+      "hamming_loss": 0.11153119092627599
+    },
+    {
+      "variant": "image_only",
+      "sample_f1": 0.3240165631469979,
+      "micro_f1": 0.32142857142857145,
+      "macro_f1": 0.12328704069018122,
+      "weighted_f1": 0.21414685789326132,
+      "hamming_loss": 0.14366729678638943
+    },
+    {
+      "variant": "blank",
+      "sample_f1": 0.21097308488612834,
+      "micro_f1": 0.203125,
+      "macro_f1": 0.035089514066496165,
+      "weighted_f1": 0.09070301291248208,
+      "hamming_loss": 0.19281663516068054
+    },
+    {
+      "variant": "permute_text",
+      "sample_f1": 0.6660535117056857,
+      "micro_f1": 0.6703910614525139,
+      "macro_f1": 0.6662500542935327,
+      "weighted_f1": 0.6717995419214932,
+      "hamming_loss": 0.11153119092627599
+    },
+    {
+      "variant": "permute_image",
+      "sample_f1": 0.6675771088814567,
+      "micro_f1": 0.6850828729281768,
+      "macro_f1": 0.6754624602450691,
+      "weighted_f1": 0.674698742991426,
+      "hamming_loss": 0.10775047258979206
+    }
+  ],
+  "global_modality_shapley": {
+    "overall": {
+      "method": "two_modality_shapley",
+      "probability": {
+        "values": {
+          "blank": 0.22102880477905273,
+          "text_only": 0.2497771680355072,
+          "image_only": 0.15422044694423676,
+          "both": 0.22582121193408966
+        },
+        "shapley": {
+          "text": 0.050174564123153687,
+          "image": -0.04538215696811676,
+          "interaction": 0.04285240173339844,
+          "blank_to_both_delta": 0.004792407155036926,
+          "abs_total": 0.09555672109127045,
+          "text_utilization": 0.5250762432004101,
+          "image_utilization": 0.4749237567995898
+        }
+      },
+      "logit": {
+        "values": {
+          "blank": -1.6264207363128662,
+          "text_only": -1.1640273332595825,
+          "image_only": -2.076274871826172,
+          "both": -1.3305717706680298
+        },
+        "shapley": {
+          "text": 0.6040482521057129,
+          "image": -0.30819928646087646,
+          "interaction": 0.2833096981048584,
+          "blank_to_both_delta": 0.2958489656448364,
+          "abs_total": 0.9122475385665894,
+          "text_utilization": 0.6621538853969958,
+          "image_utilization": 0.33784611460300423
+        }
+      }
+    },
+    "per_label": {
+      "Drama": {
+        "method": "two_modality_shapley",
+        "probability": {
+          "values": {
+            "blank": 0.4704990088939667,
+            "text_only": 0.5108362436294556,
+            "image_only": 0.3868206739425659,
+            "both": 0.43005940318107605
+          },
+          "shapley": {
+            "text": 0.04178798198699951,
+            "image": -0.08222758769989014,
+            "interaction": 0.0029014945030212402,
+            "blank_to_both_delta": -0.040439605712890625,
+            "abs_total": 0.12401556968688965,
+            "text_utilization": 0.3369575456735344,
+            "image_utilization": 0.6630424543264656
+          }
+        },
+        "logit": {
+          "values": {
+            "blank": 0.4704990088939667,
+            "text_only": 0.5108362436294556,
+            "image_only": 0.3868206739425659,
+            "both": 0.43005940318107605
+          },
+          "shapley": {
+            "text": 0.04178798198699951,
+            "image": -0.08222758769989014,
+            "interaction": 0.0029014945030212402,
+            "blank_to_both_delta": -0.040439605712890625,
+            "abs_total": 0.12401556968688965,
+            "text_utilization": 0.3369575456735344,
+            "image_utilization": 0.6630424543264656
+          }
+        }
+      },
+      "Comedy": {
+        "method": "two_modality_shapley",
+        "probability": {
+          "values": {
+            "blank": 0.31310179829597473,
+            "text_only": 0.33651888370513916,
+            "image_only": 0.4232933521270752,
+            "both": 0.39990827441215515
+          },
+          "shapley": {
+            "text": 1.6003847122192383e-05,
+            "image": 0.08679047226905823,
+            "interaction": -0.04680216312408447,
+            "blank_to_both_delta": 0.08680647611618042,
+            "abs_total": 0.08680647611618042,
+            "text_utilization": 0.0001843623637108951,
+            "image_utilization": 0.9998156376362891
+          }
+        },
+        "logit": {
+          "values": {
+            "blank": 0.31310179829597473,
+            "text_only": 0.33651888370513916,
+            "image_only": 0.4232933521270752,
+            "both": 0.39990827441215515
+          },
+          "shapley": {
+            "text": 1.6003847122192383e-05,
+            "image": 0.08679047226905823,
+            "interaction": -0.04680216312408447,
+            "blank_to_both_delta": 0.08680647611618042,
+            "abs_total": 0.08680647611618042,
+            "text_utilization": 0.0001843623637108951,
+            "image_utilization": 0.9998156376362891
+          }
+        }
+      },
+      "Romance": {
+        "method": "two_modality_shapley",
+        "probability": {
+          "values": {
+            "blank": 0.1941400170326233,
+            "text_only": 0.3333081305027008,
+            "image_only": 0.18263652920722961,
+            "both": 0.31119611859321594
+          },
+          "shapley": {
+            "text": 0.13386385142803192,
+            "image": -0.01680774986743927,
+            "interaction": -0.010608524084091187,
+            "blank_to_both_delta": 0.11705610156059265,
+            "abs_total": 0.1506716012954712,
+            "text_utilization": 0.8884477916015586,
+            "image_utilization": 0.11155220839844136
+          }
+        },
+        "logit": {
+          "values": {
+            "blank": 0.1941400170326233,
+            "text_only": 0.3333081305027008,
+            "image_only": 0.18263652920722961,
+            "both": 0.31119611859321594
+          },
+          "shapley": {
+            "text": 0.13386385142803192,
+            "image": -0.01680774986743927,
+            "interaction": -0.010608524084091187,
+            "blank_to_both_delta": 0.11705610156059265,
+            "abs_total": 0.1506716012954712,
+            "text_utilization": 0.8884477916015586,
+            "image_utilization": 0.11155220839844136
+          }
+        }
+      },
+      "Thriller": {
+        "method": "two_modality_shapley",
+        "probability": {
+          "values": {
+            "blank": 0.19221776723861694,
+            "text_only": 0.3666364848613739,
+            "image_only": 0.1589217483997345,
+            "both": 0.35128793120384216
+          },
+          "shapley": {
+            "text": 0.1833924502134323,
+            "image": -0.024322286248207092,
+            "interaction": 0.017947465181350708,
+            "blank_to_both_delta": 0.15907016396522522,
+            "abs_total": 0.2077147364616394,
+            "text_utilization": 0.8829053409376233,
+            "image_utilization": 0.1170946590623767
+          }
+        },
+        "logit": {
+          "values": {
+            "blank": 0.19221776723861694,
+            "text_only": 0.3666364848613739,
+            "image_only": 0.1589217483997345,
+            "both": 0.35128793120384216
+          },
+          "shapley": {
+            "text": 0.1833924502134323,
+            "image": -0.024322286248207092,
+            "interaction": 0.017947465181350708,
+            "blank_to_both_delta": 0.15907016396522522,
+            "abs_total": 0.2077147364616394,
+            "text_utilization": 0.8829053409376233,
+            "image_utilization": 0.1170946590623767
+          }
+        }
+      },
+      "Crime": {
+        "method": "two_modality_shapley",
+        "probability": {
+          "values": {
+            "blank": 0.20058493316173553,
+            "text_only": 0.3211953341960907,
+            "image_only": 0.16472391784191132,
+            "both": 0.30037549138069153
+          },
+          "shapley": {
+            "text": 0.1281309872865677,
+            "image": -0.028340429067611694,
+            "interaction": 0.015041172504425049,
+            "blank_to_both_delta": 0.099790558218956,
+            "abs_total": 0.15647141635417938,
+            "text_utilization": 0.8188779156733522,
+            "image_utilization": 0.18112208432664778
+          }
+        },
+        "logit": {
+          "values": {
+            "blank": 0.20058493316173553,
+            "text_only": 0.3211953341960907,
+            "image_only": 0.16472391784191132,
+            "both": 0.30037549138069153
+          },
+          "shapley": {
+            "text": 0.1281309872865677,
+            "image": -0.028340429067611694,
+            "interaction": 0.015041172504425049,
+            "blank_to_both_delta": 0.099790558218956,
+            "abs_total": 0.15647141635417938,
+            "text_utilization": 0.8188779156733522,
+            "image_utilization": 0.18112208432664778
+          }
+        }
+      },
+      "Action": {
+        "method": "two_modality_shapley",
+        "probability": {
+          "values": {
+            "blank": 0.08880755305290222,
+            "text_only": 0.18555180728435516,
+            "image_only": 0.2613399624824524,
+            "both": 0.29991528391838074
+          },
+          "shapley": {
+            "text": 0.06765978783369064,
+            "image": 0.14344794303178787,
+            "interaction": -0.0581689327955246,
+            "blank_to_both_delta": 0.21110773086547852,
+            "abs_total": 0.21110773086547852,
+            "text_utilization": 0.3204988635721949,
+            "image_utilization": 0.6795011364278051
+          }
+        },
+        "logit": {
+          "values": {
+            "blank": 0.08880755305290222,
+            "text_only": 0.18555180728435516,
+            "image_only": 0.2613399624824524,
+            "both": 0.29991528391838074
+          },
+          "shapley": {
+            "text": 0.06765978783369064,
+            "image": 0.14344794303178787,
+            "interaction": -0.0581689327955246,
+            "blank_to_both_delta": 0.21110773086547852,
+            "abs_total": 0.21110773086547852,
+            "text_utilization": 0.3204988635721949,
+            "image_utilization": 0.6795011364278051
+          }
+        }
+      },
+      "Adventure": {
+        "method": "two_modality_shapley",
+        "probability": {
+          "values": {
+            "blank": 0.1298852115869522,
+            "text_only": 0.27561789751052856,
+            "image_only": 0.23081684112548828,
+            "both": 0.3167814612388611
+          },
+          "shapley": {
+            "text": 0.11584865301847458,
+            "image": 0.0710475966334343,
+            "interaction": -0.05976806581020355,
+            "blank_to_both_delta": 0.18689624965190887,
+            "abs_total": 0.18689624965190887,
+            "text_utilization": 0.6198554183630798,
+            "image_utilization": 0.3801445816369202
+          }
+        },
+        "logit": {
+          "values": {
+            "blank": 0.1298852115869522,
+            "text_only": 0.27561789751052856,
+            "image_only": 0.23081684112548828,
+            "both": 0.3167814612388611
+          },
+          "shapley": {
+            "text": 0.11584865301847458,
+            "image": 0.0710475966334343,
+            "interaction": -0.05976806581020355,
+            "blank_to_both_delta": 0.18689624965190887,
+            "abs_total": 0.18689624965190887,
+            "text_utilization": 0.6198554183630798,
+            "image_utilization": 0.3801445816369202
+          }
+        }
+      },
+      "Horror": {
+        "method": "two_modality_shapley",
+        "probability": {
+          "values": {
+            "blank": 0.24913452565670013,
+            "text_only": 0.30373674631118774,
+            "image_only": 0.16321352124214172,
+            "both": 0.22876305878162384
+          },
+          "shapley": {
+            "text": 0.06007587909698486,
+            "image": -0.08044734597206116,
+            "interaction": 0.010947316884994507,
+            "blank_to_both_delta": -0.020371466875076294,
+            "abs_total": 0.14052322506904602,
+            "text_utilization": 0.4275156584789924,
+            "image_utilization": 0.5724843415210076
+          }
+        },
+        "logit": {
+          "values": {
+            "blank": 0.24913452565670013,
+            "text_only": 0.30373674631118774,
+            "image_only": 0.16321352124214172,
+            "both": 0.22876305878162384
+          },
+          "shapley": {
+            "text": 0.06007587909698486,
+            "image": -0.08044734597206116,
+            "interaction": 0.010947316884994507,
+            "blank_to_both_delta": -0.020371466875076294,
+            "abs_total": 0.14052322506904602,
+            "text_utilization": 0.4275156584789924,
+            "image_utilization": 0.5724843415210076
+          }
+        }
+      },
+      "Documentary": {
+        "method": "two_modality_shapley",
+        "probability": {
+          "values": {
+            "blank": 0.7662104964256287,
+            "text_only": 0.23476631939411163,
+            "image_only": 0.23503156006336212,
+            "both": 0.14516405761241913
+          },
+          "shapley": {
+            "text": -0.31065583974123,
+            "image": -0.3103905990719795,
+            "interaction": 0.44157667458057404,
+            "blank_to_both_delta": -0.6210464388132095,
+            "abs_total": 0.6210464388132095,
+            "text_utilization": 0.5002135433460961,
+            "image_utilization": 0.49978645665390387
+          }
+        },
+        "logit": {
+          "values": {
+            "blank": 0.7662104964256287,
+            "text_only": 0.23476631939411163,
+            "image_only": 0.23503156006336212,
+            "both": 0.14516405761241913
+          },
+          "shapley": {
+            "text": -0.31065583974123,
+            "image": -0.3103905990719795,
+            "interaction": 0.44157667458057404,
+            "blank_to_both_delta": -0.6210464388132095,
+            "abs_total": 0.6210464388132095,
+            "text_utilization": 0.5002135433460961,
+            "image_utilization": 0.49978645665390387
+          }
+        }
+      },
+      "Mystery": {
+        "method": "two_modality_shapley",
+        "probability": {
+          "values": {
+            "blank": 0.2268095165491104,
+            "text_only": 0.38222992420196533,
+            "image_only": 0.08162229508161545,
+            "both": 0.2791592478752136
+          },
+          "shapley": {
+            "text": 0.17647868022322655,
+            "image": -0.12412894889712334,
+            "interaction": 0.042116545140743256,
+            "blank_to_both_delta": 0.05234973132610321,
+            "abs_total": 0.3006076291203499,
+            "text_utilization": 0.587073191520939,
+            "image_utilization": 0.41292680847906105
+          }
+        },
+        "logit": {
+          "values": {
+            "blank": 0.2268095165491104,
+            "text_only": 0.38222992420196533,
+            "image_only": 0.08162229508161545,
+            "both": 0.2791592478752136
+          },
+          "shapley": {
+            "text": 0.17647868022322655,
+            "image": -0.12412894889712334,
+            "interaction": 0.042116545140743256,
+            "blank_to_both_delta": 0.05234973132610321,
+            "abs_total": 0.3006076291203499,
+            "text_utilization": 0.587073191520939,
+            "image_utilization": 0.41292680847906105
+          }
+        }
+      },
+      "Sci-Fi": {
+        "method": "two_modality_shapley",
+        "probability": {
+          "values": {
+            "blank": 0.14142443239688873,
+            "text_only": 0.2772381007671356,
+            "image_only": 0.13693124055862427,
+            "both": 0.2528170645236969
+          },
+          "shapley": {
+            "text": 0.12584974616765976,
+            "image": -0.014457114040851593,
+            "interaction": -0.019927844405174255,
+            "blank_to_both_delta": 0.11139263212680817,
+            "abs_total": 0.14030686020851135,
+            "text_utilization": 0.8969607471839457,
+            "image_utilization": 0.10303925281605432
+          }
+        },
+        "logit": {
+          "values": {
+            "blank": 0.14142443239688873,
+            "text_only": 0.2772381007671356,
+            "image_only": 0.13693124055862427,
+            "both": 0.2528170645236969
+          },
+          "shapley": {
+            "text": 0.12584974616765976,
+            "image": -0.014457114040851593,
+            "interaction": -0.019927844405174255,
+            "blank_to_both_delta": 0.11139263212680817,
+            "abs_total": 0.14030686020851135,
+            "text_utilization": 0.8969607471839457,
+            "image_utilization": 0.10303925281605432
+          }
+        }
+      },
+      "Fantasy": {
+        "method": "two_modality_shapley",
+        "probability": {
+          "values": {
+            "blank": 0.12836726009845734,
+            "text_only": 0.26551616191864014,
+            "image_only": 0.11669373512268066,
+            "both": 0.24501588940620422
+          },
+          "shapley": {
+            "text": 0.13273552805185318,
+            "image": -0.016086898744106293,
+            "interaction": -0.00882674753665924,
+            "blank_to_both_delta": 0.11664862930774689,
+            "abs_total": 0.14882242679595947,
+            "text_utilization": 0.8919054131124876,
+            "image_utilization": 0.10809458688751239
+          }
+        },
+        "logit": {
+          "values": {
+            "blank": 0.12836726009845734,
+            "text_only": 0.26551616191864014,
+            "image_only": 0.11669373512268066,
+            "both": 0.24501588940620422
+          },
+          "shapley": {
+            "text": 0.13273552805185318,
+            "image": -0.016086898744106293,
+            "interaction": -0.00882674753665924,
+            "blank_to_both_delta": 0.11664862930774689,
+            "abs_total": 0.14882242679595947,
+            "text_utilization": 0.8919054131124876,
+            "image_utilization": 0.10809458688751239
+          }
+        }
+      },
+      "Family": {
+        "method": "two_modality_shapley",
+        "probability": {
+          "values": {
+            "blank": 0.12293346971273422,
+            "text_only": 0.18804559111595154,
+            "image_only": 0.16626930236816406,
+            "both": 0.1817634254693985
+          },
+          "shapley": {
+            "text": 0.040303122252225876,
+            "image": 0.0185268335044384,
+            "interaction": -0.04961799830198288,
+            "blank_to_both_delta": 0.058829955756664276,
+            "abs_total": 0.058829955756664276,
+            "text_utilization": 0.6850782349544828,
+            "image_utilization": 0.3149217650455172
+          }
+        },
+        "logit": {
+          "values": {
+            "blank": 0.12293346971273422,
+            "text_only": 0.18804559111595154,
+            "image_only": 0.16626930236816406,
+            "both": 0.1817634254693985
+          },
+          "shapley": {
+            "text": 0.040303122252225876,
+            "image": 0.0185268335044384,
+            "interaction": -0.04961799830198288,
+            "blank_to_both_delta": 0.058829955756664276,
+            "abs_total": 0.058829955756664276,
+            "text_utilization": 0.6850782349544828,
+            "image_utilization": 0.3149217650455172
+          }
+        }
+      },
+      "Biography": {
+        "method": "two_modality_shapley",
+        "probability": {
+          "values": {
+            "blank": 0.29740726947784424,
+            "text_only": 0.24892424046993256,
+            "image_only": 0.14572536945343018,
+            "both": 0.21838513016700745
+          },
+          "shapley": {
+            "text": 0.012088365852832794,
+            "image": -0.09111050516366959,
+            "interaction": 0.12114278972148895,
+            "blank_to_both_delta": -0.07902213931083679,
+            "abs_total": 0.10319887101650238,
+            "text_utilization": 0.11713660947802192,
+            "image_utilization": 0.882863390521978
+          }
+        },
+        "logit": {
+          "values": {
+            "blank": 0.29740726947784424,
+            "text_only": 0.24892424046993256,
+            "image_only": 0.14572536945343018,
+            "both": 0.21838513016700745
+          },
+          "shapley": {
+            "text": 0.012088365852832794,
+            "image": -0.09111050516366959,
+            "interaction": 0.12114278972148895,
+            "blank_to_both_delta": -0.07902213931083679,
+            "abs_total": 0.10319887101650238,
+            "text_utilization": 0.11713660947802192,
+            "image_utilization": 0.882863390521978
+          }
+        }
+      },
+      "War": {
+        "method": "two_modality_shapley",
+        "probability": {
+          "values": {
+            "blank": 0.10909697413444519,
+            "text_only": 0.17490391433238983,
+            "image_only": 0.04024484381079674,
+            "both": 0.15082871913909912
+          },
+          "shapley": {
+            "text": 0.08819540776312351,
+            "image": -0.04646366275846958,
+            "interaction": 0.04477693513035774,
+            "blank_to_both_delta": 0.04173174500465393,
+            "abs_total": 0.1346590705215931,
+            "text_utilization": 0.6549533382452766,
+            "image_utilization": 0.3450466617547234
+          }
+        },
+        "logit": {
+          "values": {
+            "blank": 0.10909697413444519,
+            "text_only": 0.17490391433238983,
+            "image_only": 0.04024484381079674,
+            "both": 0.15082871913909912
+          },
+          "shapley": {
+            "text": 0.08819540776312351,
+            "image": -0.04646366275846958,
+            "interaction": 0.04477693513035774,
+            "blank_to_both_delta": 0.04173174500465393,
+            "abs_total": 0.1346590705215931,
+            "text_utilization": 0.6549533382452766,
+            "image_utilization": 0.3450466617547234
+          }
+        }
+      },
+      "History": {
+        "method": "two_modality_shapley",
+        "probability": {
+          "values": {
+            "blank": 0.1804913878440857,
+            "text_only": 0.2044370025396347,
+            "image_only": 0.0713079497218132,
+            "both": 0.1946309506893158
+          },
+          "shapley": {
+            "text": 0.0736343078315258,
+            "image": -0.0594947449862957,
+            "interaction": 0.09937738627195358,
+            "blank_to_both_delta": 0.014139562845230103,
+            "abs_total": 0.1331290528178215,
+            "text_utilization": 0.5531047226204605,
+            "image_utilization": 0.44689527737953944
+          }
+        },
+        "logit": {
+          "values": {
+            "blank": 0.1804913878440857,
+            "text_only": 0.2044370025396347,
+            "image_only": 0.0713079497218132,
+            "both": 0.1946309506893158
+          },
+          "shapley": {
+            "text": 0.0736343078315258,
+            "image": -0.0594947449862957,
+            "interaction": 0.09937738627195358,
+            "blank_to_both_delta": 0.014139562845230103,
+            "abs_total": 0.1331290528178215,
+            "text_utilization": 0.5531047226204605,
+            "image_utilization": 0.44689527737953944
+          }
+        }
+      },
+      "Music": {
+        "method": "two_modality_shapley",
+        "probability": {
+          "values": {
+            "blank": 0.20655696094036102,
+            "text_only": 0.20819400250911713,
+            "image_only": 0.1342705637216568,
+            "both": 0.18930920958518982
+          },
+          "shapley": {
+            "text": 0.028337843716144562,
+            "image": -0.045585595071315765,
+            "interaction": 0.053401604294776917,
+            "blank_to_both_delta": -0.017247751355171204,
+            "abs_total": 0.07392343878746033,
+            "text_utilization": 0.38334044223266744,
+            "image_utilization": 0.6166595577673326
+          }
+        },
+        "logit": {
+          "values": {
+            "blank": 0.20655696094036102,
+            "text_only": 0.20819400250911713,
+            "image_only": 0.1342705637216568,
+            "both": 0.18930920958518982
+          },
+          "shapley": {
+            "text": 0.028337843716144562,
+            "image": -0.045585595071315765,
+            "interaction": 0.053401604294776917,
+            "blank_to_both_delta": -0.017247751355171204,
+            "abs_total": 0.07392343878746033,
+            "text_utilization": 0.38334044223266744,
+            "image_utilization": 0.6166595577673326
+          }
+        }
+      },
+      "Animation": {
+        "method": "two_modality_shapley",
+        "probability": {
+          "values": {
+            "blank": 0.1953156739473343,
+            "text_only": 0.2100394070148468,
+            "image_only": 0.12324761599302292,
+            "both": 0.13044457137584686
+          },
+          "shapley": {
+            "text": 0.010960344225168228,
+            "image": -0.07583144679665565,
+            "interaction": -0.007526777684688568,
+            "blank_to_both_delta": -0.06487110257148743,
+            "abs_total": 0.08679179102182388,
+            "text_utilization": 0.1262831898746304,
+            "image_utilization": 0.8737168101253696
+          }
+        },
+        "logit": {
+          "values": {
+            "blank": 0.1953156739473343,
+            "text_only": 0.2100394070148468,
+            "image_only": 0.12324761599302292,
+            "both": 0.13044457137584686
+          },
+          "shapley": {
+            "text": 0.010960344225168228,
+            "image": -0.07583144679665565,
+            "interaction": -0.007526777684688568,
+            "blank_to_both_delta": -0.06487110257148743,
+            "abs_total": 0.08679179102182388,
+            "text_utilization": 0.1262831898746304,
+            "image_utilization": 0.8737168101253696
+          }
+        }
+      },
+      "Musical": {
+        "method": "two_modality_shapley",
+        "probability": {
+          "values": {
+            "blank": 0.06473346799612045,
+            "text_only": 0.13158264756202698,
+            "image_only": 0.06529030203819275,
+            "both": 0.1373293250799179
+          },
+          "shapley": {
+            "text": 0.06944410130381584,
+            "image": 0.003151755779981613,
+            "interaction": 0.005189843475818634,
+            "blank_to_both_delta": 0.07259585708379745,
+            "abs_total": 0.07259585708379745,
+            "text_utilization": 0.9565849084701412,
+            "image_utilization": 0.04341509152985878
+          }
+        },
+        "logit": {
+          "values": {
+            "blank": 0.06473346799612045,
+            "text_only": 0.13158264756202698,
+            "image_only": 0.06529030203819275,
+            "both": 0.1373293250799179
+          },
+          "shapley": {
+            "text": 0.06944410130381584,
+            "image": 0.003151755779981613,
+            "interaction": 0.005189843475818634,
+            "blank_to_both_delta": 0.07259585708379745,
+            "abs_total": 0.07259585708379745,
+            "text_utilization": 0.9565849084701412,
+            "image_utilization": 0.04341509152985878
+          }
+        }
+      },
+      "Western": {
+        "method": "two_modality_shapley",
+        "probability": {
+          "values": {
+            "blank": 0.02082309126853943,
+            "text_only": 0.10214129835367203,
+            "image_only": 0.04909896478056908,
+            "both": 0.11296402662992477
+          },
+          "shapley": {
+            "text": 0.07259163446724415,
+            "image": 0.019549300894141197,
+            "interaction": -0.0174531452357769,
+            "blank_to_both_delta": 0.09214093536138535,
+            "abs_total": 0.09214093536138535,
+            "text_utilization": 0.7878326194815908,
+            "image_utilization": 0.21216738051840928
+          }
+        },
+        "logit": {
+          "values": {
+            "blank": 0.02082309126853943,
+            "text_only": 0.10214129835367203,
+            "image_only": 0.04909896478056908,
+            "both": 0.11296402662992477
+          },
+          "shapley": {
+            "text": 0.07259163446724415,
+            "image": 0.019549300894141197,
+            "interaction": -0.0174531452357769,
+            "blank_to_both_delta": 0.09214093536138535,
+            "abs_total": 0.09214093536138535,
+            "text_utilization": 0.7878326194815908,
+            "image_utilization": 0.21216738051840928
+          }
+        }
+      },
+      "Sport": {
+        "method": "two_modality_shapley",
+        "probability": {
+          "values": {
+            "blank": 0.0769272968173027,
+            "text_only": 0.13986100256443024,
+            "image_only": 0.06308712810277939,
+            "both": 0.14744828641414642
+          },
+          "shapley": {
+            "text": 0.07364743202924728,
+            "image": -0.0031264424324035645,
+            "interaction": 0.021427452564239502,
+            "blank_to_both_delta": 0.07052098959684372,
+            "abs_total": 0.07677387446165085,
+            "text_utilization": 0.9592772612516092,
+            "image_utilization": 0.04072273874839086
+          }
+        },
+        "logit": {
+          "values": {
+            "blank": 0.0769272968173027,
+            "text_only": 0.13986100256443024,
+            "image_only": 0.06308712810277939,
+            "both": 0.14744828641414642
+          },
+          "shapley": {
+            "text": 0.07364743202924728,
+            "image": -0.0031264424324035645,
+            "interaction": 0.021427452564239502,
+            "blank_to_both_delta": 0.07052098959684372,
+            "abs_total": 0.07677387446165085,
+            "text_utilization": 0.9592772612516092,
+            "image_utilization": 0.04072273874839086
+          }
+        }
+      },
+      "Short": {
+        "method": "two_modality_shapley",
+        "probability": {
+          "values": {
+            "blank": 0.7052871584892273,
+            "text_only": 0.2191537618637085,
+            "image_only": 0.14608098566532135,
+            "both": 0.12308727204799652
+          },
+          "shapley": {
+            "text": -0.2545635551214218,
+            "image": -0.32763633131980896,
+            "interaction": 0.46313968300819397,
+            "blank_to_both_delta": -0.5821998864412308,
+            "abs_total": 0.5821998864412308,
+            "text_utilization": 0.4372442541641037,
+            "image_utilization": 0.5627557458358963
+          }
+        },
+        "logit": {
+          "values": {
+            "blank": 0.7052871584892273,
+            "text_only": 0.2191537618637085,
+            "image_only": 0.14608098566532135,
+            "both": 0.12308727204799652
+          },
+          "shapley": {
+            "text": -0.2545635551214218,
+            "image": -0.32763633131980896,
+            "interaction": 0.46313968300819397,
+            "blank_to_both_delta": -0.5821998864412308,
+            "abs_total": 0.5821998864412308,
+            "text_utilization": 0.4372442541641037,
+            "image_utilization": 0.5627557458358963
+          }
+        }
+      },
+      "Film-Noir": {
+        "method": "two_modality_shapley",
+        "probability": {
+          "values": {
+            "blank": 0.00290715042501688,
+            "text_only": 0.12443964183330536,
+            "image_only": 0.0004017566971015185,
+            "both": 0.04725358262658119
+          },
+          "shapley": {
+            "text": 0.08419215866888408,
+            "image": -0.039845726467319764,
+            "interaction": -0.0746806654788088,
+            "blank_to_both_delta": 0.04434643220156431,
+            "abs_total": 0.12403788513620384,
+            "text_utilization": 0.678761642674205,
+            "image_utilization": 0.321238357325795
+          }
+        },
+        "logit": {
+          "values": {
+            "blank": 0.00290715042501688,
+            "text_only": 0.12443964183330536,
+            "image_only": 0.0004017566971015185,
+            "both": 0.04725358262658119
+          },
+          "shapley": {
+            "text": 0.08419215866888408,
+            "image": -0.039845726467319764,
+            "interaction": -0.0746806654788088,
+            "blank_to_both_delta": 0.04434643220156431,
+            "abs_total": 0.12403788513620384,
+            "text_utilization": 0.678761642674205,
+            "image_utilization": 0.321238357325795
+          }
+        }
+      }
+    }
+  },
+  "top_token_occlusion": [
+    {
+      "genre": "Drama",
+      "token": "the",
+      "positive_sample_count": 7,
+      "affected_samples": 1,
+      "mean_probability_delta": -0.05285674333572388,
+      "mean_abs_probability_delta": 0.05285674333572388,
+      "mean_logit_delta": -0.25780510902404785
+    },
+    {
+      "genre": "Comedy",
+      "token": "his",
+      "positive_sample_count": 2,
+      "affected_samples": 1,
+      "mean_probability_delta": 0.016592442989349365,
+      "mean_abs_probability_delta": 0.016592442989349365,
+      "mean_logit_delta": 0.0787043571472168
+    },
+    {
+      "genre": "Romance",
+      "token": "the",
+      "positive_sample_count": 5,
+      "affected_samples": 1,
+      "mean_probability_delta": -0.03982412815093994,
+      "mean_abs_probability_delta": 0.03982412815093994,
+      "mean_logit_delta": -0.16236138343811035
+    },
+    {
+      "genre": "Thriller",
+      "token": "the",
+      "positive_sample_count": 11,
+      "affected_samples": 1,
+      "mean_probability_delta": -0.01254582405090332,
+      "mean_abs_probability_delta": 0.01254582405090332,
+      "mean_logit_delta": -0.5574600696563721
+    },
+    {
+      "genre": "Crime",
+      "token": "the",
+      "positive_sample_count": 10,
+      "affected_samples": 1,
+      "mean_probability_delta": -0.024166464805603027,
+      "mean_abs_probability_delta": 0.024166464805603027,
+      "mean_logit_delta": -0.28952860832214355
+    },
+    {
+      "genre": "Action",
+      "token": "sharpe",
+      "positive_sample_count": 1,
+      "affected_samples": 1,
+      "mean_probability_delta": 0.027288496494293213,
+      "mean_abs_probability_delta": 0.027288496494293213,
+      "mean_logit_delta": 0.27877843379974365
+    },
+    {
+      "genre": "Adventure",
+      "token": "the",
+      "positive_sample_count": 8,
+      "affected_samples": 1,
+      "mean_probability_delta": 0.0663214921951294,
+      "mean_abs_probability_delta": 0.0663214921951294,
+      "mean_logit_delta": 0.6281920671463013
+    },
+    {
+      "genre": "Horror",
+      "token": "and",
+      "positive_sample_count": 3,
+      "affected_samples": 1,
+      "mean_probability_delta": 0.00357210636138916,
+      "mean_abs_probability_delta": 0.00357210636138916,
+      "mean_logit_delta": 0.33876991271972656
+    },
+    {
+      "genre": "Documentary",
+      "token": "the",
+      "positive_sample_count": 5,
+      "affected_samples": 1,
+      "mean_probability_delta": 0.11887943744659424,
+      "mean_abs_probability_delta": 0.11887943744659424,
+      "mean_logit_delta": 2.317201614379883
+    },
+    {
+      "genre": "Mystery",
+      "token": "his",
+      "positive_sample_count": 3,
+      "affected_samples": 1,
+      "mean_probability_delta": 0.02365630865097046,
+      "mean_abs_probability_delta": 0.02365630865097046,
+      "mean_logit_delta": 0.2563812732696533
+    },
+    {
+      "genre": "Sci-Fi",
+      "token": "the",
+      "positive_sample_count": 7,
+      "affected_samples": 1,
+      "mean_probability_delta": -0.004945158958435059,
+      "mean_abs_probability_delta": 0.004945158958435059,
+      "mean_logit_delta": -0.03558182716369629
+    },
+    {
+      "genre": "Fantasy",
+      "token": "the",
+      "positive_sample_count": 3,
+      "affected_samples": 1,
+      "mean_probability_delta": 0.06623959541320801,
+      "mean_abs_probability_delta": 0.06623959541320801,
+      "mean_logit_delta": 0.5101889371871948
+    },
+    {
+      "genre": "Family",
+      "token": "the",
+      "positive_sample_count": 11,
+      "affected_samples": 1,
+      "mean_probability_delta": 0.3372742533683777,
+      "mean_abs_probability_delta": 0.3372742533683777,
+      "mean_logit_delta": 2.5312340259552
+    },
+    {
+      "genre": "Biography",
+      "token": "of",
+      "positive_sample_count": 5,
+      "affected_samples": 1,
+      "mean_probability_delta": 0.13020126521587372,
+      "mean_abs_probability_delta": 0.13020126521587372,
+      "mean_logit_delta": 2.6609508991241455
+    },
+    {
+      "genre": "War",
+      "token": "lebanese",
+      "positive_sample_count": 1,
+      "affected_samples": 1,
+      "mean_probability_delta": 0.010947227478027344,
+      "mean_abs_probability_delta": 0.010947227478027344,
+      "mean_logit_delta": 0.2064518928527832
+    },
+    {
+      "genre": "History",
+      "token": "is",
+      "positive_sample_count": 3,
+      "affected_samples": 1,
+      "mean_probability_delta": -0.024860799312591553,
+      "mean_abs_probability_delta": 0.024860799312591553,
+      "mean_logit_delta": -0.57889723777771
+    },
+    {
+      "genre": "Music",
+      "token": "his",
+      "positive_sample_count": 7,
+      "affected_samples": 1,
+      "mean_probability_delta": 0.0008460879325866699,
+      "mean_abs_probability_delta": 0.0008460879325866699,
+      "mean_logit_delta": 0.06230354309082031
+    },
+    {
+      "genre": "Animation",
+      "token": "the",
+      "positive_sample_count": 6,
+      "affected_samples": 1,
+      "mean_probability_delta": 0.011651754379272461,
+      "mean_abs_probability_delta": 0.011651754379272461,
+      "mean_logit_delta": 0.927497148513794
+    },
+    {
+      "genre": "Musical",
+      "token": "she",
+      "positive_sample_count": 4,
+      "affected_samples": 1,
+      "mean_probability_delta": 0.014904677867889404,
+      "mean_abs_probability_delta": 0.014904677867889404,
+      "mean_logit_delta": 0.4557533264160156
+    },
+    {
+      "genre": "Western",
+      "token": "her",
+      "positive_sample_count": 9,
+      "affected_samples": 1,
+      "mean_probability_delta": -0.01725190132856369,
+      "mean_abs_probability_delta": 0.01725190132856369,
+      "mean_logit_delta": -3.1801156997680664
+    },
+    {
+      "genre": "Sport",
+      "token": "the",
+      "positive_sample_count": 15,
+      "affected_samples": 1,
+      "mean_probability_delta": 0.0035721659660339355,
+      "mean_abs_probability_delta": 0.0035721659660339355,
+      "mean_logit_delta": 0.6316027641296387
+    },
+    {
+      "genre": "Short",
+      "token": "an",
+      "positive_sample_count": 2,
+      "affected_samples": 1,
+      "mean_probability_delta": 0.0025205016136169434,
+      "mean_abs_probability_delta": 0.0025205016136169434,
+      "mean_logit_delta": 0.03150486946105957
+    },
+    {
+      "genre": "Film-Noir",
+      "token": "to",
+      "positive_sample_count": 13,
+      "affected_samples": 1,
+      "mean_probability_delta": 0.000386655330657959,
+      "mean_abs_probability_delta": 0.000386655330657959,
+      "mean_logit_delta": 0.4052543640136719
+    }
+  ],
+  "aggregated_lig_tokens": [
+    {
+      "genre": "Drama",
+      "token": "war",
+      "count": 2,
+      "mean_attribution": 4.136630654335022,
+      "mean_abs_attribution": 4.136630654335022
+    },
+    {
+      "genre": "Drama",
+      "token": "love",
+      "count": 2,
+      "mean_attribution": 1.1602146625518799,
+      "mean_abs_attribution": 1.1602146625518799
+    },
+    {
+      "genre": "Drama",
+      "token": "beliefs",
+      "count": 2,
+      "mean_attribution": 0.724490225315094,
+      "mean_abs_attribution": 0.724490225315094
+    },
+    {
+      "genre": "Drama",
+      "token": "leader",
+      "count": 2,
+      "mean_attribution": 0.6691147685050964,
+      "mean_abs_attribution": 0.6691147685050964
+    },
+    {
+      "genre": "Drama",
+      "token": "testimony",
+      "count": 2,
+      "mean_attribution": 0.6085812598466873,
+      "mean_abs_attribution": 0.6085812598466873
+    },
+    {
+      "genre": "Drama",
+      "token": "james",
+      "count": 1,
+      "mean_attribution": 0.5880638360977173,
+      "mean_abs_attribution": 0.5880638360977173
+    },
+    {
+      "genre": "Drama",
+      "token": "loading",
+      "count": 3,
+      "mean_attribution": 0.5662871102492014,
+      "mean_abs_attribution": 0.5662871102492014
+    },
+    {
+      "genre": "Drama",
+      "token": "british",
+      "count": 2,
+      "mean_attribution": 0.4120203107595444,
+      "mean_abs_attribution": 0.4120203107595444
+    },
+    {
+      "genre": "Drama",
+      "token": "tyrannical",
+      "count": 1,
+      "mean_attribution": 0.409524142742157,
+      "mean_abs_attribution": 0.409524142742157
+    },
+    {
+      "genre": "Drama",
+      "token": "handguns",
+      "count": 2,
+      "mean_attribution": 0.3970033824443817,
+      "mean_abs_attribution": 0.5897772014141083
+    },
+    {
+      "genre": "Drama",
+      "token": "scrap",
+      "count": 1,
+      "mean_attribution": 0.3177122175693512,
+      "mean_abs_attribution": 0.3177122175693512
+    },
+    {
+      "genre": "Drama",
+      "token": "intellectual",
+      "count": 2,
+      "mean_attribution": 0.3144635707139969,
+      "mean_abs_attribution": 0.3144635707139969
+    },
+    {
+      "genre": "Drama",
+      "token": "officer",
+      "count": 2,
+      "mean_attribution": 0.31048060953617096,
+      "mean_abs_attribution": 0.31048060953617096
+    },
+    {
+      "genre": "Drama",
+      "token": "reed",
+      "count": 1,
+      "mean_attribution": 0.29388245940208435,
+      "mean_abs_attribution": 0.29388245940208435
+    },
+    {
+      "genre": "Drama",
+      "token": "anyone",
+      "count": 1,
+      "mean_attribution": 0.25212588906288147,
+      "mean_abs_attribution": 0.25212588906288147
+    },
+    {
+      "genre": "Drama",
+      "token": "young",
+      "count": 1,
+      "mean_attribution": 0.23733748495578766,
+      "mean_abs_attribution": 0.23733748495578766
+    },
+    {
+      "genre": "Drama",
+      "token": "peace",
+      "count": 1,
+      "mean_attribution": 0.23335383832454681,
+      "mean_abs_attribution": 0.23335383832454681
+    },
+    {
+      "genre": "Drama",
+      "token": "racial",
+      "count": 1,
+      "mean_attribution": 0.23027977347373962,
+      "mean_abs_attribution": 0.23027977347373962
+    },
+    {
+      "genre": "Drama",
+      "token": "somewhat",
+      "count": 1,
+      "mean_attribution": 0.21609796583652496,
+      "mean_abs_attribution": 0.21609796583652496
+    },
+    {
+      "genre": "Drama",
+      "token": "stops",
+      "count": 1,
+      "mean_attribution": 0.19614773988723755,
+      "mean_abs_attribution": 0.19614773988723755
+    },
+    {
+      "genre": "Drama",
+      "token": "suddenly",
+      "count": 1,
+      "mean_attribution": -1.0851774215698242,
+      "mean_abs_attribution": 1.0851774215698242
+    },
+    {
+      "genre": "Drama",
+      "token": "thriller",
+      "count": 2,
+      "mean_attribution": -1.0123739913105965,
+      "mean_abs_attribution": 1.0123739913105965
+    },
+    {
+      "genre": "Drama",
+      "token": "power",
+      "count": 2,
+      "mean_attribution": -0.7523233145475388,
+      "mean_abs_attribution": 0.7523233145475388
+    },
+    {
+      "genre": "Drama",
+      "token": "someone",
+      "count": 1,
+      "mean_attribution": -0.7371412515640259,
+      "mean_abs_attribution": 0.7371412515640259
+    },
+    {
+      "genre": "Drama",
+      "token": "a",
+      "count": 1,
+      "mean_attribution": -0.7269952297210693,
+      "mean_abs_attribution": 0.7269952297210693
+    },
+    {
+      "genre": "Drama",
+      "token": "find",
+      "count": 2,
+      "mean_attribution": -0.5256239548325539,
+      "mean_abs_attribution": 0.5256239548325539
+    },
+    {
+      "genre": "Drama",
+      "token": "solve",
+      "count": 2,
+      "mean_attribution": -0.4747153967618942,
+      "mean_abs_attribution": 0.4747153967618942
+    },
+    {
+      "genre": "Drama",
+      "token": "how",
+      "count": 2,
+      "mean_attribution": -0.4685158431529999,
+      "mean_abs_attribution": 0.4685158431529999
+    },
+    {
+      "genre": "Drama",
+      "token": "unusual",
+      "count": 1,
+      "mean_attribution": -0.4004574716091156,
+      "mean_abs_attribution": 0.4004574716091156
+    },
+    {
+      "genre": "Drama",
+      "token": "upbringing",
+      "count": 2,
+      "mean_attribution": -0.3437844067811966,
+      "mean_abs_attribution": 0.3437844067811966
+    },
+    {
+      "genre": "Drama",
+      "token": "save",
+      "count": 1,
+      "mean_attribution": -0.33076101541519165,
+      "mean_abs_attribution": 0.33076101541519165
+    },
+    {
+      "genre": "Drama",
+      "token": "relaying",
+      "count": 2,
+      "mean_attribution": -0.32950344681739807,
+      "mean_abs_attribution": 0.32950344681739807
+    },
+    {
+      "genre": "Drama",
+      "token": "judd",
+      "count": 1,
+      "mean_attribution": -0.2531600594520569,
+      "mean_abs_attribution": 0.2531600594520569
+    },
+    {
+      "genre": "Drama",
+      "token": "storyline",
+      "count": 1,
+      "mean_attribution": -0.22932609915733337,
+      "mean_abs_attribution": 0.22932609915733337
+    },
+    {
+      "genre": "Drama",
+      "token": "pretty",
+      "count": 1,
+      "mean_attribution": -0.21335625648498535,
+      "mean_abs_attribution": 0.21335625648498535
+    },
+    {
+      "genre": "Drama",
+      "token": "things",
+      "count": 1,
+      "mean_attribution": -0.18893468379974365,
+      "mean_abs_attribution": 0.18893468379974365
+    },
+    {
+      "genre": "Drama",
+      "token": "protect",
+      "count": 1,
+      "mean_attribution": -0.18348568677902222,
+      "mean_abs_attribution": 0.18348568677902222
+    },
+    {
+      "genre": "Drama",
+      "token": "rules",
+      "count": 1,
+      "mean_attribution": -0.16150091588497162,
+      "mean_abs_attribution": 0.16150091588497162
+    },
+    {
+      "genre": "Drama",
+      "token": "wild",
+      "count": 1,
+      "mean_attribution": -0.14618411660194397,
+      "mean_abs_attribution": 0.14618411660194397
+    },
+    {
+      "genre": "Drama",
+      "token": "fitzgerald",
+      "count": 1,
+      "mean_attribution": -0.14366820454597473,
+      "mean_abs_attribution": 0.14366820454597473
+    },
+    {
+      "genre": "Comedy",
+      "token": "trip",
+      "count": 1,
+      "mean_attribution": 0.8905102610588074,
+      "mean_abs_attribution": 0.8905102610588074
+    },
+    {
+      "genre": "Comedy",
+      "token": "euphemism",
+      "count": 1,
+      "mean_attribution": 0.8840594291687012,
+      "mean_abs_attribution": 0.8840594291687012
+    },
+    {
+      "genre": "Comedy",
+      "token": "must",
+      "count": 1,
+      "mean_attribution": 0.8628337383270264,
+      "mean_abs_attribution": 0.8628337383270264
+    },
+    {
+      "genre": "Comedy",
+      "token": "stopped",
+      "count": 2,
+      "mean_attribution": 0.7018599212169647,
+      "mean_abs_attribution": 0.7018599212169647
+    },
+    {
+      "genre": "Comedy",
+      "token": "wind",
+      "count": 1,
+      "mean_attribution": 0.6494301557540894,
+      "mean_abs_attribution": 0.6494301557540894
+    },
+    {
+      "genre": "Comedy",
+      "token": "the",
+      "count": 2,
+      "mean_attribution": 0.3017064109444618,
+      "mean_abs_attribution": 0.3927495703101158
+    },
+    {
+      "genre": "Comedy",
+      "token": "spooks",
+      "count": 1,
+      "mean_attribution": 0.23640315234661102,
+      "mean_abs_attribution": 0.23640315234661102
+    },
+    {
+      "genre": "Comedy",
+      "token": "has",
+      "count": 1,
+      "mean_attribution": 0.16869109869003296,
+      "mean_abs_attribution": 0.16869109869003296
+    },
+    {
+      "genre": "Comedy",
+      "token": "they",
+      "count": 1,
+      "mean_attribution": 0.16071447730064392,
+      "mean_abs_attribution": 0.16071447730064392
+    },
+    {
+      "genre": "Comedy",
+      "token": "his",
+      "count": 1,
+      "mean_attribution": 0.13994532823562622,
+      "mean_abs_attribution": 0.13994532823562622
+    },
+    {
+      "genre": "Comedy",
+      "token": "make",
+      "count": 1,
+      "mean_attribution": 0.11656420677900314,
+      "mean_abs_attribution": 0.11656420677900314
+    },
+    {
+      "genre": "Comedy",
+      "token": "when",
+      "count": 1,
+      "mean_attribution": 0.11291973292827606,
+      "mean_abs_attribution": 0.11291973292827606
+    },
+    {
+      "genre": "Comedy",
+      "token": "grinch",
+      "count": 1,
+      "mean_attribution": -0.0886688381433487,
+      "mean_abs_attribution": 0.0886688381433487
+    },
+    {
+      "genre": "Comedy",
+      "token": "outhouse",
+      "count": 2,
+      "mean_attribution": -0.30819621682167053,
+      "mean_abs_attribution": 0.45287999510765076
+    },
+    {
+      "genre": "Comedy",
+      "token": "starts",
+      "count": 2,
+      "mean_attribution": -0.45816682279109955,
+      "mean_abs_attribution": 0.580852285027504
+    },
+    {
+      "genre": "Comedy",
+      "token": "soon",
+      "count": 2,
+      "mean_attribution": -0.5717757120728493,
+      "mean_abs_attribution": 0.659854494035244
+    },
+    {
+      "genre": "Comedy",
+      "token": ",",
+      "count": 1,
+      "mean_attribution": -0.6370391845703125,
+      "mean_abs_attribution": 0.6370391845703125
+    },
+    {
+      "genre": "Comedy",
+      "token": "because",
+      "count": 1,
+      "mean_attribution": -0.7507845759391785,
+      "mean_abs_attribution": 0.7507845759391785
+    },
+    {
+      "genre": "Comedy",
+      "token": "homes",
+      "count": 1,
+      "mean_attribution": -1.228211522102356,
+      "mean_abs_attribution": 1.228211522102356
+    },
+    {
+      "genre": "Comedy",
+      "token": "homes",
+      "count": 1,
+      "mean_attribution": -1.228211522102356,
+      "mean_abs_attribution": 1.228211522102356
+    },
+    {
+      "genre": "Comedy",
+      "token": "because",
+      "count": 1,
+      "mean_attribution": -0.7507845759391785,
+      "mean_abs_attribution": 0.7507845759391785
+    },
+    {
+      "genre": "Comedy",
+      "token": ",",
+      "count": 1,
+      "mean_attribution": -0.6370391845703125,
+      "mean_abs_attribution": 0.6370391845703125
+    },
+    {
+      "genre": "Comedy",
+      "token": "soon",
+      "count": 2,
+      "mean_attribution": -0.5717757120728493,
+      "mean_abs_attribution": 0.659854494035244
+    },
+    {
+      "genre": "Comedy",
+      "token": "starts",
+      "count": 2,
+      "mean_attribution": -0.45816682279109955,
+      "mean_abs_attribution": 0.580852285027504
+    },
+    {
+      "genre": "Comedy",
+      "token": "outhouse",
+      "count": 2,
+      "mean_attribution": -0.30819621682167053,
+      "mean_abs_attribution": 0.45287999510765076
+    },
+    {
+      "genre": "Comedy",
+      "token": "grinch",
+      "count": 1,
+      "mean_attribution": -0.0886688381433487,
+      "mean_abs_attribution": 0.0886688381433487
+    },
+    {
+      "genre": "Comedy",
+      "token": "when",
+      "count": 1,
+      "mean_attribution": 0.11291973292827606,
+      "mean_abs_attribution": 0.11291973292827606
+    },
+    {
+      "genre": "Comedy",
+      "token": "make",
+      "count": 1,
+      "mean_attribution": 0.11656420677900314,
+      "mean_abs_attribution": 0.11656420677900314
+    },
+    {
+      "genre": "Comedy",
+      "token": "his",
+      "count": 1,
+      "mean_attribution": 0.13994532823562622,
+      "mean_abs_attribution": 0.13994532823562622
+    },
+    {
+      "genre": "Comedy",
+      "token": "they",
+      "count": 1,
+      "mean_attribution": 0.16071447730064392,
+      "mean_abs_attribution": 0.16071447730064392
+    },
+    {
+      "genre": "Comedy",
+      "token": "has",
+      "count": 1,
+      "mean_attribution": 0.16869109869003296,
+      "mean_abs_attribution": 0.16869109869003296
+    },
+    {
+      "genre": "Comedy",
+      "token": "spooks",
+      "count": 1,
+      "mean_attribution": 0.23640315234661102,
+      "mean_abs_attribution": 0.23640315234661102
+    },
+    {
+      "genre": "Comedy",
+      "token": "the",
+      "count": 2,
+      "mean_attribution": 0.3017064109444618,
+      "mean_abs_attribution": 0.3927495703101158
+    },
+    {
+      "genre": "Comedy",
+      "token": "wind",
+      "count": 1,
+      "mean_attribution": 0.6494301557540894,
+      "mean_abs_attribution": 0.6494301557540894
+    },
+    {
+      "genre": "Comedy",
+      "token": "stopped",
+      "count": 2,
+      "mean_attribution": 0.7018599212169647,
+      "mean_abs_attribution": 0.7018599212169647
+    },
+    {
+      "genre": "Comedy",
+      "token": "must",
+      "count": 1,
+      "mean_attribution": 0.8628337383270264,
+      "mean_abs_attribution": 0.8628337383270264
+    },
+    {
+      "genre": "Comedy",
+      "token": "euphemism",
+      "count": 1,
+      "mean_attribution": 0.8840594291687012,
+      "mean_abs_attribution": 0.8840594291687012
+    },
+    {
+      "genre": "Comedy",
+      "token": "trip",
+      "count": 1,
+      "mean_attribution": 0.8905102610588074,
+      "mean_abs_attribution": 0.8905102610588074
+    },
+    {
+      "genre": "Romance",
+      "token": "love",
+      "count": 2,
+      "mean_attribution": 1.4361459612846375,
+      "mean_abs_attribution": 1.4361459612846375
+    },
+    {
+      "genre": "Romance",
+      "token": "beliefs",
+      "count": 2,
+      "mean_attribution": 0.5669603198766708,
+      "mean_abs_attribution": 0.5669603198766708
+    },
+    {
+      "genre": "Romance",
+      "token": "james",
+      "count": 2,
+      "mean_attribution": 0.5379063487052917,
+      "mean_abs_attribution": 0.5379063487052917
+    },
+    {
+      "genre": "Romance",
+      "token": "officer",
+      "count": 1,
+      "mean_attribution": 0.4125155806541443,
+      "mean_abs_attribution": 0.4125155806541443
+    },
+    {
+      "genre": "Romance",
+      "token": "british",
+      "count": 2,
+      "mean_attribution": 0.41043879091739655,
+      "mean_abs_attribution": 0.41043879091739655
+    },
+    {
+      "genre": "Romance",
+      "token": "intellectual",
+      "count": 1,
+      "mean_attribution": 0.40487515926361084,
+      "mean_abs_attribution": 0.40487515926361084
+    },
+    {
+      "genre": "Romance",
+      "token": "tyrannical",
+      "count": 2,
+      "mean_attribution": 0.3268406242132187,
+      "mean_abs_attribution": 0.3268406242132187
+    },
+    {
+      "genre": "Romance",
+      "token": "tommy",
+      "count": 1,
+      "mean_attribution": 0.31777462363243103,
+      "mean_abs_attribution": 0.31777462363243103
+    },
+    {
+      "genre": "Romance",
+      "token": "struggle",
+      "count": 1,
+      "mean_attribution": -0.2487487941980362,
+      "mean_abs_attribution": 0.2487487941980362
+    },
+    {
+      "genre": "Romance",
+      "token": "american",
+      "count": 1,
+      "mean_attribution": -0.24988840520381927,
+      "mean_abs_attribution": 0.24988840520381927
+    },
+    {
+      "genre": "Romance",
+      "token": "elderly",
+      "count": 1,
+      "mean_attribution": -0.2802310287952423,
+      "mean_abs_attribution": 0.2802310287952423
+    },
+    {
+      "genre": "Romance",
+      "token": "upbringing",
+      "count": 2,
+      "mean_attribution": -0.3647584021091461,
+      "mean_abs_attribution": 0.3647584021091461
+    },
+    {
+      "genre": "Romance",
+      "token": "unusual",
+      "count": 1,
+      "mean_attribution": -0.4004574716091156,
+      "mean_abs_attribution": 0.4004574716091156
+    },
+    {
+      "genre": "Romance",
+      "token": "relaying",
+      "count": 1,
+      "mean_attribution": -0.4217723608016968,
+      "mean_abs_attribution": 0.4217723608016968
+    },
+    {
+      "genre": "Romance",
+      "token": "how",
+      "count": 2,
+      "mean_attribution": -0.5402993559837341,
+      "mean_abs_attribution": 0.5402993559837341
+    },
+    {
+      "genre": "Romance",
+      "token": "power",
+      "count": 2,
+      "mean_attribution": -0.8668488264083862,
+      "mean_abs_attribution": 0.8668488264083862
+    },
+    {
+      "genre": "Romance",
+      "token": "power",
+      "count": 2,
+      "mean_attribution": -0.8668488264083862,
+      "mean_abs_attribution": 0.8668488264083862
+    },
+    {
+      "genre": "Romance",
+      "token": "how",
+      "count": 2,
+      "mean_attribution": -0.5402993559837341,
+      "mean_abs_attribution": 0.5402993559837341
+    },
+    {
+      "genre": "Romance",
+      "token": "relaying",
+      "count": 1,
+      "mean_attribution": -0.4217723608016968,
+      "mean_abs_attribution": 0.4217723608016968
+    },
+    {
+      "genre": "Romance",
+      "token": "unusual",
+      "count": 1,
+      "mean_attribution": -0.4004574716091156,
+      "mean_abs_attribution": 0.4004574716091156
+    },
+    {
+      "genre": "Romance",
+      "token": "upbringing",
+      "count": 2,
+      "mean_attribution": -0.3647584021091461,
+      "mean_abs_attribution": 0.3647584021091461
+    },
+    {
+      "genre": "Romance",
+      "token": "elderly",
+      "count": 1,
+      "mean_attribution": -0.2802310287952423,
+      "mean_abs_attribution": 0.2802310287952423
+    },
+    {
+      "genre": "Romance",
+      "token": "american",
+      "count": 1,
+      "mean_attribution": -0.24988840520381927,
+      "mean_abs_attribution": 0.24988840520381927
+    },
+    {
+      "genre": "Romance",
+      "token": "struggle",
+      "count": 1,
+      "mean_attribution": -0.2487487941980362,
+      "mean_abs_attribution": 0.2487487941980362
+    },
+    {
+      "genre": "Romance",
+      "token": "tommy",
+      "count": 1,
+      "mean_attribution": 0.31777462363243103,
+      "mean_abs_attribution": 0.31777462363243103
+    },
+    {
+      "genre": "Romance",
+      "token": "tyrannical",
+      "count": 2,
+      "mean_attribution": 0.3268406242132187,
+      "mean_abs_attribution": 0.3268406242132187
+    },
+    {
+      "genre": "Romance",
+      "token": "intellectual",
+      "count": 1,
+      "mean_attribution": 0.40487515926361084,
+      "mean_abs_attribution": 0.40487515926361084
+    },
+    {
+      "genre": "Romance",
+      "token": "british",
+      "count": 2,
+      "mean_attribution": 0.41043879091739655,
+      "mean_abs_attribution": 0.41043879091739655
+    },
+    {
+      "genre": "Romance",
+      "token": "officer",
+      "count": 1,
+      "mean_attribution": 0.4125155806541443,
+      "mean_abs_attribution": 0.4125155806541443
+    },
+    {
+      "genre": "Romance",
+      "token": "james",
+      "count": 2,
+      "mean_attribution": 0.5379063487052917,
+      "mean_abs_attribution": 0.5379063487052917
+    },
+    {
+      "genre": "Romance",
+      "token": "beliefs",
+      "count": 2,
+      "mean_attribution": 0.5669603198766708,
+      "mean_abs_attribution": 0.5669603198766708
+    },
+    {
+      "genre": "Romance",
+      "token": "love",
+      "count": 2,
+      "mean_attribution": 1.4361459612846375,
+      "mean_abs_attribution": 1.4361459612846375
+    },
+    {
+      "genre": "Thriller",
+      "token": "investigation",
+      "count": 2,
+      "mean_attribution": 2.526883542537689,
+      "mean_abs_attribution": 2.526883542537689
+    },
+    {
+      "genre": "Thriller",
+      "token": "find",
+      "count": 1,
+      "mean_attribution": 1.6896744966506958,
+      "mean_abs_attribution": 1.6896744966506958
+    },
+    {
+      "genre": "Thriller",
+      "token": "professor",
+      "count": 1,
+      "mean_attribution": 1.6643142700195312,
+      "mean_abs_attribution": 1.6643142700195312
+    },
+    {
+      "genre": "Thriller",
+      "token": "serial",
+      "count": 1,
+      "mean_attribution": 1.2365972995758057,
+      "mean_abs_attribution": 1.2365972995758057
+    },
+    {
+      "genre": "Thriller",
+      "token": "detective",
+      "count": 2,
+      "mean_attribution": 1.1483861804008484,
+      "mean_abs_attribution": 1.1483861804008484
+    },
+    {
+      "genre": "Thriller",
+      "token": "killer",
+      "count": 4,
+      "mean_attribution": 1.0941817462444305,
+      "mean_abs_attribution": 1.0941817462444305
+    },
+    {
+      "genre": "Thriller",
+      "token": "phone",
+      "count": 2,
+      "mean_attribution": 1.0550014674663544,
+      "mean_abs_attribution": 1.0550014674663544
+    },
+    {
+      "genre": "Thriller",
+      "token": "weird",
+      "count": 2,
+      "mean_attribution": 1.053640902042389,
+      "mean_abs_attribution": 1.053640902042389
+    },
+    {
+      "genre": "Thriller",
+      "token": "girlfriend",
+      "count": 2,
+      "mean_attribution": 0.8896428942680359,
+      "mean_abs_attribution": 0.8896428942680359
+    },
+    {
+      "genre": "Thriller",
+      "token": "asking",
+      "count": 1,
+      "mean_attribution": 0.6547834277153015,
+      "mean_abs_attribution": 0.6547834277153015
+    },
+    {
+      "genre": "Thriller",
+      "token": "call",
+      "count": 1,
+      "mean_attribution": 0.5053970813751221,
+      "mean_abs_attribution": 0.5053970813751221
+    },
+    {
+      "genre": "Thriller",
+      "token": "brandt",
+      "count": 1,
+      "mean_attribution": -0.38032639026641846,
+      "mean_abs_attribution": 0.38032639026641846
+    },
+    {
+      "genre": "Thriller",
+      "token": "deletes",
+      "count": 1,
+      "mean_attribution": -0.422252893447876,
+      "mean_abs_attribution": 0.422252893447876
+    },
+    {
+      "genre": "Thriller",
+      "token": "senseless",
+      "count": 1,
+      "mean_attribution": -0.47469401359558105,
+      "mean_abs_attribution": 0.47469401359558105
+    },
+    {
+      "genre": "Thriller",
+      "token": "charge",
+      "count": 1,
+      "mean_attribution": -1.0970985889434814,
+      "mean_abs_attribution": 1.0970985889434814
+    },
+    {
+      "genre": "Thriller",
+      "token": "industry",
+      "count": 1,
+      "mean_attribution": -1.6822466850280762,
+      "mean_abs_attribution": 1.6822466850280762
+    },
+    {
+      "genre": "Thriller",
+      "token": "industry",
+      "count": 1,
+      "mean_attribution": -1.6822466850280762,
+      "mean_abs_attribution": 1.6822466850280762
+    },
+    {
+      "genre": "Thriller",
+      "token": "charge",
+      "count": 1,
+      "mean_attribution": -1.0970985889434814,
+      "mean_abs_attribution": 1.0970985889434814
+    },
+    {
+      "genre": "Thriller",
+      "token": "senseless",
+      "count": 1,
+      "mean_attribution": -0.47469401359558105,
+      "mean_abs_attribution": 0.47469401359558105
+    },
+    {
+      "genre": "Thriller",
+      "token": "deletes",
+      "count": 1,
+      "mean_attribution": -0.422252893447876,
+      "mean_abs_attribution": 0.422252893447876
+    },
+    {
+      "genre": "Thriller",
+      "token": "brandt",
+      "count": 1,
+      "mean_attribution": -0.38032639026641846,
+      "mean_abs_attribution": 0.38032639026641846
+    },
+    {
+      "genre": "Thriller",
+      "token": "call",
+      "count": 1,
+      "mean_attribution": 0.5053970813751221,
+      "mean_abs_attribution": 0.5053970813751221
+    },
+    {
+      "genre": "Thriller",
+      "token": "asking",
+      "count": 1,
+      "mean_attribution": 0.6547834277153015,
+      "mean_abs_attribution": 0.6547834277153015
+    },
+    {
+      "genre": "Thriller",
+      "token": "girlfriend",
+      "count": 2,
+      "mean_attribution": 0.8896428942680359,
+      "mean_abs_attribution": 0.8896428942680359
+    },
+    {
+      "genre": "Thriller",
+      "token": "weird",
+      "count": 2,
+      "mean_attribution": 1.053640902042389,
+      "mean_abs_attribution": 1.053640902042389
+    },
+    {
+      "genre": "Thriller",
+      "token": "phone",
+      "count": 2,
+      "mean_attribution": 1.0550014674663544,
+      "mean_abs_attribution": 1.0550014674663544
+    },
+    {
+      "genre": "Thriller",
+      "token": "killer",
+      "count": 4,
+      "mean_attribution": 1.0941817462444305,
+      "mean_abs_attribution": 1.0941817462444305
+    },
+    {
+      "genre": "Thriller",
+      "token": "detective",
+      "count": 2,
+      "mean_attribution": 1.1483861804008484,
+      "mean_abs_attribution": 1.1483861804008484
+    },
+    {
+      "genre": "Thriller",
+      "token": "serial",
+      "count": 1,
+      "mean_attribution": 1.2365972995758057,
+      "mean_abs_attribution": 1.2365972995758057
+    },
+    {
+      "genre": "Thriller",
+      "token": "professor",
+      "count": 1,
+      "mean_attribution": 1.6643142700195312,
+      "mean_abs_attribution": 1.6643142700195312
+    },
+    {
+      "genre": "Thriller",
+      "token": "find",
+      "count": 1,
+      "mean_attribution": 1.6896744966506958,
+      "mean_abs_attribution": 1.6896744966506958
+    },
+    {
+      "genre": "Thriller",
+      "token": "investigation",
+      "count": 2,
+      "mean_attribution": 2.526883542537689,
+      "mean_abs_attribution": 2.526883542537689
+    },
+    {
+      "genre": "Adventure",
+      "token": "alien",
+      "count": 2,
+      "mean_attribution": 2.325011521577835,
+      "mean_abs_attribution": 2.325011521577835
+    },
+    {
+      "genre": "Adventure",
+      "token": "crashes",
+      "count": 2,
+      "mean_attribution": 2.0689502954483032,
+      "mean_abs_attribution": 2.0689502954483032
+    },
+    {
+      "genre": "Adventure",
+      "token": "investigate",
+      "count": 1,
+      "mean_attribution": 1.8963241577148438,
+      "mean_abs_attribution": 1.8963241577148438
+    },
+    {
+      "genre": "Adventure",
+      "token": "earth",
+      "count": 2,
+      "mean_attribution": 1.4564071893692017,
+      "mean_abs_attribution": 1.4564071893692017
+    },
+    {
+      "genre": "Adventure",
+      "token": "scientists",
+      "count": 2,
+      "mean_attribution": 0.9057913720607758,
+      "mean_abs_attribution": 0.9057913720607758
+    },
+    {
+      "genre": "Adventure",
+      "token": "meteorite",
+      "count": 2,
+      "mean_attribution": 0.7514550387859344,
+      "mean_abs_attribution": 0.7514550387859344
+    },
+    {
+      "genre": "Adventure",
+      "token": "giant",
+      "count": 1,
+      "mean_attribution": 0.5708681344985962,
+      "mean_abs_attribution": 0.5708681344985962
+    },
+    {
+      "genre": "Adventure",
+      "token": "machine",
+      "count": 1,
+      "mean_attribution": 0.4478272795677185,
+      "mean_abs_attribution": 0.4478272795677185
+    },
+    {
+      "genre": "Adventure",
+      "token": "and",
+      "count": 1,
+      "mean_attribution": 0.3436553478240967,
+      "mean_abs_attribution": 0.3436553478240967
+    },
+    {
+      "genre": "Adventure",
+      "token": "race",
+      "count": 1,
+      "mean_attribution": 0.20195119082927704,
+      "mean_abs_attribution": 0.20195119082927704
+    },
+    {
+      "genre": "Adventure",
+      "token": "comes",
+      "count": 1,
+      "mean_attribution": 0.1983048915863037,
+      "mean_abs_attribution": 0.1983048915863037
+    },
+    {
+      "genre": "Adventure",
+      "token": "into",
+      "count": 1,
+      "mean_attribution": -0.2608252763748169,
+      "mean_abs_attribution": 0.2608252763748169
+    },
+    {
+      "genre": "Adventure",
+      "token": "trying",
+      "count": 1,
+      "mean_attribution": -0.30770161747932434,
+      "mean_abs_attribution": 0.30770161747932434
+    },
+    {
+      "genre": "Adventure",
+      "token": "nights",
+      "count": 1,
+      "mean_attribution": -0.3462066054344177,
+      "mean_abs_attribution": 0.3462066054344177
+    },
+    {
+      "genre": "Adventure",
+      "token": "different",
+      "count": 2,
+      "mean_attribution": -0.3721916675567627,
+      "mean_abs_attribution": 0.3721916675567627
+    },
+    {
+      "genre": "Adventure",
+      "token": "period",
+      "count": 1,
+      "mean_attribution": -0.6121616363525391,
+      "mean_abs_attribution": 0.6121616363525391
+    },
+    {
+      "genre": "Adventure",
+      "token": "days",
+      "count": 2,
+      "mean_attribution": -0.7453243583440781,
+      "mean_abs_attribution": 0.7453243583440781
+    },
+    {
+      "genre": "Adventure",
+      "token": "days",
+      "count": 2,
+      "mean_attribution": -0.7453243583440781,
+      "mean_abs_attribution": 0.7453243583440781
+    },
+    {
+      "genre": "Adventure",
+      "token": "period",
+      "count": 1,
+      "mean_attribution": -0.6121616363525391,
+      "mean_abs_attribution": 0.6121616363525391
+    },
+    {
+      "genre": "Adventure",
+      "token": "different",
+      "count": 2,
+      "mean_attribution": -0.3721916675567627,
+      "mean_abs_attribution": 0.3721916675567627
+    },
+    {
+      "genre": "Adventure",
+      "token": "nights",
+      "count": 1,
+      "mean_attribution": -0.3462066054344177,
+      "mean_abs_attribution": 0.3462066054344177
+    },
+    {
+      "genre": "Adventure",
+      "token": "trying",
+      "count": 1,
+      "mean_attribution": -0.30770161747932434,
+      "mean_abs_attribution": 0.30770161747932434
+    },
+    {
+      "genre": "Adventure",
+      "token": "into",
+      "count": 1,
+      "mean_attribution": -0.2608252763748169,
+      "mean_abs_attribution": 0.2608252763748169
+    },
+    {
+      "genre": "Adventure",
+      "token": "comes",
+      "count": 1,
+      "mean_attribution": 0.1983048915863037,
+      "mean_abs_attribution": 0.1983048915863037
+    },
+    {
+      "genre": "Adventure",
+      "token": "race",
+      "count": 1,
+      "mean_attribution": 0.20195119082927704,
+      "mean_abs_attribution": 0.20195119082927704
+    },
+    {
+      "genre": "Adventure",
+      "token": "and",
+      "count": 1,
+      "mean_attribution": 0.3436553478240967,
+      "mean_abs_attribution": 0.3436553478240967
+    },
+    {
+      "genre": "Adventure",
+      "token": "machine",
+      "count": 1,
+      "mean_attribution": 0.4478272795677185,
+      "mean_abs_attribution": 0.4478272795677185
+    },
+    {
+      "genre": "Adventure",
+      "token": "giant",
+      "count": 1,
+      "mean_attribution": 0.5708681344985962,
+      "mean_abs_attribution": 0.5708681344985962
+    },
+    {
+      "genre": "Adventure",
+      "token": "meteorite",
+      "count": 2,
+      "mean_attribution": 0.7514550387859344,
+      "mean_abs_attribution": 0.7514550387859344
+    },
+    {
+      "genre": "Adventure",
+      "token": "scientists",
+      "count": 2,
+      "mean_attribution": 0.9057913720607758,
+      "mean_abs_attribution": 0.9057913720607758
+    },
+    {
+      "genre": "Adventure",
+      "token": "earth",
+      "count": 2,
+      "mean_attribution": 1.4564071893692017,
+      "mean_abs_attribution": 1.4564071893692017
+    },
+    {
+      "genre": "Adventure",
+      "token": "investigate",
+      "count": 1,
+      "mean_attribution": 1.8963241577148438,
+      "mean_abs_attribution": 1.8963241577148438
+    },
+    {
+      "genre": "Adventure",
+      "token": "crashes",
+      "count": 2,
+      "mean_attribution": 2.0689502954483032,
+      "mean_abs_attribution": 2.0689502954483032
+    },
+    {
+      "genre": "Adventure",
+      "token": "alien",
+      "count": 2,
+      "mean_attribution": 2.325011521577835,
+      "mean_abs_attribution": 2.325011521577835
+    },
+    {
+      "genre": "Horror",
+      "token": "investigation",
+      "count": 2,
+      "mean_attribution": 2.136031597852707,
+      "mean_abs_attribution": 2.136031597852707
+    },
+    {
+      "genre": "Horror",
+      "token": "detective",
+      "count": 1,
+      "mean_attribution": 1.555774211883545,
+      "mean_abs_attribution": 1.555774211883545
+    },
+    {
+      "genre": "Horror",
+      "token": "killer",
+      "count": 3,
+      "mean_attribution": 1.3151189883550007,
+      "mean_abs_attribution": 1.3151189883550007
+    },
+    {
+      "genre": "Horror",
+      "token": "professor",
+      "count": 2,
+      "mean_attribution": 1.2658405005931854,
+      "mean_abs_attribution": 1.2658405005931854
+    },
+    {
+      "genre": "Horror",
+      "token": "find",
+      "count": 2,
+      "mean_attribution": 1.2487001419067383,
+      "mean_abs_attribution": 1.2487001419067383
+    },
+    {
+      "genre": "Horror",
+      "token": "serial",
+      "count": 1,
+      "mean_attribution": 1.2365972995758057,
+      "mean_abs_attribution": 1.2365972995758057
+    },
+    {
+      "genre": "Horror",
+      "token": "phone",
+      "count": 2,
+      "mean_attribution": 1.0101979970932007,
+      "mean_abs_attribution": 1.0101979970932007
+    },
+    {
+      "genre": "Horror",
+      "token": "weird",
+      "count": 2,
+      "mean_attribution": 0.9811782240867615,
+      "mean_abs_attribution": 0.9811782240867615
+    },
+    {
+      "genre": "Horror",
+      "token": "girlfriend",
+      "count": 2,
+      "mean_attribution": 0.9600680470466614,
+      "mean_abs_attribution": 0.9600680470466614
+    },
+    {
+      "genre": "Horror",
+      "token": "tries",
+      "count": 1,
+      "mean_attribution": 0.5076944231987,
+      "mean_abs_attribution": 0.5076944231987
+    },
+    {
+      "genre": "Horror",
+      "token": "succeeded",
+      "count": 1,
+      "mean_attribution": -0.48896145820617676,
+      "mean_abs_attribution": 0.48896145820617676
+    },
+    {
+      "genre": "Horror",
+      "token": "suspect",
+      "count": 1,
+      "mean_attribution": -0.6559633016586304,
+      "mean_abs_attribution": 0.6559633016586304
+    },
+    {
+      "genre": "Horror",
+      "token": "charge",
+      "count": 2,
+      "mean_attribution": -0.8635295033454895,
+      "mean_abs_attribution": 0.8635295033454895
+    },
+    {
+      "genre": "Horror",
+      "token": "industry",
+      "count": 2,
+      "mean_attribution": -1.3575370907783508,
+      "mean_abs_attribution": 1.3575370907783508
+    },
+    {
+      "genre": "Horror",
+      "token": "industry",
+      "count": 2,
+      "mean_attribution": -1.3575370907783508,
+      "mean_abs_attribution": 1.3575370907783508
+    },
+    {
+      "genre": "Horror",
+      "token": "charge",
+      "count": 2,
+      "mean_attribution": -0.8635295033454895,
+      "mean_abs_attribution": 0.8635295033454895
+    },
+    {
+      "genre": "Horror",
+      "token": "suspect",
+      "count": 1,
+      "mean_attribution": -0.6559633016586304,
+      "mean_abs_attribution": 0.6559633016586304
+    },
+    {
+      "genre": "Horror",
+      "token": "succeeded",
+      "count": 1,
+      "mean_attribution": -0.48896145820617676,
+      "mean_abs_attribution": 0.48896145820617676
+    },
+    {
+      "genre": "Horror",
+      "token": "tries",
+      "count": 1,
+      "mean_attribution": 0.5076944231987,
+      "mean_abs_attribution": 0.5076944231987
+    },
+    {
+      "genre": "Horror",
+      "token": "girlfriend",
+      "count": 2,
+      "mean_attribution": 0.9600680470466614,
+      "mean_abs_attribution": 0.9600680470466614
+    },
+    {
+      "genre": "Horror",
+      "token": "weird",
+      "count": 2,
+      "mean_attribution": 0.9811782240867615,
+      "mean_abs_attribution": 0.9811782240867615
+    },
+    {
+      "genre": "Horror",
+      "token": "phone",
+      "count": 2,
+      "mean_attribution": 1.0101979970932007,
+      "mean_abs_attribution": 1.0101979970932007
+    },
+    {
+      "genre": "Horror",
+      "token": "serial",
+      "count": 1,
+      "mean_attribution": 1.2365972995758057,
+      "mean_abs_attribution": 1.2365972995758057
+    },
+    {
+      "genre": "Horror",
+      "token": "find",
+      "count": 2,
+      "mean_attribution": 1.2487001419067383,
+      "mean_abs_attribution": 1.2487001419067383
+    },
+    {
+      "genre": "Horror",
+      "token": "professor",
+      "count": 2,
+      "mean_attribution": 1.2658405005931854,
+      "mean_abs_attribution": 1.2658405005931854
+    },
+    {
+      "genre": "Horror",
+      "token": "killer",
+      "count": 3,
+      "mean_attribution": 1.3151189883550007,
+      "mean_abs_attribution": 1.3151189883550007
+    },
+    {
+      "genre": "Horror",
+      "token": "detective",
+      "count": 1,
+      "mean_attribution": 1.555774211883545,
+      "mean_abs_attribution": 1.555774211883545
+    },
+    {
+      "genre": "Horror",
+      "token": "investigation",
+      "count": 2,
+      "mean_attribution": 2.136031597852707,
+      "mean_abs_attribution": 2.136031597852707
+    },
+    {
+      "genre": "Mystery",
+      "token": "investigation",
+      "count": 2,
+      "mean_attribution": 2.566365420818329,
+      "mean_abs_attribution": 2.566365420818329
+    },
+    {
+      "genre": "Mystery",
+      "token": "killer",
+      "count": 4,
+      "mean_attribution": 1.1144100576639175,
+      "mean_abs_attribution": 1.1144100576639175
+    },
+    {
+      "genre": "Mystery",
+      "token": "find",
+      "count": 2,
+      "mean_attribution": 1.1104463934898376,
+      "mean_abs_attribution": 1.1104463934898376
+    },
+    {
+      "genre": "Mystery",
+      "token": "detective",
+      "count": 2,
+      "mean_attribution": 1.0893454551696777,
+      "mean_abs_attribution": 1.0893454551696777
+    },
+    {
+      "genre": "Mystery",
+      "token": "professor",
+      "count": 2,
+      "mean_attribution": 1.0651150047779083,
+      "mean_abs_attribution": 1.0651150047779083
+    },
+    {
+      "genre": "Mystery",
+      "token": "phone",
+      "count": 2,
+      "mean_attribution": 1.0553972721099854,
+      "mean_abs_attribution": 1.0553972721099854
+    },
+    {
+      "genre": "Mystery",
+      "token": "weird",
+      "count": 2,
+      "mean_attribution": 1.0544589161872864,
+      "mean_abs_attribution": 1.0544589161872864
+    },
+    {
+      "genre": "Mystery",
+      "token": "girlfriend",
+      "count": 2,
+      "mean_attribution": 0.9673636555671692,
+      "mean_abs_attribution": 0.9673636555671692
+    },
+    {
+      "genre": "Mystery",
+      "token": "serial",
+      "count": 2,
+      "mean_attribution": 0.8910456299781799,
+      "mean_abs_attribution": 0.8910456299781799
+    },
+    {
+      "genre": "Mystery",
+      "token": "call",
+      "count": 1,
+      "mean_attribution": 0.4245116710662842,
+      "mean_abs_attribution": 0.4245116710662842
+    },
+    {
+      "genre": "Mystery",
+      "token": "asking",
+      "count": 1,
+      "mean_attribution": 0.423898845911026,
+      "mean_abs_attribution": 0.423898845911026
+    },
+    {
+      "genre": "Mystery",
+      "token": "charge",
+      "count": 1,
+      "mean_attribution": -1.0970985889434814,
+      "mean_abs_attribution": 1.0970985889434814
+    },
+    {
+      "genre": "Mystery",
+      "token": "industry",
+      "count": 1,
+      "mean_attribution": -1.6822466850280762,
+      "mean_abs_attribution": 1.6822466850280762
+    },
+    {
+      "genre": "Mystery",
+      "token": "industry",
+      "count": 1,
+      "mean_attribution": -1.6822466850280762,
+      "mean_abs_attribution": 1.6822466850280762
+    },
+    {
+      "genre": "Mystery",
+      "token": "charge",
+      "count": 1,
+      "mean_attribution": -1.0970985889434814,
+      "mean_abs_attribution": 1.0970985889434814
+    },
+    {
+      "genre": "Mystery",
+      "token": "asking",
+      "count": 1,
+      "mean_attribution": 0.423898845911026,
+      "mean_abs_attribution": 0.423898845911026
+    },
+    {
+      "genre": "Mystery",
+      "token": "call",
+      "count": 1,
+      "mean_attribution": 0.4245116710662842,
+      "mean_abs_attribution": 0.4245116710662842
+    },
+    {
+      "genre": "Mystery",
+      "token": "serial",
+      "count": 2,
+      "mean_attribution": 0.8910456299781799,
+      "mean_abs_attribution": 0.8910456299781799
+    },
+    {
+      "genre": "Mystery",
+      "token": "girlfriend",
+      "count": 2,
+      "mean_attribution": 0.9673636555671692,
+      "mean_abs_attribution": 0.9673636555671692
+    },
+    {
+      "genre": "Mystery",
+      "token": "weird",
+      "count": 2,
+      "mean_attribution": 1.0544589161872864,
+      "mean_abs_attribution": 1.0544589161872864
+    },
+    {
+      "genre": "Mystery",
+      "token": "phone",
+      "count": 2,
+      "mean_attribution": 1.0553972721099854,
+      "mean_abs_attribution": 1.0553972721099854
+    },
+    {
+      "genre": "Mystery",
+      "token": "professor",
+      "count": 2,
+      "mean_attribution": 1.0651150047779083,
+      "mean_abs_attribution": 1.0651150047779083
+    },
+    {
+      "genre": "Mystery",
+      "token": "detective",
+      "count": 2,
+      "mean_attribution": 1.0893454551696777,
+      "mean_abs_attribution": 1.0893454551696777
+    },
+    {
+      "genre": "Mystery",
+      "token": "find",
+      "count": 2,
+      "mean_attribution": 1.1104463934898376,
+      "mean_abs_attribution": 1.1104463934898376
+    },
+    {
+      "genre": "Mystery",
+      "token": "killer",
+      "count": 4,
+      "mean_attribution": 1.1144100576639175,
+      "mean_abs_attribution": 1.1144100576639175
+    },
+    {
+      "genre": "Mystery",
+      "token": "investigation",
+      "count": 2,
+      "mean_attribution": 2.566365420818329,
+      "mean_abs_attribution": 2.566365420818329
+    },
+    {
+      "genre": "Sci-Fi",
+      "token": "alien",
+      "count": 2,
+      "mean_attribution": 3.3035006523132324,
+      "mean_abs_attribution": 3.3035006523132324
+    },
+    {
+      "genre": "Sci-Fi",
+      "token": "crashes",
+      "count": 2,
+      "mean_attribution": 2.1355388164520264,
+      "mean_abs_attribution": 2.1355388164520264
+    },
+    {
+      "genre": "Sci-Fi",
+      "token": "earth",
+      "count": 2,
+      "mean_attribution": 1.7160686254501343,
+      "mean_abs_attribution": 1.7160686254501343
+    },
+    {
+      "genre": "Sci-Fi",
+      "token": "investigate",
+      "count": 2,
+      "mean_attribution": 1.6908957958221436,
+      "mean_abs_attribution": 1.6908957958221436
+    },
+    {
+      "genre": "Sci-Fi",
+      "token": "scientists",
+      "count": 2,
+      "mean_attribution": 0.8716962337493896,
+      "mean_abs_attribution": 0.8716962337493896
+    },
+    {
+      "genre": "Sci-Fi",
+      "token": "meteorite",
+      "count": 2,
+      "mean_attribution": 0.6710732877254486,
+      "mean_abs_attribution": 0.6710732877254486
+    },
+    {
+      "genre": "Sci-Fi",
+      "token": "giant",
+      "count": 1,
+      "mean_attribution": 0.5708681344985962,
+      "mean_abs_attribution": 0.5708681344985962
+    },
+    {
+      "genre": "Sci-Fi",
+      "token": "machine",
+      "count": 1,
+      "mean_attribution": 0.4478272795677185,
+      "mean_abs_attribution": 0.4478272795677185
+    },
+    {
+      "genre": "Sci-Fi",
+      "token": "mysterious",
+      "count": 1,
+      "mean_attribution": 0.3515412211418152,
+      "mean_abs_attribution": 0.3515412211418152
+    },
+    {
+      "genre": "Sci-Fi",
+      "token": "and",
+      "count": 1,
+      "mean_attribution": 0.3436553478240967,
+      "mean_abs_attribution": 0.3436553478240967
+    },
+    {
+      "genre": "Sci-Fi",
+      "token": "appears",
+      "count": 1,
+      "mean_attribution": 0.28362613916397095,
+      "mean_abs_attribution": 0.28362613916397095
+    },
+    {
+      "genre": "Sci-Fi",
+      "token": "what",
+      "count": 1,
+      "mean_attribution": -0.250868558883667,
+      "mean_abs_attribution": 0.250868558883667
+    },
+    {
+      "genre": "Sci-Fi",
+      "token": ",",
+      "count": 1,
+      "mean_attribution": -0.2795996069908142,
+      "mean_abs_attribution": 0.2795996069908142
+    },
+    {
+      "genre": "Sci-Fi",
+      "token": "period",
+      "count": 2,
+      "mean_attribution": -0.4180762320756912,
+      "mean_abs_attribution": 0.4180762320756912
+    },
+    {
+      "genre": "Sci-Fi",
+      "token": "different",
+      "count": 1,
+      "mean_attribution": -0.5006603002548218,
+      "mean_abs_attribution": 0.5006603002548218
+    },
+    {
+      "genre": "Sci-Fi",
+      "token": "days",
+      "count": 2,
+      "mean_attribution": -0.9546340703964233,
+      "mean_abs_attribution": 0.9546340703964233
+    },
+    {
+      "genre": "Sci-Fi",
+      "token": "days",
+      "count": 2,
+      "mean_attribution": -0.9546340703964233,
+      "mean_abs_attribution": 0.9546340703964233
+    },
+    {
+      "genre": "Sci-Fi",
+      "token": "different",
+      "count": 1,
+      "mean_attribution": -0.5006603002548218,
+      "mean_abs_attribution": 0.5006603002548218
+    },
+    {
+      "genre": "Sci-Fi",
+      "token": "period",
+      "count": 2,
+      "mean_attribution": -0.4180762320756912,
+      "mean_abs_attribution": 0.4180762320756912
+    },
+    {
+      "genre": "Sci-Fi",
+      "token": ",",
+      "count": 1,
+      "mean_attribution": -0.2795996069908142,
+      "mean_abs_attribution": 0.2795996069908142
+    },
+    {
+      "genre": "Sci-Fi",
+      "token": "what",
+      "count": 1,
+      "mean_attribution": -0.250868558883667,
+      "mean_abs_attribution": 0.250868558883667
+    },
+    {
+      "genre": "Sci-Fi",
+      "token": "appears",
+      "count": 1,
+      "mean_attribution": 0.28362613916397095,
+      "mean_abs_attribution": 0.28362613916397095
+    },
+    {
+      "genre": "Sci-Fi",
+      "token": "and",
+      "count": 1,
+      "mean_attribution": 0.3436553478240967,
+      "mean_abs_attribution": 0.3436553478240967
+    },
+    {
+      "genre": "Sci-Fi",
+      "token": "mysterious",
+      "count": 1,
+      "mean_attribution": 0.3515412211418152,
+      "mean_abs_attribution": 0.3515412211418152
+    },
+    {
+      "genre": "Sci-Fi",
+      "token": "machine",
+      "count": 1,
+      "mean_attribution": 0.4478272795677185,
+      "mean_abs_attribution": 0.4478272795677185
+    },
+    {
+      "genre": "Sci-Fi",
+      "token": "giant",
+      "count": 1,
+      "mean_attribution": 0.5708681344985962,
+      "mean_abs_attribution": 0.5708681344985962
+    },
+    {
+      "genre": "Sci-Fi",
+      "token": "meteorite",
+      "count": 2,
+      "mean_attribution": 0.6710732877254486,
+      "mean_abs_attribution": 0.6710732877254486
+    },
+    {
+      "genre": "Sci-Fi",
+      "token": "scientists",
+      "count": 2,
+      "mean_attribution": 0.8716962337493896,
+      "mean_abs_attribution": 0.8716962337493896
+    },
+    {
+      "genre": "Sci-Fi",
+      "token": "investigate",
+      "count": 2,
+      "mean_attribution": 1.6908957958221436,
+      "mean_abs_attribution": 1.6908957958221436
+    },
+    {
+      "genre": "Sci-Fi",
+      "token": "earth",
+      "count": 2,
+      "mean_attribution": 1.7160686254501343,
+      "mean_abs_attribution": 1.7160686254501343
+    },
+    {
+      "genre": "Sci-Fi",
+      "token": "crashes",
+      "count": 2,
+      "mean_attribution": 2.1355388164520264,
+      "mean_abs_attribution": 2.1355388164520264
+    },
+    {
+      "genre": "Sci-Fi",
+      "token": "alien",
+      "count": 2,
+      "mean_attribution": 3.3035006523132324,
+      "mean_abs_attribution": 3.3035006523132324
+    },
+    {
+      "genre": "Fantasy",
+      "token": "alien",
+      "count": 2,
+      "mean_attribution": 2.0942548513412476,
+      "mean_abs_attribution": 2.0942548513412476
+    },
+    {
+      "genre": "Fantasy",
+      "token": "crashes",
+      "count": 2,
+      "mean_attribution": 1.987467885017395,
+      "mean_abs_attribution": 1.987467885017395
+    },
+    {
+      "genre": "Fantasy",
+      "token": "earth",
+      "count": 2,
+      "mean_attribution": 1.471595585346222,
+      "mean_abs_attribution": 1.471595585346222
+    },
+    {
+      "genre": "Fantasy",
+      "token": "investigate",
+      "count": 2,
+      "mean_attribution": 1.1655934154987335,
+      "mean_abs_attribution": 1.1655934154987335
+    },
+    {
+      "genre": "Fantasy",
+      "token": "scientists",
+      "count": 2,
+      "mean_attribution": 0.7851898819208145,
+      "mean_abs_attribution": 0.7851898819208145
+    },
+    {
+      "genre": "Fantasy",
+      "token": "meteorite",
+      "count": 2,
+      "mean_attribution": 0.6422416865825653,
+      "mean_abs_attribution": 0.6422416865825653
+    },
+    {
+      "genre": "Fantasy",
+      "token": "machine",
+      "count": 1,
+      "mean_attribution": 0.4478272795677185,
+      "mean_abs_attribution": 0.4478272795677185
+    },
+    {
+      "genre": "Fantasy",
+      "token": "giant",
+      "count": 2,
+      "mean_attribution": 0.413448303937912,
+      "mean_abs_attribution": 0.413448303937912
+    },
+    {
+      "genre": "Fantasy",
+      "token": "trying",
+      "count": 1,
+      "mean_attribution": 0.3880307674407959,
+      "mean_abs_attribution": 0.3880307674407959
+    },
+    {
+      "genre": "Fantasy",
+      "token": "and",
+      "count": 1,
+      "mean_attribution": 0.3436553478240967,
+      "mean_abs_attribution": 0.3436553478240967
+    },
+    {
+      "genre": "Fantasy",
+      "token": "appears",
+      "count": 1,
+      "mean_attribution": -0.23536886274814606,
+      "mean_abs_attribution": 0.23536886274814606
+    },
+    {
+      "genre": "Fantasy",
+      "token": "noises",
+      "count": 1,
+      "mean_attribution": -0.29681992530822754,
+      "mean_abs_attribution": 0.29681992530822754
+    },
+    {
+      "genre": "Fantasy",
+      "token": "period",
+      "count": 2,
+      "mean_attribution": -0.4925452470779419,
+      "mean_abs_attribution": 0.4925452470779419
+    },
+    {
+      "genre": "Fantasy",
+      "token": "different",
+      "count": 1,
+      "mean_attribution": -0.5006603002548218,
+      "mean_abs_attribution": 0.5006603002548218
+    },
+    {
+      "genre": "Fantasy",
+      "token": "days",
+      "count": 2,
+      "mean_attribution": -0.9425961971282959,
+      "mean_abs_attribution": 0.9425961971282959
+    },
+    {
+      "genre": "Fantasy",
+      "token": "days",
+      "count": 2,
+      "mean_attribution": -0.9425961971282959,
+      "mean_abs_attribution": 0.9425961971282959
+    },
+    {
+      "genre": "Fantasy",
+      "token": "different",
+      "count": 1,
+      "mean_attribution": -0.5006603002548218,
+      "mean_abs_attribution": 0.5006603002548218
+    },
+    {
+      "genre": "Fantasy",
+      "token": "period",
+      "count": 2,
+      "mean_attribution": -0.4925452470779419,
+      "mean_abs_attribution": 0.4925452470779419
+    },
+    {
+      "genre": "Fantasy",
+      "token": "noises",
+      "count": 1,
+      "mean_attribution": -0.29681992530822754,
+      "mean_abs_attribution": 0.29681992530822754
+    },
+    {
+      "genre": "Fantasy",
+      "token": "appears",
+      "count": 1,
+      "mean_attribution": -0.23536886274814606,
+      "mean_abs_attribution": 0.23536886274814606
+    },
+    {
+      "genre": "Fantasy",
+      "token": "and",
+      "count": 1,
+      "mean_attribution": 0.3436553478240967,
+      "mean_abs_attribution": 0.3436553478240967
+    },
+    {
+      "genre": "Fantasy",
+      "token": "trying",
+      "count": 1,
+      "mean_attribution": 0.3880307674407959,
+      "mean_abs_attribution": 0.3880307674407959
+    },
+    {
+      "genre": "Fantasy",
+      "token": "giant",
+      "count": 2,
+      "mean_attribution": 0.413448303937912,
+      "mean_abs_attribution": 0.413448303937912
+    },
+    {
+      "genre": "Fantasy",
+      "token": "machine",
+      "count": 1,
+      "mean_attribution": 0.4478272795677185,
+      "mean_abs_attribution": 0.4478272795677185
+    },
+    {
+      "genre": "Fantasy",
+      "token": "meteorite",
+      "count": 2,
+      "mean_attribution": 0.6422416865825653,
+      "mean_abs_attribution": 0.6422416865825653
+    },
+    {
+      "genre": "Fantasy",
+      "token": "scientists",
+      "count": 2,
+      "mean_attribution": 0.7851898819208145,
+      "mean_abs_attribution": 0.7851898819208145
+    },
+    {
+      "genre": "Fantasy",
+      "token": "investigate",
+      "count": 2,
+      "mean_attribution": 1.1655934154987335,
+      "mean_abs_attribution": 1.1655934154987335
+    },
+    {
+      "genre": "Fantasy",
+      "token": "earth",
+      "count": 2,
+      "mean_attribution": 1.471595585346222,
+      "mean_abs_attribution": 1.471595585346222
+    },
+    {
+      "genre": "Fantasy",
+      "token": "crashes",
+      "count": 2,
+      "mean_attribution": 1.987467885017395,
+      "mean_abs_attribution": 1.987467885017395
+    },
+    {
+      "genre": "Fantasy",
+      "token": "alien",
+      "count": 2,
+      "mean_attribution": 2.0942548513412476,
+      "mean_abs_attribution": 2.0942548513412476
+    },
+    {
+      "genre": "Family",
+      "token": "stopped",
+      "count": 2,
+      "mean_attribution": 0.9001001119613647,
+      "mean_abs_attribution": 0.9001001119613647
+    },
+    {
+      "genre": "Family",
+      "token": "the",
+      "count": 1,
+      "mean_attribution": 0.6944559812545776,
+      "mean_abs_attribution": 0.6944559812545776
+    },
+    {
+      "genre": "Family",
+      "token": "trip",
+      "count": 2,
+      "mean_attribution": 0.6392003297805786,
+      "mean_abs_attribution": 0.6392003297805786
+    },
+    {
+      "genre": "Family",
+      "token": "euphemism",
+      "count": 2,
+      "mean_attribution": 0.634463369846344,
+      "mean_abs_attribution": 0.634463369846344
+    },
+    {
+      "genre": "Family",
+      "token": "must",
+      "count": 2,
+      "mean_attribution": 0.6079425662755966,
+      "mean_abs_attribution": 0.6079425662755966
+    },
+    {
+      "genre": "Family",
+      "token": "wind",
+      "count": 2,
+      "mean_attribution": 0.5037302523851395,
+      "mean_abs_attribution": 0.5037302523851395
+    },
+    {
+      "genre": "Family",
+      "token": "spooks",
+      "count": 1,
+      "mean_attribution": 0.36214056611061096,
+      "mean_abs_attribution": 0.36214056611061096
+    },
+    {
+      "genre": "Family",
+      "token": "gruesome",
+      "count": 1,
+      "mean_attribution": -0.38407886028289795,
+      "mean_abs_attribution": 0.38407886028289795
+    },
+    {
+      "genre": "Family",
+      "token": "because",
+      "count": 2,
+      "mean_attribution": -0.53521528840065,
+      "mean_abs_attribution": 0.53521528840065
+    },
+    {
+      "genre": "Family",
+      "token": ",",
+      "count": 1,
+      "mean_attribution": -0.6370391845703125,
+      "mean_abs_attribution": 0.6370391845703125
+    },
+    {
+      "genre": "Family",
+      "token": "outhouse",
+      "count": 2,
+      "mean_attribution": -0.6518233418464661,
+      "mean_abs_attribution": 0.6518233418464661
+    },
+    {
+      "genre": "Family",
+      "token": "starts",
+      "count": 2,
+      "mean_attribution": -0.7452025860548019,
+      "mean_abs_attribution": 0.7452025860548019
+    },
+    {
+      "genre": "Family",
+      "token": "soon",
+      "count": 2,
+      "mean_attribution": -0.8858932852745056,
+      "mean_abs_attribution": 0.8858932852745056
+    },
+    {
+      "genre": "Family",
+      "token": "homes",
+      "count": 2,
+      "mean_attribution": -0.9006080627441406,
+      "mean_abs_attribution": 0.9006080627441406
+    },
+    {
+      "genre": "Family",
+      "token": "homes",
+      "count": 2,
+      "mean_attribution": -0.9006080627441406,
+      "mean_abs_attribution": 0.9006080627441406
+    },
+    {
+      "genre": "Family",
+      "token": "soon",
+      "count": 2,
+      "mean_attribution": -0.8858932852745056,
+      "mean_abs_attribution": 0.8858932852745056
+    },
+    {
+      "genre": "Family",
+      "token": "starts",
+      "count": 2,
+      "mean_attribution": -0.7452025860548019,
+      "mean_abs_attribution": 0.7452025860548019
+    },
+    {
+      "genre": "Family",
+      "token": "outhouse",
+      "count": 2,
+      "mean_attribution": -0.6518233418464661,
+      "mean_abs_attribution": 0.6518233418464661
+    },
+    {
+      "genre": "Family",
+      "token": ",",
+      "count": 1,
+      "mean_attribution": -0.6370391845703125,
+      "mean_abs_attribution": 0.6370391845703125
+    },
+    {
+      "genre": "Family",
+      "token": "because",
+      "count": 2,
+      "mean_attribution": -0.53521528840065,
+      "mean_abs_attribution": 0.53521528840065
+    },
+    {
+      "genre": "Family",
+      "token": "gruesome",
+      "count": 1,
+      "mean_attribution": -0.38407886028289795,
+      "mean_abs_attribution": 0.38407886028289795
+    },
+    {
+      "genre": "Family",
+      "token": "spooks",
+      "count": 1,
+      "mean_attribution": 0.36214056611061096,
+      "mean_abs_attribution": 0.36214056611061096
+    },
+    {
+      "genre": "Family",
+      "token": "wind",
+      "count": 2,
+      "mean_attribution": 0.5037302523851395,
+      "mean_abs_attribution": 0.5037302523851395
+    },
+    {
+      "genre": "Family",
+      "token": "must",
+      "count": 2,
+      "mean_attribution": 0.6079425662755966,
+      "mean_abs_attribution": 0.6079425662755966
+    },
+    {
+      "genre": "Family",
+      "token": "euphemism",
+      "count": 2,
+      "mean_attribution": 0.634463369846344,
+      "mean_abs_attribution": 0.634463369846344
+    },
+    {
+      "genre": "Family",
+      "token": "trip",
+      "count": 2,
+      "mean_attribution": 0.6392003297805786,
+      "mean_abs_attribution": 0.6392003297805786
+    },
+    {
+      "genre": "Family",
+      "token": "the",
+      "count": 1,
+      "mean_attribution": 0.6944559812545776,
+      "mean_abs_attribution": 0.6944559812545776
+    },
+    {
+      "genre": "Family",
+      "token": "stopped",
+      "count": 2,
+      "mean_attribution": 0.9001001119613647,
+      "mean_abs_attribution": 0.9001001119613647
+    },
+    {
+      "genre": "Biography",
+      "token": "war",
+      "count": 1,
+      "mean_attribution": 6.116278648376465,
+      "mean_abs_attribution": 6.116278648376465
+    },
+    {
+      "genre": "Biography",
+      "token": "battles",
+      "count": 2,
+      "mean_attribution": 2.9222012162208557,
+      "mean_abs_attribution": 2.9222012162208557
+    },
+    {
+      "genre": "Biography",
+      "token": "infantry",
+      "count": 1,
+      "mean_attribution": 2.3836498260498047,
+      "mean_abs_attribution": 2.3836498260498047
+    },
+    {
+      "genre": "Biography",
+      "token": "bandit",
+      "count": 4,
+      "mean_attribution": 2.336769327521324,
+      "mean_abs_attribution": 2.336769327521324
+    },
+    {
+      "genre": "Biography",
+      "token": "elephant",
+      "count": 1,
+      "mean_attribution": 2.331718921661377,
+      "mean_abs_attribution": 2.331718921661377
+    },
+    {
+      "genre": "Biography",
+      "token": "coors",
+      "count": 2,
+      "mean_attribution": 1.92165607213974,
+      "mean_abs_attribution": 1.92165607213974
+    },
+    {
+      "genre": "Biography",
+      "token": "country",
+      "count": 2,
+      "mean_attribution": 1.8652133345603943,
+      "mean_abs_attribution": 1.8652133345603943
+    },
+    {
+      "genre": "Biography",
+      "token": "soviet",
+      "count": 2,
+      "mean_attribution": 1.481443703174591,
+      "mean_abs_attribution": 1.481443703174591
+    },
+    {
+      "genre": "Biography",
+      "token": "most",
+      "count": 2,
+      "mean_attribution": 1.2233048975467682,
+      "mean_abs_attribution": 1.2233048975467682
+    },
+    {
+      "genre": "Biography",
+      "token": "of",
+      "count": 4,
+      "mean_attribution": 1.1959494352340698,
+      "mean_abs_attribution": 1.1959494352340698
+    },
+    {
+      "genre": "Biography",
+      "token": "N",
+      "count": 4,
+      "mean_attribution": 1.1549392640590668,
+      "mean_abs_attribution": 1.1549392640590668
+    },
+    {
+      "genre": "Biography",
+      "token": "texas",
+      "count": 1,
+      "mean_attribution": 1.1283373832702637,
+      "mean_abs_attribution": 1.1283373832702637
+    },
+    {
+      "genre": "Biography",
+      "token": "story",
+      "count": 2,
+      "mean_attribution": 1.0982798337936401,
+      "mean_abs_attribution": 1.0982798337936401
+    },
+    {
+      "genre": "Biography",
+      "token": "across",
+      "count": 2,
+      "mean_attribution": 1.0954841375350952,
+      "mean_abs_attribution": 1.0954841375350952
+    },
+    {
+      "genre": "Biography",
+      "token": "enos",
+      "count": 1,
+      "mean_attribution": 0.4004521369934082,
+      "mean_abs_attribution": 0.4004521369934082
+    },
+    {
+      "genre": "Biography",
+      "token": "speaking",
+      "count": 1,
+      "mean_attribution": 0.389346718788147,
+      "mean_abs_attribution": 0.389346718788147
+    },
+    {
+      "genre": "Biography",
+      "token": "famous",
+      "count": 1,
+      "mean_attribution": 0.35116133093833923,
+      "mean_abs_attribution": 0.35116133093833923
+    },
+    {
+      "genre": "Biography",
+      "token": "few",
+      "count": 1,
+      "mean_attribution": -0.3508923649787903,
+      "mean_abs_attribution": 0.3508923649787903
+    },
+    {
+      "genre": "Biography",
+      "token": "karelian",
+      "count": 1,
+      "mean_attribution": -0.3526793122291565,
+      "mean_abs_attribution": 0.3526793122291565
+    },
+    {
+      "genre": "Biography",
+      "token": "continuation",
+      "count": 1,
+      "mean_attribution": -0.35627177357673645,
+      "mean_abs_attribution": 0.35627177357673645
+    },
+    {
+      "genre": "Biography",
+      "token": "less",
+      "count": 1,
+      "mean_attribution": -1.4603770971298218,
+      "mean_abs_attribution": 1.4603770971298218
+    },
+    {
+      "genre": "Biography",
+      "token": "or",
+      "count": 1,
+      "mean_attribution": -1.0186313390731812,
+      "mean_abs_attribution": 1.0186313390731812
+    },
+    {
+      "genre": "Biography",
+      "token": "transport",
+      "count": 2,
+      "mean_attribution": -0.8172950595617294,
+      "mean_abs_attribution": 0.8172950595617294
+    },
+    {
+      "genre": "Biography",
+      "token": "they",
+      "count": 1,
+      "mean_attribution": -0.739068865776062,
+      "mean_abs_attribution": 0.739068865776062
+    },
+    {
+      "genre": "Biography",
+      "token": "against",
+      "count": 1,
+      "mean_attribution": -0.71751868724823,
+      "mean_abs_attribution": 0.71751868724823
+    },
+    {
+      "genre": "Biography",
+      "token": "the",
+      "count": 2,
+      "mean_attribution": -0.7080300599336624,
+      "mean_abs_attribution": 0.7080300599336624
+    },
+    {
+      "genre": "Biography",
+      "token": "faced",
+      "count": 2,
+      "mean_attribution": -0.5287880599498749,
+      "mean_abs_attribution": 0.5287880599498749
+    },
+    {
+      "genre": "Biography",
+      "token": "wartime",
+      "count": 1,
+      "mean_attribution": -0.3617994785308838,
+      "mean_abs_attribution": 0.3617994785308838
+    },
+    {
+      "genre": "Biography",
+      "token": "a",
+      "count": 1,
+      "mean_attribution": -0.3582497239112854,
+      "mean_abs_attribution": 0.3582497239112854
+    },
+    {
+      "genre": "Biography",
+      "token": "continuation",
+      "count": 1,
+      "mean_attribution": -0.35627177357673645,
+      "mean_abs_attribution": 0.35627177357673645
+    },
+    {
+      "genre": "Biography",
+      "token": "karelian",
+      "count": 1,
+      "mean_attribution": -0.3526793122291565,
+      "mean_abs_attribution": 0.3526793122291565
+    },
+    {
+      "genre": "Biography",
+      "token": "few",
+      "count": 1,
+      "mean_attribution": -0.3508923649787903,
+      "mean_abs_attribution": 0.3508923649787903
+    },
+    {
+      "genre": "Biography",
+      "token": "famous",
+      "count": 1,
+      "mean_attribution": 0.35116133093833923,
+      "mean_abs_attribution": 0.35116133093833923
+    },
+    {
+      "genre": "Biography",
+      "token": "speaking",
+      "count": 1,
+      "mean_attribution": 0.389346718788147,
+      "mean_abs_attribution": 0.389346718788147
+    },
+    {
+      "genre": "Biography",
+      "token": "enos",
+      "count": 1,
+      "mean_attribution": 0.4004521369934082,
+      "mean_abs_attribution": 0.4004521369934082
+    },
+    {
+      "genre": "Biography",
+      "token": "across",
+      "count": 2,
+      "mean_attribution": 1.0954841375350952,
+      "mean_abs_attribution": 1.0954841375350952
+    },
+    {
+      "genre": "Biography",
+      "token": "story",
+      "count": 2,
+      "mean_attribution": 1.0982798337936401,
+      "mean_abs_attribution": 1.0982798337936401
+    },
+    {
+      "genre": "Biography",
+      "token": "texas",
+      "count": 1,
+      "mean_attribution": 1.1283373832702637,
+      "mean_abs_attribution": 1.1283373832702637
+    },
+    {
+      "genre": "Biography",
+      "token": "N",
+      "count": 4,
+      "mean_attribution": 1.1549392640590668,
+      "mean_abs_attribution": 1.1549392640590668
+    },
+    {
+      "genre": "Biography",
+      "token": "of",
+      "count": 4,
+      "mean_attribution": 1.1959494352340698,
+      "mean_abs_attribution": 1.1959494352340698
+    },
+    {
+      "genre": "War",
+      "token": "war",
+      "count": 4,
+      "mean_attribution": 5.859904646873474,
+      "mean_abs_attribution": 5.859904646873474
+    },
+    {
+      "genre": "War",
+      "token": "battles",
+      "count": 2,
+      "mean_attribution": 3.162517547607422,
+      "mean_abs_attribution": 3.162517547607422
+    },
+    {
+      "genre": "War",
+      "token": "infantry",
+      "count": 2,
+      "mean_attribution": 1.9481555819511414,
+      "mean_abs_attribution": 1.9481555819511414
+    },
+    {
+      "genre": "War",
+      "token": "most",
+      "count": 1,
+      "mean_attribution": 1.7075464725494385,
+      "mean_abs_attribution": 1.7075464725494385
+    },
+    {
+      "genre": "War",
+      "token": "soviet",
+      "count": 2,
+      "mean_attribution": 1.5297908782958984,
+      "mean_abs_attribution": 1.5297908782958984
+    },
+    {
+      "genre": "War",
+      "token": "leader",
+      "count": 2,
+      "mean_attribution": 1.1080399751663208,
+      "mean_abs_attribution": 1.1080399751663208
+    },
+    {
+      "genre": "War",
+      "token": "handguns",
+      "count": 2,
+      "mean_attribution": 1.0831796824932098,
+      "mean_abs_attribution": 1.0831796824932098
+    },
+    {
+      "genre": "War",
+      "token": "story",
+      "count": 2,
+      "mean_attribution": 0.9358104169368744,
+      "mean_abs_attribution": 0.9358104169368744
+    },
+    {
+      "genre": "War",
+      "token": "of",
+      "count": 2,
+      "mean_attribution": 0.851986289024353,
+      "mean_abs_attribution": 0.851986289024353
+    },
+    {
+      "genre": "War",
+      "token": "N",
+      "count": 2,
+      "mean_attribution": 0.8135986030101776,
+      "mean_abs_attribution": 0.8135986030101776
+    },
+    {
+      "genre": "War",
+      "token": "testimony",
+      "count": 2,
+      "mean_attribution": 0.7511430978775024,
+      "mean_abs_attribution": 0.7511430978775024
+    },
+    {
+      "genre": "War",
+      "token": "loading",
+      "count": 4,
+      "mean_attribution": 0.7159994095563889,
+      "mean_abs_attribution": 0.7159994095563889
+    },
+    {
+      "genre": "War",
+      "token": "continuation",
+      "count": 1,
+      "mean_attribution": 0.42511487007141113,
+      "mean_abs_attribution": 0.42511487007141113
+    },
+    {
+      "genre": "War",
+      "token": "regiment",
+      "count": 1,
+      "mean_attribution": 0.2840930223464966,
+      "mean_abs_attribution": 0.2840930223464966
+    },
+    {
+      "genre": "War",
+      "token": "tells",
+      "count": 1,
+      "mean_attribution": -0.27938979864120483,
+      "mean_abs_attribution": 0.27938979864120483
+    },
+    {
+      "genre": "War",
+      "token": "swedish",
+      "count": 1,
+      "mean_attribution": -0.30615490674972534,
+      "mean_abs_attribution": 0.30615490674972534
+    },
+    {
+      "genre": "War",
+      "token": "from",
+      "count": 1,
+      "mean_attribution": -0.31240445375442505,
+      "mean_abs_attribution": 0.31240445375442505
+    },
+    {
+      "genre": "War",
+      "token": "gun",
+      "count": 1,
+      "mean_attribution": -0.6087450981140137,
+      "mean_abs_attribution": 0.6087450981140137
+    },
+    {
+      "genre": "War",
+      "token": "a",
+      "count": 2,
+      "mean_attribution": -0.6559486389160156,
+      "mean_abs_attribution": 0.6559486389160156
+    },
+    {
+      "genre": "War",
+      "token": "faced",
+      "count": 1,
+      "mean_attribution": -0.6984908580780029,
+      "mean_abs_attribution": 0.6984908580780029
+    },
+    {
+      "genre": "War",
+      "token": "thriller",
+      "count": 2,
+      "mean_attribution": -1.6690219640731812,
+      "mean_abs_attribution": 1.6690219640731812
+    },
+    {
+      "genre": "War",
+      "token": "suddenly",
+      "count": 2,
+      "mean_attribution": -1.1081839799880981,
+      "mean_abs_attribution": 1.1081839799880981
+    },
+    {
+      "genre": "War",
+      "token": "the",
+      "count": 1,
+      "mean_attribution": -1.00240159034729,
+      "mean_abs_attribution": 1.00240159034729
+    },
+    {
+      "genre": "War",
+      "token": "find",
+      "count": 2,
+      "mean_attribution": -0.8109453916549683,
+      "mean_abs_attribution": 0.8109453916549683
+    },
+    {
+      "genre": "War",
+      "token": "solve",
+      "count": 1,
+      "mean_attribution": -0.7469612956047058,
+      "mean_abs_attribution": 0.7469612956047058
+    },
+    {
+      "genre": "War",
+      "token": "someone",
+      "count": 2,
+      "mean_attribution": -0.7448280453681946,
+      "mean_abs_attribution": 0.7448280453681946
+    },
+    {
+      "genre": "War",
+      "token": "they",
+      "count": 1,
+      "mean_attribution": -0.739068865776062,
+      "mean_abs_attribution": 0.739068865776062
+    },
+    {
+      "genre": "War",
+      "token": "against",
+      "count": 1,
+      "mean_attribution": -0.71751868724823,
+      "mean_abs_attribution": 0.71751868724823
+    },
+    {
+      "genre": "War",
+      "token": "faced",
+      "count": 1,
+      "mean_attribution": -0.6984908580780029,
+      "mean_abs_attribution": 0.6984908580780029
+    },
+    {
+      "genre": "War",
+      "token": "a",
+      "count": 2,
+      "mean_attribution": -0.6559486389160156,
+      "mean_abs_attribution": 0.6559486389160156
+    },
+    {
+      "genre": "War",
+      "token": "gun",
+      "count": 1,
+      "mean_attribution": -0.6087450981140137,
+      "mean_abs_attribution": 0.6087450981140137
+    },
+    {
+      "genre": "War",
+      "token": "from",
+      "count": 1,
+      "mean_attribution": -0.31240445375442505,
+      "mean_abs_attribution": 0.31240445375442505
+    },
+    {
+      "genre": "War",
+      "token": "swedish",
+      "count": 1,
+      "mean_attribution": -0.30615490674972534,
+      "mean_abs_attribution": 0.30615490674972534
+    },
+    {
+      "genre": "War",
+      "token": "tells",
+      "count": 1,
+      "mean_attribution": -0.27938979864120483,
+      "mean_abs_attribution": 0.27938979864120483
+    },
+    {
+      "genre": "War",
+      "token": "regiment",
+      "count": 1,
+      "mean_attribution": 0.2840930223464966,
+      "mean_abs_attribution": 0.2840930223464966
+    },
+    {
+      "genre": "War",
+      "token": "continuation",
+      "count": 1,
+      "mean_attribution": 0.42511487007141113,
+      "mean_abs_attribution": 0.42511487007141113
+    },
+    {
+      "genre": "War",
+      "token": "loading",
+      "count": 4,
+      "mean_attribution": 0.7159994095563889,
+      "mean_abs_attribution": 0.7159994095563889
+    },
+    {
+      "genre": "War",
+      "token": "testimony",
+      "count": 2,
+      "mean_attribution": 0.7511430978775024,
+      "mean_abs_attribution": 0.7511430978775024
+    },
+    {
+      "genre": "War",
+      "token": "N",
+      "count": 2,
+      "mean_attribution": 0.8135986030101776,
+      "mean_abs_attribution": 0.8135986030101776
+    },
+    {
+      "genre": "War",
+      "token": "of",
+      "count": 2,
+      "mean_attribution": 0.851986289024353,
+      "mean_abs_attribution": 0.851986289024353
+    },
+    {
+      "genre": "History",
+      "token": "war",
+      "count": 2,
+      "mean_attribution": 3.9469574093818665,
+      "mean_abs_attribution": 3.9469574093818665
+    },
+    {
+      "genre": "History",
+      "token": "battles",
+      "count": 2,
+      "mean_attribution": 3.361133873462677,
+      "mean_abs_attribution": 3.361133873462677
+    },
+    {
+      "genre": "History",
+      "token": "bandit",
+      "count": 4,
+      "mean_attribution": 2.96834796667099,
+      "mean_abs_attribution": 2.96834796667099
+    },
+    {
+      "genre": "History",
+      "token": "coors",
+      "count": 2,
+      "mean_attribution": 2.4754695892333984,
+      "mean_abs_attribution": 2.4754695892333984
+    },
+    {
+      "genre": "History",
+      "token": "elephant",
+      "count": 1,
+      "mean_attribution": 2.331718921661377,
+      "mean_abs_attribution": 2.331718921661377
+    },
+    {
+      "genre": "History",
+      "token": "country",
+      "count": 2,
+      "mean_attribution": 2.0299190878868103,
+      "mean_abs_attribution": 2.0299190878868103
+    },
+    {
+      "genre": "History",
+      "token": "infantry",
+      "count": 2,
+      "mean_attribution": 1.5232935547828674,
+      "mean_abs_attribution": 1.5232935547828674
+    },
+    {
+      "genre": "History",
+      "token": "soviet",
+      "count": 2,
+      "mean_attribution": 1.4504428505897522,
+      "mean_abs_attribution": 1.4504428505897522
+    },
+    {
+      "genre": "History",
+      "token": "of",
+      "count": 4,
+      "mean_attribution": 1.2867446392774582,
+      "mean_abs_attribution": 1.2867446392774582
+    },
+    {
+      "genre": "History",
+      "token": "N",
+      "count": 4,
+      "mean_attribution": 1.2734511867165565,
+      "mean_abs_attribution": 1.2734511867165565
+    },
+    {
+      "genre": "History",
+      "token": "most",
+      "count": 2,
+      "mean_attribution": 1.221081793308258,
+      "mean_abs_attribution": 1.221081793308258
+    },
+    {
+      "genre": "History",
+      "token": "texas",
+      "count": 1,
+      "mean_attribution": 1.1283373832702637,
+      "mean_abs_attribution": 1.1283373832702637
+    },
+    {
+      "genre": "History",
+      "token": "across",
+      "count": 2,
+      "mean_attribution": 1.1010675728321075,
+      "mean_abs_attribution": 1.1010675728321075
+    },
+    {
+      "genre": "History",
+      "token": "story",
+      "count": 2,
+      "mean_attribution": 1.0308995842933655,
+      "mean_abs_attribution": 1.0308995842933655
+    },
+    {
+      "genre": "History",
+      "token": "continuation",
+      "count": 1,
+      "mean_attribution": 0.34099841117858887,
+      "mean_abs_attribution": 0.34099841117858887
+    },
+    {
+      "genre": "History",
+      "token": "the",
+      "count": 3,
+      "mean_attribution": -0.3467939893404643,
+      "mean_abs_attribution": 0.5585866967837015
+    },
+    {
+      "genre": "History",
+      "token": "swedish",
+      "count": 1,
+      "mean_attribution": -0.40818122029304504,
+      "mean_abs_attribution": 0.40818122029304504
+    },
+    {
+      "genre": "History",
+      "token": "cases",
+      "count": 1,
+      "mean_attribution": -0.4522029757499695,
+      "mean_abs_attribution": 0.4522029757499695
+    },
+    {
+      "genre": "History",
+      "token": ".",
+      "count": 1,
+      "mean_attribution": -0.45353829860687256,
+      "mean_abs_attribution": 0.45353829860687256
+    },
+    {
+      "genre": "History",
+      "token": "up",
+      "count": 1,
+      "mean_attribution": -0.4687784016132355,
+      "mean_abs_attribution": 0.4687784016132355
+    },
+    {
+      "genre": "History",
+      "token": "transport",
+      "count": 1,
+      "mean_attribution": -1.1812766790390015,
+      "mean_abs_attribution": 1.1812766790390015
+    },
+    {
+      "genre": "History",
+      "token": "or",
+      "count": 1,
+      "mean_attribution": -1.0186313390731812,
+      "mean_abs_attribution": 1.0186313390731812
+    },
+    {
+      "genre": "History",
+      "token": "less",
+      "count": 2,
+      "mean_attribution": -0.9917420148849487,
+      "mean_abs_attribution": 0.9917420148849487
+    },
+    {
+      "genre": "History",
+      "token": "they",
+      "count": 1,
+      "mean_attribution": -0.739068865776062,
+      "mean_abs_attribution": 0.739068865776062
+    },
+    {
+      "genre": "History",
+      "token": "against",
+      "count": 1,
+      "mean_attribution": -0.71751868724823,
+      "mean_abs_attribution": 0.71751868724823
+    },
+    {
+      "genre": "History",
+      "token": "faced",
+      "count": 1,
+      "mean_attribution": -0.6984908580780029,
+      "mean_abs_attribution": 0.6984908580780029
+    },
+    {
+      "genre": "History",
+      "token": "their",
+      "count": 1,
+      "mean_attribution": -0.5899874567985535,
+      "mean_abs_attribution": 0.5899874567985535
+    },
+    {
+      "genre": "History",
+      "token": "up",
+      "count": 1,
+      "mean_attribution": -0.4687784016132355,
+      "mean_abs_attribution": 0.4687784016132355
+    },
+    {
+      "genre": "History",
+      "token": ".",
+      "count": 1,
+      "mean_attribution": -0.45353829860687256,
+      "mean_abs_attribution": 0.45353829860687256
+    },
+    {
+      "genre": "History",
+      "token": "cases",
+      "count": 1,
+      "mean_attribution": -0.4522029757499695,
+      "mean_abs_attribution": 0.4522029757499695
+    },
+    {
+      "genre": "History",
+      "token": "swedish",
+      "count": 1,
+      "mean_attribution": -0.40818122029304504,
+      "mean_abs_attribution": 0.40818122029304504
+    },
+    {
+      "genre": "History",
+      "token": "the",
+      "count": 3,
+      "mean_attribution": -0.3467939893404643,
+      "mean_abs_attribution": 0.5585866967837015
+    },
+    {
+      "genre": "History",
+      "token": "continuation",
+      "count": 1,
+      "mean_attribution": 0.34099841117858887,
+      "mean_abs_attribution": 0.34099841117858887
+    },
+    {
+      "genre": "History",
+      "token": "story",
+      "count": 2,
+      "mean_attribution": 1.0308995842933655,
+      "mean_abs_attribution": 1.0308995842933655
+    },
+    {
+      "genre": "History",
+      "token": "across",
+      "count": 2,
+      "mean_attribution": 1.1010675728321075,
+      "mean_abs_attribution": 1.1010675728321075
+    },
+    {
+      "genre": "History",
+      "token": "texas",
+      "count": 1,
+      "mean_attribution": 1.1283373832702637,
+      "mean_abs_attribution": 1.1283373832702637
+    },
+    {
+      "genre": "History",
+      "token": "most",
+      "count": 2,
+      "mean_attribution": 1.221081793308258,
+      "mean_abs_attribution": 1.221081793308258
+    },
+    {
+      "genre": "History",
+      "token": "N",
+      "count": 4,
+      "mean_attribution": 1.2734511867165565,
+      "mean_abs_attribution": 1.2734511867165565
+    },
+    {
+      "genre": "History",
+      "token": "of",
+      "count": 4,
+      "mean_attribution": 1.2867446392774582,
+      "mean_abs_attribution": 1.2867446392774582
+    },
+    {
+      "genre": "History",
+      "token": "soviet",
+      "count": 2,
+      "mean_attribution": 1.4504428505897522,
+      "mean_abs_attribution": 1.4504428505897522
+    },
+    {
+      "genre": "Animation",
+      "token": "stopped",
+      "count": 2,
+      "mean_attribution": 0.876460075378418,
+      "mean_abs_attribution": 0.876460075378418
+    },
+    {
+      "genre": "Animation",
+      "token": "must",
+      "count": 2,
+      "mean_attribution": 0.7171871066093445,
+      "mean_abs_attribution": 0.7171871066093445
+    },
+    {
+      "genre": "Animation",
+      "token": "trip",
+      "count": 2,
+      "mean_attribution": 0.705195814371109,
+      "mean_abs_attribution": 0.705195814371109
+    },
+    {
+      "genre": "Animation",
+      "token": "euphemism",
+      "count": 2,
+      "mean_attribution": 0.671972930431366,
+      "mean_abs_attribution": 0.671972930431366
+    },
+    {
+      "genre": "Animation",
+      "token": "wind",
+      "count": 1,
+      "mean_attribution": 0.6494301557540894,
+      "mean_abs_attribution": 0.6494301557540894
+    },
+    {
+      "genre": "Animation",
+      "token": "the",
+      "count": 3,
+      "mean_attribution": 0.5164717137813568,
+      "mean_abs_attribution": 0.5164717137813568
+    },
+    {
+      "genre": "Animation",
+      "token": "grinch",
+      "count": 1,
+      "mean_attribution": 0.4331897795200348,
+      "mean_abs_attribution": 0.4331897795200348
+    },
+    {
+      "genre": "Animation",
+      "token": "outhouse",
+      "count": 2,
+      "mean_attribution": -0.5621408224105835,
+      "mean_abs_attribution": 0.5621408224105835
+    },
+    {
+      "genre": "Animation",
+      "token": "because",
+      "count": 2,
+      "mean_attribution": -0.6245939433574677,
+      "mean_abs_attribution": 0.6245939433574677
+    },
+    {
+      "genre": "Animation",
+      "token": ",",
+      "count": 1,
+      "mean_attribution": -0.6370391845703125,
+      "mean_abs_attribution": 0.6370391845703125
+    },
+    {
+      "genre": "Animation",
+      "token": "starts",
+      "count": 2,
+      "mean_attribution": -0.8746517896652222,
+      "mean_abs_attribution": 0.8746517896652222
+    },
+    {
+      "genre": "Animation",
+      "token": "homes",
+      "count": 2,
+      "mean_attribution": -0.9480407536029816,
+      "mean_abs_attribution": 0.9480407536029816
+    },
+    {
+      "genre": "Animation",
+      "token": "soon",
+      "count": 2,
+      "mean_attribution": -1.0056192874908447,
+      "mean_abs_attribution": 1.0056192874908447
+    },
+    {
+      "genre": "Animation",
+      "token": "soon",
+      "count": 2,
+      "mean_attribution": -1.0056192874908447,
+      "mean_abs_attribution": 1.0056192874908447
+    },
+    {
+      "genre": "Animation",
+      "token": "homes",
+      "count": 2,
+      "mean_attribution": -0.9480407536029816,
+      "mean_abs_attribution": 0.9480407536029816
+    },
+    {
+      "genre": "Animation",
+      "token": "starts",
+      "count": 2,
+      "mean_attribution": -0.8746517896652222,
+      "mean_abs_attribution": 0.8746517896652222
+    },
+    {
+      "genre": "Animation",
+      "token": ",",
+      "count": 1,
+      "mean_attribution": -0.6370391845703125,
+      "mean_abs_attribution": 0.6370391845703125
+    },
+    {
+      "genre": "Animation",
+      "token": "because",
+      "count": 2,
+      "mean_attribution": -0.6245939433574677,
+      "mean_abs_attribution": 0.6245939433574677
+    },
+    {
+      "genre": "Animation",
+      "token": "outhouse",
+      "count": 2,
+      "mean_attribution": -0.5621408224105835,
+      "mean_abs_attribution": 0.5621408224105835
+    },
+    {
+      "genre": "Animation",
+      "token": "grinch",
+      "count": 1,
+      "mean_attribution": 0.4331897795200348,
+      "mean_abs_attribution": 0.4331897795200348
+    },
+    {
+      "genre": "Animation",
+      "token": "the",
+      "count": 3,
+      "mean_attribution": 0.5164717137813568,
+      "mean_abs_attribution": 0.5164717137813568
+    },
+    {
+      "genre": "Animation",
+      "token": "wind",
+      "count": 1,
+      "mean_attribution": 0.6494301557540894,
+      "mean_abs_attribution": 0.6494301557540894
+    },
+    {
+      "genre": "Animation",
+      "token": "euphemism",
+      "count": 2,
+      "mean_attribution": 0.671972930431366,
+      "mean_abs_attribution": 0.671972930431366
+    },
+    {
+      "genre": "Animation",
+      "token": "trip",
+      "count": 2,
+      "mean_attribution": 0.705195814371109,
+      "mean_abs_attribution": 0.705195814371109
+    },
+    {
+      "genre": "Animation",
+      "token": "must",
+      "count": 2,
+      "mean_attribution": 0.7171871066093445,
+      "mean_abs_attribution": 0.7171871066093445
+    },
+    {
+      "genre": "Animation",
+      "token": "stopped",
+      "count": 2,
+      "mean_attribution": 0.876460075378418,
+      "mean_abs_attribution": 0.876460075378418
+    },
+    {
+      "genre": "Sport",
+      "token": "coors",
+      "count": 1,
+      "mean_attribution": 3.0290603637695312,
+      "mean_abs_attribution": 3.0290603637695312
+    },
+    {
+      "genre": "Sport",
+      "token": "bandit",
+      "count": 4,
+      "mean_attribution": 2.1624894738197327,
+      "mean_abs_attribution": 2.1624894738197327
+    },
+    {
+      "genre": "Sport",
+      "token": "of",
+      "count": 1,
+      "mean_attribution": 2.1354897022247314,
+      "mean_abs_attribution": 2.1354897022247314
+    },
+    {
+      "genre": "Sport",
+      "token": "N",
+      "count": 1,
+      "mean_attribution": 2.066995143890381,
+      "mean_abs_attribution": 2.066995143890381
+    },
+    {
+      "genre": "Sport",
+      "token": "elephant",
+      "count": 2,
+      "mean_attribution": 1.9539765119552612,
+      "mean_abs_attribution": 1.9539765119552612
+    },
+    {
+      "genre": "Sport",
+      "token": "country",
+      "count": 2,
+      "mean_attribution": 1.623805359005928,
+      "mean_abs_attribution": 1.623805359005928
+    },
+    {
+      "genre": "Sport",
+      "token": "across",
+      "count": 2,
+      "mean_attribution": 1.1721657812595367,
+      "mean_abs_attribution": 1.1721657812595367
+    },
+    {
+      "genre": "Sport",
+      "token": "texas",
+      "count": 2,
+      "mean_attribution": 0.9923887848854065,
+      "mean_abs_attribution": 0.9923887848854065
+    },
+    {
+      "genre": "Sport",
+      "token": "the",
+      "count": 1,
+      "mean_attribution": 0.45954659581184387,
+      "mean_abs_attribution": 0.45954659581184387
+    },
+    {
+      "genre": "Sport",
+      "token": "make",
+      "count": 1,
+      "mean_attribution": 0.4460621476173401,
+      "mean_abs_attribution": 0.4460621476173401
+    },
+    {
+      "genre": "Sport",
+      "token": ".",
+      "count": 1,
+      "mean_attribution": 0.35636067390441895,
+      "mean_abs_attribution": 0.35636067390441895
+    },
+    {
+      "genre": "Sport",
+      "token": "or",
+      "count": 2,
+      "mean_attribution": -0.7368575036525726,
+      "mean_abs_attribution": 0.7368575036525726
+    },
+    {
+      "genre": "Sport",
+      "token": "transport",
+      "count": 2,
+      "mean_attribution": -0.8174829930067062,
+      "mean_abs_attribution": 0.8174829930067062
+    },
+    {
+      "genre": "Sport",
+      "token": "less",
+      "count": 2,
+      "mean_attribution": -1.0991108417510986,
+      "mean_abs_attribution": 1.0991108417510986
+    },
+    {
+      "genre": "Sport",
+      "token": "less",
+      "count": 2,
+      "mean_attribution": -1.0991108417510986,
+      "mean_abs_attribution": 1.0991108417510986
+    },
+    {
+      "genre": "Sport",
+      "token": "transport",
+      "count": 2,
+      "mean_attribution": -0.8174829930067062,
+      "mean_abs_attribution": 0.8174829930067062
+    },
+    {
+      "genre": "Sport",
+      "token": "or",
+      "count": 2,
+      "mean_attribution": -0.7368575036525726,
+      "mean_abs_attribution": 0.7368575036525726
+    },
+    {
+      "genre": "Sport",
+      "token": ".",
+      "count": 1,
+      "mean_attribution": 0.35636067390441895,
+      "mean_abs_attribution": 0.35636067390441895
+    },
+    {
+      "genre": "Sport",
+      "token": "make",
+      "count": 1,
+      "mean_attribution": 0.4460621476173401,
+      "mean_abs_attribution": 0.4460621476173401
+    },
+    {
+      "genre": "Sport",
+      "token": "the",
+      "count": 1,
+      "mean_attribution": 0.45954659581184387,
+      "mean_abs_attribution": 0.45954659581184387
+    },
+    {
+      "genre": "Sport",
+      "token": "texas",
+      "count": 2,
+      "mean_attribution": 0.9923887848854065,
+      "mean_abs_attribution": 0.9923887848854065
+    },
+    {
+      "genre": "Sport",
+      "token": "across",
+      "count": 2,
+      "mean_attribution": 1.1721657812595367,
+      "mean_abs_attribution": 1.1721657812595367
+    },
+    {
+      "genre": "Sport",
+      "token": "country",
+      "count": 2,
+      "mean_attribution": 1.623805359005928,
+      "mean_abs_attribution": 1.623805359005928
+    },
+    {
+      "genre": "Sport",
+      "token": "elephant",
+      "count": 2,
+      "mean_attribution": 1.9539765119552612,
+      "mean_abs_attribution": 1.9539765119552612
+    },
+    {
+      "genre": "Sport",
+      "token": "N",
+      "count": 1,
+      "mean_attribution": 2.066995143890381,
+      "mean_abs_attribution": 2.066995143890381
+    },
+    {
+      "genre": "Sport",
+      "token": "of",
+      "count": 1,
+      "mean_attribution": 2.1354897022247314,
+      "mean_abs_attribution": 2.1354897022247314
+    },
+    {
+      "genre": "Sport",
+      "token": "bandit",
+      "count": 4,
+      "mean_attribution": 2.1624894738197327,
+      "mean_abs_attribution": 2.1624894738197327
+    },
+    {
+      "genre": "Sport",
+      "token": "coors",
+      "count": 1,
+      "mean_attribution": 3.0290603637695312,
+      "mean_abs_attribution": 3.0290603637695312
+    }
+  ],
+  "figures": {
+    "global_modality_utilization": "C:\\Users\\samue\\Documents\\diplomka\\outputs\\global_xai\\best_neural\\global_modality_utilization.png",
+    "per_label_modality_utilization": "C:\\Users\\samue\\Documents\\diplomka\\outputs\\global_xai\\best_neural\\per_label_modality_utilization.png",
+    "prediction_context": "C:\\Users\\samue\\Documents\\diplomka\\outputs\\global_xai\\best_neural\\prediction_context.png",
+    "image_occlusion_heatmap_Drama": "C:\\Users\\samue\\Documents\\diplomka\\outputs\\global_xai\\best_neural\\image_occlusion_heatmap_Drama.png",
+    "image_occlusion_heatmap_Comedy": "C:\\Users\\samue\\Documents\\diplomka\\outputs\\global_xai\\best_neural\\image_occlusion_heatmap_Comedy.png",
+    "image_occlusion_heatmap_Romance": "C:\\Users\\samue\\Documents\\diplomka\\outputs\\global_xai\\best_neural\\image_occlusion_heatmap_Romance.png",
+    "image_occlusion_heatmap_Thriller": "C:\\Users\\samue\\Documents\\diplomka\\outputs\\global_xai\\best_neural\\image_occlusion_heatmap_Thriller.png",
+    "image_occlusion_heatmap_Crime": "C:\\Users\\samue\\Documents\\diplomka\\outputs\\global_xai\\best_neural\\image_occlusion_heatmap_Crime.png",
+    "image_occlusion_heatmap_Action": "C:\\Users\\samue\\Documents\\diplomka\\outputs\\global_xai\\best_neural\\image_occlusion_heatmap_Action.png",
+    "image_occlusion_heatmap_Adventure": "C:\\Users\\samue\\Documents\\diplomka\\outputs\\global_xai\\best_neural\\image_occlusion_heatmap_Adventure.png",
+    "image_occlusion_heatmap_Horror": "C:\\Users\\samue\\Documents\\diplomka\\outputs\\global_xai\\best_neural\\image_occlusion_heatmap_Horror.png",
+    "image_occlusion_heatmap_Documentary": "C:\\Users\\samue\\Documents\\diplomka\\outputs\\global_xai\\best_neural\\image_occlusion_heatmap_Documentary.png",
+    "image_occlusion_heatmap_Mystery": "C:\\Users\\samue\\Documents\\diplomka\\outputs\\global_xai\\best_neural\\image_occlusion_heatmap_Mystery.png",
+    "image_occlusion_heatmap_Sci-Fi": "C:\\Users\\samue\\Documents\\diplomka\\outputs\\global_xai\\best_neural\\image_occlusion_heatmap_Sci-Fi.png",
+    "image_occlusion_heatmap_Fantasy": "C:\\Users\\samue\\Documents\\diplomka\\outputs\\global_xai\\best_neural\\image_occlusion_heatmap_Fantasy.png",
+    "image_occlusion_heatmap_Family": "C:\\Users\\samue\\Documents\\diplomka\\outputs\\global_xai\\best_neural\\image_occlusion_heatmap_Family.png",
+    "image_occlusion_heatmap_Biography": "C:\\Users\\samue\\Documents\\diplomka\\outputs\\global_xai\\best_neural\\image_occlusion_heatmap_Biography.png",
+    "image_occlusion_heatmap_War": "C:\\Users\\samue\\Documents\\diplomka\\outputs\\global_xai\\best_neural\\image_occlusion_heatmap_War.png",
+    "image_occlusion_heatmap_History": "C:\\Users\\samue\\Documents\\diplomka\\outputs\\global_xai\\best_neural\\image_occlusion_heatmap_History.png",
+    "image_occlusion_heatmap_Music": "C:\\Users\\samue\\Documents\\diplomka\\outputs\\global_xai\\best_neural\\image_occlusion_heatmap_Music.png",
+    "image_occlusion_heatmap_Animation": "C:\\Users\\samue\\Documents\\diplomka\\outputs\\global_xai\\best_neural\\image_occlusion_heatmap_Animation.png",
+    "image_occlusion_heatmap_Musical": "C:\\Users\\samue\\Documents\\diplomka\\outputs\\global_xai\\best_neural\\image_occlusion_heatmap_Musical.png",
+    "image_occlusion_heatmap_Western": "C:\\Users\\samue\\Documents\\diplomka\\outputs\\global_xai\\best_neural\\image_occlusion_heatmap_Western.png",
+    "image_occlusion_heatmap_Sport": "C:\\Users\\samue\\Documents\\diplomka\\outputs\\global_xai\\best_neural\\image_occlusion_heatmap_Sport.png",
+    "image_occlusion_heatmap_Short": "C:\\Users\\samue\\Documents\\diplomka\\outputs\\global_xai\\best_neural\\image_occlusion_heatmap_Short.png",
+    "image_occlusion_heatmap_Film-Noir": "C:\\Users\\samue\\Documents\\diplomka\\outputs\\global_xai\\best_neural\\image_occlusion_heatmap_Film-Noir.png",
+    "global_token_occlusion_top": "C:\\Users\\samue\\Documents\\diplomka\\outputs\\global_xai\\best_neural\\global_token_occlusion_top.png"
+  },
+  "artifacts": {
+    "prediction_context_csv": "C:\\Users\\samue\\Documents\\diplomka\\outputs\\global_xai\\best_neural\\prediction_context.csv",
+    "modality_ablation_csv": "C:\\Users\\samue\\Documents\\diplomka\\outputs\\global_xai\\best_neural\\modality_ablation_and_permutation.csv",
+    "modality_shapley_csv": "C:\\Users\\samue\\Documents\\diplomka\\outputs\\global_xai\\best_neural\\global_modality_shapley.csv",
+    "token_occlusion_csv": "C:\\Users\\samue\\Documents\\diplomka\\outputs\\global_xai\\best_neural\\global_token_occlusion.csv",
+    "image_occlusion_heatmaps_csv": "C:\\Users\\samue\\Documents\\diplomka\\outputs\\global_xai\\best_neural\\per_label_image_occlusion_heatmaps.csv",
+    "methods_csv": "C:\\Users\\samue\\Documents\\diplomka\\outputs\\global_xai\\best_neural\\global_xai_methods_for_thesis.csv"
+  }
+}

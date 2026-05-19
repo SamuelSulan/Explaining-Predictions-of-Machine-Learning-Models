@@ -109,6 +109,55 @@ def existing_report_roots() -> list[dict]:
     return roots
 
 
+def existing_global_xai_roots() -> list[dict]:
+    candidates = [
+        ROOT / "outputs" / "global_xai" / "best_neural",
+    ]
+    candidates.extend(sorted((ROOT / "outputs" / "global_xai").glob("*/")) if (ROOT / "outputs" / "global_xai").exists() else [])
+    colab_runs = ROOT / "outputs" / "colab_test_xai_all_models"
+    if colab_runs.exists():
+        candidates.extend(sorted(colab_runs.glob("*/global_xai/best_neural")))
+
+    seen = set()
+    roots = []
+    for candidate in candidates:
+        candidate = candidate.resolve()
+        summary = candidate / "global_xai_summary.json"
+        if candidate in seen or not summary.exists():
+            continue
+        seen.add(candidate)
+        roots.append(
+            {
+                "label": candidate.relative_to(ROOT).as_posix(),
+                "path": candidate.relative_to(ROOT).as_posix(),
+                "summary": summary.relative_to(ROOT).as_posix(),
+            }
+        )
+    return roots
+
+
+def global_xai_payload(root: str) -> dict:
+    root_path = safe_path(root)
+    summary_path = root_path / "global_xai_summary.json"
+    if not summary_path.exists():
+        return {"available": False, "error": f"Global XAI summary not found: {relative_path(summary_path)}"}
+    summary = read_json(summary_path)
+    figures = {}
+    for name, raw_path in summary.get("figures", {}).items():
+        try:
+            path = safe_path(raw_path)
+        except ValueError:
+            path = root_path / Path(str(raw_path)).name
+        if path.exists():
+            figures[name] = file_url(path)
+    return {
+        "available": True,
+        "root": relative_path(root_path),
+        "summary": summary,
+        "figures": figures,
+    }
+
+
 def summary_path(root: str, model_type: str) -> Path:
     name = "classic_xai_summary.json" if model_type == "classic" else "neural_xai_summary.json"
     root_path = safe_path(root)
@@ -317,10 +366,14 @@ class DashboardHandler(BaseHTTPRequestHandler):
                     self,
                     {
                         "roots": existing_report_roots(),
+                        "global_roots": existing_global_xai_roots(),
                         "default_models": default_model_paths(),
                         "genres": GENRE_LABELS,
                     },
                 )
+            elif parsed.path == "/api/global_xai":
+                root = query.get("root", ["outputs/global_xai/best_neural"])[0]
+                json_response(self, global_xai_payload(root))
             elif parsed.path == "/api/samples":
                 root = query.get("root", ["outputs/xai"])[0]
                 model_type = query.get("model_type", ["classic"])[0]
@@ -421,6 +474,13 @@ HTML = r"""<!doctype html>
       align-items: end;
       margin-bottom: 16px;
     }
+    .global-toolbar {
+      display: grid;
+      grid-template-columns: minmax(260px, 1fr) auto;
+      gap: 12px;
+      align-items: end;
+      margin-bottom: 16px;
+    }
     .infer-toolbar {
       display: grid;
       grid-template-columns: 0.45fr 0.7fr 1.3fr 1.3fr auto;
@@ -472,7 +532,7 @@ HTML = r"""<!doctype html>
     .hidden { display: none; }
     .error { color: #9a3412; background: #fff4ed; border: 1px solid #fed7aa; padding: 10px; border-radius: 7px; }
     @media (max-width: 980px) {
-      .toolbar, .infer-toolbar, .layout, .grid-2 { grid-template-columns: 1fr; }
+      .toolbar, .global-toolbar, .infer-toolbar, .layout, .grid-2 { grid-template-columns: 1fr; }
       .metrics { grid-template-columns: 1fr 1fr; }
     }
   </style>
@@ -484,11 +544,23 @@ HTML = r"""<!doctype html>
   </header>
   <main>
     <div class="tabs">
-      <button id="reportsTab" class="tab active" type="button">XAI Reports</button>
+      <button id="globalTab" class="tab active" type="button">Global XAI - Best Neural</button>
+      <button id="reportsTab" class="tab" type="button">Local XAI Reports</button>
       <button id="inferTab" class="tab" type="button">Model Inference</button>
     </div>
 
-    <section id="reportsView">
+    <section id="globalView">
+      <div class="global-toolbar">
+        <label>Global XAI Root<select id="globalRootSelect"></select></label>
+        <button id="refreshGlobal" class="primary" type="button">Load Global Aggregate</button>
+      </div>
+      <section class="panel">
+        <h2>Global Aggregate Explanation - Best Neural</h2>
+        <div id="globalContent" class="panel-body"></div>
+      </section>
+    </section>
+
+    <section id="reportsView" class="hidden">
       <div class="toolbar">
         <label>Report Root<select id="rootSelect"></select></label>
         <label>Model Type<select id="modelType"><option value="classic">Classic</option><option value="neural">Neural</option></select></label>
@@ -501,7 +573,7 @@ HTML = r"""<!doctype html>
           <div id="sampleList" class="sample-list"></div>
         </aside>
         <section class="panel">
-          <h2>Explanation</h2>
+          <h2>Local Instance Explanation</h2>
           <div id="reportContent" class="panel-body"></div>
         </section>
       </div>
@@ -524,7 +596,7 @@ HTML = r"""<!doctype html>
 
   <script>
     const $ = (id) => document.getElementById(id);
-    let state = { roots: [], samples: [] };
+    let state = { roots: [], global_roots: [], samples: [] };
 
     function fmt(value, digits = 4) {
       if (value === null || value === undefined || Number.isNaN(Number(value))) return "n/a";
@@ -543,8 +615,10 @@ HTML = r"""<!doctype html>
     }
 
     function setTab(active) {
+      $("globalView").classList.toggle("hidden", active !== "global");
       $("reportsView").classList.toggle("hidden", active !== "reports");
       $("inferView").classList.toggle("hidden", active !== "infer");
+      $("globalTab").classList.toggle("active", active === "global");
       $("reportsTab").classList.toggle("active", active === "reports");
       $("inferTab").classList.toggle("active", active === "infer");
     }
@@ -586,6 +660,84 @@ HTML = r"""<!doctype html>
       return `<table><thead><tr>${columns.map(c => `<th>${escapeHtml(c.label)}</th>`).join("")}</tr></thead><tbody>
         ${rows.map(row => `<tr>${columns.map(c => `<td>${escapeHtml(c.format ? c.format(row[c.key], row) : row[c.key])}</td>`).join("")}</tr>`).join("")}
       </tbody></table>`;
+    }
+
+    function artifactFigure(name, url) {
+      return `<figure><img src="${url}" alt="${escapeHtml(name)}"><figcaption>Global aggregate: ${escapeHtml(name.replaceAll("_", " "))}</figcaption></figure>`;
+    }
+
+    function renderGlobalXai(payload) {
+      const content = $("globalContent");
+      if (!payload.available) {
+        content.innerHTML = `<div class="error">${escapeHtml(payload.error || "Global XAI summary not found.")}</div>`;
+        return;
+      }
+      const summary = payload.summary;
+      const context = summary.prediction_context || [];
+      const variants = summary.modality_ablation_and_permutation || [];
+      const methods = summary.methods || [];
+      const tokenRows = summary.top_token_occlusion || [];
+      const ligRows = summary.aggregated_lig_tokens || [];
+      const warnings = summary.warnings || [];
+      const figs = payload.figures || {};
+      const mainFigures = Object.entries(figs)
+        .filter(([name]) => !name.startsWith("image_occlusion_heatmap_"))
+        .map(([name, url]) => artifactFigure(name, url)).join("");
+      const heatmapFigures = Object.entries(figs)
+        .filter(([name]) => name.startsWith("image_occlusion_heatmap_"))
+        .slice(0, 23)
+        .map(([name, url]) => artifactFigure(name, url)).join("");
+      content.innerHTML = `
+        <div class="metrics">
+          <div class="metric"><div class="muted">Scope</div><div class="value">Global aggregate</div></div>
+          <div class="metric"><div class="muted">Model</div><div>Best neural only</div></div>
+          <div class="metric"><div class="muted">Labels</div><div class="value">${escapeHtml(summary.num_labels || 23)}</div></div>
+          <div class="metric"><div class="muted">Samples</div><div class="value">${escapeHtml(summary.selected_sample_count)}</div></div>
+          <div class="metric"><div class="muted">Split</div><div>${escapeHtml(summary.split || "test")}</div></div>
+          <div class="metric"><div class="muted">Runtime</div><div>${fmt(summary.runtime_seconds, 1)} s</div></div>
+        </div>
+        <div class="section"><h3>Global Aggregate Methods For Thesis</h3>${featureTable(methods, [
+          { key: "method", label: "Method" },
+          { key: "thesis_description", label: "Thesis description" }
+        ])}</div>
+        ${warnings.length ? `<div class="section"><h3>Warnings</h3>${featureTable(warnings, [
+          { key: "genre", label: "Genre" },
+          { key: "selected_samples", label: "Selected samples" },
+          { key: "warning", label: "Warning" }
+        ])}</div>` : ""}
+        <div class="section"><h3>Global Aggregate Figures</h3><div class="image-grid">${mainFigures || "<div class='muted'>No figures generated yet.</div>"}</div></div>
+        <div class="grid-2">
+          <div class="section"><h3>Global Aggregate Modality Ablation / Permutation</h3>${featureTable(variants, [
+            { key: "variant", label: "Variant" },
+            { key: "macro_f1", label: "Macro F1", format: v => fmt(v, 4) },
+            { key: "micro_f1", label: "Micro F1", format: v => fmt(v, 4) },
+            { key: "sample_f1", label: "Sample F1", format: v => fmt(v, 4) },
+            { key: "hamming_loss", label: "Hamming loss", format: v => fmt(v, 4) }
+          ])}</div>
+          <div class="section"><h3>Prediction Context By Label</h3>${featureTable(context, [
+            { key: "genre", label: "Genre" },
+            { key: "support", label: "Support" },
+            { key: "prediction_frequency", label: "Pred. freq", format: v => fmt(v, 4) },
+            { key: "mean_probability", label: "Mean p", format: v => fmt(v, 4) },
+            { key: "f1", label: "F1", format: v => fmt(v, 4) }
+          ])}</div>
+        </div>
+        <div class="grid-2">
+          <div class="section"><h3>Global Aggregate Token Occlusion</h3>${featureTable(tokenRows.slice(0, 80), [
+            { key: "genre", label: "Genre" },
+            { key: "token", label: "Token" },
+            { key: "affected_samples", label: "Affected" },
+            { key: "mean_probability_delta", label: "Mean delta", format: v => fmt(v, 5) }
+          ])}</div>
+          <div class="section"><h3>Aggregated Layer IG Tokens</h3>${featureTable(ligRows.slice(0, 80), [
+            { key: "genre", label: "Genre" },
+            { key: "token", label: "Token" },
+            { key: "count", label: "Count" },
+            { key: "mean_attribution", label: "Mean attribution", format: v => fmt(v, 5) }
+          ])}</div>
+        </div>
+        <div class="section"><h3>Global Aggregate Per-Label Image Occlusion Heatmaps</h3><div class="image-grid">${heatmapFigures || "<div class='muted'>No image occlusion heatmaps generated yet.</div>"}</div></div>
+      `;
     }
 
     function shapleyBlock(shapley) {
@@ -637,6 +789,7 @@ HTML = r"""<!doctype html>
 
       content.innerHTML = `
         <div class="metrics">
+          <div class="metric"><div class="muted">Scope</div><div class="value">Local instance</div></div>
           <div class="metric"><div class="muted">Index</div><div class="value">${escapeHtml(exp.index)}</div></div>
           <div class="metric"><div class="muted">Target</div><div>${pills(targetGenres)}</div></div>
           <div class="metric"><div class="muted">Probability</div><div class="value">${fmt(exp.probability)}</div></div>
@@ -678,9 +831,23 @@ HTML = r"""<!doctype html>
     async function loadState() {
       state = await getJson("/api/state");
       $("rootSelect").innerHTML = state.roots.map(root => `<option value="${root.path}">${root.label}</option>`).join("");
+      $("globalRootSelect").innerHTML = (state.global_roots || []).map(root => `<option value="${root.path}">${root.label}</option>`).join("");
       $("classicModel").value = state.default_models.classic;
       $("neuralModel").value = state.default_models.neural;
+      if ((state.global_roots || []).length) await loadGlobalXai();
+      else $("globalContent").innerHTML = `<div class="error">No global XAI summary found. Run scripts/run_global_xai.py first.</div>`;
       await loadSamples();
+    }
+
+    async function loadGlobalXai() {
+      const root = $("globalRootSelect").value || "outputs/global_xai/best_neural";
+      $("globalContent").innerHTML = `<div class="muted">Loading global aggregate explanations...</div>`;
+      try {
+        const payload = await getJson(`/api/global_xai?root=${encodeURIComponent(root)}`);
+        renderGlobalXai(payload);
+      } catch (err) {
+        $("globalContent").innerHTML = `<div class="error">${escapeHtml(err.message)}</div>`;
+      }
     }
 
     async function loadSamples() {
@@ -744,14 +911,17 @@ HTML = r"""<!doctype html>
       }
     }
 
+    $("globalTab").addEventListener("click", () => setTab("global"));
     $("reportsTab").addEventListener("click", () => setTab("reports"));
     $("inferTab").addEventListener("click", () => setTab("infer"));
+    $("refreshGlobal").addEventListener("click", loadGlobalXai);
+    $("globalRootSelect").addEventListener("change", loadGlobalXai);
     $("refreshReports").addEventListener("click", loadSamples);
     $("rootSelect").addEventListener("change", loadSamples);
     $("modelType").addEventListener("change", loadSamples);
     $("sampleSelect").addEventListener("change", () => loadExplanation(null));
     $("runInfer").addEventListener("click", runInference);
-    loadState().catch(err => $("reportContent").innerHTML = `<div class="error">${escapeHtml(err.message)}</div>`);
+    loadState().catch(err => $("globalContent").innerHTML = `<div class="error">${escapeHtml(err.message)}</div>`);
   </script>
 </body>
 </html>
