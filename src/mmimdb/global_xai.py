@@ -381,7 +381,11 @@ def aggregate_local_lig_tokens(local_xai_dir: str | Path | None, output_dir: str
         return {"rows": [], "warning": f"Local XAI directory does not exist: {root}"}
 
     accum: dict[tuple[str, str], list[float]] = defaultdict(list)
-    for explanation_path in root.rglob("explanation.json"):
+    explanation_paths = list(root.rglob("explanation.json"))
+    if not explanation_paths:
+        return {"rows": [], "warning": f"No local explanation.json files found under: {root}"}
+
+    for explanation_path in explanation_paths:
         try:
             with explanation_path.open("r", encoding="utf-8") as f:
                 explanation = json.load(f)
